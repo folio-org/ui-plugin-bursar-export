@@ -1,5 +1,24 @@
 {
   "meta.title": "Bursar exports",
 
+  "bursarExports": "Bursar exports",
+  "bursarExports.schedulePeriod": "Schedule period",
+  "bursarExports.schedulePeriod.none": "None",
+  "bursarExports.schedulePeriod.hours": "Hours",
+  "bursarExports.schedulePeriod.days": "Days",
+  "bursarExports.schedulePeriod.weeks": "Weeks",
+  "bursarExports.scheduleFrequency": "Schedule frequency",
+  "bursarExports.scheduleWeekdays": "Weekdays",
+  "bursarExports.scheduleWeekdays.Friday": "F",
+  "bursarExports.scheduleWeekdays.Monday": "M",
+  "bursarExports.scheduleWeekdays.Saturday": "S",
+  "bursarExports.scheduleWeekdays.Sunday": "S",
+  "bursarExports.scheduleWeekdays.Thursday": "T",
+  "bursarExports.scheduleWeekdays.Tuesday": "T",
+  "bursarExports.scheduleWeekdays.Wednesday": "W",
+  "bursarExports.scheduleTime": "Schedule time",
+  "bursarExports.ftpAddress": "FTP address",
+  "bursarExports.save": "Save",
+
   "permission.bursar-exports.all": "Bursar exports: Bursar admin"
 }
