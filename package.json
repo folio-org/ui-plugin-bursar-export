@@ -15,6 +15,7 @@
     "pluginType": "bursar-export",
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
+      "users": "15.0"
     },
     "stripesDeps": [
       "@folio/stripes-acq-components"
@@ -24,6 +25,8 @@
         "permissionName": "ui-plugin-bursar-export.bursar-exports.all",
         "displayName": "Bursar exports: Bursar admin",
         "subPermissions": [
+          "module.tenant-settings.enabled",
+          "usergroups.collection.get"
         ],
         "visible": true
       }
@@ -47,6 +50,7 @@
     "@folio/stripes-cli": "^2.0.0",
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^5.0.3",
     "@testing-library/user-event": "^12.1.10",
     "babel-eslint": "^10.0.0",
     "babel-jest": "^26.3.0",
@@ -62,6 +66,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-intl": "^5.8.1",
+    "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.3"
@@ -83,6 +88,7 @@
     "@folio/stripes": "^6.0.0",
     "react": "*",
     "react-intl": "^5.8.1",
+    "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   }

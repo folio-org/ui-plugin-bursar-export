@@ -11,6 +11,13 @@ import { SCHEDULE_PERIODS } from './constants';
 const defaultProps = {
   onFormStateChanged: jest.fn(),
   onSubmit: jest.fn(),
+  patronGroups: [{
+    id: 'groupId',
+    group: 'group',
+  }],
+  initialValues: {
+    schedulePeriod: SCHEDULE_PERIODS.none,
+  },
 };
 
 const renderBursarExportsConfiguration = (props = {}) => render(
@@ -33,6 +40,13 @@ describe('BursarExportsConfiguration', () => {
   });
 
   describe('None period', () => {
+    it('should not render job parameter fields', () => {
+      const { queryByText } = renderBursarExportsConfiguration();
+
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.daysOutstanding')).toBeNull();
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.patronGroups')).toBeNull();
+    });
+
     it('should should define schedule frequency when period is changed from None', () => {
       const { getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
@@ -86,6 +100,17 @@ describe('BursarExportsConfiguration', () => {
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleWeekdays')).toBeNull();
     });
 
+    it('should not render job parameter fields', () => {
+      const { queryByText } = renderBursarExportsConfiguration({
+        initialValues: {
+          schedulePeriod: SCHEDULE_PERIODS.hours,
+        },
+      });
+
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.daysOutstanding')).not.toBeNull();
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.patronGroups')).not.toBeNull();
+    });
+
     it('should reset scheduleTime when period is changed to Hours', () => {
       const { queryByText, getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
@@ -104,12 +129,24 @@ describe('BursarExportsConfiguration', () => {
       const { queryByText, queryByTestId } = renderBursarExportsConfiguration({
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.days,
+          patronGroups: [],
         },
       });
 
       expect(queryByTestId('schedule-frequency')).not.toBeNull();
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleTime')).not.toBeNull();
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleWeekdays')).toBeNull();
+    });
+
+    it('should not render job parameter fields', () => {
+      const { queryByText } = renderBursarExportsConfiguration({
+        initialValues: {
+          schedulePeriod: SCHEDULE_PERIODS.days,
+        },
+      });
+
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.daysOutstanding')).not.toBeNull();
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.patronGroups')).not.toBeNull();
     });
   });
 
@@ -119,11 +156,25 @@ describe('BursarExportsConfiguration', () => {
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.weeks,
         },
+        weekDays: {
+          'day': false,
+        },
       });
 
       expect(queryByTestId('schedule-frequency')).not.toBeNull();
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleTime')).not.toBeNull();
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleWeekdays')).not.toBeNull();
+    });
+
+    it('should not render job parameter fields', () => {
+      const { queryByText } = renderBursarExportsConfiguration({
+        initialValues: {
+          schedulePeriod: SCHEDULE_PERIODS.weeks,
+        },
+      });
+
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.daysOutstanding')).not.toBeNull();
+      expect(queryByText('ui-plugin-bursar-export.bursarExports.patronGroups')).not.toBeNull();
     });
 
     it('should reset scheduleWeekdays when period is changed to any periods', () => {

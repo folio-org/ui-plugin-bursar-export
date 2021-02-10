@@ -20,6 +20,7 @@ import {
   WEEKDAYS,
 } from './constants';
 import { validateRequired } from './validation';
+import { PatronGroupsField } from './PatronGroupsField';
 
 export const BursarExportsConfigurationForm = ({
   form,
@@ -27,6 +28,7 @@ export const BursarExportsConfigurationForm = ({
   onFormStateChanged,
   pristine,
   submitting,
+  patronGroups,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -65,7 +67,7 @@ export const BursarExportsConfigurationForm = ({
         </Col>
 
         {
-          Boolean(formValues.schedulePeriod) && (
+          formValues.schedulePeriod !== SCHEDULE_PERIODS.none && (
             <Col xs={4}>
               <Field
                 data-testid="schedule-frequency"
@@ -87,30 +89,32 @@ export const BursarExportsConfigurationForm = ({
 
       {
         formValues.schedulePeriod === SCHEDULE_PERIODS.weeks && (
-          <>
-            <Label required>
-              {formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.scheduleWeekdays',
-              })}
-            </Label>
+          <Row>
+            <Col xs={12}>
+              <Label required>
+                {formatMessage({
+                  id: 'ui-plugin-bursar-export.bursarExports.scheduleWeekdays',
+                })}
+              </Label>
 
-            <FieldArray name="scheduleWeekdays">
-              {
-                ({ fields }) => WEEKDAYS.map((weekday, index) => (
-                  <Field
-                    key={index}
-                    component={Checkbox}
-                    label={formatMessage({
-                      id: `ui-plugin-bursar-export.bursarExports.scheduleWeekdays.${weekday}`,
-                    })}
-                    name={`${fields.name}[${weekday}]`}
-                    type="checkbox"
-                    vertical
-                  />
-                ))
-              }
-            </FieldArray>
-          </>
+              <FieldArray name="weekDays" validate={validateRequired}>
+                {
+                  ({ fields }) => WEEKDAYS.map((weekday, index) => (
+                    <Field
+                      key={index}
+                      component={Checkbox}
+                      label={formatMessage({
+                        id: `ui-plugin-bursar-export.bursarExports.scheduleWeekdays.${weekday}`,
+                      })}
+                      name={`${fields.name}[${weekday}]`}
+                      type="checkbox"
+                      vertical
+                    />
+                  ))
+                }
+              </FieldArray>
+            </Col>
+          </Row>
         )
       }
 
@@ -140,13 +144,39 @@ export const BursarExportsConfigurationForm = ({
             label={formatMessage({
               id: 'ui-plugin-bursar-export.bursarExports.ftpAddress',
             })}
-            name="ftpAddress"
+            name="ftpUrl"
             type="text"
             required
             validate={validateRequired}
           />
         </Col>
       </Row>
+
+      {
+        formValues.schedulePeriod !== SCHEDULE_PERIODS.none && (
+          <Row>
+            <Col xs={4}>
+              <Field
+                data-testid="days-outstanding"
+                component={TextField}
+                label={formatMessage({
+                  id: 'ui-plugin-bursar-export.bursarExports.daysOutstanding',
+                })}
+                name="daysOutstanding"
+                type="number"
+                min={1}
+                hasClearIcon={false}
+                required
+                validate={validateRequired}
+              />
+            </Col>
+
+            <Col xs={4}>
+              <PatronGroupsField patronGroups={patronGroups} />
+            </Col>
+          </Row>
+        )
+      }
     </form>
   );
 };
@@ -157,6 +187,7 @@ BursarExportsConfigurationForm.propTypes = {
   onFormStateChanged: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
+  patronGroups: PropTypes.arrayOf(PropTypes.object),
 };
 
 export const BursarExportsConfiguration = stripesFinalForm({
@@ -169,20 +200,23 @@ export const BursarExportsConfiguration = stripesFinalForm({
 
       utils.changeValue(state, 'schedulePeriod', () => nextValue);
 
-      if (nextValue && !prevValue) {
+      if (prevValue === SCHEDULE_PERIODS.none) {
         utils.changeValue(state, 'scheduleFrequency', () => 1);
+        utils.changeValue(state, 'daysOutstanding', () => 1);
       }
 
       if (prevValue === SCHEDULE_PERIODS.weeks) {
-        utils.changeValue(state, 'scheduleWeekdays', () => undefined);
+        utils.changeValue(state, 'weekDays', () => undefined);
       }
 
       if ([SCHEDULE_PERIODS.none, SCHEDULE_PERIODS.hours].includes(nextValue)) {
         utils.changeValue(state, 'scheduleTime', () => undefined);
       }
 
-      if (!nextValue) {
+      if (nextValue === SCHEDULE_PERIODS.none) {
         utils.changeValue(state, 'scheduleFrequency', () => undefined);
+        utils.changeValue(state, 'daysOutstanding', () => undefined);
+        utils.changeValue(state, 'patronGroups', () => undefined);
       }
     },
   },

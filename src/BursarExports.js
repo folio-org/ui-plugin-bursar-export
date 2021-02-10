@@ -3,14 +3,40 @@ import { useIntl } from 'react-intl';
 
 import {
   Button,
+  LoadingPane,
   Pane,
   PaneFooter,
 } from '@folio/stripes/components';
+import {
+  useShowCallout,
+} from '@folio/stripes-acq-components';
 
+import {
+  useBursarConfigQuery,
+  useBursarConfigMutation,
+  usePatronGroupsQuery,
+} from './apiQuery';
 import { BursarExportsConfiguration } from './BursarExportsConfiguration';
 
 export const BursarExports = () => {
   const { formatMessage } = useIntl();
+  const showCallout = useShowCallout();
+
+  const { patronGroups } = usePatronGroupsQuery();
+  const { isLoading, bursarConfig } = useBursarConfigQuery();
+  const { mutateBursarConfig } = useBursarConfigMutation({
+    onSuccess: () => {
+      return showCallout({
+        message: formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.save.success' }),
+      });
+    },
+    onError: () => {
+      return showCallout({
+        message: formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.save.error' }),
+        type: 'error',
+      });
+    },
+  });
 
   const [bursarConfigForm, setBursarConfigForm] = useState();
   const bursarConfigFormState = bursarConfigForm?.getState();
@@ -34,6 +60,12 @@ export const BursarExports = () => {
     />
   );
 
+  if (isLoading) {
+    return (
+      <LoadingPane defaultWidth="fill" />
+    );
+  }
+
   return (
     <Pane
       defaultWidth="fill"
@@ -42,8 +74,10 @@ export const BursarExports = () => {
       paneTitle={formatMessage({ id: 'ui-plugin-bursar-export.bursarExports' })}
     >
       <BursarExportsConfiguration
+        initialValues={bursarConfig}
+        onSubmit={mutateBursarConfig}
         onFormStateChanged={setBursarConfigForm}
-        onSubmit={(values) => { console.log(values); }}
+        patronGroups={patronGroups}
       />
     </Pane>
   );
