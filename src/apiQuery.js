@@ -1,20 +1,31 @@
-import { useMutation, useQuery } from 'react-query';
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
+import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 import { SCHEDULE_PERIODS } from './BursarExportsConfiguration';
 
-const bursarConfigApi = 'batch-voucher/export-configurations';
+const bursarConfigApi = 'bursar-export/config';
+const bursarConfigKey = 'bursarConfig';
 
-export const useBursarConfigQuery = (key = 'bursarConfig') => {
+export const useBursarConfigQuery = (key = bursarConfigKey) => {
   const ky = useOkapiKy();
 
   const { isLoading, data = {} } = useQuery({
     queryKey: key,
     queryFn: async () => {
-      const { records = [] } = await ky.get(bursarConfigApi).json();
+      const kyOptions = {
+        searchParams: {
+          limit: 1,
+        },
+      };
+      const { configs = [] } = await ky.get(bursarConfigApi, kyOptions).json();
 
-      return records[0] || {
+      return configs[0] || {
         schedulePeriod: SCHEDULE_PERIODS.none,
       };
     },
@@ -32,8 +43,9 @@ export const useBursarConfigQuery = (key = 'bursarConfig') => {
   };
 };
 
-export const useBursarConfigMutation = (options = {}) => {
+export const useBursarConfigMutation = (options = {}, key = bursarConfigKey) => {
   const ky = useOkapiKy();
+  const queryClient = useQueryClient();
 
   const { mutateAsync } = useMutation({
     mutationFn: (bursarConfig) => {
@@ -52,6 +64,11 @@ export const useBursarConfigMutation = (options = {}) => {
       return ky[kyMethod](kyPath, { json });
     },
     ...options,
+    onSuccess: () => {
+      queryClient.invalidateQueries(key);
+
+      if (options.onSuccess) options.onSuccess();
+    },
   });
 
   return {
@@ -63,9 +80,14 @@ export const usePatronGroupsQuery = () => {
   const ky = useOkapiKy();
 
   const { isLoading, data = [] } = useQuery({
-    queryKey: 'patronGroups',
+    queryKey: 'bursarPatronGroups',
     queryFn: async () => {
-      const { usergroups = [] } = await ky.get('groups').json();
+      const kyOptions = {
+        searchParams: {
+          limit: LIMIT_MAX,
+        },
+      };
+      const { usergroups = [] } = await ky.get('groups', kyOptions).json();
 
       return usergroups;
     },

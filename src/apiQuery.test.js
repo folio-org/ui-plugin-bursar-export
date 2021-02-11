@@ -8,6 +8,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import {
   useBursarConfigQuery,
   useBursarConfigMutation,
+  usePatronGroupsQuery,
 } from './apiQuery';
 import {
   SCHEDULE_PERIODS,
@@ -49,7 +50,7 @@ describe('Bursar configuration api queries', () => {
         get: () => ({
           json: () => ({
             isLoading: false,
-            records: [{ weekDays: [WEEKDAYS[0]] }],
+            configs: [{ weekDays: [WEEKDAYS[0]] }],
           }),
         }),
       });
@@ -101,6 +102,26 @@ describe('Bursar configuration api queries', () => {
       });
 
       expect(putMock).toHaveBeenCalled();
+    });
+  });
+
+  describe('usePatronGroupsQuery', () => {
+    it('should fetch patron groups', async () => {
+      useOkapiKy.mockClear().mockReturnValue({
+        get: () => ({
+          json: () => ({
+            usergroups: [{ group: 'graduated' }],
+          }),
+        }),
+      });
+
+      const { result, waitFor } = renderHook(() => usePatronGroupsQuery(), { wrapper });
+
+      await waitFor(() => {
+        return Boolean(result.current.patronGroups.length);
+      });
+
+      expect(result.current.patronGroups.length > 0).toBeTruthy();
     });
   });
 });
