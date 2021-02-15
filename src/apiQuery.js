@@ -98,3 +98,18 @@ export const usePatronGroupsQuery = () => {
     patronGroups: data,
   };
 };
+
+export const useBursarExportSceduler = (options = {}) => {
+  const ky = useOkapiKy();
+
+  const { mutateAsync } = useMutation({
+    mutationFn: () => {
+      return ky.post(bursarConfigApi);
+    },
+    ...options,
+  });
+
+  return {
+    scheduleBursarExport: mutateAsync,
+  };
+};

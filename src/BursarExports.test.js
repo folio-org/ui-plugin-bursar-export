@@ -11,6 +11,7 @@ import {
 import { BursarExports } from './BursarExports';
 
 const BursarExportsConfiguration = 'BursarExportsConfiguration';
+const BursarExportsManualRunner = 'BursarExportsManualRunner';
 
 jest.mock('./apiQuery', () => {
   return {
@@ -39,6 +40,12 @@ jest.mock('./BursarExportsConfiguration', () => {
   };
 });
 
+jest.mock('./BursarExportsManualRunner', () => {
+  return {
+    BursarExportsManualRunner: () => BursarExportsManualRunner,
+  };
+});
+
 const renderBursarExports = () => render(<BursarExports />);
 
 describe('BursarExports', () => {
@@ -56,6 +63,12 @@ describe('BursarExports', () => {
     const { getByText } = renderBursarExports();
 
     expect(getByText(BursarExportsConfiguration)).toBeDefined();
+  });
+
+  it('should render run manually button', () => {
+    const { getByText } = renderBursarExports();
+
+    expect(getByText(BursarExportsManualRunner)).toBeDefined();
   });
 
   it('should render save button', () => {

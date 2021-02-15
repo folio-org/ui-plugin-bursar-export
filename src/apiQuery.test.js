@@ -8,6 +8,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import {
   useBursarConfigQuery,
   useBursarConfigMutation,
+  useBursarExportSceduler,
   usePatronGroupsQuery,
 } from './apiQuery';
 import {
@@ -122,6 +123,25 @@ describe('Bursar configuration api queries', () => {
       });
 
       expect(result.current.patronGroups.length > 0).toBeTruthy();
+    });
+  });
+
+  describe('useBursarExportSceduler', () => {
+    it('should make post request', async () => {
+      const postMock = jest.fn();
+
+      useOkapiKy.mockClear().mockReturnValue({
+        post: postMock,
+      });
+
+      const { result } = renderHook(
+        () => useBursarExportSceduler(),
+        { wrapper },
+      );
+
+      await result.current.scheduleBursarExport();
+
+      expect(postMock).toHaveBeenCalled();
     });
   });
 });

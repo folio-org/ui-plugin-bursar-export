@@ -22,6 +22,8 @@ import {
 import { validateRequired } from './validation';
 import { PatronGroupsField } from './PatronGroupsField';
 
+import styles from './BursarExportsConfiguration.css';
+
 export const BursarExportsConfigurationForm = ({
   form,
   handleSubmit,
@@ -50,7 +52,10 @@ export const BursarExportsConfigurationForm = ({
   const formValues = form.getState()?.values || {};
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.bursarExportsConfiguration}
+    >
       <Row>
         <Col xs={4}>
           <Field
@@ -152,31 +157,27 @@ export const BursarExportsConfigurationForm = ({
         </Col>
       </Row>
 
-      {
-        formValues.schedulePeriod !== SCHEDULE_PERIODS.none && (
-          <Row>
-            <Col xs={4}>
-              <Field
-                data-testid="days-outstanding"
-                component={TextField}
-                label={formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.daysOutstanding',
-                })}
-                name="daysOutstanding"
-                type="number"
-                min={1}
-                hasClearIcon={false}
-                required
-                validate={validateRequired}
-              />
-            </Col>
+      <Row>
+        <Col xs={4}>
+          <Field
+            data-testid="days-outstanding"
+            component={TextField}
+            label={formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.daysOutstanding',
+            })}
+            name="daysOutstanding"
+            type="number"
+            min={1}
+            hasClearIcon={false}
+            required
+            validate={validateRequired}
+          />
+        </Col>
 
-            <Col xs={4}>
-              <PatronGroupsField patronGroups={patronGroups} />
-            </Col>
-          </Row>
-        )
-      }
+        <Col xs={4}>
+          <PatronGroupsField patronGroups={patronGroups} />
+        </Col>
+      </Row>
     </form>
   );
 };

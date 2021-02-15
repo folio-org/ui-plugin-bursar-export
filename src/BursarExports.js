@@ -17,6 +17,7 @@ import {
   usePatronGroupsQuery,
 } from './apiQuery';
 import { BursarExportsConfiguration } from './BursarExportsConfiguration';
+import { BursarExportsManualRunner } from './BursarExportsManualRunner';
 
 export const BursarExports = () => {
   const { formatMessage } = useIntl();
@@ -47,6 +48,9 @@ export const BursarExports = () => {
 
   const paneFooter = (
     <PaneFooter
+      renderStart={
+        <BursarExportsManualRunner disabled={!(bursarConfig?.id && bursarConfigFormState?.pristine)} />
+      }
       renderEnd={
         <Button
           buttonStyle="primary mega"
