@@ -192,6 +192,7 @@ BursarExportsConfigurationForm.propTypes = {
 };
 
 export const BursarExportsConfiguration = stripesFinalForm({
+  keepDirtyOnReinitialize: true,
   subscription: { values: true },
   navigationCheck: true,
   mutators: {
