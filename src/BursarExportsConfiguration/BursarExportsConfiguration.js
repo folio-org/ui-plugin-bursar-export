@@ -217,8 +217,6 @@ export const BursarExportsConfiguration = stripesFinalForm({
 
       if (nextValue === SCHEDULE_PERIODS.none) {
         utils.changeValue(state, 'scheduleFrequency', () => undefined);
-        utils.changeValue(state, 'daysOutstanding', () => undefined);
-        utils.changeValue(state, 'patronGroups', () => undefined);
       }
     },
   },
