@@ -204,7 +204,6 @@ export const BursarExportsConfiguration = stripesFinalForm({
 
       if (prevValue === SCHEDULE_PERIODS.none) {
         utils.changeValue(state, 'scheduleFrequency', () => 1);
-        utils.changeValue(state, 'daysOutstanding', () => 1);
       }
 
       if (prevValue === SCHEDULE_PERIODS.weeks) {
