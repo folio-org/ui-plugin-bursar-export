@@ -10,14 +10,14 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
-  useBursarExportSceduler,
+  useBursarExportScheduler,
 } from '../apiQuery';
 
 export const BursarExportsManualRunner = ({ form, disabled }) => {
   const { formatMessage } = useIntl();
   const showCallout = useShowCallout();
 
-  const { isLoading, scheduleBursarExport } = useBursarExportSceduler({
+  const { isLoading, scheduleBursarExport } = useBursarExportScheduler({
     onSuccess: () => {
       return showCallout({
         message: formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.runManually.success' }),

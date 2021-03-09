@@ -8,7 +8,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import {
   useBursarConfigQuery,
   useBursarConfigMutation,
-  useBursarExportSceduler,
+  useBursarExportScheduler,
   usePatronGroupsQuery,
 } from './apiQuery';
 import {
@@ -126,7 +126,7 @@ describe('Bursar configuration api queries', () => {
     });
   });
 
-  describe('useBursarExportSceduler', () => {
+  describe('useBursarExportScheduler', () => {
     it('should make post request', async () => {
       const postMock = jest.fn();
 
@@ -135,7 +135,7 @@ describe('Bursar configuration api queries', () => {
       });
 
       const { result } = renderHook(
-        () => useBursarExportSceduler(),
+        () => useBursarExportScheduler(),
         { wrapper },
       );
 

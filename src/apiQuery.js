@@ -102,7 +102,7 @@ export const usePatronGroupsQuery = () => {
   };
 };
 
-export const useBursarExportSceduler = (options = {}) => {
+export const useBursarExportScheduler = (options = {}) => {
   const ky = useOkapiKy();
 
   const { isLoading, mutateAsync } = useMutation({

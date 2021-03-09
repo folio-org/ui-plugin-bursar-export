@@ -5,13 +5,13 @@ import user from '@testing-library/user-event';
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
 import {
-  useBursarExportSceduler,
+  useBursarExportScheduler,
 } from '../apiQuery';
 import { BursarExportsManualRunner } from './BursarExportsManualRunner';
 
 jest.mock('../apiQuery', () => {
   return {
-    useBursarExportSceduler: jest.fn(),
+    useBursarExportScheduler: jest.fn(),
   };
 });
 
@@ -25,7 +25,7 @@ const renderBursarExportsManualRunner = ({
 
 describe('BursarExportsManualRunner', () => {
   beforeEach(() => {
-    useBursarExportSceduler.mockReturnValue({
+    useBursarExportScheduler.mockReturnValue({
       scheduleBursarExport: jest.fn(),
     });
   });
@@ -37,7 +37,7 @@ describe('BursarExportsManualRunner', () => {
       patronGroups: ['saf-uis4-sdsa'],
     };
 
-    useBursarExportSceduler.mockReturnValue({ scheduleBursarExport });
+    useBursarExportScheduler.mockReturnValue({ scheduleBursarExport });
 
     const { getByText } = renderBursarExportsManualRunner({
       form: {
