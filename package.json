@@ -10,9 +10,8 @@
   },
   "stripes": {
     "actsAs": [
-      "app"
+      "plugin"
     ],
-    "route": "/export-manager",
     "pluginType": "bursar-export",
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
