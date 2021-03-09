@@ -49,7 +49,10 @@ export const BursarExports = () => {
   const paneFooter = (
     <PaneFooter
       renderStart={
-        <BursarExportsManualRunner disabled={!(bursarConfig?.id && bursarConfigFormState?.pristine)} />
+        <BursarExportsManualRunner
+          form={bursarConfigForm}
+          disabled={!(bursarConfig?.id && bursarConfigFormState?.pristine)}
+        />
       }
       renderEnd={
         <Button

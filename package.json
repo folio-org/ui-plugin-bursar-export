@@ -10,8 +10,9 @@
   },
   "stripes": {
     "actsAs": [
-      "plugin"
+      "app"
     ],
+    "route": "/export-manager",
     "pluginType": "bursar-export",
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
@@ -36,7 +37,10 @@
     "build": "yarn stripes build --output ./output",
     "lint": "eslint .",
     "start": "yarn stripes serve",
-    "test": "jest --ci --coverage --passWithNoTests"
+    "test:unit": "jest --ci --coverage && yarn run test:unit:report",
+    "test:unit:report": "cp -r ./artifacts/coverage-jest ./artifacts/coverage",
+    "test:e2e": "echo Not implemented",
+    "test": "yarn run test:unit && yarn run test:e2e"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

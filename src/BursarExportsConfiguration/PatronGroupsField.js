@@ -31,7 +31,7 @@ export const PatronGroupsField = ({ patronGroups = [] }) => {
       label={formatMessage({
         id: 'ui-plugin-bursar-export.bursarExports.patronGroups',
       })}
-      name="patronGroups"
+      name="exportTypeSpecificParameters.bursarFeeFines.patronGroups"
       dataOptions={dataOptions}
       itemToString={itemToString}
       formatter={getOptionLabel}

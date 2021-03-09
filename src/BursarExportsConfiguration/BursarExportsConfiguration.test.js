@@ -33,10 +33,10 @@ describe('BursarExportsConfiguration', () => {
     expect(getByText('ui-plugin-bursar-export.bursarExports.schedulePeriod')).toBeDefined();
   });
 
-  it('should render ftp address field', () => {
+  it('should render folder field', () => {
     const { getByText } = renderBursarExportsConfiguration();
 
-    expect(getByText('ui-plugin-bursar-export.bursarExports.ftpAddress')).toBeDefined();
+    expect(getByText('ui-plugin-bursar-export.bursarExports.folder')).toBeDefined();
   });
 
   it('should render job parameter fields', () => {

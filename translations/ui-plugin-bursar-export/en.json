@@ -17,7 +17,7 @@
   "bursarExports.scheduleWeekdays.tuesday": "T",
   "bursarExports.scheduleWeekdays.wednesday": "W",
   "bursarExports.scheduleTime": "Schedule time",
-  "bursarExports.ftpAddress": "FTP address",
+  "bursarExports.folder": "Folder",
   "bursarExports.daysOutstanding": "Max. days outstanding",
   "bursarExports.patronGroups": "Patron groups",
   "bursarExports.save": "Save",

@@ -24,6 +24,12 @@ import { PatronGroupsField } from './PatronGroupsField';
 
 import styles from './BursarExportsConfiguration.css';
 
+const normalizeNumber = value => {
+  if (!value && value !== 0) return value;
+
+  return Number(value);
+};
+
 export const BursarExportsConfigurationForm = ({
   form,
   handleSubmit,
@@ -86,6 +92,7 @@ export const BursarExportsConfigurationForm = ({
                 hasClearIcon={false}
                 required
                 validate={validateRequired}
+                parse={normalizeNumber}
               />
             </Col>
           )
@@ -147,9 +154,9 @@ export const BursarExportsConfigurationForm = ({
           <Field
             component={TextField}
             label={formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.ftpAddress',
+              id: 'ui-plugin-bursar-export.bursarExports.folder',
             })}
-            name="ftpUrl"
+            name="exportTypeSpecificParameters.bursarFeeFines.ftpUrl"
             type="text"
             required
             validate={validateRequired}
@@ -165,12 +172,13 @@ export const BursarExportsConfigurationForm = ({
             label={formatMessage({
               id: 'ui-plugin-bursar-export.bursarExports.daysOutstanding',
             })}
-            name="daysOutstanding"
+            name="exportTypeSpecificParameters.bursarFeeFines.daysOutstanding"
             type="number"
             min={1}
             hasClearIcon={false}
             required
             validate={validateRequired}
+            parse={normalizeNumber}
           />
         </Col>
 

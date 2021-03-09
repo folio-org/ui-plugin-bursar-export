@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 
@@ -13,11 +13,11 @@ import {
   useBursarExportSceduler,
 } from '../apiQuery';
 
-export const BursarExportsManualRunner = ({ disabled }) => {
+export const BursarExportsManualRunner = ({ form, disabled }) => {
   const { formatMessage } = useIntl();
   const showCallout = useShowCallout();
 
-  const { scheduleBursarExport } = useBursarExportSceduler({
+  const { isLoading, scheduleBursarExport } = useBursarExportSceduler({
     onSuccess: () => {
       return showCallout({
         message: formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.runManually.success' }),
@@ -31,11 +31,15 @@ export const BursarExportsManualRunner = ({ disabled }) => {
     },
   });
 
+  const scheduleBursarExportWithParams = useCallback(() => {
+    scheduleBursarExport(form.getState().values.exportTypeSpecificParameters);
+  }, [scheduleBursarExport, form]);
+
   return (
     <Button
       buttonStyle="default mega"
-      disabled={disabled}
-      onClick={scheduleBursarExport}
+      disabled={disabled || isLoading}
+      onClick={scheduleBursarExportWithParams}
       type="button"
     >
       {formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.runManually' })}
@@ -44,5 +48,6 @@ export const BursarExportsManualRunner = ({ disabled }) => {
 };
 
 BursarExportsManualRunner.propTypes = {
+  form: PropTypes.object,
   disabled: PropTypes.bool,
 };

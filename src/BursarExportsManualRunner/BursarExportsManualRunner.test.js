@@ -15,7 +15,13 @@ jest.mock('../apiQuery', () => {
   };
 });
 
-const renderBursarExportsManualRunner = () => render(<BursarExportsManualRunner disabled={false} />);
+const defaultForm = {
+  getState: () => ({ values: {} }),
+};
+
+const renderBursarExportsManualRunner = ({
+  form = defaultForm,
+} = {}) => render(<BursarExportsManualRunner form={form} disabled={false} />);
 
 describe('BursarExportsManualRunner', () => {
   beforeEach(() => {
@@ -24,15 +30,27 @@ describe('BursarExportsManualRunner', () => {
     });
   });
 
-  it('should call query action when button is pressed', () => {
+  it('should call query action with form params when button is pressed', () => {
     const scheduleBursarExport = jest.fn();
+    const exportTypeSpecificParameters = {
+      daysOutstanding: 2,
+      patronGroups: ['saf-uis4-sdsa'],
+    };
 
     useBursarExportSceduler.mockReturnValue({ scheduleBursarExport });
 
-    const { getByText } = renderBursarExportsManualRunner();
+    const { getByText } = renderBursarExportsManualRunner({
+      form: {
+        getState: () => ({
+          values: {
+            exportTypeSpecificParameters,
+          },
+        }),
+      },
+    });
 
     user.click(getByText('ui-plugin-bursar-export.bursarExports.runManually'));
 
-    expect(scheduleBursarExport).toHaveBeenCalled();
+    expect(scheduleBursarExport).toHaveBeenCalledWith(exportTypeSpecificParameters);
   });
 });

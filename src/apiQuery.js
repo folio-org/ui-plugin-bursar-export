@@ -9,8 +9,9 @@ import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 import { SCHEDULE_PERIODS } from './BursarExportsConfiguration';
 
-const bursarConfigApi = 'bursar-export/config';
-const bursarConfigKey = 'bursarConfig';
+const bursarConfigApi = 'data-export-spring/configs';
+const bursarConfigKey = ['ui-plugin-bursar-export', 'bursarConfig'];
+const bursarType = 'BURSAR_FEES_FINES';
 
 export const useBursarConfigQuery = (key = bursarConfigKey) => {
   const ky = useOkapiKy();
@@ -21,11 +22,13 @@ export const useBursarConfigQuery = (key = bursarConfigKey) => {
       const kyOptions = {
         searchParams: {
           limit: 1,
+          query: `type==${bursarType}`,
         },
       };
       const { configs = [] } = await ky.get(bursarConfigApi, kyOptions).json();
 
       return configs[0] || {
+        type: bursarType,
         schedulePeriod: SCHEDULE_PERIODS.none,
       };
     },
@@ -102,14 +105,20 @@ export const usePatronGroupsQuery = () => {
 export const useBursarExportSceduler = (options = {}) => {
   const ky = useOkapiKy();
 
-  const { mutateAsync } = useMutation({
-    mutationFn: () => {
-      return ky.post(bursarConfigApi);
+  const { isLoading, mutateAsync } = useMutation({
+    mutationFn: (exportTypeSpecificParameters) => {
+      const json = {
+        type: bursarType,
+        exportTypeSpecificParameters,
+      };
+
+      return ky.post('data-export-spring/jobs', { json });
     },
     ...options,
   });
 
   return {
+    isLoading,
     scheduleBursarExport: mutateAsync,
   };
 };
