@@ -1,6 +1,6 @@
 {
     "meta.title": "Bursar exports",
-    "bursarExports": "Bursar exports",
+    "bursarExports": "Eksport kwestury",
     "bursarExports.schedulePeriod": "Schedule period",
     "bursarExports.schedulePeriod.none": "None",
     "bursarExports.schedulePeriod.hours": "Hours",
@@ -9,7 +9,7 @@
     "bursarExports.scheduleFrequency": "Schedule frequency",
     "bursarExports.scheduleWeekdays": "Weekdays",
     "bursarExports.scheduleTime": "Schedule time",
-    "bursarExports.ftpAddress": "FTP address",
+    "bursarExports.ftpAddress": "Adres FTP",
     "bursarExports.save": "Save",
     "permission.bursar-exports.all": "Bursar exports: Bursar admin",
     "bursarExports.scheduleWeekdays.friday": "F",
@@ -19,11 +19,11 @@
     "bursarExports.scheduleWeekdays.thursday": "T",
     "bursarExports.scheduleWeekdays.tuesday": "T",
     "bursarExports.scheduleWeekdays.wednesday": "W",
-    "bursarExports.daysOutstanding": "Max. days outstanding",
+    "bursarExports.daysOutstanding": "Maks. liczba zaległych dni",
     "bursarExports.patronGroups": "Grupy czytelników",
     "bursarExports.save.success": "Bursar exports configuration has been successfully saved",
     "bursarExports.save.error": "Bursar exports configuration was not saved",
-    "bursarExports.runManually": "Run manually",
+    "bursarExports.runManually": "Uruchom ręcznie",
     "bursarExports.runManually.success": "Bursar exports has been successfully scheduled",
     "bursarExports.runManually.error": "Bursar exports was not scheduled"
 }
