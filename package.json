@@ -25,8 +25,10 @@
         "permissionName": "ui-plugin-bursar-export.bursar-exports.all",
         "displayName": "Bursar exports: Bursar admin",
         "subPermissions": [
-          "module.tenant-settings.enabled",
-          "usergroups.collection.get"
+          "settings.tenant-settings.enabled",
+          "usergroups.collection.get",
+          "data-export.config.all",
+          "data-export.job.item.post"
         ],
         "visible": true
       }
