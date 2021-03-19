@@ -57,7 +57,7 @@ export const BursarExports = () => {
       renderEnd={
         <Button
           buttonStyle="primary mega"
-          disabled={bursarConfigFormState?.pristine || bursarConfigFormState?.submitting}
+          disabled={bursarConfigFormState?.pristine || bursarConfigFormState?.submitting || isLoading}
           onClick={saveBursarConfig}
           type="submit"
         >
@@ -69,7 +69,11 @@ export const BursarExports = () => {
 
   if (isLoading) {
     return (
-      <LoadingPane defaultWidth="fill" />
+      <LoadingPane
+        paneTitle={formatMessage({ id: 'ui-plugin-bursar-export.bursarExports' })}
+        defaultWidth="fill"
+        footer={paneFooter}
+      />
     );
   }
 

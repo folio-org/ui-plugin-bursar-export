@@ -2,6 +2,8 @@
 
 ## (in progress)
 
+## [1.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v1.0.0) (2021-03-19)
+
 ### Stories
 * Project Setup: ui-plugin-bursar-export. Refs UIPBEX-1.
 * Bursar exports configuration form (UI). Refs UIPBEX-5.

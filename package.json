@@ -15,7 +15,8 @@
     "pluginType": "bursar-export",
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
-      "users": "15.0"
+      "users": "15.0",
+      "data-export-spring": "1.0"
     },
     "stripesDeps": [
       "@folio/stripes-acq-components"

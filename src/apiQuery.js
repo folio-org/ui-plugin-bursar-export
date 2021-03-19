@@ -16,7 +16,7 @@ const bursarType = 'BURSAR_FEES_FINES';
 export const useBursarConfigQuery = (key = bursarConfigKey) => {
   const ky = useOkapiKy();
 
-  const { isLoading, data = {} } = useQuery({
+  const { isFetching, data = {} } = useQuery({
     queryKey: key,
     queryFn: async () => {
       const kyOptions = {
@@ -35,7 +35,7 @@ export const useBursarConfigQuery = (key = bursarConfigKey) => {
   });
 
   return {
-    isLoading,
+    isLoading: isFetching,
     bursarConfig: {
       ...data,
       weekDays: data.weekDays?.reduce((acc, weekDay) => ({
