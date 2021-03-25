@@ -20,6 +20,10 @@ import {
   WEEKDAYS,
 } from './constants';
 import { validateRequired } from './validation';
+import { BursarItemsField } from './BursarItemsField';
+import { FeeFineOwnerField } from './FeeFineOwnerField';
+import { ServicePointField } from './ServicePointField';
+import { TransferAccountField } from './TransferAccountField';
 import { PatronGroupsField } from './PatronGroupsField';
 
 import styles from './BursarExportsConfiguration.css';
@@ -150,21 +154,6 @@ export const BursarExportsConfigurationForm = ({
       }
 
       <Row>
-        <Col xs={8}>
-          <Field
-            component={TextField}
-            label={formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.folder',
-            })}
-            name="exportTypeSpecificParameters.bursarFeeFines.ftpUrl"
-            type="text"
-            required
-            validate={validateRequired}
-          />
-        </Col>
-      </Row>
-
-      <Row>
         <Col xs={4}>
           <Field
             data-testid="days-outstanding"
@@ -184,6 +173,34 @@ export const BursarExportsConfigurationForm = ({
 
         <Col xs={4}>
           <PatronGroupsField patronGroups={patronGroups} />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={4}>
+          <FeeFineOwnerField onChange={form.mutators.changeOwner} />
+        </Col>
+
+        <Col xs={4}>
+          <ServicePointField
+            ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
+          />
+        </Col>
+
+        <Col xs={4}>
+          <TransferAccountField
+            ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12}>
+          <BursarItemsField
+            ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
+            onChange={form.mutators.changeBursarItems}
+            value={formValues.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings}
+          />
         </Col>
       </Row>
     </form>
@@ -225,6 +242,30 @@ export const BursarExportsConfiguration = stripesFinalForm({
       if (nextValue === SCHEDULE_PERIODS.none) {
         utils.changeValue(state, 'scheduleFrequency', () => undefined);
       }
+    },
+    changeOwner: (args, state, utils) => {
+      utils.changeValue(
+        state,
+        'exportTypeSpecificParameters.bursarFeeFines.feefineOwnerId',
+        () => args[0].target.value,
+      );
+      utils.changeValue(
+        state,
+        'exportTypeSpecificParameters.bursarFeeFines.servicePointId',
+        () => undefined,
+      );
+      utils.changeValue(
+        state,
+        'exportTypeSpecificParameters.bursarFeeFines.transferAccountId',
+        () => undefined,
+      );
+    },
+    changeBursarItems: (args, state, utils) => {
+      utils.changeValue(
+        state,
+        'exportTypeSpecificParameters.bursarFeeFines.typeMappings',
+        () => args[0],
+      );
     },
   },
 })(BursarExportsConfigurationForm);

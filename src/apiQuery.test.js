@@ -79,7 +79,12 @@ describe('Bursar configuration api queries', () => {
         { wrapper },
       );
 
-      await result.current.mutateBursarConfig({ schedulePeriod: SCHEDULE_PERIODS.none });
+      await result.current.mutateBursarConfig({
+        schedulePeriod: SCHEDULE_PERIODS.none,
+        exportTypeSpecificParameters: {
+          bursarFeeFines: {},
+        },
+      });
 
       expect(postMock).toHaveBeenCalled();
     });
@@ -100,6 +105,9 @@ describe('Bursar configuration api queries', () => {
         id: 1,
         schedulePeriod: SCHEDULE_PERIODS.none,
         weekDays: { [WEEKDAYS[0]]: true, [WEEKDAYS[1]]: false },
+        exportTypeSpecificParameters: {
+          bursarFeeFines: {},
+        },
       });
 
       expect(putMock).toHaveBeenCalled();

@@ -8,6 +8,19 @@ import '@folio/stripes-acq-components/test/jest/__mock__';
 import { BursarExportsConfiguration } from './BursarExportsConfiguration';
 import { SCHEDULE_PERIODS } from './constants';
 
+jest.mock('./BursarItemsField', () => ({
+  BursarItemsField: () => 'BursarItemsField',
+}));
+jest.mock('./FeeFineOwnerField', () => ({
+  FeeFineOwnerField: () => 'FeeFineOwnerField',
+}));
+jest.mock('./ServicePointField', () => ({
+  ServicePointField: () => 'ServicePointField',
+}));
+jest.mock('./TransferAccountField', () => ({
+  TransferAccountField: () => 'TransferAccountField',
+}));
+
 const defaultProps = {
   onFormStateChanged: jest.fn(),
   onSubmit: jest.fn(),
@@ -33,12 +46,6 @@ describe('BursarExportsConfiguration', () => {
     expect(getByText('ui-plugin-bursar-export.bursarExports.schedulePeriod')).toBeDefined();
   });
 
-  it('should render folder field', () => {
-    const { getByText } = renderBursarExportsConfiguration();
-
-    expect(getByText('ui-plugin-bursar-export.bursarExports.folder')).toBeDefined();
-  });
-
   it('should render job parameter fields', () => {
     const { queryByText } = renderBursarExportsConfiguration({
       initialValues: {
@@ -48,6 +55,30 @@ describe('BursarExportsConfiguration', () => {
 
     expect(queryByText('ui-plugin-bursar-export.bursarExports.daysOutstanding')).not.toBeNull();
     expect(queryByText('ui-plugin-bursar-export.bursarExports.patronGroups')).not.toBeNull();
+  });
+
+  it('should render owner field', () => {
+    const { queryByText } = renderBursarExportsConfiguration();
+
+    expect(queryByText('FeeFineOwnerField')).not.toBeNull();
+  });
+
+  it('should render service point field', () => {
+    const { queryByText } = renderBursarExportsConfiguration();
+
+    expect(queryByText('ServicePointField')).not.toBeNull();
+  });
+
+  it('should render transfer account field', () => {
+    const { queryByText } = renderBursarExportsConfiguration();
+
+    expect(queryByText('TransferAccountField')).not.toBeNull();
+  });
+
+  it('should render item types field', () => {
+    const { queryByText } = renderBursarExportsConfiguration();
+
+    expect(queryByText('BursarItemsField')).not.toBeNull();
   });
 
   describe('None period', () => {
