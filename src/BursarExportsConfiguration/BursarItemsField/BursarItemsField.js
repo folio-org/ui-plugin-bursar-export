@@ -21,7 +21,7 @@ import {
   ITEM_TYPE_LENGTH,
   ITEM_TYPE_SYMBOL,
 } from '../../constants';
-import { padLeft } from '../../utils';
+import { padString } from '../../utils';
 import { validateRequired } from '../validation';
 import { useOwnerFeeFinesQuery } from './useOwnerFeeFinesQuery';
 
@@ -32,13 +32,13 @@ const ITEMS_CODES = ['CHARGE', 'PAYMENT'];
 const formatItemType = value => {
   if (!value) return '';
 
-  return padLeft(value, ITEM_TYPE_SYMBOL, ITEM_TYPE_LENGTH);
+  return padString(value, ITEM_TYPE_SYMBOL, ITEM_TYPE_LENGTH);
 };
 
 const formatItemDesription = value => {
   if (!value) return '';
 
-  return padLeft(value, ITEM_DESCRIPTION_SYMBOL, ITEM_DESCRIPTION_LENGTH);
+  return padString(value, ITEM_DESCRIPTION_SYMBOL, ITEM_DESCRIPTION_LENGTH, false);
 };
 
 export const BursarItemsField = ({ value, ownerId, onChange }) => {

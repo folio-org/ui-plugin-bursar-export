@@ -1,13 +1,17 @@
-import { padLeft } from './utils';
+import { padString } from './utils';
 
 describe('utils', () => {
-  describe('padLeft', () => {
+  describe('padString', () => {
     it('should cut value when its length more that expected length', () => {
-      expect(padLeft('long', ' ', 2)).toBe('lo');
+      expect(padString('long', ' ', 2)).toBe('lo');
     });
 
     it('should add symbols to the left when value length is less than expected', () => {
-      expect(padLeft('short', '0', 7)).toBe('00short');
+      expect(padString('short', '0', 7)).toBe('00short');
+    });
+
+    it('should add symbols to the right when value length is less than expected and left pad is disabled', () => {
+      expect(padString('short', '0', 7, false)).toBe('short00');
     });
   });
 });

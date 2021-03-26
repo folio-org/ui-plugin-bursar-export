@@ -14,7 +14,7 @@ import {
   ITEM_TYPE_SYMBOL,
 } from './constants';
 import { SCHEDULE_PERIODS } from './BursarExportsConfiguration';
-import { padLeft } from './utils';
+import { padString } from './utils';
 
 const bursarConfigApi = 'data-export-spring/configs';
 const bursarConfigKey = ['ui-plugin-bursar-export', 'bursarConfig'];
@@ -68,8 +68,10 @@ export const useBursarConfigMutation = (options = {}, key = bursarConfigKey) => 
             ...bursarFeeFines,
             typeMappings: (bursarFeeFines.typeMappings || []).map((typeMap) => ({
               ...typeMap,
-              itemType: padLeft(typeMap.itemType, ITEM_TYPE_SYMBOL, ITEM_TYPE_LENGTH),
-              itemDescription: padLeft(typeMap.itemDescription, ITEM_DESCRIPTION_SYMBOL, ITEM_DESCRIPTION_LENGTH),
+              itemType: padString(typeMap.itemType, ITEM_TYPE_SYMBOL, ITEM_TYPE_LENGTH),
+              itemDescription: padString(
+                typeMap.itemDescription, ITEM_DESCRIPTION_SYMBOL, ITEM_DESCRIPTION_LENGTH, false,
+              ),
             })),
           },
         },
