@@ -7,14 +7,7 @@ import {
 import { useOkapiKy } from '@folio/stripes/core';
 import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
-import {
-  ITEM_DESCRIPTION_LENGTH,
-  ITEM_DESCRIPTION_SYMBOL,
-  ITEM_TYPE_LENGTH,
-  ITEM_TYPE_SYMBOL,
-} from './constants';
 import { SCHEDULE_PERIODS } from './BursarExportsConfiguration';
-import { padString } from './utils';
 
 const bursarConfigApi = 'data-export-spring/configs';
 const bursarConfigKey = ['ui-plugin-bursar-export', 'bursarConfig'];
@@ -59,22 +52,10 @@ export const useBursarConfigMutation = (options = {}, key = bursarConfigKey) => 
 
   const { mutateAsync } = useMutation({
     mutationFn: (bursarConfig) => {
-      const { exportTypeSpecificParameters: { bursarFeeFines }, weekDays = {} } = bursarConfig;
+      const { weekDays = {} } = bursarConfig;
 
       const json = {
         ...bursarConfig,
-        exportTypeSpecificParameters: {
-          bursarFeeFines: {
-            ...bursarFeeFines,
-            typeMappings: (bursarFeeFines.typeMappings || []).map((typeMap) => ({
-              ...typeMap,
-              itemType: padString(typeMap.itemType, ITEM_TYPE_SYMBOL, ITEM_TYPE_LENGTH),
-              itemDescription: padString(
-                typeMap.itemDescription, ITEM_DESCRIPTION_SYMBOL, ITEM_DESCRIPTION_LENGTH, false,
-              ),
-            })),
-          },
-        },
         weekDays: Object.keys(weekDays)
           .filter(weekDay => weekDays[weekDay])
           .map(weekDay => weekDay.toUpperCase()),

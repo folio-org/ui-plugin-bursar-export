@@ -18,7 +18,7 @@ const renderBursarItemsField = (value = []) => render(
         utils.changeValue(
           state,
           'exportTypeSpecificParameters.bursarFeeFines.typeMappings',
-          () => args[0],
+          () => args,
         );
       },
       ...arrayMutators,

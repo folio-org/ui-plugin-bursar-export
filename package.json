@@ -16,6 +16,7 @@
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
       "users": "15.0",
+      "feesfines": "16.0",
       "data-export-spring": "1.0"
     },
     "stripesDeps": [
@@ -28,6 +29,9 @@
         "subPermissions": [
           "settings.tenant-settings.enabled",
           "usergroups.collection.get",
+          "owners.collection.get",
+          "transfers.collection.get",
+          "feefines.collection.get",
           "data-export.config.all",
           "data-export.job.item.post"
         ],

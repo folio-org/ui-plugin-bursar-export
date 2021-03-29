@@ -1,18 +1,28 @@
-import { useQuery } from 'react-query';
+import {
+  useQuery,
+  useQueryClient,
+} from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
 import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
-export const useOwnerFeeFinesQuery = (ownerId) => {
+const getQueryKey = ownerId => ['ui-plugin-bursar-export', 'feefines', ownerId];
+
+export const useOwnerFeeFinesQuery = (ownerId, prevOwnerId) => {
+  const queryClient = useQueryClient();
   const ky = useOkapiKy();
 
+  if (prevOwnerId && prevOwnerId !== ownerId) {
+    queryClient.removeQueries(getQueryKey(prevOwnerId));
+  }
+
   const { isLoading, data = [] } = useQuery({
-    queryKey: ['ui-plugin-bursar-export', 'feefines', ownerId],
+    queryKey: getQueryKey(ownerId),
     queryFn: async () => {
       const kyOptions = {
         searchParams: {
           limit: LIMIT_MAX,
-          query: `ownerId==${ownerId} sortby feeFineType`,
+          query: `(automatic==true${ownerId ? ` or ownerId==${ownerId}` : ''}) sortby feeFineType`,
         },
       };
       const { feefines = [] } = await ky.get('feefines', kyOptions).json();

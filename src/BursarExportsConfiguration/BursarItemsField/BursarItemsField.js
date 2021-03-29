@@ -13,6 +13,7 @@ import {
 } from '@folio/stripes/components';
 import {
   FieldSelectFinal,
+  usePrevious,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -20,8 +21,8 @@ import {
   ITEM_DESCRIPTION_SYMBOL,
   ITEM_TYPE_LENGTH,
   ITEM_TYPE_SYMBOL,
-} from '../../constants';
-import { padString } from '../../utils';
+} from '../constants';
+import { padString } from '../utils';
 import { validateRequired } from '../validation';
 import { useOwnerFeeFinesQuery } from './useOwnerFeeFinesQuery';
 
@@ -41,22 +42,17 @@ const formatItemDesription = value => {
   return padString(value, ITEM_DESCRIPTION_SYMBOL, ITEM_DESCRIPTION_LENGTH, false);
 };
 
-export const BursarItemsField = ({ value, ownerId, onChange }) => {
+export const BursarItemsField = ({ ownerId, onChange }) => {
   const { formatMessage } = useIntl();
-  const { feeFines } = useOwnerFeeFinesQuery(ownerId);
+  const prevOwnerId = usePrevious(ownerId);
+  const { feeFines } = useOwnerFeeFinesQuery(ownerId, prevOwnerId);
 
   useEffect(() => {
-    if (
-      feeFines.length
-      && (
-        value?.length !== feeFines.length
-        || value[0]?.feefineTypeId !== feeFines[0]?.id
-      )
-    ) {
-      onChange(feeFines.map(({ id }) => ({ feefineTypeId: id })));
+    if (feeFines.length) {
+      onChange(...feeFines.map(({ id }) => ({ feefineTypeId: id })));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, feeFines]);
+  }, [feeFines]);
 
   if (!feeFines.length) {
     return null;
@@ -156,5 +152,4 @@ export const BursarItemsField = ({ value, ownerId, onChange }) => {
 BursarItemsField.propTypes = {
   ownerId: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.arrayOf(PropTypes.object),
 };

@@ -14,9 +14,6 @@ jest.mock('./BursarItemsField', () => ({
 jest.mock('./FeeFineOwnerField', () => ({
   FeeFineOwnerField: () => 'FeeFineOwnerField',
 }));
-jest.mock('./ServicePointField', () => ({
-  ServicePointField: () => 'ServicePointField',
-}));
 jest.mock('./TransferAccountField', () => ({
   TransferAccountField: () => 'TransferAccountField',
 }));
@@ -61,12 +58,6 @@ describe('BursarExportsConfiguration', () => {
     const { queryByText } = renderBursarExportsConfiguration();
 
     expect(queryByText('FeeFineOwnerField')).not.toBeNull();
-  });
-
-  it('should render service point field', () => {
-    const { queryByText } = renderBursarExportsConfiguration();
-
-    expect(queryByText('ServicePointField')).not.toBeNull();
   });
 
   it('should render transfer account field', () => {

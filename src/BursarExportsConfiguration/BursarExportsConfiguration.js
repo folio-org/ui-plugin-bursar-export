@@ -20,9 +20,12 @@ import {
   WEEKDAYS,
 } from './constants';
 import { validateRequired } from './validation';
+import {
+  convertTransferTypes,
+  shouldTransferTypesUpdate,
+} from './utils';
 import { BursarItemsField } from './BursarItemsField';
 import { FeeFineOwnerField } from './FeeFineOwnerField';
-import { ServicePointField } from './ServicePointField';
 import { TransferAccountField } from './TransferAccountField';
 import { PatronGroupsField } from './PatronGroupsField';
 
@@ -182,12 +185,6 @@ export const BursarExportsConfigurationForm = ({
         </Col>
 
         <Col xs={4}>
-          <ServicePointField
-            ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
-          />
-        </Col>
-
-        <Col xs={4}>
           <TransferAccountField
             ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
           />
@@ -198,8 +195,7 @@ export const BursarExportsConfigurationForm = ({
         <Col xs={12}>
           <BursarItemsField
             ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
-            onChange={form.mutators.changeBursarItems}
-            value={formValues.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings}
+            onChange={form.mutators.changeTransferTypes}
           />
         </Col>
       </Row>
@@ -260,12 +256,24 @@ export const BursarExportsConfiguration = stripesFinalForm({
         () => undefined,
       );
     },
-    changeBursarItems: (args, state, utils) => {
-      utils.changeValue(
-        state,
-        'exportTypeSpecificParameters.bursarFeeFines.typeMappings',
-        () => args[0],
+    changeTransferTypes: (args, state, utils) => {
+      const inititalTransferTypes =
+        state.formState.initialValues.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings;
+      const prevTransferTypesMap = convertTransferTypes(
+        state.formState.values.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings,
       );
+      const transferTypes = args.map(({ feefineTypeId }) => ({
+        feefineTypeId,
+        ...(prevTransferTypesMap[feefineTypeId] || {}),
+      }));
+
+      if (shouldTransferTypesUpdate(inititalTransferTypes, transferTypes)) {
+        utils.changeValue(
+          state,
+          'exportTypeSpecificParameters.bursarFeeFines.typeMappings',
+          () => transferTypes,
+        );
+      }
     },
   },
 })(BursarExportsConfigurationForm);
