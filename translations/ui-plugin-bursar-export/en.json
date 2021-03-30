@@ -1,5 +1,5 @@
 {
-  "meta.title": "Bursar exports",
+  "meta.title": "Transfer criteria",
 
   "bursarExports": "Bursar exports",
   "bursarExports.schedulePeriod": "Schedule period",
@@ -36,5 +36,5 @@
   "bursarExports.runManually.success": "Bursar exports has been successfully scheduled",
   "bursarExports.runManually.error": "Bursar exports was not scheduled",
 
-  "permission.bursar-exports.all": "Bursar exports: Bursar admin"
+  "permission.bursar-exports.all": "Transfer exports: Transfer admin"
 }
