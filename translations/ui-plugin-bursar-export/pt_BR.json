@@ -25,5 +25,14 @@
     "bursarExports.runManually": "Executar manualmente",
     "bursarExports.runManually.success": "Bursar exports has been successfully scheduled",
     "bursarExports.runManually.error": "Bursar exports was not scheduled",
-    "bursarExports.folder": "Pasta"
+    "bursarExports.owner": "Proprietário",
+    "bursarExports.servicePoint": "Ponto de serviço",
+    "bursarExports.transferAccount": "Transferir conta",
+    "bursarExports.itemTypes": "Tipos de item",
+    "bursarExports.feeFineType": "Tipo de taxa/multa",
+    "bursarExports.itemType": "Tipo de item",
+    "bursarExports.itemDescription": "Descrição do item",
+    "bursarExports.itemCode": "Código do item",
+    "bursarExports.itemCode.CHARGE": "Carregar",
+    "bursarExports.itemCode.PAYMENT": "Pagamento"
 }

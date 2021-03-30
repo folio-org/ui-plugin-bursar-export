@@ -18,12 +18,21 @@
     "bursarExports.scheduleWeekdays.thursday": "J",
     "bursarExports.scheduleWeekdays.tuesday": "M",
     "bursarExports.scheduleWeekdays.wednesday": "M",
-    "bursarExports.daysOutstanding": "Max. days outstanding",
+    "bursarExports.daysOutstanding": "Nombre maximal de jours de retard",
     "bursarExports.patronGroups": "Groupes d'utilisateurs",
     "bursarExports.save.success": "La configuration des exportations d'intendant a été enregistrée avec succès",
     "bursarExports.save.error": "La configuration des exportations d'intendant n'a pas été enregistrée",
     "bursarExports.runManually": "Exécuter manuellement",
     "bursarExports.runManually.success": "Les exportations d'intendant ont été planifiées avec succès",
     "bursarExports.runManually.error": "Les exportations d'intendant n'étaient pas programmées",
-    "bursarExports.folder": "Dossier"
+    "bursarExports.owner": "Propriétaire",
+    "bursarExports.servicePoint": "Point de service",
+    "bursarExports.transferAccount": "Transfer account",
+    "bursarExports.itemTypes": "Types de transfert",
+    "bursarExports.feeFineType": "Type de frais/amende",
+    "bursarExports.itemType": "Type de transfert",
+    "bursarExports.itemDescription": "Description du transfert",
+    "bursarExports.itemCode": "Code de transfert",
+    "bursarExports.itemCode.CHARGE": "Frais/coût",
+    "bursarExports.itemCode.PAYMENT": "Paiement"
 }
