@@ -32,7 +32,7 @@
     "bursarExports.feeFineType": "Fee/fine type",
     "bursarExports.itemType": "Transfer type",
     "bursarExports.itemDescription": "Transfer description",
-    "bursarExports.itemCode": "Transfer code",
-    "bursarExports.itemCode.CHARGE": "Charge",
-    "bursarExports.itemCode.PAYMENT": "Payment"
+    "bursarExports.itemCode": "Código de transferencia",
+    "bursarExports.itemCode.CHARGE": "Cargar",
+    "bursarExports.itemCode.PAYMENT": "Pago"
 }
