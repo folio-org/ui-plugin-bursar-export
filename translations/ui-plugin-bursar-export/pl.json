@@ -25,5 +25,14 @@
     "bursarExports.runManually": "Uruchom ręcznie",
     "bursarExports.runManually.success": "Eksport do kwestury został pomyślnie zaplanowany",
     "bursarExports.runManually.error": "Eksport do kwestury nie został zaplanowany",
-    "bursarExports.folder": "Folder"
+    "bursarExports.owner": "Owner",
+    "bursarExports.servicePoint": "Service point",
+    "bursarExports.transferAccount": "Transfer account",
+    "bursarExports.itemTypes": "Transfer types",
+    "bursarExports.feeFineType": "Fee/fine type",
+    "bursarExports.itemType": "Transfer type",
+    "bursarExports.itemDescription": "Transfer description",
+    "bursarExports.itemCode": "Transfer code",
+    "bursarExports.itemCode.CHARGE": "Charge",
+    "bursarExports.itemCode.PAYMENT": "Payment"
 }

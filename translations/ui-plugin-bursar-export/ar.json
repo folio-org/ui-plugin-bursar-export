@@ -25,5 +25,14 @@
     "bursarExports.runManually": "تشغيل يدوي",
     "bursarExports.runManually.success": "تمت جدولة تصديرات Bursar بنجاح",
     "bursarExports.runManually.error": "لم تتم جدولة تصديرات Bursar",
-    "bursarExports.folder": "مجلد"
+    "bursarExports.owner": "جهة التحصيل",
+    "bursarExports.servicePoint": "نقطة الخدمة",
+    "bursarExports.transferAccount": "حساب التحويل",
+    "bursarExports.itemTypes": "أنواع التحويل",
+    "bursarExports.feeFineType": "نوع الرسم/الغرامة",
+    "bursarExports.itemType": "نوع التحويل",
+    "bursarExports.itemDescription": "وصف التحويل",
+    "bursarExports.itemCode": "رمز التحويل",
+    "bursarExports.itemCode.CHARGE": "فرض",
+    "bursarExports.itemCode.PAYMENT": "الدفع"
 }

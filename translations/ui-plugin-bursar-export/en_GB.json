@@ -25,5 +25,14 @@
     "bursarExports.runManually": "Run manually",
     "bursarExports.runManually.success": "Bursar exports has been successfully scheduled",
     "bursarExports.runManually.error": "Bursar exports was not scheduled",
-    "bursarExports.folder": "Folder"
+    "bursarExports.owner": "Owner",
+    "bursarExports.servicePoint": "Service point",
+    "bursarExports.transferAccount": "Transfer account",
+    "bursarExports.itemTypes": "Item types",
+    "bursarExports.feeFineType": "Fee/fine type",
+    "bursarExports.itemType": "Item type",
+    "bursarExports.itemDescription": "Item description",
+    "bursarExports.itemCode": "Item code",
+    "bursarExports.itemCode.CHARGE": "Charge",
+    "bursarExports.itemCode.PAYMENT": "Payment"
 }
