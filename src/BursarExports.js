@@ -70,7 +70,7 @@ export const BursarExports = () => {
   if (isLoading) {
     return (
       <LoadingPane
-        paneTitle={formatMessage({ id: 'ui-plugin-bursar-export.bursarExports' })}
+        paneTitle={formatMessage({ id: 'ui-plugin-bursar-export.meta.title' })}
         defaultWidth="fill"
         footer={paneFooter}
       />
@@ -82,7 +82,7 @@ export const BursarExports = () => {
       defaultWidth="fill"
       footer={paneFooter}
       id="pane-batch-group-configuration"
-      paneTitle={formatMessage({ id: 'ui-plugin-bursar-export.bursarExports' })}
+      paneTitle={formatMessage({ id: 'ui-plugin-bursar-export.meta.title' })}
     >
       <BursarExportsConfiguration
         initialValues={bursarConfig}
