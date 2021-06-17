@@ -2,6 +2,9 @@
 
 ## (in progress)
 
+## [1.1.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v1.1.0) (2021-06-17)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v1.0.0...v1.1.0)
+
 * Bursar Item Types for Fees/Fines. Refs UIPBEX-9.
 * Rename Bursar export to Transfer criteria. Refs UIPBEX-10.
 
