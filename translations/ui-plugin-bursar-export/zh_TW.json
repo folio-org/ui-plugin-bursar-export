@@ -26,7 +26,6 @@
     "bursarExports.runManually.success": "费用/罚款导出已成功安排",
     "bursarExports.runManually.error": "费用/罚款导出未安排",
     "bursarExports.owner": "負責人",
-    "bursarExports.servicePoint": "工作區",
     "bursarExports.transferAccount": "轉移帳號",
     "bursarExports.itemTypes": "轉移類型",
     "bursarExports.feeFineType": "費用 / 罰款類型",
@@ -34,5 +33,6 @@
     "bursarExports.itemDescription": "轉移說明",
     "bursarExports.itemCode": "轉移碼",
     "bursarExports.itemCode.CHARGE": "收費",
-    "bursarExports.itemCode.PAYMENT": "付款"
+    "bursarExports.itemCode.PAYMENT": "付款",
+    "bursarExports.transferOwner": "Transfer owner"
 }

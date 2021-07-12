@@ -26,7 +26,6 @@
     "bursarExports.runManually.success": "Bursar exports has been successfully scheduled",
     "bursarExports.runManually.error": "Bursar exports was not scheduled",
     "bursarExports.owner": "Dueño",
-    "bursarExports.servicePoint": "Service point",
     "bursarExports.transferAccount": "Cuenta de transferencia",
     "bursarExports.itemTypes": "Tipos de transferencia",
     "bursarExports.feeFineType": "Fee/fine type",
@@ -34,5 +33,6 @@
     "bursarExports.itemDescription": "Transfer description",
     "bursarExports.itemCode": "Código de transferencia",
     "bursarExports.itemCode.CHARGE": "Cargar",
-    "bursarExports.itemCode.PAYMENT": "Pago"
+    "bursarExports.itemCode.PAYMENT": "Pago",
+    "bursarExports.transferOwner": "Transfer owner"
 }

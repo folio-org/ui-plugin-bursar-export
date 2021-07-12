@@ -26,7 +26,6 @@
     "bursarExports.runManually.success": "Les exportations d'intendant ont été planifiées avec succès",
     "bursarExports.runManually.error": "Les exportations d'intendant n'étaient pas programmées",
     "bursarExports.owner": "Propriétaire",
-    "bursarExports.servicePoint": "Point de service",
     "bursarExports.transferAccount": "Compte de transfert",
     "bursarExports.itemTypes": "Types de transfert",
     "bursarExports.feeFineType": "Type de frais/amendes",
@@ -34,5 +33,6 @@
     "bursarExports.itemDescription": "Description du transfert",
     "bursarExports.itemCode": "Code de transfert",
     "bursarExports.itemCode.CHARGE": "Frais/coût",
-    "bursarExports.itemCode.PAYMENT": "Paiement"
+    "bursarExports.itemCode.PAYMENT": "Paiement",
+    "bursarExports.transferOwner": "Transfer owner"
 }

@@ -26,7 +26,6 @@
     "bursarExports.runManually.success": "As exportações de tesoureiro foram programadas com sucesso",
     "bursarExports.runManually.error": "As exportações de tesoureiro não estavam programadas",
     "bursarExports.owner": "Proprietário",
-    "bursarExports.servicePoint": "Ponto de serviço",
     "bursarExports.transferAccount": "Transferir conta",
     "bursarExports.itemTypes": "Tipos de transferência",
     "bursarExports.feeFineType": "Tipo de taxa/multa",
@@ -34,5 +33,6 @@
     "bursarExports.itemDescription": "Descrição de transferência",
     "bursarExports.itemCode": "Código de transferência",
     "bursarExports.itemCode.CHARGE": "Carregar",
-    "bursarExports.itemCode.PAYMENT": "Pagamento"
+    "bursarExports.itemCode.PAYMENT": "Pagamento",
+    "bursarExports.transferOwner": "Transfer owner"
 }

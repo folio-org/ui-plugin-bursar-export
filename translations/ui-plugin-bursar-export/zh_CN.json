@@ -26,7 +26,6 @@
     "bursarExports.runManually.success": "费用/罚款导出已成功安排",
     "bursarExports.runManually.error": "费用/罚款导出未安排",
     "bursarExports.owner": "缴费处",
-    "bursarExports.servicePoint": "服务点",
     "bursarExports.transferAccount": "转移账户",
     "bursarExports.itemTypes": "转移类型",
     "bursarExports.feeFineType": "费用/罚款类型",
@@ -34,5 +33,6 @@
     "bursarExports.itemDescription": "转移描述",
     "bursarExports.itemCode": "转移代码",
     "bursarExports.itemCode.CHARGE": "收费",
-    "bursarExports.itemCode.PAYMENT": "支付"
+    "bursarExports.itemCode.PAYMENT": "支付",
+    "bursarExports.transferOwner": "Transfer owner"
 }

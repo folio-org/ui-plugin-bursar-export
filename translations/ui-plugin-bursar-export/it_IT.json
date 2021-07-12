@@ -25,8 +25,7 @@
     "bursarExports.runManually": "Run manually",
     "bursarExports.runManually.success": "Bursar exports has been successfully scheduled",
     "bursarExports.runManually.error": "Bursar exports was not scheduled",
-    "bursarExports.owner": "Owner",
-    "bursarExports.servicePoint": "Service point",
+    "bursarExports.owner": "Fee/fine owner",
     "bursarExports.transferAccount": "Transfer account",
     "bursarExports.itemTypes": "Transfer types",
     "bursarExports.feeFineType": "Fee/fine type",
@@ -34,5 +33,6 @@
     "bursarExports.itemDescription": "Trasferisci descrizione",
     "bursarExports.itemCode": "Trasferisci codice",
     "bursarExports.itemCode.CHARGE": "Charge",
-    "bursarExports.itemCode.PAYMENT": "Payment"
+    "bursarExports.itemCode.PAYMENT": "Payment",
+    "bursarExports.transferOwner": "Transfer owner"
 }
