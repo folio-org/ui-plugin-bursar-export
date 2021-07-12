@@ -1,7 +1,6 @@
 import {
-  convertTransferTypes,
   padString,
-  shouldTransferTypesUpdate,
+  diffTransferTypes,
 } from './utils';
 
 describe('utils', () => {
@@ -19,39 +18,18 @@ describe('utils', () => {
     });
   });
 
-  describe('shouldTransferTypesUpdate', () => {
-    it('should be thruty when transfer types length is different from initial', () => {
-      expect(shouldTransferTypesUpdate([], [{ feefineTypeId: 'uid1' }])).toBeTruthy();
-    });
-
-    it('should be thruty when transfer types has new feefineTypeId', () => {
+  describe('diffTransferTypes', () => {
+    it('should return right difference', () => {
       expect(
-        shouldTransferTypesUpdate([{ feefineTypeId: 'uid2' }], [{ feefineTypeId: 'uid1' }]),
-      ).toBeTruthy();
+        diffTransferTypes(
+          [{ feefineTypeId: 'uid1' }, { feefineTypeId: 'uid3' }],
+          [{ feefineTypeId: 'uid1' }, { feefineTypeId: 'uid2' }],
+        ),
+      ).toEqual([{ feefineTypeId: 'uid3' }]);
     });
 
-    it('should be thruty when transfer item type has new value', () => {
-      const inititalTransferTypes = [{ feefineTypeId: 'uid1', itemType: '00003' }];
-      const transferTypes = [{ feefineTypeId: 'uid1' }];
-
-      expect(shouldTransferTypesUpdate(inititalTransferTypes, transferTypes)).toBeTruthy();
-    });
-
-    it('should be falsy when transfer types are not changed', () => {
-      const inititalTransferTypes = [{ feefineTypeId: 'uid1', itemType: '00003' }];
-      const transferTypes = [...inititalTransferTypes];
-
-      expect(shouldTransferTypesUpdate(inititalTransferTypes, transferTypes)).toBeFalsy();
-    });
-  });
-
-  describe('convertTransferTypes', () => {
-    it('should convert transfer types to map', () => {
-      const transferTypes = [{ feefineTypeId: 'uid1', itemType: '00003' }];
-
-      expect(convertTransferTypes(transferTypes)).toEqual({
-        uid1: { itemType: '00003' },
-      });
+    it('should not throw errors when arguments are not defined', () => {
+      expect(diffTransferTypes()).toEqual([]);
     });
   });
 });

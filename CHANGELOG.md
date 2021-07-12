@@ -2,6 +2,8 @@
 
 ## (in progress)
 
+* Save multiple transfer types for multiple owners in one bursar config. Refs UIPBEX-15.
+
 ## [1.0.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v1.0.1) (2021-07-02)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v1.0.0...v1.0.1)
 

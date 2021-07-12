@@ -10,23 +10,12 @@ export const padString = (value, symbol, length, isLeft = true) => {
   return isLeft ? `${padValue}${value}` : `${value}${padValue}`;
 };
 
-export const convertTransferTypes = (transferTypes = []) => (
-  transferTypes.reduce((acc, { feefineTypeId, ...rest }) => {
-    acc[feefineTypeId] = rest;
+export const diffTransferTypes = (newTransferTypes = [], prevTransferTypes = []) => {
+  const prevTransferTypesMap = prevTransferTypes.reduce((acc, ownerType) => {
+    acc[ownerType.feefineTypeId] = true;
 
     return acc;
-  }, {})
-);
+  }, {});
 
-export const shouldTransferTypesUpdate = (inititalTransferTypes = [], transferTypes = []) => {
-  if (inititalTransferTypes.length !== transferTypes.length) {
-    return true;
-  }
-
-  const inititalTypesMap = convertTransferTypes(inititalTransferTypes);
-
-  return transferTypes.some(({ itemType, feefineTypeId }) => (
-    !inititalTypesMap[feefineTypeId]
-    || itemType !== inititalTypesMap[feefineTypeId].itemType
-  ));
+  return newTransferTypes.filter(({ feefineTypeId }) => !prevTransferTypesMap[feefineTypeId]);
 };
