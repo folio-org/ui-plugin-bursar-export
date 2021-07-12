@@ -20,7 +20,7 @@ export const FeeFineOwnerField = ({ onChange }) => {
   return (
     <FieldSelectFinal
       dataOptions={dataOptions}
-      label={formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.owner' })}
+      label={formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.transferOwner' })}
       name="exportTypeSpecificParameters.bursarFeeFines.feefineOwnerId"
       onChange={onChange}
       required

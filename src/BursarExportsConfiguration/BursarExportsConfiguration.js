@@ -19,11 +19,8 @@ import {
   SCHEDULE_PERIODS,
   WEEKDAYS,
 } from './constants';
+import { diffTransferTypes } from './utils';
 import { validateRequired } from './validation';
-import {
-  convertTransferTypes,
-  shouldTransferTypesUpdate,
-} from './utils';
 import { BursarItemsField } from './BursarItemsField';
 import { FeeFineOwnerField } from './FeeFineOwnerField';
 import { TransferAccountField } from './TransferAccountField';
@@ -193,10 +190,7 @@ export const BursarExportsConfigurationForm = ({
 
       <Row>
         <Col xs={12}>
-          <BursarItemsField
-            ownerId={formValues.exportTypeSpecificParameters?.bursarFeeFines?.feefineOwnerId}
-            onChange={form.mutators.changeTransferTypes}
-          />
+          <BursarItemsField onChange={form.mutators.changeTransferTypes} />
         </Col>
       </Row>
     </form>
@@ -247,31 +241,23 @@ export const BursarExportsConfiguration = stripesFinalForm({
       );
       utils.changeValue(
         state,
-        'exportTypeSpecificParameters.bursarFeeFines.servicePointId',
-        () => undefined,
-      );
-      utils.changeValue(
-        state,
         'exportTypeSpecificParameters.bursarFeeFines.transferAccountId',
         () => undefined,
       );
     },
-    changeTransferTypes: (args, state, utils) => {
-      const inititalTransferTypes =
-        state.formState.initialValues.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings;
-      const prevTransferTypesMap = convertTransferTypes(
-        state.formState.values.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings,
-      );
-      const transferTypes = args.map(({ feefineTypeId }) => ({
-        feefineTypeId,
-        ...(prevTransferTypesMap[feefineTypeId] || {}),
-      }));
+    changeTransferTypes: ([ownerId, newTransferTypes], state, utils) => {
+      const typesMapping = state.formState.values.exportTypeSpecificParameters?.bursarFeeFines?.typeMappings || {};
+      const prevTransferTypes = typesMapping[ownerId] || [];
+      const transferTypesDiff = diffTransferTypes(newTransferTypes, prevTransferTypes);
 
-      if (shouldTransferTypesUpdate(inititalTransferTypes, transferTypes)) {
+      if (transferTypesDiff.length) {
         utils.changeValue(
           state,
           'exportTypeSpecificParameters.bursarFeeFines.typeMappings',
-          () => transferTypes,
+          () => ({
+            ...typesMapping,
+            [ownerId]: [...prevTransferTypes, ...transferTypesDiff],
+          }),
         );
       }
     },
