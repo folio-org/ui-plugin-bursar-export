@@ -27,5 +27,9 @@ describe('utils', () => {
         ),
       ).toEqual([{ feefineTypeId: 'uid3' }]);
     });
+
+    it('should not throw errors when arguments are not defined', () => {
+      expect(diffTransferTypes()).toEqual([]);
+    });
   });
 });
