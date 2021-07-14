@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-bursar-export",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bursar export",
   "main": "index.js",
   "repository": "",
