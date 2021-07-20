@@ -1,6 +1,7 @@
 # Change history for ui-plugin-bursar-export
 
-## (in progress)
+## [1.1.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v1.1.1) (2021-07-20)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v1.1.0...v1.1.1)
 
 * Save multiple transfer types for multiple owners in one bursar config. Refs UIPBEX-15.
 
