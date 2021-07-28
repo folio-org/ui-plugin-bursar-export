@@ -2,6 +2,11 @@
 
 ## (IN PROGRESS)
 
+## [1.1.2](https://github.com/folio-org/ui-plugin-bursar-export/tree/v1.1.2) (2021-07-28)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v1.1.1...v1.1.2)
+
+* Pin @folio/stripes-acq-components version.
+
 ## [1.1.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v1.1.1) (2021-07-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v1.1.0...v1.1.1)
 
