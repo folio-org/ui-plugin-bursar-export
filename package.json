@@ -16,7 +16,7 @@
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
       "users": "15.0",
-      "feesfines": "16.0",
+      "feesfines": "16.0 17.0",
       "data-export-spring": "1.0"
     },
     "stripesDeps": [
