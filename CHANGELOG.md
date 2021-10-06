@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+
+## [2.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.0.0) (2021-10-06)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v1.1.2...v2.0.0)
 * Support `feesfines` interface version `17.0`. Refs UIPBEX-21.
 * increment stripes to v7. Refs UIPBEX-22.
 
