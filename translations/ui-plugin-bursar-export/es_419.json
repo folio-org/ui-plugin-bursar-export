@@ -18,7 +18,7 @@
     "bursarExports.scheduleWeekdays.thursday": "T",
     "bursarExports.scheduleWeekdays.tuesday": "T",
     "bursarExports.scheduleWeekdays.wednesday": "W",
-    "bursarExports.daysOutstanding": "Max. days outstanding",
+    "bursarExports.daysOutstanding": "Fees/Fines older than (days)",
     "bursarExports.patronGroups": "Grupos de usuarios",
     "bursarExports.save.success": "La configuración de las exportaciones de tesorería se ha guardado exitosamente",
     "bursarExports.save.error": "Bursar exports configuration was not saved",

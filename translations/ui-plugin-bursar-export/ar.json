@@ -18,7 +18,7 @@
     "bursarExports.scheduleWeekdays.thursday": "الخميس",
     "bursarExports.scheduleWeekdays.tuesday": "الثلاثاء",
     "bursarExports.scheduleWeekdays.wednesday": "الأربعاء",
-    "bursarExports.daysOutstanding": "الحد الأقصى للأيام المتبقية",
+    "bursarExports.daysOutstanding": "الرسوم/الغرامات الأقدم من (يوماً)",
     "bursarExports.patronGroups": "مجموعات المستفيدين",
     "bursarExports.save.success": "تم حفظ تهيئة تصديرات Bursar بنجاح",
     "bursarExports.save.error": "لم يتم حفظ تهيئة تصديرات Bursar",
