@@ -32,7 +32,9 @@
           "owners.collection.get",
           "transfers.collection.get",
           "feefines.collection.get",
-          "data-export.config.all",
+          "data-export.config.collection.get",
+          "data-export.config.item.post",
+          "data-export.config.item.put",
           "data-export.job.item.post"
         ],
         "visible": true
