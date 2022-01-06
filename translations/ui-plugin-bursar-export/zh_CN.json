@@ -18,7 +18,7 @@
     "bursarExports.scheduleWeekdays.thursday": "星期四",
     "bursarExports.scheduleWeekdays.tuesday": "星期四",
     "bursarExports.scheduleWeekdays.wednesday": "星期三",
-    "bursarExports.daysOutstanding": "最大未结清天数",
+    "bursarExports.daysOutstanding": "费用/罚款早于（天数）",
     "bursarExports.patronGroups": "读者组",
     "bursarExports.save.success": "费用/罚款导出配置已保存成功",
     "bursarExports.save.error": "费用/罚款导出配置未保存",
