@@ -1,6 +1,9 @@
 # Change history for ui-plugin-bursar-export
 
 ## (IN PROGRESS)
+
+* Compile Translation Files into AST Format. Refs UIPBEX-11.
+
 ## [2.1.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.1.0) (2022-03-03)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.0.1...v2.1.0)
 * Refactor psets away from backend ".all" permissions. Refs UIPBEX-26
