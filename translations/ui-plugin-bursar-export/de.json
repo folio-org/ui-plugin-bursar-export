@@ -1,5 +1,5 @@
 {
-    "meta.title": "Kriterien für die Übertragung",
+    "meta.title": "Übertragungskriterien",
     "bursarExports": "Bursar exports",
     "bursarExports.schedulePeriod": "Zeitraum festlegen",
     "bursarExports.schedulePeriod.none": "Keine",
@@ -34,5 +34,5 @@
     "bursarExports.itemCode": "Transfer code",
     "bursarExports.itemCode.CHARGE": "Charge",
     "bursarExports.itemCode.PAYMENT": "Zahlung",
-    "bursarExports.transferOwner": "Besitz übertragen"
+    "bursarExports.transferOwner": "ÜbertragungseigentümerIn"
 }
