@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 * Bump stripes to 8.0.0 for Orchid/2023-R1. Refs UIPBEX-41.
+* move final-form and final-form-arrays to peer-deps. Refs UIPBEX-42
 
 ## [2.3.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.3.0) (2022-10-27)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.2.1...v2.3.0)
