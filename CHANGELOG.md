@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 * Support `feesfines` interface version `18.0`. Refs UIPBEX-45.
+* Change permissions in bursar-export plugin. Refs UIPBEX-47.
 
 ## [2.4.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.4.0) (2023-02-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.3.0...v2.4.0)

@@ -27,7 +27,7 @@
         "permissionName": "ui-plugin-bursar-export.bursar-exports.all",
         "displayName": "Bursar exports: Bursar admin",
         "subPermissions": [
-          "settings.tenant-settings.enabled",
+          "settings.users.enabled",
           "usergroups.collection.get",
           "owners.collection.get",
           "transfers.collection.get",
