@@ -24,15 +24,22 @@
     ],
     "permissionSets": [
       {
-        "permissionName": "ui-plugin-bursar-export.bursar-exports.all",
-        "displayName": "Bursar exports: Bursar admin",
+        "permissionName": "ui-plugin-bursar-export.bursar-exports.view",
         "subPermissions": [
           "settings.tenant-settings.enabled",
           "usergroups.collection.get",
           "owners.collection.get",
           "transfers.collection.get",
           "feefines.collection.get",
-          "data-export.config.collection.get",
+          "data-export.config.collection.get"
+        ],
+        "visible": false
+      },
+      {
+        "permissionName": "ui-plugin-bursar-export.bursar-exports.all",
+        "displayName": "Bursar exports: Bursar admin",
+        "subPermissions": [
+          "ui-plugin-bursar-export.bursar-exports.view",
           "data-export.config.item.post",
           "data-export.config.item.put",
           "data-export.job.item.post"
