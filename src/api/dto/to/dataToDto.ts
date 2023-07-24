@@ -70,7 +70,7 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
         type: 'FeeDate',
         property: token.dateProperty,
         value: token.format,
-        placeholder: token.placeholder,
+        placeholder: token.placeholder ?? '',
         timezone: token.timezone,
         lengthControl: lengthControlToDto(token.lengthControl),
       };
