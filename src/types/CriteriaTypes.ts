@@ -14,6 +14,7 @@ export type CriteriaTerminal =
   | { type: CriteriaTerminalType.PASS }
   | {
       type: CriteriaTerminalType.AGE;
+      operator?: ComparisonOperator;
       numDays?: string;
     }
   | {

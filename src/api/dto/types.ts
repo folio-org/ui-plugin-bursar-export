@@ -68,6 +68,11 @@ export type DateFormatType =
 export interface BursarExportFilterAge {
   type: 'Age';
   numDays: number;
+  condition:
+    |'LESS_THAN_EQUAL'
+    | 'LESS_THAN'
+    | 'GREATER_THAN'
+    | 'GREATER_THAN_EQUAL';
 }
 /**
  * Filter by fee amount

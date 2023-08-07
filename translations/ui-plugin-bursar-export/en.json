@@ -35,7 +35,7 @@
   "bursarExports.criteria.select.none": "No criteria (always run)",
   "bursarExports.criteria.select.label": "Criteria",
 
-  "bursarExports.criteria.age.value": "Older than (days)",
+  "bursarExports.criteria.age.value": "Number of days old",
   "bursarExports.criteria.type.automatic": "Automatic",
   "bursarExports.criteria.location.inst": "Institution",
   "bursarExports.criteria.location.camp": "Campus",
