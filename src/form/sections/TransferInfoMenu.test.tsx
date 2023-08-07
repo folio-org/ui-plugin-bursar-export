@@ -119,6 +119,7 @@ describe('Transfer criteria menu', () => {
                     {
                       condition: {
                         type: CriteriaTerminalType.AGE,
+                        operator: ComparisonOperator.GREATER_THAN,
                         numDays: '10',
                       },
                       owner: 'owner1id',
@@ -178,6 +179,7 @@ describe('Transfer criteria menu', () => {
             {
               condition: {
                 type: CriteriaTerminalType.AGE,
+                operator: ComparisonOperator.GREATER_THAN,
                 numDays: '10',
               },
               owner: 'owner1id',

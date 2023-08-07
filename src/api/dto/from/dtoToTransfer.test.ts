@@ -1,4 +1,4 @@
-import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
+import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
 import { BursarExportTransferCriteria } from '../types';
@@ -35,7 +35,7 @@ test.each<
   [
     {
       conditions: [
-        { condition: { type: 'Age', numDays: 3 }, account: 'account1' },
+        { condition: { type: 'Age', condition: 'GREATER_THAN', numDays: 3 }, account: 'account1' },
       ],
       else: { account: 'account2' },
     },
@@ -46,7 +46,11 @@ test.each<
     {
       conditions: [
         {
-          condition: { type: CriteriaTerminalType.AGE, numDays: '3' },
+          condition: {
+            type: CriteriaTerminalType.AGE,
+            operator: ComparisonOperator.GREATER_THAN,
+            numDays: '3'
+          },
           account: 'account1',
           owner: 'owner1',
         },

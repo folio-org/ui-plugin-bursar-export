@@ -27,6 +27,7 @@ describe('Conditional card (via constant conditional)', () => {
                 conditions: [
                   {
                     type: CriteriaTerminalType.AGE,
+                    operator: ComparisonOperator.GREATER_THAN,
                     numDays: '10',
                     value: 'if value 1',
                   },
@@ -65,6 +66,7 @@ describe('Conditional card (via constant conditional)', () => {
           conditions: [
             {
               type: CriteriaTerminalType.AGE,
+              operator: ComparisonOperator.GREATER_THAN,
               numDays: '10',
               value: 'if value 1',
             },
@@ -93,6 +95,7 @@ describe('Conditional card (via constant conditional)', () => {
             },
             {
               type: CriteriaTerminalType.AGE,
+              operator: ComparisonOperator.GREATER_THAN,
               numDays: '10',
               value: 'if value 1',
             },
@@ -121,6 +124,7 @@ describe('Conditional card (via constant conditional)', () => {
             },
             {
               type: CriteriaTerminalType.AGE,
+              operator: ComparisonOperator.GREATER_THAN,
               numDays: '10',
               value: 'if value 1',
             },
