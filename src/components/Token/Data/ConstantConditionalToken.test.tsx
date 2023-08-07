@@ -27,7 +27,6 @@ describe('Constant conditional token', () => {
               conditions: [
                 {
                   type: CriteriaTerminalType.AGE,
-                  operator: ComparisonOperator.GREATER_THAN,
                   numDays: '10',
                   value: 'if value 1',
                 },
@@ -68,7 +67,6 @@ describe('Constant conditional token', () => {
         conditions: [
           {
             type: CriteriaTerminalType.AGE,
-            operator: ComparisonOperator.GREATER_THAN,
             numDays: '10',
             value: 'if value 1',
           },

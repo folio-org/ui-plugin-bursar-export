@@ -14,15 +14,7 @@ describe('Conversion of form values to filter DTO', () => {
   >([
     [
       { type: CriteriaTerminalType.AGE, numDays: '1' },
-      { type: 'Age', condition: 'LESS_THAN_EQUAL', numDays: 1 },
-    ],
-    [
-      {
-        type: CriteriaTerminalType.AGE,
-        operator: ComparisonOperator.GREATER_THAN,
-        numDays: '1'
-      },
-      { type: 'Age', condition: 'GREATER_THAN', numDays: 1 },
+      { type: 'Age', numDays: 1 },
     ],
 
     [
@@ -153,7 +145,7 @@ describe('Conversion of form values to filter DTO', () => {
         type: 'Condition',
         operation: 'AND',
         criteria: [
-          { type: 'Age', condition: 'LESS_THAN_EQUAL', numDays: 12 },
+          { type: 'Age', numDays: 12 },
           {
             type: 'PatronGroup',
             patronGroupId: 'patron-group-id',
@@ -198,7 +190,7 @@ describe('Conversion of form values to filter DTO', () => {
           type: 'Condition',
           operation: 'OR',
           criteria: [
-            { type: 'Age', condition: 'LESS_THAN_EQUAL', numDays: 12 },
+            { type: 'Age', numDays: 12 },
             {
               type: 'PatronGroup',
               patronGroupId: 'patron-group-id',
