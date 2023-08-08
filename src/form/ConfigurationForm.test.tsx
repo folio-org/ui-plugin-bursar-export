@@ -7,7 +7,7 @@ import ConfigurationForm from './ConfigurationForm';
 
 jest.mock('@folio/stripes/final-form', () => ({
   __esModule: true,
-  default: () => (Component: ComponentType) => (props: FormProps) =>
+  default: () => (Component: any) => (props: FormProps) =>
     (
       <Form mutators={{ ...arrayMutators }} {...props}>
         {(formProps) => <Component {...formProps} {...props} />}

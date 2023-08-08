@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import useInitialValues from './useInitialValues';
 import withIntlConfiguration from '../test/util/withIntlConfiguration';
 import React from 'react';
@@ -20,7 +20,7 @@ jest.mock('../api/queries/useTransferAccounts');
 (useTransferAccounts as any).mockReturnValue({ isSuccess: false });
 
 test('initial values hook', async () => {
-  const { result, rerender, waitFor } = renderHook(() => useInitialValues(), {
+  const { result, rerender } = renderHook(() => useInitialValues(), {
     wrapper: ({ children }) => withIntlConfiguration(<div>{children}</div>),
   });
 
