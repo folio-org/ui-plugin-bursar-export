@@ -1,4 +1,4 @@
-import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
+import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import {
   DataToken,
   DataTokenType,
@@ -108,7 +108,7 @@ describe('DTO to data conversion for initial values', () => {
         type: 'Conditional',
         conditions: [
           {
-            condition: { type: 'Age', numDays: 12 },
+            condition: { type: 'Age', condition: 'GREATER_THAN', numDays: 12 },
             value: { type: 'Constant', value: 'foo' },
           },
         ],
@@ -119,6 +119,7 @@ describe('DTO to data conversion for initial values', () => {
         conditions: [
           {
             type: CriteriaTerminalType.AGE,
+            operator: ComparisonOperator.GREATER_THAN,
             numDays: '12',
             value: 'foo',
           },

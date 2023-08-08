@@ -77,6 +77,21 @@ describe('Data token conversion', () => {
         placeholder: 'placeholder',
       },
     ],
+    [
+      {
+        type: DataTokenType.ACCOUNT_DATE,
+        dateProperty: 'DUE',
+        format: DateFormatType.QUARTER,
+        timezone: 'timezone',
+      },
+      {
+        type: 'FeeDate',
+        property: 'DUE',
+        value: 'QUARTER',
+        timezone: 'timezone',
+        placeholder: '',
+      },
+    ],
 
     [
       {

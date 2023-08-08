@@ -146,7 +146,7 @@ export type DataToken =
       dateProperty: 'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED';
       format: DateFormatType;
       timezone: string;
-      placeholder: string;
+      placeholder?: string;
       lengthControl?: LengthControl;
     }
   | {

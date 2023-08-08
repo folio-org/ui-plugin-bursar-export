@@ -23,6 +23,7 @@ export default function dtoToCriteria(
     case 'Age':
       return {
         type: CriteriaTerminalType.AGE,
+        operator: filter.condition as ComparisonOperator,
         numDays: filter.numDays.toString(),
       };
     case 'Amount':

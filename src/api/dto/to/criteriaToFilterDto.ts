@@ -14,6 +14,7 @@ export default function criteriaToFilterDto(
     case CriteriaTerminalType.AGE:
       return {
         type: 'Age',
+        condition: criteria.operator ?? 'LESS_THAN_EQUAL',
         numDays: guardNumber(criteria.numDays, 0),
       };
 

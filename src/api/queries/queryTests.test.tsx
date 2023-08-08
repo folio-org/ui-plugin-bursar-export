@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import React, { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import useLocations from './useLocations';
@@ -42,11 +42,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => usePatronGroups(), {
+    const { result } = renderHook(() => usePatronGroups(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith('groups?limit=2147483647');
     expect(result.current.data).toStrictEqual([
@@ -63,11 +63,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useServicePoints(), {
+    const { result } = renderHook(() => useServicePoints(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'service-points?cql.allRecords=1&limit=2147483647'
@@ -104,11 +104,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useLocations(), {
+    const { result } = renderHook(() => useLocations(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'locations?cql.allRecords=1&limit=2147483647'
@@ -156,11 +156,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useFeeFineOwners(), {
+    const { result } = renderHook(() => useFeeFineOwners(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'owners?cql.allRecords=1&limit=2147483647'
@@ -204,11 +204,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useFeeFineTypes(), {
+    const { result } = renderHook(() => useFeeFineTypes(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'feefines?cql.allRecords=1&limit=2147483647'
@@ -249,11 +249,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useTransferAccounts(), {
+    const { result } = renderHook(() => useTransferAccounts(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'transfers?cql.allRecords=1&limit=2147483647'
@@ -283,11 +283,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useInstitutions(), {
+    const { result } = renderHook(() => useInstitutions(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'location-units/institutions?cql.allRecords=1&limit=2147483647'
@@ -319,11 +319,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useCampuses(), {
+    const { result } = renderHook(() => useCampuses(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'location-units/campuses?cql.allRecords=1&limit=2147483647'
@@ -362,11 +362,11 @@ describe('API Query Tests', () => {
       ],
     });
 
-    const { result, waitFor } = renderHook(() => useLibraries(), {
+    const { result } = renderHook(() => useLibraries(), {
       wrapper,
     });
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     expect(kyMock).toHaveBeenCalledWith(
       'location-units/libraries?cql.allRecords=1&limit=2147483647'
@@ -398,11 +398,11 @@ describe('API Query Tests', () => {
         configs,
       });
 
-      const { result, waitFor } = renderHook(() => useCurrentConfig(), {
+      const { result } = renderHook(() => useCurrentConfig(), {
         wrapper,
       });
 
-      await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
       expect(kyMock).toHaveBeenCalledWith('data-export-spring/configs', {
         searchParams: { limit: 1, query: 'type==BURSAR_FEES_FINES' },

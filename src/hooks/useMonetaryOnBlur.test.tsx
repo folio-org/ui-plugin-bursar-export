@@ -1,5 +1,5 @@
 import { TextField } from '@folio/stripes/components';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Field, Form } from 'react-final-form';
@@ -43,9 +43,9 @@ it('Monetary onBlur works as expected on a field with nothing typed', async () =
   await userEvent.tab();
   screen.getByRole('spinbutton').blur();
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
-  expect(submitter).toHaveBeenCalledWith({
+  waitFor (() => expect(submitter).toHaveBeenCalledWith({
     test: '0.00',
-  });
+  }));
 });
 
 it.each([
@@ -65,9 +65,11 @@ it.each([
     await userEvent.type(screen.getByRole('spinbutton'), input);
     screen.getByRole('spinbutton').blur();
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
-    expect(screen.getByRole('spinbutton')).toHaveValue(parseFloat(expected));
-    expect(submitter).toHaveBeenCalledWith({
-      test: expected,
+    waitFor(() => {
+      expect(screen.getByRole('spinbutton')).toHaveValue(parseFloat(expected));
+      expect(submitter).toHaveBeenCalledWith({
+        test: expected,
+      });
     });
   }
 );

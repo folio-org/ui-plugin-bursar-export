@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
@@ -87,12 +87,14 @@ describe('Transfer criteria menu', () => {
     await userEvent.click(
       screen.getByRole('button', { name: 'Add condition' })
     );
+    waitFor(() => {
+      expect(screen.queryByText('Transfer to:')).toBeNull();
+      expect(screen.getByText('Otherwise:')).toBeVisible();
+      expect(
+        screen.getByText(/Conditions will be evaluated in order/)
+      ).toBeVisible();
+    })
 
-    expect(screen.queryByText('Transfer to:')).toBeNull();
-    expect(screen.getByText('Otherwise:')).toBeVisible();
-    expect(
-      screen.getByText(/Conditions will be evaluated in order/)
-    ).toBeVisible();
 
     await userEvent.click(screen.getAllByRole('button', { name: 'trash' })[0]);
 
@@ -119,6 +121,7 @@ describe('Transfer criteria menu', () => {
                     {
                       condition: {
                         type: CriteriaTerminalType.AGE,
+                        operator: ComparisonOperator.GREATER_THAN,
                         numDays: '10',
                       },
                       owner: 'owner1id',
@@ -178,6 +181,7 @@ describe('Transfer criteria menu', () => {
             {
               condition: {
                 type: CriteriaTerminalType.AGE,
+                operator: ComparisonOperator.GREATER_THAN,
                 numDays: '10',
               },
               owner: 'owner1id',

@@ -18,7 +18,7 @@ export default function AccountDateToken({ prefix }: { prefix: string }) {
             <Select<'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED'>
               {...fieldProps}
               required
-              label="Date"
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.accountDate.dateType" />}
               dataOptions={[
                 {
                   label: intl.formatMessage({
@@ -42,7 +42,7 @@ export default function AccountDateToken({ prefix }: { prefix: string }) {
                   label: intl.formatMessage({
                     id: 'ui-plugin-bursar-export.bursarExports.token.accountDate.dateType.dueLoan',
                   }),
-                  value: 'DUE',
+                  value: 'RETURNED',
                 },
               ]}
             />
@@ -71,7 +71,7 @@ export default function AccountDateToken({ prefix }: { prefix: string }) {
       <Col xs={12}>
         <p style={{ margin: 0 }}>
           <i>
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.fallback.description" />
+            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.accountDate.fallback.description" />
           </i>
         </p>
       </Col>

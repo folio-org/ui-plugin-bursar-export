@@ -19,8 +19,12 @@ import dtoToCriteria from './dtoToCriteria';
 describe('DTO to criteria conversion for initial values', () => {
   it.each<[BursarExportFilterDTO, CriteriaGroup | CriteriaTerminal]>([
     [
-      { type: 'Age', numDays: 1 },
-      { type: CriteriaTerminalType.AGE, numDays: '1' },
+      { type: 'Age', condition: 'LESS_THAN', numDays: 1 },
+      {
+        type: CriteriaTerminalType.AGE,
+        operator: ComparisonOperator.LESS_THAN,
+        numDays: '1'
+      },
     ],
     [
       { type: 'Amount', condition: 'LESS_THAN', amount: 124 },

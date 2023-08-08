@@ -35,7 +35,7 @@
   "bursarExports.criteria.select.none": "No criteria (always run)",
   "bursarExports.criteria.select.label": "Criteria",
 
-  "bursarExports.criteria.age.value": "Older than (days)",
+  "bursarExports.criteria.age.value": "Number of days old",
   "bursarExports.criteria.type.automatic": "Automatic",
   "bursarExports.criteria.location.inst": "Institution",
   "bursarExports.criteria.location.camp": "Campus",
@@ -79,7 +79,7 @@
   "bursarExports.token.feeFineType": "Fee/fine type",
   "bursarExports.token.itemInfo": "Item info",
   "bursarExports.token.fallback": "Fallback value",
-  "bursarExports.token.fallback.description": "If the chosen date is not available/applicable, the fallback value will be used instead.",
+  "bursarExports.token.fallback.description": "If the chosen value is not available/applicable, the fallback value will be used instead.",
   "bursarExports.token.value": "Value",
 
   "bursarExports.token.headerFooter.typeSelect": "Header/footer type select",
