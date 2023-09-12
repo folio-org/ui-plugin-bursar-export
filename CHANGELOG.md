@@ -1,7 +1,8 @@
 # Change history for ui-plugin-bursar-export
 
-## (IN PROGRESS)
+## 3.0.0 (IN PROGRESS)
 * Support `feesfines` interface version `18.0`. Refs UIPBEX-45.
+* *BREAKING* bump `react-intl` to `v6.4.4`. Refs UICAL-275
 
 ## [2.4.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.4.0) (2023-02-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.3.0...v2.4.0)
