@@ -1,6 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
@@ -28,10 +29,10 @@ describe('useFeeFineOwnersQuery', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useFeeFineOwnersQuery(), { wrapper });
+    const { result } = renderHook(() => useFeeFineOwnersQuery(), { wrapper });
 
     await waitFor(() => {
-      return result.current.owners.length;
+      return expect(result.current.owners.length).toBeTruthy();
     });
 
     expect(result.current.owners[0].id).toBe(ownerId);

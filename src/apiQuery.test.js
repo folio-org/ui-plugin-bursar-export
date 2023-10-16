@@ -1,8 +1,8 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+
 import { useOkapiKy } from '@folio/stripes/core';
 
 import {
@@ -37,10 +37,10 @@ describe('Bursar configuration api queries', () => {
         }),
       });
 
-      const { result, waitFor } = renderHook(() => useBursarConfigQuery(), { wrapper });
+      const { result } = renderHook(() => useBursarConfigQuery(), { wrapper });
 
       await waitFor(() => {
-        return !result.current.isLoading;
+        return expect(result.current.isLoading).toBeFalsy();
       });
 
       expect(result.current.bursarConfig.schedulePeriod).toBe(SCHEDULE_PERIODS.none);
@@ -56,10 +56,10 @@ describe('Bursar configuration api queries', () => {
         }),
       });
 
-      const { result, waitFor } = renderHook(() => useBursarConfigQuery(), { wrapper });
+      const { result } = renderHook(() => useBursarConfigQuery(), { wrapper });
 
       await waitFor(() => {
-        return Boolean(result.current.bursarConfig.weekDays);
+        return expect(result.current.bursarConfig.weekDays).toBeTruthy();
       });
 
       expect(result.current.bursarConfig.weekDays[WEEKDAYS[0].toLowerCase()]).toBeTruthy();
@@ -124,7 +124,7 @@ describe('Bursar configuration api queries', () => {
         }),
       });
 
-      const { result, waitFor } = renderHook(() => usePatronGroupsQuery(), { wrapper });
+      const { result } = renderHook(() => usePatronGroupsQuery(), { wrapper });
 
       await waitFor(() => {
         return Boolean(result.current.patronGroups.length);

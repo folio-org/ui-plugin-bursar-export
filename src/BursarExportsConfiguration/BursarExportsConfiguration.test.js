@@ -1,9 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
-import user from '@testing-library/user-event';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { BursarExportsConfiguration } from './BursarExportsConfiguration';
 import { SCHEDULE_PERIODS } from './constants';
@@ -73,14 +72,14 @@ describe('BursarExportsConfiguration', () => {
   });
 
   describe('None period', () => {
-    it('should should define schedule frequency when period is changed from None', () => {
+    it('should should define schedule frequency when period is changed from None', async () => {
       const { getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.none,
         },
       });
 
-      user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.days);
+      await user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.days);
 
       const schedulePeriodField = getByTestId('schedule-frequency');
 
@@ -88,26 +87,26 @@ describe('BursarExportsConfiguration', () => {
       expect(schedulePeriodField.value).toBeDefined();
     });
 
-    it('should reset scheduleFrequency when period is changed to None', () => {
+    it('should reset scheduleFrequency when period is changed to None', async () => {
       const { queryByTestId, getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.days,
         },
       });
 
-      user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.none);
+      await user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.none);
 
       expect(queryByTestId('schedule-frequency')).toBeNull();
     });
 
-    it('should reset scheduleTime when period is changed to None', () => {
+    it('should reset scheduleTime when period is changed to None', async () => {
       const { queryByText, getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.days,
         },
       });
 
-      user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.none);
+      await user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.none);
 
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleTime')).toBeNull();
     });
@@ -126,14 +125,14 @@ describe('BursarExportsConfiguration', () => {
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleWeekdays')).toBeNull();
     });
 
-    it('should reset scheduleTime when period is changed to Hours', () => {
+    it('should reset scheduleTime when period is changed to Hours', async () => {
       const { queryByText, getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.days,
         },
       });
 
-      user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.hours);
+      await user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.hours);
 
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleTime')).toBeNull();
     });
@@ -170,14 +169,14 @@ describe('BursarExportsConfiguration', () => {
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleWeekdays')).not.toBeNull();
     });
 
-    it('should reset scheduleWeekdays when period is changed to any periods', () => {
+    it('should reset scheduleWeekdays when period is changed to any periods', async () => {
       const { queryByText, getByTestId } = renderBursarExportsConfiguration({
         initialValues: {
           schedulePeriod: SCHEDULE_PERIODS.weeks,
         },
       });
 
-      user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.hours);
+      await user.selectOptions(getByTestId('schedule-period'), SCHEDULE_PERIODS.hours);
 
       expect(queryByText('ui-plugin-bursar-export.bursarExports.scheduleWeekdays')).toBeNull();
     });
