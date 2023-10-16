@@ -1,6 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
@@ -28,10 +29,10 @@ describe('useTransferAccountsQuery', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useTransferAccountsQuery('ownerId'), { wrapper });
+    const { result } = renderHook(() => useTransferAccountsQuery('ownerId'), { wrapper });
 
     await waitFor(() => {
-      return result.current.transferAccounts.length;
+      return expect(result.current.transferAccounts.length).toBeTruthy();
     });
 
     expect(result.current.transferAccounts[0].id).toBe(transfersId);

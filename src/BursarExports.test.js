@@ -1,8 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import user from '@testing-library/user-event';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import {
   useBursarConfigQuery,
@@ -87,14 +86,14 @@ describe('BursarExports', () => {
     expect(queryByText(BursarExportsConfiguration)).toBeNull();
   });
 
-  it('should call query mutator when form is submitted via save button', () => {
+  it('should call query mutator when form is submitted via save button', async () => {
     const mutateBursarConfig = jest.fn();
 
     useBursarConfigMutation.mockReturnValue({ mutateBursarConfig });
 
     const { getByText } = renderBursarExports();
 
-    user.click(getByText('ui-plugin-bursar-export.bursarExports.save'));
+    await user.click(getByText('ui-plugin-bursar-export.bursarExports.save'));
 
     expect(mutateBursarConfig).toHaveBeenCalled();
   });

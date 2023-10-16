@@ -1,8 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import user from '@testing-library/user-event';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import {
   useBursarExportScheduler,
@@ -30,7 +29,7 @@ describe('BursarExportsManualRunner', () => {
     });
   });
 
-  it('should call query action with form params when button is pressed', () => {
+  it('should call query action with form params when button is pressed', async () => {
     const scheduleBursarExport = jest.fn();
     const exportTypeSpecificParameters = {
       daysOutstanding: 2,
@@ -49,7 +48,7 @@ describe('BursarExportsManualRunner', () => {
       },
     });
 
-    user.click(getByText('ui-plugin-bursar-export.bursarExports.runManually'));
+    await user.click(getByText('ui-plugin-bursar-export.bursarExports.runManually'));
 
     expect(scheduleBursarExport).toHaveBeenCalledWith(exportTypeSpecificParameters);
   });
