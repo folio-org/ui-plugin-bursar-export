@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-bursar-export",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Bursar export",
   "main": "index.js",
   "repository": "",
@@ -16,7 +16,7 @@
     "displayName": "ui-plugin-bursar-export.meta.title",
     "okapiInterfaces": {
       "users": "15.0 16.0",
-      "feesfines": "16.0 17.0 18.0",
+      "feesfines": "16.0 17.0 18.0 19.0",
       "data-export-spring": "1.0"
     },
     "stripesDeps": [
