@@ -3,6 +3,11 @@
 ## (IN PROGRESS)
 * Support `feesfines` interface version `18.0`. Refs UIPBEX-45.
 
+## [3.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v3.0.0) (2023-10-02)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.4.0...v3.0.0)
+* Upgrade react v18.0.0. Refs FOLIO-3876.
+* Upgrade dependent modules.
+
 ## [2.4.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.4.0) (2023-02-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.3.0...v2.4.0)
 * Bump stripes to 8.0.0 for Orchid/2023-R1. Refs UIPBEX-41.

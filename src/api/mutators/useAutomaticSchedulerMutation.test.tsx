@@ -1,6 +1,5 @@
 import { CalloutContext } from '@folio/stripes/core';
-import { waitFor } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { waitFor, act, renderHook } from '@testing-library/react';
 import React, { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import useAutomaticSchedulerMutation from './useAutomaticSchedulerMutation';
@@ -167,7 +166,7 @@ describe('Automatic scheduling mutation', () => {
       } as any);
     });
 
-    await waitFor(() =>
+    waitFor(async () =>
       expect(putMock).toHaveBeenCalledWith('data-export-spring/configs/foo', {
         json: {
           id: 'foo',
