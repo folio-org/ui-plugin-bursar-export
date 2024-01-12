@@ -31,7 +31,7 @@
     "bursarExports.feeFineType": "Typ poplatku/pokuty",
     "bursarExports.itemType": "Typ převodu",
     "bursarExports.itemDescription": "Popis převodu",
-    "bursarExports.itemCode": "Naúčtovaný poplatek",
+    "bursarExports.itemCode": "Kód převodu",
     "bursarExports.itemCode.CHARGE": "Poplatek",
     "bursarExports.itemCode.PAYMENT": "Platba",
     "bursarExports.transferOwner": "Vlastník převodu"
