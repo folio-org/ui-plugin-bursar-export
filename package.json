@@ -2,7 +2,7 @@
   "name": "@folio/plugin-bursar-export",
   "version": "3.1.0",
   "description": "Bursar export",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "",
   "license": "Apache-2.0",
   "engines": {
@@ -19,23 +19,42 @@
       "feesfines": "16.0 17.0 18.0 19.0",
       "data-export-spring": "1.0"
     },
-    "stripesDeps": [
-      "@folio/stripes-acq-components"
-    ],
     "permissionSets": [
       {
         "permissionName": "ui-plugin-bursar-export.bursar-exports.all",
-        "displayName": "Bursar exports: Bursar admin",
+        "displayName": "Transfer exports: Modify configuration and start jobs",
+        "subPermissions": [
+          "ui-plugin-bursar-export.bursar-exports.manual",
+          "data-export.config.item.post",
+          "data-export.config.item.put"
+        ],
+        "visible": true
+      },
+      {
+        "permissionName": "ui-plugin-bursar-export.bursar-exports.manual",
+        "displayName": "Transfer exports: Start manual jobs",
+        "subPermissions": [
+          "ui-plugin-bursar-export.bursar-exports.view",
+          "data-export.job.item.post"
+        ],
+        "visible": true
+      },
+      {
+        "permissionName": "ui-plugin-bursar-export.bursar-exports.view",
+        "displayName": "Transfer exports: View configuration",
         "subPermissions": [
           "settings.tenant-settings.enabled",
           "usergroups.collection.get",
           "owners.collection.get",
           "transfers.collection.get",
           "feefines.collection.get",
-          "data-export.config.collection.get",
-          "data-export.config.item.post",
-          "data-export.config.item.put",
-          "data-export.job.item.post"
+          "inventory-storage.service-points.collection.get",
+          "inventory-storage.location-units.institutions.collection.get",
+          "inventory-storage.location-units.campuses.collection.get",
+          "inventory-storage.location-units.campuses.collection.get",
+          "inventory-storage.location-units.libraries.collection.get",
+          "inventory-storage.locations.collection.get",
+          "data-export.config.collection.get"
         ],
         "visible": true
       }
@@ -47,11 +66,8 @@
     "lint": "eslint .",
     "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
     "start": "yarn stripes serve",
-    "test:unit": "jest --ci --coverage && yarn run test:unit:report",
-    "test:unit:watch": "jest --ci --coverage --watch",
-    "test:unit:report": "cp -r ./artifacts/coverage-jest ./artifacts/coverage",
-    "test:e2e": "echo Not implemented",
-    "test": "yarn run test:unit && yarn run test:e2e"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -66,10 +82,21 @@
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
     "@formatjs/cli": "^6.1.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.1",
+    "@types/react": "^18.2.0",
+    "babel-jest": "^29.6.1",
     "core-js": "^3.6.1",
     "eslint": "^6.2.1",
     "eslint-plugin-filenames": "^1.3.2",
     "eslint-plugin-jest": "^23.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.6.1",
+    "jest-css-modules": "^2.1.0",
+    "jest-environment-jsdom": "^29.6.1",
+    "jest-junit": "^16.0.0",
     "faker": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -77,9 +104,13 @@
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@ngneat/falso": "^6.4.0",
+    "classnames": "^2.3.2",
     "@folio/stripes-acq-components": "~5.0.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
@@ -90,6 +121,7 @@
   },
   "peerDependencies": {
     "@folio/stripes": "^9.0.0",
+    "@types/react": "^18.2.0",
     "final-form": "^4.18.2",
     "final-form-arrays": "^3.0.1",
     "react": "^18.2.0",
@@ -98,5 +130,8 @@
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
+  },
+  "resolutions": {
+    "@types/react": "^18.2.0"
   }
 }

@@ -1,0 +1,16 @@
+.preview {
+  padding: 0.5rem;
+
+  font-family: monospace;
+  font-size: 1rem;
+
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.preview.wrap {
+  overflow-x: initial;
+  white-space: pre-wrap;
+  line-break: anywhere;
+  word-break: break-all;
+}
