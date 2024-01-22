@@ -1,12 +1,12 @@
 const { join } = require('path');
 
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+/** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
   testEnvironment: 'jsdom',
 
   preset: 'ts-jest',
   transform: {
-    '^.+\\.(t|j)sx?$': 'ts-jest',
+    '^.+\\.(t|j)sx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
   },
   transformIgnorePatterns: ['node_modules/(?!@folio|ky)'],
   coverageProvider: 'v8',
@@ -41,10 +41,4 @@ module.exports = {
 
   slowTestThreshold: 10,
   testTimeout: 20000,
-
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
 };
