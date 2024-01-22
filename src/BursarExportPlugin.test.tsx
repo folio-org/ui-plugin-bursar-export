@@ -79,19 +79,13 @@ describe('BursarExportPlugin', () => {
 
     expect(screen.queryByText('Transfer to:')).not.toBeNull();
 
-    const frequencyDropdown = document.querySelector(
-      '[name = "scheduling.frequency"]'
-    ) as HTMLSelectElement;
+    const frequencyDropdown = screen.getByRole('combobox', { name: 'Frequency' }) as HTMLSelectElement;
     await userEvent.selectOptions(frequencyDropdown, 'NONE');
 
-    const ownerDropdown = document.querySelector(
-      '[name = "transferInfo.else.owner"]'
-    ) as HTMLSelectElement;
+    const ownerDropdown = screen.getByRole('combobox', { name: 'Fee/fine owner' }) as HTMLSelectElement;
     await userEvent.selectOptions(ownerDropdown, 'test_owner_id');
 
-    const accountDropdown = document.querySelector(
-      '[name = "transferInfo.else.account"]'
-    ) as HTMLSelectElement;
+    const accountDropdown = screen.getByRole('combobox', { name: 'Transfer account' }) as HTMLSelectElement;
     await userEvent.selectOptions(accountDropdown, 'test_account_id');
 
     await userEvent.click(screen.getByText('Save'));
