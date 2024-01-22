@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Weekday, useLocaleWeekdays } from '../../utils/WeekdayUtils';
+import { Weekday, useLocaleWeekdays } from '../../utils/weekdayUtils';
 import SchedulingFrequency from '../../types/SchedulingFrequency';
 
 export function getIntervalLabel(frequency: SchedulingFrequency) {

@@ -6,7 +6,7 @@ import {
 } from './CriteriaTypes';
 import SchedulingFrequency from './SchedulingFrequency';
 import { DataToken, HeaderFooterToken } from './TokenTypes';
-import { Weekday } from '../utils/WeekdayUtils';
+import { Weekday } from '../utils/weekdayUtils';
 
 // for coverage
 export const TYPE_ONLY = true;

@@ -1,6 +1,6 @@
 import FormValues from '../../../types/FormValues';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import { LocaleWeekdayInfo } from '../../../utils/WeekdayUtils';
+import { LocaleWeekdayInfo } from '../../../utils/weekdayUtils';
 import { SchedulingDTO } from '../types';
 
 export function frequencyToString(
