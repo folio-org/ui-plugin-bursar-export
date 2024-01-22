@@ -1,7 +1,8 @@
 # Change history for ui-plugin-bursar-export
 
-## 3.1.0 (IN PROGRESS)
-* Also support `feesfines` interface version `19.0`. Refs UIPBEX-55.
+## 4.0.0 (IN PROGRESS)
+* Merge [@folio-org/bama](https://github.com/orgs/folio-org/teams/bama)'s changes in ui-plugin-bursar-export. Refs UXPROD-3903.
+* Support the new bursar export configuration feature and revamped UI for the `transfer-criteria`` section.
 
 ## [3.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v3.0.0) (2023-10-16)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.4.0...v3.0.0)
@@ -9,11 +10,6 @@
 * *BREAKING* bump `react-intl` to `v6.4.4`. Refs UICAL-275
 * *BREAKING* Upgrade react v18.0.0. Refs FOLIO-3876.
 * *BREAKING* Upgrade dependent modules.
-
-## [3.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v3.0.0) (2023-10-02)
-[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.4.0...v3.0.0)
-* Upgrade react v18.0.0. Refs FOLIO-3876.
-* Upgrade dependent modules.
 
 ## [2.4.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v2.4.0) (2023-02-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.3.0...v2.4.0)
