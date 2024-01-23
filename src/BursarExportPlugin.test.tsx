@@ -19,10 +19,7 @@ jest.mock(
   './api/mutators/useAutomaticSchedulerMutation',
   () => () => jest.fn()
 );
-jest.mock('./hooks/useInitialValues', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
+jest.mock('./hooks/useInitialValues', () => jest.fn());
 jest.mock('@folio/stripes/final-form', () => ({
   __esModule: true,
   default: () => (Component: any) => (props: FormProps) =>
