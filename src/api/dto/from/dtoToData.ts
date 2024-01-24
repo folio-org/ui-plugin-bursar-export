@@ -20,7 +20,7 @@ export default function dtoToData(
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[]
 ): DataToken[] {
-  if (tokens === undefined) {
+  if (!tokens) {
     return [];
   }
 

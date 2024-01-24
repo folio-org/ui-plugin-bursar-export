@@ -13,7 +13,7 @@ test.each<[SavedJobDTO | null | undefined, Partial<FormValues>]>([
       id: 'id',
       type: 'BURSAR_FEES_FINES',
       tenant: 'diku',
-      schedulePeriod: 'NONE',
+      schedulePeriod: SchedulingFrequency.Manual,
       exportTypeSpecificParameters: {
         bursarFeeFines: {
           groupByPatron: false,
@@ -41,7 +41,7 @@ test.each<[SavedJobDTO | null | undefined, Partial<FormValues>]>([
       id: 'id',
       type: 'BURSAR_FEES_FINES',
       tenant: 'diku',
-      schedulePeriod: 'NONE',
+      schedulePeriod: SchedulingFrequency.Manual,
       exportTypeSpecificParameters: {
         bursarFeeFines: {
           groupByPatron: true,

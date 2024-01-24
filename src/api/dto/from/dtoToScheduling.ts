@@ -14,18 +14,18 @@ export default function dtoToScheduling(
   localeWeekdays: LocaleWeekdayInfo[]
 ): FormValues['scheduling'] {
   switch (values.schedulePeriod) {
-    case 'HOUR':
+    case SchedulingFrequency.Hours:
       return {
         frequency: SchedulingFrequency.Hours,
         interval: frequencyToString(values.scheduleFrequency),
       };
-    case 'DAY':
+    case SchedulingFrequency.Days:
       return {
         frequency: SchedulingFrequency.Days,
         interval: frequencyToString(values.scheduleFrequency),
         time: values.scheduleTime,
       };
-    case 'WEEK':
+    case SchedulingFrequency.Weeks:
       return {
         frequency: SchedulingFrequency.Weeks,
         interval: frequencyToString(values.scheduleFrequency),
@@ -37,7 +37,7 @@ export default function dtoToScheduling(
           value: day,
         })),
       };
-    case 'NONE':
+    case SchedulingFrequency.Manual:
     default:
       return { frequency: SchedulingFrequency.Manual };
   }

@@ -140,7 +140,7 @@ export function getLocationProperties(
 ): Partial<CriteriaTerminal & { type: CriteriaTerminalType.LOCATION }> {
   const location = locations.find((loc) => loc.id === locationId);
 
-  if (location === undefined) {
+  if (!location) {
     return {};
   }
 

@@ -1,3 +1,4 @@
+import SchedulingFrequency from '../../types/SchedulingFrequency';
 import { Weekday } from '../../utils/weekdayUtils';
 
 /**
@@ -313,7 +314,7 @@ export interface BursarExportTransferCriteria {
 
 // from mod-data-export-spring
 export interface SchedulingDTO {
-  schedulePeriod: 'NONE' | 'HOUR' | 'DAY' | 'WEEK';
+  schedulePeriod: SchedulingFrequency;
   scheduleFrequency?: number;
   /** straight from timepicker, for DAY and WEEK only  */
   scheduleTime?: string;

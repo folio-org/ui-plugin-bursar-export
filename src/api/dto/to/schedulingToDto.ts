@@ -8,22 +8,22 @@ export default function schedulingToDto(
 ): SchedulingDTO {
   switch (values.frequency) {
     case SchedulingFrequency.Manual:
-      return { schedulePeriod: 'NONE' };
+      return { schedulePeriod: SchedulingFrequency.Manual };
     case SchedulingFrequency.Hours:
       return {
-        schedulePeriod: 'HOUR',
+        schedulePeriod: SchedulingFrequency.Hours,
         scheduleFrequency: guardNumberPositive(values.interval),
       };
     case SchedulingFrequency.Days:
       return {
-        schedulePeriod: 'DAY',
+        schedulePeriod: SchedulingFrequency.Days,
         scheduleFrequency: guardNumberPositive(values.interval),
         scheduleTime: values.time ?? '00:00:00.000Z',
       };
     case SchedulingFrequency.Weeks:
     default:
       return {
-        schedulePeriod: 'WEEK',
+        schedulePeriod: SchedulingFrequency.Weeks,
         scheduleFrequency: guardNumberPositive(values.interval),
         scheduleTime: values.time ?? '00:00:00.000Z',
         weekDays: values.weekdays?.map(({ value }) => value) ?? [],
