@@ -15,9 +15,9 @@
   "bursarExports.scheduling.frequency.hours": "Hours",
   "bursarExports.scheduling.frequency.days": "Days",
   "bursarExports.scheduling.frequency.weeks": "Weeks",
-  "bursarExports.scheduling.interval.hours": "Hours between runs",
-  "bursarExports.scheduling.interval.days": "Days between runs",
-  "bursarExports.scheduling.interval.weeks": "Weeks between runs",
+  "bursarExports.scheduling.interval.HOUR": "Hours between runs",
+  "bursarExports.scheduling.interval.DAY": "Days between runs",
+  "bursarExports.scheduling.interval.WEEK": "Weeks between runs",
   "bursarExports.scheduling.time": "Start time",
   "bursarExports.scheduling.weekdays": "Run on weekdays",
 

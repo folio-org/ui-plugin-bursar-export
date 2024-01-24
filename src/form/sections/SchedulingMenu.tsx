@@ -13,25 +13,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Weekday, useLocaleWeekdays } from '../../utils/weekdayUtils';
 import SchedulingFrequency from '../../types/SchedulingFrequency';
 
-export function getIntervalLabel(frequency: SchedulingFrequency) {
-  switch (frequency) {
-    case SchedulingFrequency.Hours:
-      return (
-        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.interval.hours" />
-      );
-    case SchedulingFrequency.Days:
-      return (
-        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.interval.days" />
-      );
-    case SchedulingFrequency.Weeks:
-      return (
-        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.interval.weeks" />
-      );
-    default:
-      return '';
-  }
-}
-
 export default function SchedulingMenu() {
   const frequencyValue = useField<SchedulingFrequency>('scheduling.frequency', {
     subscription: { value: true },
@@ -97,7 +78,9 @@ export default function SchedulingMenu() {
                 {...fieldProps}
                 fullWidth
                 required
-                label={getIntervalLabel(frequencyValue)}
+                label={
+                  <FormattedMessage id={`ui-plugin-bursar-export.bursarExports.scheduling.interval.${frequencyValue}`} />
+                }
                 min={1}
               />
             )}
