@@ -20,15 +20,15 @@ const LOCALE_WEEKDAYS = [
 ];
 
 test.each<[SchedulingDTO, FormValues['scheduling']]>([
-  [{ schedulePeriod: 'NONE' }, { frequency: SchedulingFrequency.Manual }],
-  [{ schedulePeriod: 'HOUR' }, { frequency: SchedulingFrequency.Hours }],
+  [{ schedulePeriod: SchedulingFrequency.Manual }, { frequency: SchedulingFrequency.Manual }],
+  [{ schedulePeriod: SchedulingFrequency.Hours }, { frequency: SchedulingFrequency.Hours }],
   [
-    { schedulePeriod: 'HOUR', scheduleFrequency: 2 },
+    { schedulePeriod: SchedulingFrequency.Hours, scheduleFrequency: 2 },
     { frequency: SchedulingFrequency.Hours, interval: '2' },
   ],
   [
     {
-      schedulePeriod: 'DAY',
+      schedulePeriod: SchedulingFrequency.Days,
       scheduleFrequency: 3,
       scheduleTime: '09:00:00.000Z',
     },
@@ -40,7 +40,7 @@ test.each<[SchedulingDTO, FormValues['scheduling']]>([
   ],
   [
     {
-      schedulePeriod: 'WEEK',
+      schedulePeriod: SchedulingFrequency.Weeks,
       scheduleFrequency: 4,
       scheduleTime: '09:45:00.000Z',
     },
@@ -52,7 +52,7 @@ test.each<[SchedulingDTO, FormValues['scheduling']]>([
   ],
   [
     {
-      schedulePeriod: 'WEEK',
+      schedulePeriod: SchedulingFrequency.Weeks,
       scheduleFrequency: 4,
       scheduleTime: '09:45:00.000Z',
       weekDays: ['MONDAY', 'WEDNESDAY', 'FRIDAY', 'not-real' as any],

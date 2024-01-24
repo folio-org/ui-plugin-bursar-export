@@ -8,7 +8,7 @@ import guardNumber from '../../../utils/guardNumber';
 import { BursarExportFilterDTO } from '../types';
 
 export default function criteriaToFilterDto(
-  criteria: CriteriaGroup | CriteriaTerminal | undefined
+  criteria?: CriteriaGroup | CriteriaTerminal
 ): BursarExportFilterDTO {
   switch (criteria?.type) {
     case CriteriaTerminalType.AGE:
