@@ -2,6 +2,7 @@ import { Card, IconButton } from '@folio/stripes/components';
 import React, { ReactNode } from 'react';
 import { useFieldArray } from 'react-final-form-arrays';
 import CriteriaCard from './Criteria/CriteriaCard';
+import { FormattedMessage } from 'react-intl';
 
 export default function ConditionalCard({
   children,
@@ -20,7 +21,9 @@ export default function ConditionalCard({
 
   return (
     <Card
-      headerStart="If:"
+      headerStart={
+        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.conditional.card.header" />
+      }
       headerEnd={
         <>
           <IconButton

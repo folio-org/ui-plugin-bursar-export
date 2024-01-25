@@ -43,6 +43,8 @@
   "bursarExports.criteria.location.loc": "Location",
   "bursarExports.criteria.servicePoint.value": "Service point",
 
+  "bursarExports.conditional.card.header": "If:",
+
   "bursarExports.aggregate.accordion": "Aggregate by patron",
   "bursarExports.aggregate.enabler": "Group data by patron",
   "bursarExports.aggregate.description": "If enabled, each output row will correspond to a single patron with all of their accounts, rather than just a single account.",
