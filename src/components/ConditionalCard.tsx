@@ -40,7 +40,11 @@ export default function ConditionalCard({
         </>
       }
     >
-      <CriteriaCard name={conditionName} alone patronOnly={patronOnly} />
+      <CriteriaCard
+        name={conditionName}
+        alone
+        patronOnly={patronOnly}
+      />
       {children}
     </Card>
   );
