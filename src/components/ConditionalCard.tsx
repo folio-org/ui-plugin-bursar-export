@@ -1,8 +1,8 @@
 import { Card, IconButton } from '@folio/stripes/components';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { useFieldArray } from 'react-final-form-arrays';
-import CriteriaCard from './Criteria/CriteriaCard';
 import { FormattedMessage } from 'react-intl';
+import CriteriaCard from './Criteria/CriteriaCard';
 
 export default function ConditionalCard({
   children,
@@ -19,6 +19,18 @@ export default function ConditionalCard({
 }) {
   const { fields } = useFieldArray(fieldArrayName);
 
+  const handleMoveUpClick = useCallback(() => {
+    fields.swap(index, index - 1);
+  }, [fields, index]);
+
+  const handleMoveDownClick = useCallback(() => {
+    fields.swap(index, index + 1);
+  }, [fields, index]);
+
+  const handleRemoveClick = useCallback(() => {
+    fields.remove(index);
+  }, [fields, index]);
+
   return (
     <Card
       headerStart={
@@ -29,14 +41,14 @@ export default function ConditionalCard({
           <IconButton
             icon="caret-up"
             disabled={index === 0}
-            onClick={() => fields.swap(index, index - 1)}
+            onClick={handleMoveUpClick}
           />
           <IconButton
             icon="caret-down"
             disabled={index + 1 === fields.length}
-            onClick={() => fields.swap(index, index + 1)}
+            onClick={handleMoveDownClick}
           />
-          <IconButton icon="trash" onClick={() => fields.remove(index)} />
+          <IconButton icon="trash" onClick={handleRemoveClick} />
         </>
       }
     >

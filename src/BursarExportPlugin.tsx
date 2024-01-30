@@ -7,6 +7,7 @@ import {
 import { useStripes } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 import useAutomaticSchedulerMutation from './api/mutators/useAutomaticSchedulerMutation';
@@ -14,7 +15,6 @@ import useManualSchedulerMutation from './api/mutators/useManualSchedulerMutatio
 import ConfigurationForm, { FORM_ID } from './form/ConfigurationForm';
 import useInitialValues from './hooks/useInitialValues';
 import FormValues from './types/FormValues';
-import { FormattedMessage } from 'react-intl';
 
 export default function BursarExportPlugin() {
   const stripes = useStripes();
@@ -36,6 +36,15 @@ export default function BursarExportPlugin() {
   }, []);
 
   const initialValues = useInitialValues();
+
+
+  const handleRunManuallyClick = useCallback(() => {
+    formApiRef.current?.change('buttonClicked', 'manual');
+  }, []);
+  const handleSaveClick = useCallback(() => {
+    formApiRef.current?.change('buttonClicked', 'save');
+  }, []);
+
 
   if (initialValues === null) {
     return (
@@ -72,9 +81,7 @@ export default function BursarExportPlugin() {
               disabled={!stripes.hasPerm('data-export.job.item.post')}
               type="submit"
               form={FORM_ID}
-              onClick={() =>
-                formApiRef.current?.change('buttonClicked', 'manual')
-              }
+              onClick={handleRunManuallyClick}
             >
               <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.runManually" />
             </Button>
@@ -85,9 +92,7 @@ export default function BursarExportPlugin() {
               buttonStyle="primary"
               type="submit"
               form={FORM_ID}
-              onClick={() =>
-                formApiRef.current?.change('buttonClicked', 'save')
-              }
+              onClick={handleSaveClick}
             >
               <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.save" />
             </Button>
