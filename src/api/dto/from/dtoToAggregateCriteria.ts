@@ -20,7 +20,7 @@ export default function dtoToAggregateCriteria(
       return {
         type: CriteriaAggregateType.TOTAL_AMOUNT,
         operator: filter.condition as ComparisonOperator,
-        amountDollars: (filter.amount / 100).toFixed(2),
+        amountCurrency: (filter.amount / 100).toFixed(2),
       };
     default:
       return undefined;

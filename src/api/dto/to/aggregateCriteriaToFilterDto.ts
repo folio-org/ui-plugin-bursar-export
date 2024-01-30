@@ -22,7 +22,7 @@ export default function aggregateCriteriaToFilterDto(
         type: 'Aggregate',
         property: 'TOTAL_AMOUNT',
         condition: criteria.operator ?? 'GREATER_THAN_EQUAL',
-        amount: guardNumber(criteria.amountDollars, 0, (value) => value * 100),
+        amount: guardNumber(criteria.amountCurrency, 0, (value) => value * 100),
       };
 
     default:

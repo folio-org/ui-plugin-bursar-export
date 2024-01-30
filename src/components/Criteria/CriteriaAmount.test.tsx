@@ -38,7 +38,7 @@ it('Amount criteria displays appropriate form', async () => {
     criteria: {
       type: 'Amount',
       operator: 'GREATER_THAN',
-      amountDollars: '12.00',
+      amountCurrency: '12.00',
     },
   });
 });

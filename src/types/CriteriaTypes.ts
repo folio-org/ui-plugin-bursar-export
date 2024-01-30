@@ -25,7 +25,7 @@ export type CriteriaTerminal =
   | {
       type: CriteriaTerminalType.AMOUNT;
       operator?: ComparisonOperator;
-      amountDollars?: string;
+      amountCurrency?: string;
     }
   | {
       type: CriteriaTerminalType.FEE_FINE_OWNER;
@@ -64,7 +64,7 @@ export type CriteriaAggregate =
   | {
       type: CriteriaAggregateType.TOTAL_AMOUNT;
       operator?: ComparisonOperator;
-      amountDollars?: string;
+      amountCurrency?: string;
     };
 
 export enum CriteriaGroupType {

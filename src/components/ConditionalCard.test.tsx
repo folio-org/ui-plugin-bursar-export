@@ -35,7 +35,7 @@ describe('Conditional card (via constant conditional)', () => {
                   {
                     type: CriteriaTerminalType.AMOUNT,
                     operator: ComparisonOperator.GREATER_THAN,
-                    amountDollars: '20',
+                    amountCurrency: '20',
                     value: 'if value 2',
                   },
                 ],
@@ -91,7 +91,7 @@ describe('Conditional card (via constant conditional)', () => {
             {
               type: CriteriaTerminalType.AMOUNT,
               operator: ComparisonOperator.GREATER_THAN,
-              amountDollars: '20',
+              amountCurrency: '20',
               value: 'if value 2',
             },
             {
@@ -120,7 +120,7 @@ describe('Conditional card (via constant conditional)', () => {
             {
               type: CriteriaTerminalType.AMOUNT,
               operator: ComparisonOperator.GREATER_THAN,
-              amountDollars: '20',
+              amountCurrency: '20',
               value: 'if value 2',
             },
             {

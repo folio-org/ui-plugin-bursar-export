@@ -32,7 +32,7 @@ describe('DTO to criteria conversion for initial values', () => {
       {
         type: CriteriaTerminalType.AMOUNT,
         operator: ComparisonOperator.LESS_THAN,
-        amountDollars: '1.24',
+        amountCurrency: '1.24',
       },
     ],
     [

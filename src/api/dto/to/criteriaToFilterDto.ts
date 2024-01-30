@@ -23,7 +23,7 @@ export default function criteriaToFilterDto(
       return {
         type: 'Amount',
         condition: criteria.operator ?? 'LESS_THAN_EQUAL',
-        amount: guardNumber(criteria.amountDollars, 0, (v) => v * 100),
+        amount: guardNumber(criteria.amountCurrency, 0, (v) => v * 100),
       };
 
     case CriteriaTerminalType.FEE_FINE_TYPE:

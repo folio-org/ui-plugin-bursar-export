@@ -27,14 +27,14 @@ describe('Conversion of form values to filter DTO', () => {
     ],
 
     [
-      { type: CriteriaTerminalType.AMOUNT, amountDollars: '12.34' },
+      { type: CriteriaTerminalType.AMOUNT, amountCurrency: '12.34' },
       { type: 'Amount', condition: 'LESS_THAN_EQUAL', amount: 1234 },
     ],
     [
       {
         type: CriteriaTerminalType.AMOUNT,
         operator: ComparisonOperator.GREATER_THAN,
-        amountDollars: '12.34',
+        amountCurrency: '12.34',
       },
       { type: 'Amount', condition: 'GREATER_THAN', amount: 1234 },
     ],

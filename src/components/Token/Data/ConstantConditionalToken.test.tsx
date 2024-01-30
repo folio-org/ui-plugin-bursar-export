@@ -34,7 +34,7 @@ describe('Constant conditional token', () => {
                 {
                   type: CriteriaTerminalType.AMOUNT,
                   operator: ComparisonOperator.GREATER_THAN,
-                  amountDollars: '20',
+                  amountCurrency: '20',
                   value: 'if value 2',
                 },
               ],
@@ -75,7 +75,7 @@ describe('Constant conditional token', () => {
           {
             type: CriteriaTerminalType.AMOUNT,
             operator: ComparisonOperator.GREATER_THAN,
-            amountDollars: '20',
+            amountCurrency: '20',
             value: 'if value 2',
           },
           {

@@ -104,7 +104,7 @@ describe('Aggregate criteria card', () => {
       aggregateFilter: {
         type: CriteriaAggregateType.TOTAL_AMOUNT,
         operator: 'GREATER_THAN_EQUAL',
-        amountDollars: '10.00',
+        amountCurrency: '10.00',
       },
     });
   });

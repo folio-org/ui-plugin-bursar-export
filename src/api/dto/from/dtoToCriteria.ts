@@ -31,7 +31,7 @@ export default function dtoToCriteria(
       return {
         type: CriteriaTerminalType.AMOUNT,
         operator: filter.condition as ComparisonOperator,
-        amountDollars: (filter.amount / 100).toFixed(2),
+        amountCurrency: (filter.amount / 100).toFixed(2),
       };
     case 'FeeFineOwner':
       return {

@@ -37,7 +37,7 @@ describe('Conversion of aggregate criteria to filter DTO', () => {
     ],
 
     [
-      { type: CriteriaAggregateType.TOTAL_AMOUNT, amountDollars: '12.34' },
+      { type: CriteriaAggregateType.TOTAL_AMOUNT, amountCurrency: '12.34' },
       {
         type: 'Aggregate',
         property: 'TOTAL_AMOUNT',
@@ -48,7 +48,7 @@ describe('Conversion of aggregate criteria to filter DTO', () => {
     [
       {
         type: CriteriaAggregateType.TOTAL_AMOUNT,
-        amountDollars: '12.34',
+        amountCurrency: '12.34',
         operator: ComparisonOperator.LESS_THAN,
       },
       {

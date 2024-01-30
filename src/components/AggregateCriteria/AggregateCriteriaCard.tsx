@@ -12,7 +12,7 @@ export default function AggregateCriteriaCard() {
     format: (value) => value ?? CriteriaAggregateType.PASS,
   }).input.value;
 
-  const monetaryOnBlur = useMonetaryOnBlur('aggregateFilter.amountDollars');
+  const monetaryOnBlur = useMonetaryOnBlur('aggregateFilter.amountCurrency');
   const intl = useIntl();
 
   const criteriaOptions = useMemo(
@@ -98,7 +98,7 @@ export default function AggregateCriteriaCard() {
 
         {selectedType === CriteriaAggregateType.TOTAL_AMOUNT && (
           <Col xs={12} md={4}>
-            <Field name="aggregateFilter.amountDollars">
+            <Field name="aggregateFilter.amountCurrency">
               {(fieldProps) => (
                 <TextField<number>
                   {...fieldProps}

@@ -33,7 +33,7 @@ test.each<
     {
       type: CriteriaAggregateType.TOTAL_AMOUNT,
       operator: ComparisonOperator.GREATER_THAN,
-      amountDollars: '15.23',
+      amountCurrency: '15.23',
     },
   ],
 ])('dtoToAggregateCriteria(%s) === %s', (input, expected) =>

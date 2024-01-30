@@ -6,7 +6,7 @@ import useMonetaryOnBlur from '../../hooks/useMonetaryOnBlur';
 import OperatorSelect from './OperatorSelect';
 
 export default function CriteriaAmount({ prefix }: { prefix: string }) {
-  const monetaryOnBlur = useMonetaryOnBlur(`${prefix}amountDollars`);
+  const monetaryOnBlur = useMonetaryOnBlur(`${prefix}amountCurrency`);
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function CriteriaAmount({ prefix }: { prefix: string }) {
         <OperatorSelect name={`${prefix}operator`} />
       </Col>
       <Col xs={6}>
-        <Field name={`${prefix}amountDollars`}>
+        <Field name={`${prefix}amountCurrency`}>
           {(fieldProps) => (
             <TextField<number>
               {...fieldProps}

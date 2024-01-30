@@ -131,7 +131,7 @@ describe('Transfer criteria menu', () => {
                       condition: {
                         type: CriteriaTerminalType.AMOUNT,
                         operator: ComparisonOperator.GREATER_THAN,
-                        amountDollars: '20',
+                        amountCurrency: '20',
                       },
                       owner: 'owner1id',
                       account: 'owner1account2id',
@@ -191,7 +191,7 @@ describe('Transfer criteria menu', () => {
               condition: {
                 type: CriteriaTerminalType.AMOUNT,
                 operator: ComparisonOperator.GREATER_THAN,
-                amountDollars: '20',
+                amountCurrency: '20',
               },
               owner: 'owner1id',
               account: 'owner1account2id',

@@ -37,14 +37,13 @@ export default function BursarExportPlugin() {
 
   const initialValues = useInitialValues();
 
-
   const handleRunManuallyClick = useCallback(() => {
     formApiRef.current?.change('buttonClicked', 'manual');
   }, []);
+
   const handleSaveClick = useCallback(() => {
     formApiRef.current?.change('buttonClicked', 'save');
   }, []);
-
 
   if (initialValues === null) {
     return (
