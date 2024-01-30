@@ -60,7 +60,7 @@ describe('BursarExportPlugin', () => {
     render(withIntlConfiguration(<BursarExportPlugin />));
 
     expect(screen.getByText('Transfer configuration')).toBeVisible();
-    expect(document.getElementById(FORM_ID)).toBeNull();
+    expect(screen.queryByTestId(FORM_ID)).toBeNull();
   });
 
   it('fills out the form and then saves and runs the plugin', async () => {
@@ -70,7 +70,7 @@ describe('BursarExportPlugin', () => {
     render(withIntlConfiguration(<BursarExportPlugin />));
 
     expect(screen.getByText('Transfer configuration')).toBeVisible();
-    expect(document.getElementById(FORM_ID)).not.toBeNull();
+    expect(screen.queryByTestId(FORM_ID)).toBeVisible();
     expect(screen.getByText('Account data format')).toBeVisible();
     expect(screen.getByText('Save')).toBeVisible();
 

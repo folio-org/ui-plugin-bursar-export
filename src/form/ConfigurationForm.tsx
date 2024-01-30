@@ -47,7 +47,7 @@ function ConfigurationForm({
   }).input.value;
 
   return (
-    <form id={FORM_ID} onSubmit={submitter}>
+    <form id={FORM_ID} data-testid={FORM_ID} onSubmit={submitter}>
       <AccordionSet>
         <Row end="xs">
           <Col xs>
