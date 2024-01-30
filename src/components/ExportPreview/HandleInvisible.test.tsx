@@ -1,6 +1,6 @@
 import React from 'react';
-import HandleInvisible, { splitAndInsert } from './HandleInvisible';
 import { render } from '@testing-library/react';
+import HandleInvisible, { splitAndInsert } from './HandleInvisible';
 
 const TEST_SEARCH = 'REPLACE_ME';
 const TEST_REPLACEMENT = 'REPLACEMENT!';

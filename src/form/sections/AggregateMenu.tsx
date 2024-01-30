@@ -1,8 +1,8 @@
 import { Checkbox } from '@folio/stripes/components';
 import React from 'react';
 import { Field, useField } from 'react-final-form';
-import AggregateCriteriaCard from '../../components/AggregateCriteria/AggregateCriteriaCard';
 import { FormattedMessage, useIntl } from 'react-intl';
+import AggregateCriteriaCard from '../../components/AggregateCriteria/AggregateCriteriaCard';
 
 export default function AggregateMenu() {
   const isAggregateEnabled = useField<boolean>('aggregate', {

@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import React, { ComponentType } from 'react';
-import BursarExportPlugin from './index';
+import userEvent from '@testing-library/user-event';
 import { useStripes } from '@folio/stripes/core';
+import arrayMutators from 'final-form-arrays';
+import { Form, FormProps } from 'react-final-form';
+import BursarExportPlugin from './index';
 import withIntlConfiguration from './test/util/withIntlConfiguration';
 import useInitialValues from './hooks/useInitialValues';
-import { Form, FormProps } from 'react-final-form';
-import arrayMutators from 'final-form-arrays';
 import { FORM_ID } from './form/ConfigurationForm';
-import userEvent from '@testing-library/user-event';
 import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 

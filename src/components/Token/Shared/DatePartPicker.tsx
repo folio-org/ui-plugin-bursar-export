@@ -1,8 +1,8 @@
 import { Select } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
-import { DateFormatType } from '../../../types/TokenTypes';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { DateFormatType } from '../../../types/TokenTypes';
 
 export default function DatePartPicker({ prefix }: { prefix: string }) {
   const intl = useIntl();

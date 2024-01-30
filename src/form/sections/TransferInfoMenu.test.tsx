@@ -3,13 +3,13 @@ import userEvent from '@testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 import {
   ComparisonOperator,
   CriteriaTerminalType,
 } from '../../types/CriteriaTypes';
 import TransferInfoMenu from './TransferInfoMenu';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
 const getResponse = jest.fn((endpoint: string) => {
   if (endpoint.startsWith('owners')) {

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import css from '../Card.module.css';
 import { Card } from '@folio/stripes/components';
 import classNames from 'classnames';
 import { useField } from 'react-final-form';
+import css from '../Card.module.css';
 import TokenCardToolbox from './TokenCardToolbox';
 import LengthControlDrawer from './LengthControlDrawer';
 

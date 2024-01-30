@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
+import { useIntl } from 'react-intl';
 import { ItemAttribute } from '../../../types/TokenTypes';
 import UserItemInfoToken from './UserItemInfoToken';
-import { useIntl } from 'react-intl';
 
 export default function ItemInfoToken({ prefix }: { prefix: string }) {
   const intl = useIntl();

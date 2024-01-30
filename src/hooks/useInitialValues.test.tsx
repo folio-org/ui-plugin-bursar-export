@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
+import React from 'react';
 import useInitialValues from './useInitialValues';
 import withIntlConfiguration from '../test/util/withIntlConfiguration';
-import React from 'react';
 import useFeeFineTypes from '../api/queries/useFeeFineTypes';
 import useCurrentConfig from '../api/queries/useCurrentConfig';
 import useLocations from '../api/queries/useLocations';

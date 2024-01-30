@@ -1,10 +1,10 @@
 import { Button, Card } from '@folio/stripes/components';
 import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
+import { FormattedMessage } from 'react-intl';
 import ConditionalCard from '../../components/ConditionalCard';
 import TransferAccountFields from '../../components/TransferAccountFields';
 import { CriteriaTerminalType } from '../../types/CriteriaTypes';
-import { FormattedMessage } from 'react-intl';
 
 export default function TransferInfoMenu() {
   return (

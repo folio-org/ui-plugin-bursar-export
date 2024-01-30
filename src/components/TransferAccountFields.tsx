@@ -1,9 +1,9 @@
 import { Col, Row, Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
+import { FormattedMessage } from 'react-intl';
 import useFeeFineOwners from '../api/queries/useFeeFineOwners';
 import useTransferAccounts from '../api/queries/useTransferAccounts';
-import { FormattedMessage } from 'react-intl';
 
 export default function TransferAccountFields({ prefix }: { prefix: string }) {
   const feeFineOwners = useFeeFineOwners();

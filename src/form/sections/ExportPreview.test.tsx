@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
+import userEvent from '@testing-library/user-event';
 import ExportPreview from './ExportPreview';
 import { DataTokenType, HeaderFooterTokenType } from '../../types/TokenTypes';
-import userEvent from '@testing-library/user-event';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 
 jest.mock('@ngneat/falso', () => ({

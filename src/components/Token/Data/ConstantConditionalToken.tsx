@@ -2,6 +2,7 @@ import { Button, Card, Col, TextField } from '@folio/stripes/components';
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
+import { FormattedMessage } from 'react-intl';
 import {
   CriteriaGroupType,
   CriteriaTerminalType,
@@ -9,7 +10,6 @@ import {
   CriteriaTerminal,
 } from '../../../types/CriteriaTypes';
 import ConditionalCard from '../../ConditionalCard';
-import { FormattedMessage } from 'react-intl';
 
 export default function ConstantConditionalToken({
   prefix,

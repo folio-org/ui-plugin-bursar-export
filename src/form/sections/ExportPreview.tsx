@@ -1,10 +1,10 @@
 import React from 'react';
-import css from './ExportPreview.module.css';
 import { Card, Checkbox } from '@folio/stripes/components';
 import classNames from 'classnames';
 import { Field, useField } from 'react-final-form';
-import ExportPreviewData from '../../components/ExportPreview/ExportPreviewData';
 import { FormattedMessage, useIntl } from 'react-intl';
+import ExportPreviewData from '../../components/ExportPreview/ExportPreviewData';
+import css from './ExportPreview.module.css';
 
 export default function ExportPreview() {
   const wrap = useField<boolean>('preview.wrap', {

@@ -1,9 +1,9 @@
 import { Button } from '@folio/stripes/components';
 import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
+import { FormattedMessage } from 'react-intl';
 import { HeaderFooterTokenType } from '../../types/TokenTypes';
 import HeaderFooterCard from '../../components/Token/HeaderFooter/HeaderFooterCard';
-import { FormattedMessage } from 'react-intl';
 
 export default function HeaderFooterMenu({ name }: { name: string }) {
   return (

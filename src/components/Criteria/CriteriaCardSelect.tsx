@@ -1,11 +1,11 @@
 import { Select, SelectOptionType } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
+import { useIntl } from 'react-intl';
 import {
   CriteriaGroupType,
   CriteriaTerminalType,
 } from '../../types/CriteriaTypes';
-import { useIntl } from 'react-intl';
 
 export default function CriteriaCardSelect({
   name,

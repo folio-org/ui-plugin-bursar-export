@@ -1,10 +1,10 @@
 import { Button } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { FieldArray } from 'react-final-form-arrays';
-import DataTokenCard from '../../components/Token/Data/DataTokenCard';
-import { DataTokenType } from '../../types/TokenTypes';
 import { useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
+import DataTokenCard from '../../components/Token/Data/DataTokenCard';
+import { DataTokenType } from '../../types/TokenTypes';
 
 export default function DataTokenMenu() {
   const aggregate = useField<boolean>('aggregate', {

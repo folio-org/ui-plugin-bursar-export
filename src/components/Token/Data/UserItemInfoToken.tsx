@@ -6,8 +6,8 @@ import {
 } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
-import { ItemAttribute, UserAttribute } from '../../../types/TokenTypes';
 import { FormattedMessage } from 'react-intl';
+import { ItemAttribute, UserAttribute } from '../../../types/TokenTypes';
 
 export default function UserItemInfoToken<
   T extends ItemAttribute | UserAttribute

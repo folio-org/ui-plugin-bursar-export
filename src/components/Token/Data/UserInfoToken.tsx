@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import UserItemInfoToken from './UserItemInfoToken';
 import { useIntl } from 'react-intl';
+import UserItemInfoToken from './UserItemInfoToken';
 import { UserAttribute } from '../../../types/TokenTypes';
 
 export default function UserInfoToken({ prefix }: { prefix: string }) {

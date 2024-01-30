@@ -11,6 +11,7 @@ import {
 } from '../types/CriteriaTypes';
 import { DataTokenType } from '../types/TokenTypes';
 import DataTokenCardBody from './Token/Data/DataTokenCardBody';
+
 describe('Conditional card (via constant conditional)', () => {
   describe('buttons work as expected', () => {
     const submitter = jest.fn();

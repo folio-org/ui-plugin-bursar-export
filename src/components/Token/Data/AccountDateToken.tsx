@@ -1,9 +1,9 @@
 import { Col, Select, TextField } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
+import { FormattedMessage, useIntl } from 'react-intl';
 import DatePartPicker from '../Shared/DatePartPicker';
 import TimezonePicker from '../Shared/TimezonePicker';
-import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function AccountDateToken({ prefix }: { prefix: string }) {
   const intl = useIntl();
