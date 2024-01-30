@@ -1,4 +1,5 @@
 import {
+  AndOrOperator,
   ComparisonOperator,
   CriteriaGroup,
   CriteriaGroupType,
@@ -79,7 +80,7 @@ export function dtoToConditionCriteria(
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[]
 ): CriteriaGroup {
-  if (filter.operation === 'AND') {
+  if (filter.operation === AndOrOperator.AND) {
     return {
       type: CriteriaGroupType.ALL_OF,
       criteria: filter.criteria.map((criteria) =>
@@ -104,7 +105,7 @@ export function dtoToNegationCriteria(
   // NOR gets displayed as "None of" in the UI, so we flatten the inner OR
   if (
     filter.criteria.type === 'Condition' &&
-    filter.criteria.operation === 'OR'
+    filter.criteria.operation === AndOrOperator.OR
   ) {
     return {
       type: CriteriaGroupType.NONE_OF,

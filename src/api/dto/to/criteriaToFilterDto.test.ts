@@ -1,4 +1,5 @@
 import {
+  AndOrOperator,
   ComparisonOperator,
   CriteriaGroup,
   CriteriaGroupType,
@@ -120,11 +121,11 @@ describe('Conversion of form values to filter DTO', () => {
   it.each<[CriteriaGroup, BursarExportFilterDTO]>([
     [
       { type: CriteriaGroupType.ALL_OF },
-      { type: 'Condition', operation: 'AND', criteria: [] },
+      { type: 'Condition', operation: AndOrOperator.AND, criteria: [] },
     ],
     [
       { type: CriteriaGroupType.ANY_OF },
-      { type: 'Condition', operation: 'OR', criteria: [] },
+      { type: 'Condition', operation: AndOrOperator.OR, criteria: [] },
     ],
     [
       { type: CriteriaGroupType.NONE_OF },
@@ -132,7 +133,7 @@ describe('Conversion of form values to filter DTO', () => {
         type: 'Negation',
         criteria: {
           type: 'Condition',
-          operation: 'OR',
+          operation: AndOrOperator.OR,
           criteria: [],
         },
       },
@@ -151,7 +152,7 @@ describe('Conversion of form values to filter DTO', () => {
       },
       {
         type: 'Condition',
-        operation: 'AND',
+        operation: AndOrOperator.AND,
         criteria: [
           { type: 'Age', condition: 'LESS_THAN_EQUAL', numDays: 12 },
           {
@@ -196,7 +197,7 @@ describe('Conversion of form values to filter DTO', () => {
         type: 'Negation',
         criteria: {
           type: 'Condition',
-          operation: 'OR',
+          operation: AndOrOperator.OR,
           criteria: [
             { type: 'Age', condition: 'LESS_THAN_EQUAL', numDays: 12 },
             {

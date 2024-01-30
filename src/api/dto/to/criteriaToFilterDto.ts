@@ -1,4 +1,5 @@
 import {
+  AndOrOperator,
   CriteriaGroup,
   CriteriaGroupType,
   CriteriaTerminal,
@@ -74,14 +75,14 @@ export function groupToFilterDto(
   if (criteria.type === CriteriaGroupType.ALL_OF) {
     return {
       type: 'Condition',
-      operation: 'AND',
+      operation: AndOrOperator.AND,
       criteria: criteriaList.map(criteriaToFilterDto),
     };
   }
   if (criteria.type === CriteriaGroupType.ANY_OF) {
     return {
       type: 'Condition',
-      operation: 'OR',
+      operation: AndOrOperator.OR,
       criteria: criteriaList.map(criteriaToFilterDto),
     };
   }
@@ -97,7 +98,7 @@ export function groupToFilterDto(
     type: 'Negation',
     criteria: {
       type: 'Condition',
-      operation: 'OR',
+      operation: AndOrOperator.OR,
       criteria: criteriaList.map(criteriaToFilterDto),
     },
   };

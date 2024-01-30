@@ -1,4 +1,5 @@
 import {
+  AndOrOperator,
   ComparisonOperator,
   CriteriaGroup,
   CriteriaGroupType,
@@ -55,7 +56,7 @@ describe('DTO to criteria conversion for initial values', () => {
     [
       {
         type: 'Condition',
-        operation: 'AND',
+        operation: AndOrOperator.AND,
         criteria: [{ type: 'PatronGroup', patronGroupId: 'pg-id' }],
       },
       {
@@ -68,7 +69,7 @@ describe('DTO to criteria conversion for initial values', () => {
     [
       {
         type: 'Condition',
-        operation: 'OR',
+        operation: AndOrOperator.OR,
         criteria: [{ type: 'PatronGroup', patronGroupId: 'pg-id' }],
       },
       {
@@ -100,7 +101,7 @@ describe('DTO to criteria conversion for initial values', () => {
         type: 'Negation',
         criteria: {
           type: 'Condition',
-          operation: 'AND',
+          operation: AndOrOperator.AND,
           criteria: [{ type: 'PatronGroup', patronGroupId: 'pg-id' }],
         },
       },
@@ -124,7 +125,7 @@ describe('DTO to criteria conversion for initial values', () => {
         type: 'Negation',
         criteria: {
           type: 'Condition',
-          operation: 'OR',
+          operation: AndOrOperator.OR,
           criteria: [{ type: 'PatronGroup', patronGroupId: 'pg-id' }],
         },
       },

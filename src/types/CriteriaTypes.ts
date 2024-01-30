@@ -10,6 +10,11 @@ export enum ComparisonOperator {
   GREATER_THAN = 'GREATER_THAN',
 }
 
+export enum AndOrOperator {
+  AND = 'AND',
+  OR = 'OR',
+}
+
 export type CriteriaTerminal =
   | { type: CriteriaTerminalType.PASS }
   | {
