@@ -1,5 +1,7 @@
 const { join } = require('path');
 
+const esModules = ['@folio', 'ky'].join('|');
+
 /** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
   testEnvironment: 'jsdom',
@@ -8,7 +10,7 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)sx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
   },
-  transformIgnorePatterns: ['node_modules/(?!@folio|ky)'],
+  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   coverageProvider: 'v8',
 
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
