@@ -79,7 +79,6 @@
     "@folio/jest-config-stripes": "^2.0.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
-    "@folio/stripes-core": "^10.0.0",
     "@formatjs/cli": "^6.2.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.0",
