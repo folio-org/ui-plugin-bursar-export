@@ -5,6 +5,7 @@ import { Field, useField } from 'react-final-form';
 import { CriteriaAggregateType } from '../../types/CriteriaTypes';
 import OperatorSelect from '../Criteria/OperatorSelect';
 import useMonetaryOnBlur from '../../hooks/useMonetaryOnBlur';
+import css from '../Card.module.css';
 
 export default function AggregateCriteriaCard() {
   const selectedType = useField<CriteriaAggregateType>('aggregateFilter.type', {
@@ -16,8 +17,14 @@ export default function AggregateCriteriaCard() {
   const intl = useIntl();
 
   const criteriaOptions = useMemo(
-    () =>
-      [
+    () => [
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.none',
+        }),
+        value: CriteriaAggregateType.PASS,
+      },
+      ...[
         {
           label: intl.formatMessage({
             id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.numAccounts',
@@ -31,6 +38,7 @@ export default function AggregateCriteriaCard() {
           value: CriteriaAggregateType.TOTAL_AMOUNT,
         },
       ].sort((a, b) => a.label.localeCompare(b.label)),
+    ],
     [intl]
   );
 
@@ -55,15 +63,7 @@ export default function AggregateCriteriaCard() {
                 label={
                   <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter" />
                 }
-                dataOptions={[
-                  {
-                    label: intl.formatMessage({
-                      id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.none',
-                    }),
-                    value: CriteriaAggregateType.PASS,
-                  },
-                  ...criteriaOptions,
-                ]}
+                dataOptions={criteriaOptions}
               />
             )}
           </Field>
@@ -119,7 +119,7 @@ export default function AggregateCriteriaCard() {
         )}
       </Row>
 
-      <p style={{ marginBottom: 0 }}>
+      <p className={css.aggregateCardP}>
         <i>
           <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.description" />
         </i>
