@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import DataTokenCard from '../../components/Token/Data/DataTokenCard';
 import { DataTokenType } from '../../types/TokenTypes';
 
-export default function DataTokenMenu() {
+export default function DataTokenSection() {
   const aggregate = useField<boolean>('aggregate', {
     subscription: { value: true },
     format: (value) => value ?? false,

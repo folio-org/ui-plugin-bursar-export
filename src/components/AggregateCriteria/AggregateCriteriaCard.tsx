@@ -60,9 +60,7 @@ export default function AggregateCriteriaCard() {
                 fullWidth
                 marginBottom0
                 required
-                label={
-                  <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter" />
-                }
+                label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter" />}
                 dataOptions={criteriaOptions}
               />
             )}

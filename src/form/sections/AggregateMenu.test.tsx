@@ -6,7 +6,7 @@ import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 import FormValues from '../../types/FormValues';
 import { HeaderFooterTokenType } from '../../types/TokenTypes';
-import HeaderFooterMenu from './HeaderFooterMenu';
+import HeaderFooterSection from './HeaderFooterSection';
 import AggregateMenu from './AggregateMenu';
 import { CriteriaAggregateType } from '../../types/CriteriaTypes';
 

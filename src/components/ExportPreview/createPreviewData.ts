@@ -49,7 +49,7 @@ export function formatUserToken(attribute: UserAttribute) {
   }
 }
 
-export function tokenToNode(
+export function tokenToString(
   dataToken: DataToken,
   amount: number,
   count: number
@@ -129,7 +129,7 @@ export function generateEntry(
   const count = isAggregate ? faker.randNumber({ min: 1, max: 10 }) : 1;
 
   return {
-    elements: tokens.map((token) => tokenToNode(token, amount, count)),
+    elements: tokens.map((token) => tokenToString(token, amount, count)),
     amount,
     count,
   };

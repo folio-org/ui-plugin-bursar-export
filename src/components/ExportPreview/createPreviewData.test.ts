@@ -9,7 +9,7 @@ import createPreviewData, {
   formatItemToken,
   formatUserToken,
   generateEntry,
-  tokenToNode,
+  tokenToString,
 } from './createPreviewData';
 
 jest.mock('@ngneat/falso', () => ({
@@ -105,8 +105,8 @@ describe('Preview data generation', () => {
       'foo',
     ],
     [{ type: DataTokenType.AGGREGATE_COUNT }, '5'],
-  ])('tokenToNode(%o)=%s', (token, expected) =>
-    expect(tokenToNode(token as DataToken, TEST_AMOUNT, TEST_COUNT)).toBe(
+  ])('tokenToString(%o)=%s', (token, expected) =>
+    expect(tokenToString(token as DataToken, TEST_AMOUNT, TEST_COUNT)).toBe(
       expected
     )
   );

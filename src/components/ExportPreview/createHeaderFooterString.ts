@@ -5,7 +5,7 @@ import {
 import { guardNumberPositive } from '../../utils/guardNumber';
 import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 
-export function tokenToNode(
+export function tokenToString(
   token: HeaderFooterToken,
   amount: number,
   count: number
@@ -44,12 +44,12 @@ export function tokenToNode(
   }
 }
 
-export default function createPreviewHeaderFooter(
+export default function createHeaderFooterString(
   tokens: HeaderFooterToken[],
   totalAmount: number,
   totalCount: number
 ): string {
   return tokens
-    .map((token) => tokenToNode(token, totalAmount, totalCount))
+    .map((token) => tokenToString(token, totalAmount, totalCount))
     .join('');
 }

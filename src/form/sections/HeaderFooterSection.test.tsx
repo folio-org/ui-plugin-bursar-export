@@ -6,7 +6,7 @@ import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 import FormValues from '../../types/FormValues';
 import { HeaderFooterTokenType } from '../../types/TokenTypes';
-import HeaderFooterMenu from './HeaderFooterMenu';
+import HeaderFooterSection from './HeaderFooterSection';
 
 test('Add button works as expected', async () => {
   const submitter = jest.fn();
@@ -19,7 +19,7 @@ test('Add button works as expected', async () => {
       >
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <HeaderFooterMenu name="test" />
+            <HeaderFooterSection name="test" />
             <button type="submit">Submit</button>
           </form>
         )}

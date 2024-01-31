@@ -3,9 +3,9 @@ import {
   HeaderFooterToken,
   HeaderFooterTokenType,
 } from '../../types/TokenTypes';
-import createPreviewHeaderFooter, {
-  tokenToNode,
-} from './createPreviewHeaderFooter';
+import createHeaderFooterString, {
+  tokenToString,
+} from './createHeaderFooterString';
 
 describe('Preview data generation', () => {
   const TEST_AMOUNT = 12.34;
@@ -30,15 +30,15 @@ describe('Preview data generation', () => {
     [{ type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: true }, '12.34'],
     [{ type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: false }, '1234'],
     [{ type: HeaderFooterTokenType.AGGREGATE_COUNT }, '5'],
-  ] as const)('tokenToNode(%o)=%s', (token, expected) =>
+  ] as const)('tokenToString(%o)=%s', (token, expected) =>
     expect(
-      tokenToNode(token as HeaderFooterToken, TEST_AMOUNT, TEST_COUNT)
+      tokenToString(token as HeaderFooterToken, TEST_AMOUNT, TEST_COUNT)
     ).toBe(expected)
   );
 
-  test('createPreviewHeaderFooter works as expected', () =>
+  test('createHeaderFooterString works as expected', () =>
     expect(
-      createPreviewHeaderFooter(
+      createHeaderFooterString(
         [
           { type: HeaderFooterTokenType.AGGREGATE_COUNT },
           { type: HeaderFooterTokenType.COMMA },

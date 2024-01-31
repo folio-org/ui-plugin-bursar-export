@@ -3,7 +3,7 @@ import { useField } from 'react-final-form';
 import { useFieldArray } from 'react-final-form-arrays';
 import { DataToken, HeaderFooterToken } from '../../types/TokenTypes';
 import createPreviewData from './createPreviewData';
-import createPreviewHeaderFooter from './createPreviewHeaderFooter';
+import createHeaderFooterString from './createHeaderFooterString';
 import HandleInvisible from './HandleInvisible';
 
 export default function ExportPreviewData() {
@@ -42,12 +42,12 @@ export default function ExportPreviewData() {
       isAggregate
     );
 
-    const headerPreview = createPreviewHeaderFooter(
+    const headerPreview = createHeaderFooterString(
       header,
       totalAmount,
       totalCount
     );
-    const footerPreview = createPreviewHeaderFooter(
+    const footerPreview = createHeaderFooterString(
       footer,
       totalAmount,
       totalCount

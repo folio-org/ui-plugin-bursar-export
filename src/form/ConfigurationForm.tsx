@@ -13,9 +13,9 @@ import { FormattedMessage } from 'react-intl';
 import FormValues from '../types/FormValues';
 import AggregateMenu from './sections/AggregateMenu';
 import CriteriaMenu from './sections/CriteriaMenu';
-import DataTokenMenu from './sections/DataTokenMenu';
+import DataTokenSection from './sections/DataTokenSection';
 import ExportPreview from './sections/ExportPreview';
-import HeaderFooterMenu from './sections/HeaderFooterMenu';
+import HeaderFooterSection from './sections/HeaderFooterSection';
 import SchedulingMenu from './sections/SchedulingMenu';
 import TransferInfoMenu from './sections/TransferInfoMenu';
 
@@ -80,7 +80,7 @@ function ConfigurationForm({
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.header.accordion" />
           }
         >
-          <HeaderFooterMenu name="header" />
+          <HeaderFooterSection name="header" />
         </Accordion>
         <Accordion
           label={
@@ -91,14 +91,14 @@ function ConfigurationForm({
             )
           }
         >
-          <DataTokenMenu />
+          <DataTokenSection />
         </Accordion>
         <Accordion
           label={
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.footer.accordion" />
           }
         >
-          <HeaderFooterMenu name="footer" />
+          <HeaderFooterSection name="footer" />
         </Accordion>
 
         <Accordion
