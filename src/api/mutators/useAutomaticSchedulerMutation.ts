@@ -55,7 +55,7 @@ export default function useAutomaticSchedulerMutation() {
     scheduling: SchedulingDTO;
   }) => {
     try {
-      await mutation.mutateAsync(parameters);
+      await mutation.mutate(parameters);
     } catch (e) {}
     return {};
   };
