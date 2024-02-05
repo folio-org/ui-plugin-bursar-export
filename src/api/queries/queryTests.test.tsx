@@ -20,7 +20,6 @@ const kyMock = jest.fn(() => ({
 }));
 
 jest.mock('@folio/stripes/core', () => ({
-  ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => ({
     get: kyMock,
   }),

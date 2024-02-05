@@ -9,7 +9,6 @@ const postMock = jest.fn();
 const putMock = jest.fn();
 
 jest.mock('@folio/stripes/core', () => ({
-  ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => ({
     get: getMock,
     post: postMock,

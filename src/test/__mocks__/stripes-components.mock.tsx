@@ -17,4 +17,4 @@ jest.mock('@folio/stripes-components/util/currencies', () => {
 });
 
 // re-export our mocks
-jest.mock('@folio/stripes/components', () => jest.requireActual('@folio/stripes-components'));
+jest.mock('@folio/stripes/components');
