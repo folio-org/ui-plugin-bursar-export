@@ -19,16 +19,16 @@ import FormValues from './types/FormValues';
 export default function BursarExportPlugin() {
   const stripes = useStripes();
 
-  const manualScheduler = useManualSchedulerMutation();
-  const automaticScheduler = useAutomaticSchedulerMutation();
+  const scheduleManually = useManualSchedulerMutation();
+  const scheduleAutomatically = useAutomaticSchedulerMutation();
 
   const formApiRef = useRef<FormApi<FormValues>>(null);
 
   const submitCallback = useCallback(async (values: FormValues) => {
     if (values.buttonClicked === 'manual') {
-      await manualScheduler(formValuesToDto(values));
+      await scheduleManually(formValuesToDto(values));
     } else {
-      await automaticScheduler({
+      await scheduleAutomatically({
         bursar: formValuesToDto(values),
         scheduling: schedulingToDto(values.scheduling),
       });
