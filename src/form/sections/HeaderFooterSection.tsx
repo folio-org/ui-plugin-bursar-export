@@ -3,7 +3,7 @@ import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
 import { HeaderFooterTokenType } from '../../types/TokenTypes';
-import HeaderFooterCard from '../../components/Token/HeaderFooter/HeaderFooterCard';
+import HeaderFooterCreator from '../../components/Token/HeaderFooter/HeaderFooterCreator';
 
 export default function HeaderFooterSection({ name }: { name: string }) {
   return (
@@ -11,7 +11,7 @@ export default function HeaderFooterSection({ name }: { name: string }) {
       {({ fields }) => (
         <>
           {fields.map((innerName, index) => (
-            <HeaderFooterCard
+            <HeaderFooterCreator
               key={innerName}
               fieldArrayName={name}
               name={innerName}

@@ -4,9 +4,9 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 import { HeaderFooterTokenType } from '../../../types/TokenTypes';
-import HeaderFooterCardBody, {
+import HeaderFooterCreatorBody, {
   isHeaderFooterBodyEmpty,
-} from './HeaderFooterCardBody';
+} from './HeaderFooterCreatorBody';
 
 test.each([
   [undefined, true],
@@ -38,7 +38,7 @@ test.each([
       <Form onSubmit={() => ({})} initialValues={{ test: { type } }}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <HeaderFooterCardBody name="test" />
+            <HeaderFooterCreatorBody name="test" />
           </form>
         )}
       </Form>

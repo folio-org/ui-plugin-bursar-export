@@ -4,23 +4,23 @@ import { HeaderFooterTokenType } from '../../../types/TokenTypes';
 import GenericTokenCard from '../GenericTokenCard';
 import HeaderFooterTypeSelect from './HeaderFooterTypeSelect';
 import { TOKEN_TYPES_WITH_LENGTH_CONTROL } from '../LengthControlDrawer';
-import HeaderFooterCardBody, {
+import HeaderFooterCreatorBody, {
   isHeaderFooterBodyEmpty,
-} from './HeaderFooterCardBody';
+} from './HeaderFooterCreatorBody';
 
-export interface HeaderFooterCardProps {
+export interface HeaderFooterCreatorProps {
   fieldArrayName: string;
   name: string;
   index: number;
   isLast: boolean;
 }
 
-export default function HeaderFooterCard({
+export default function HeaderFooterCreator({
   fieldArrayName,
   name,
   index,
   isLast,
-}: HeaderFooterCardProps) {
+}: HeaderFooterCreatorProps) {
   const type = useField<HeaderFooterTokenType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? HeaderFooterTokenType.NEWLINE,
@@ -38,7 +38,7 @@ export default function HeaderFooterCard({
       index={index}
       isLast={isLast}
       SelectComponent={HeaderFooterTypeSelect}
-      BodyComponent={HeaderFooterCardBody}
+      BodyComponent={HeaderFooterCreatorBody}
       isBodyEmpty={isHeaderFooterBodyEmpty}
       shouldHaveLengthControl={shouldHaveLengthControl}
     />

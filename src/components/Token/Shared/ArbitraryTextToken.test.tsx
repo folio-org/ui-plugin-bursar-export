@@ -7,12 +7,12 @@ import {
   DataTokenType,
   HeaderFooterTokenType,
 } from '../../../types/TokenTypes';
-import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
+import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 
 describe('Arbitrary text token', () => {
   it.each([
-    [HeaderFooterTokenType.ARBITRARY_TEXT, HeaderFooterCardBody],
+    [HeaderFooterTokenType.ARBITRARY_TEXT, HeaderFooterCreatorBody],
     [DataTokenType.ARBITRARY_TEXT, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {
     const submitter = jest.fn();

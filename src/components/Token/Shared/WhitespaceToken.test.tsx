@@ -9,11 +9,11 @@ import {
   HeaderFooterTokenType,
 } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
-import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
+import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 
 describe('Whitespace token', () => {
   it.each([
-    [HeaderFooterTokenType.SPACE, HeaderFooterCardBody],
+    [HeaderFooterTokenType.SPACE, HeaderFooterCreatorBody],
     [DataTokenType.SPACE, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {
     const submitter = jest.fn();

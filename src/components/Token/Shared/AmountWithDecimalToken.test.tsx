@@ -8,11 +8,11 @@ import {
   HeaderFooterTokenType,
 } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
-import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
+import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 
 describe('Aggregate total token', () => {
   it.each([
-    [HeaderFooterTokenType.AGGREGATE_TOTAL, HeaderFooterCardBody],
+    [HeaderFooterTokenType.AGGREGATE_TOTAL, HeaderFooterCreatorBody],
     [DataTokenType.ACCOUNT_AMOUNT, DataTokenCardBody],
     [DataTokenType.AGGREGATE_TOTAL, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {

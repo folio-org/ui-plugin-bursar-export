@@ -21,7 +21,7 @@ export function isHeaderFooterBodyEmpty(
   return EMPTY_BODY_TYPES.includes(type ?? HeaderFooterTokenType.NEWLINE);
 }
 
-export default function HeaderFooterCardBody({ name }: { name: string }) {
+export default function HeaderFooterCreatorBody({ name }: { name: string }) {
   const type = useField<HeaderFooterTokenType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? HeaderFooterTokenType.NEWLINE,

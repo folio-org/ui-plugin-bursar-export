@@ -8,11 +8,11 @@ import {
   HeaderFooterTokenType,
 } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
-import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
+import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 
 describe('Current date token', () => {
   it.each([
-    [HeaderFooterTokenType.CURRENT_DATE, HeaderFooterCardBody],
+    [HeaderFooterTokenType.CURRENT_DATE, HeaderFooterCreatorBody],
     [DataTokenType.CURRENT_DATE, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {
     const submitter = jest.fn();
