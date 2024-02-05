@@ -21,41 +21,41 @@ export default function dtoToCriteria(
   locations: LocationDTO[]
 ): CriteriaGroup | CriteriaTerminal {
   switch (filter.type) {
-    case 'Age':
+    case CriteriaTerminalType.AGE:
       return {
         type: CriteriaTerminalType.AGE,
         operator: filter.condition as ComparisonOperator,
         numDays: filter.numDays.toString(),
       };
-    case 'Amount':
+    case CriteriaTerminalType.AMOUNT:
       return {
         type: CriteriaTerminalType.AMOUNT,
         operator: filter.condition as ComparisonOperator,
         amountCurrency: (filter.amount / 100).toFixed(2),
       };
-    case 'FeeFineOwner':
+    case CriteriaTerminalType.FEE_FINE_OWNER:
       return {
         type: CriteriaTerminalType.FEE_FINE_OWNER,
         feeFineOwnerId: filter.feeFineOwner,
       };
-    case 'FeeType':
+    case CriteriaTerminalType.FEE_FINE_TYPE:
       return {
         type: CriteriaTerminalType.FEE_FINE_TYPE,
         feeFineTypeId: filter.feeFineTypeId,
         feeFineOwnerId: getFeeFineOwnerId(filter.feeFineTypeId, feeFineTypes),
       };
-    case 'Location':
+    case CriteriaTerminalType.LOCATION:
       return {
         type: CriteriaTerminalType.LOCATION,
         locationId: filter.locationId,
         ...getLocationProperties(filter.locationId, locations),
       };
-    case 'PatronGroup':
+    case CriteriaTerminalType.PATRON_GROUP:
       return {
         type: CriteriaTerminalType.PATRON_GROUP,
         patronGroupId: filter.patronGroupId,
       };
-    case 'ServicePoint':
+    case CriteriaTerminalType.SERVICE_POINT:
       return {
         type: CriteriaTerminalType.SERVICE_POINT,
         servicePointId: filter.servicePointId,
@@ -67,7 +67,7 @@ export default function dtoToCriteria(
     case 'Negation':
       return dtoToNegationCriteria(filter, feeFineTypes, locations);
 
-    case 'Pass':
+    case CriteriaTerminalType.PASS:
     default:
       return {
         type: CriteriaTerminalType.PASS,
