@@ -6,7 +6,7 @@ import useFeeFineTypes from '../api/queries/useFeeFineTypes';
 import useLocations from '../api/queries/useLocations';
 import useTransferAccounts from '../api/queries/useTransferAccounts';
 import FormValues from '../types/FormValues';
-import { useLocaleWeekdays } from '../utils/weekdayUtils';
+import useLocaleWeekdays from './useLocaleWeekdays';
 
 export default function useInitialValues() {
   const currentConfig = useCurrentConfig();

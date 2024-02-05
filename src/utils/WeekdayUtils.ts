@@ -91,7 +91,3 @@ export function getLocaleWeekdays(intl: IntlShape): LocaleWeekdayInfo[] {
   }
   return weekdays;
 }
-
-export function useLocaleWeekdays(intl: IntlShape): LocaleWeekdayInfo[] {
-  return useMemo(() => getLocaleWeekdays(intl), [intl]);
-}

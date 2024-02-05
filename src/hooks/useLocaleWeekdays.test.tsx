@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import { IntlShape } from 'react-intl';
 import * as Weekdays from '../test/data/Weekdays';
 import getIntl from '../test/util/getIntl';
-import { getLocaleWeekdays, getFirstDayOfWeek, WEEKDAYS } from './weekdayUtils';
+import useLocaleWeekdays from './useLocaleWeekdays';
 
 // United States
 let intlEn: IntlShape;
@@ -17,29 +17,15 @@ beforeAll(() => {
   intlAr = getIntl('ar-DZ', 'CET');
 });
 
-describe('getFirstDayOfWeek', () => {
-  test('First day of week is properly retrieved', () => {
-    // united states
-    expect(getFirstDayOfWeek('en-US')).toBe(WEEKDAYS[Weekdays.Sunday]);
-    expect(getFirstDayOfWeek('en-us')).toBe(WEEKDAYS[Weekdays.Sunday]);
 
-    // france
-    expect(getFirstDayOfWeek('fr-FR')).toBe(WEEKDAYS[Weekdays.Monday]);
-    expect(getFirstDayOfWeek('fr-fr')).toBe(WEEKDAYS[Weekdays.Monday]);
+describe('useLocaleWeekdays.', () => {
+  test('useLocaleWeekdays hook works like getLocaleWeekdays', () => {
+    let intlToTest = intlEn;
+    const { result, rerender } = renderHook(() => useLocaleWeekdays(intlToTest));
 
-    // algeria
-    expect(getFirstDayOfWeek('ar-DZ')).toBe(WEEKDAYS[Weekdays.Saturday]);
-    expect(getFirstDayOfWeek('ar-dz')).toBe(WEEKDAYS[Weekdays.Saturday]);
-
-    // invalid, fallback to Sunday
-    expect(getFirstDayOfWeek('zz')).toBe(WEEKDAYS[Weekdays.Sunday]);
-    expect(getFirstDayOfWeek('zz-zz')).toBe(WEEKDAYS[Weekdays.Sunday]);
-  });
-});
-
-describe('getLocaleWeekdays.', () => {
-  test('Locale weekdays are properly retrieved', () => {
-    expect(getLocaleWeekdays(intlEn)).toStrictEqual([
+    intlToTest = intlEn;
+    rerender();
+    expect(result.current).toStrictEqual([
       { weekday: Weekdays.Sunday, long: 'Sunday', short: 'Sun', narrow: 'S' },
       { weekday: Weekdays.Monday, long: 'Monday', short: 'Mon', narrow: 'M' },
       { weekday: Weekdays.Tuesday, long: 'Tuesday', short: 'Tue', narrow: 'T' },
@@ -53,7 +39,10 @@ describe('getLocaleWeekdays.', () => {
       { weekday: Weekdays.Friday, long: 'Friday', short: 'Fri', narrow: 'F' },
       { weekday: Weekdays.Saturday, long: 'Saturday', short: 'Sat', narrow: 'S' },
     ]);
-    expect(getLocaleWeekdays(intlFr)).toStrictEqual([
+
+    intlToTest = intlFr;
+    rerender();
+    expect(result.current).toStrictEqual([
       { weekday: Weekdays.Monday, long: 'lundi', short: 'lun.', narrow: 'L' },
       { weekday: Weekdays.Tuesday, long: 'mardi', short: 'mar.', narrow: 'M' },
       {
@@ -67,7 +56,10 @@ describe('getLocaleWeekdays.', () => {
       { weekday: Weekdays.Saturday, long: 'samedi', short: 'sam.', narrow: 'S' },
       { weekday: Weekdays.Sunday, long: 'dimanche', short: 'dim.', narrow: 'D' },
     ]);
-    expect(getLocaleWeekdays(intlAr)).toStrictEqual([
+
+    intlToTest = intlAr;
+    rerender();
+    expect(result.current).toStrictEqual([
       { weekday: Weekdays.Saturday, long: 'السبت', short: 'السبت', narrow: 'س' },
       { weekday: Weekdays.Sunday, long: 'الأحد', short: 'الأحد', narrow: 'ح' },
       {
