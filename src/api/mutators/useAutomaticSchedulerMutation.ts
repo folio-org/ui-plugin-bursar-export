@@ -1,6 +1,7 @@
 import { CalloutContext, useOkapiKy } from '@folio/stripes/core';
 import { useContext } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
+import { useIntl } from 'react-intl';
 import { BursarExportJobDTO, SchedulingDTO } from '../dto/types';
 import useCurrentConfig from '../queries/useCurrentConfig';
 
@@ -8,6 +9,7 @@ export default function useAutomaticSchedulerMutation() {
   const ky = useOkapiKy();
   const queryClient = useQueryClient();
   const context = useContext(CalloutContext);
+  const intl = useIntl();
 
   const currentConfig = useCurrentConfig();
 
@@ -35,12 +37,16 @@ export default function useAutomaticSchedulerMutation() {
       }
     },
     {
-      onError: () =>
-        context.sendCallout({ type: 'error', message: 'Failed to save job' }),
+      onError: async () => {
+        context.sendCallout({
+          type: 'error',
+          message: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.automatic.error' }),
+        });
+      },
       onSuccess: async () => {
         context.sendCallout({
           type: 'success',
-          message: 'Configuration saved',
+          message: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.automatic.success' }),
         });
         await queryClient.invalidateQueries([
           'ui-plugin-bursar-export',

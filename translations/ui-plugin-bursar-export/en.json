@@ -21,6 +21,11 @@
   "bursarExports.scheduling.time": "Start time",
   "bursarExports.scheduling.weekdays": "Run on weekdays",
 
+  "bursarExports.scheduler.mutation.automatic.success": "Configuration saved",
+  "bursarExports.scheduler.mutation.automatic.error": "Failed to save job",
+  "bursarExports.scheduler.mutation.manual.success": "Job has been scheduled",
+  "bursarExports.scheduler.mutation.manual.error": "Failed to start job",
+
   "bursarExports.criteria.accordion": "Criteria",
   "bursarExports.criteria.select.allOf": "All of:",
   "bursarExports.criteria.select.anyOf": "Any of:",
