@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Weekday } from '../../utils/weekdayUtils';
+import { Weekday } from '../../utils/WeekdayUtils';
 import SchedulingFrequency from '../../types/SchedulingFrequency';
 import useLocaleWeekdays from '../../hooks/useLocaleWeekdays';
 
@@ -24,10 +24,7 @@ export default function SchedulingMenu() {
 
   const manualFrequencyComponent = (
     <Col xs={12} md={6}>
-      <Field
-        name="scheduling.frequency"
-        defaultValue={SchedulingFrequency.Manual}
-      >
+      <Field name="scheduling.frequency" defaultValue={SchedulingFrequency.Manual}>
         {(fieldProps) => (
           <Select<SchedulingFrequency>
             {...fieldProps}
@@ -77,7 +74,9 @@ export default function SchedulingMenu() {
             fullWidth
             required
             label={
-              <FormattedMessage id={`ui-plugin-bursar-export.bursarExports.scheduling.interval.${frequencyValue}`} />
+              <FormattedMessage
+                id={`ui-plugin-bursar-export.bursarExports.scheduling.interval.${frequencyValue}`}
+              />
             }
             min={1}
           />
@@ -111,7 +110,7 @@ export default function SchedulingMenu() {
             required
             label={
               <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.weekdays" />
-          }
+            }
             dataOptions={localeWeekdays.map((weekday) => ({
               label: weekday.long,
               value: weekday.weekday,
@@ -125,15 +124,12 @@ export default function SchedulingMenu() {
   return (
     <Row>
       {manualFrequencyComponent}
-      {[
-        SchedulingFrequency.Hours,
-        SchedulingFrequency.Days,
-        SchedulingFrequency.Weeks,
-      ].includes(frequencyValue) && (hoursDaysWeeksFrequencyComponent)}
-      {[SchedulingFrequency.Days, SchedulingFrequency.Weeks].includes(
-        frequencyValue
-      ) && (daysWeeksFrequencyComponent)}
-      {frequencyValue === SchedulingFrequency.Weeks && (weeksFrequencyComponent)}
+      {[SchedulingFrequency.Hours, SchedulingFrequency.Days, SchedulingFrequency.Weeks].includes(
+        frequencyValue,
+      ) && hoursDaysWeeksFrequencyComponent}
+      {[SchedulingFrequency.Days, SchedulingFrequency.Weeks].includes(frequencyValue) &&
+        daysWeeksFrequencyComponent}
+      {frequencyValue === SchedulingFrequency.Weeks && weeksFrequencyComponent}
     </Row>
   );
 }

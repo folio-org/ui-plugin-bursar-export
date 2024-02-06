@@ -1,12 +1,8 @@
 import { SelectOptionType } from '@folio/stripes/components';
-import {
-  CriteriaAggregate,
-  CriteriaGroup,
-  CriteriaTerminal,
-} from './CriteriaTypes';
+import { CriteriaAggregate, CriteriaGroup, CriteriaTerminal } from './CriteriaTypes';
 import SchedulingFrequency from './SchedulingFrequency';
 import { DataToken, HeaderFooterToken } from './TokenTypes';
-import { Weekday } from '../utils/weekdayUtils';
+import { Weekday } from '../utils/WeekdayUtils';
 
 // for coverage
 export const TYPE_ONLY = true;

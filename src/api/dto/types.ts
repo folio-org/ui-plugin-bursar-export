@@ -1,5 +1,5 @@
 import SchedulingFrequency from '../../types/SchedulingFrequency';
-import { Weekday } from '../../utils/weekdayUtils';
+import { Weekday } from '../../utils/WeekdayUtils';
 
 /**
  * Bursar export job schema
@@ -69,11 +69,7 @@ export type DateFormatType =
 export interface BursarExportFilterAge {
   type: 'Age';
   numDays: number;
-  condition:
-    |'LESS_THAN_EQUAL'
-    | 'LESS_THAN'
-    | 'GREATER_THAN'
-    | 'GREATER_THAN_EQUAL';
+  condition: 'LESS_THAN_EQUAL' | 'LESS_THAN' | 'GREATER_THAN' | 'GREATER_THAN_EQUAL';
 }
 /**
  * Filter by fee amount
@@ -81,11 +77,7 @@ export interface BursarExportFilterAge {
 export interface BursarExportFilterAmount {
   type: 'Amount';
   amount: number;
-  condition:
-    | 'LESS_THAN_EQUAL'
-    | 'LESS_THAN'
-    | 'GREATER_THAN'
-    | 'GREATER_THAN_EQUAL';
+  condition: 'LESS_THAN_EQUAL' | 'LESS_THAN' | 'GREATER_THAN' | 'GREATER_THAN_EQUAL';
 }
 /**
  * Filter by fee type
@@ -153,11 +145,7 @@ export interface BursarExportFilterAggregate {
   type: 'Aggregate';
   property: 'NUM_ROWS' | 'TOTAL_AMOUNT';
   amount: number;
-  condition:
-    | 'LESS_THAN_EQUAL'
-    | 'LESS_THAN'
-    | 'GREATER_THAN'
-    | 'GREATER_THAN_EQUAL';
+  condition: 'LESS_THAN_EQUAL' | 'LESS_THAN' | 'GREATER_THAN' | 'GREATER_THAN_EQUAL';
 }
 /**
  * Token to represent aggregated result of multiple fees
@@ -253,7 +241,7 @@ export interface BursarExportTokenItemData {
  */
 export interface BursarExportTokenUserData {
   type: 'UserData';
-  value: 'FOLIO_ID'
+  value: 'FOLIO_ID';
   lengthControl?: BursarExportTokenLengthControl;
 }
 export type UserDataOptionalType =

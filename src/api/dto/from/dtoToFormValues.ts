@@ -1,5 +1,5 @@
 import FormValues from '../../../types/FormValues';
-import { LocaleWeekdayInfo } from '../../../utils/weekdayUtils';
+import { LocaleWeekdayInfo } from '../../../utils/WeekdayUtils';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
@@ -16,7 +16,7 @@ export default function dtoToFormValues(
   localeWeekdays: LocaleWeekdayInfo[],
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
-  transferAccounts: TransferAccountDTO[]
+  transferAccounts: TransferAccountDTO[],
 ): Partial<FormValues> {
   if (!values) {
     return {};
@@ -29,31 +29,27 @@ export default function dtoToFormValues(
       criteria: dtoToCriteria(
         values.exportTypeSpecificParameters.bursarFeeFines.filter,
         feeFineTypes,
-        locations
+        locations,
       ),
 
       aggregate: true,
       aggregateFilter: dtoToAggregateCriteria(
-        values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter
+        values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter,
       ),
 
-      header: dtoToHeaderFooter(
-        values.exportTypeSpecificParameters.bursarFeeFines.header
-      ),
+      header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
       dataAggregate: dtoToData(
         values.exportTypeSpecificParameters.bursarFeeFines.data,
         feeFineTypes,
-        locations
+        locations,
       ),
-      footer: dtoToHeaderFooter(
-        values.exportTypeSpecificParameters.bursarFeeFines.header
-      ),
+      footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
 
       transferInfo: dtoToTransfer(
         values.exportTypeSpecificParameters.bursarFeeFines.transferInfo,
         feeFineTypes,
         locations,
-        transferAccounts
+        transferAccounts,
       ),
     };
   } else {
@@ -63,28 +59,24 @@ export default function dtoToFormValues(
       criteria: dtoToCriteria(
         values.exportTypeSpecificParameters.bursarFeeFines.filter,
         feeFineTypes,
-        locations
+        locations,
       ),
 
       aggregate: false,
 
-      header: dtoToHeaderFooter(
-        values.exportTypeSpecificParameters.bursarFeeFines.header
-      ),
+      header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
       data: dtoToData(
         values.exportTypeSpecificParameters.bursarFeeFines.data,
         feeFineTypes,
-        locations
+        locations,
       ),
-      footer: dtoToHeaderFooter(
-        values.exportTypeSpecificParameters.bursarFeeFines.header
-      ),
+      footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
 
       transferInfo: dtoToTransfer(
         values.exportTypeSpecificParameters.bursarFeeFines.transferInfo,
         feeFineTypes,
         locations,
-        transferAccounts
+        transferAccounts,
       ),
     };
   }
