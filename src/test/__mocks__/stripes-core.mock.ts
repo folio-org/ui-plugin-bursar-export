@@ -4,6 +4,7 @@ jest.mock('@folio/stripes/core', () => {
   };
 
   return {
+    ...jest.requireActual('@folio/stripes/core'),
     IfInterface: jest.fn(({ name, children }) => {
       return name === 'interface' || name === 'service-points-users'
         ? children
