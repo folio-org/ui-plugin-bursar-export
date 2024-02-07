@@ -1,14 +1,14 @@
-import { CalloutContext } from '@folio/stripes/core';
+import React, { ReactNode, createContext } from 'react';
 import { waitFor, act, renderHook } from '@testing-library/react';
-import React, { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { CalloutContext } from '@folio/stripes/core';
 import useManualSchedulerMutation from './useManualSchedulerMutation';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 
 const kyMock = jest.fn();
 
 jest.mock('@folio/stripes/core', () => ({
-  ...jest.requireActual('@folio/stripes/core'),
+  CalloutContext: createContext(null),
   useOkapiKy: () => ({
     post: kyMock,
   }),
