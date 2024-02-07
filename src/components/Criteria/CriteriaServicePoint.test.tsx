@@ -33,7 +33,6 @@ const getResponse = jest.fn((endpoint: string) => {
 });
 
 jest.mock('@folio/stripes/core', () => ({
-  ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => ({
     get: (endpoint: string) => ({
       json: () => Promise.resolve(getResponse(endpoint)),

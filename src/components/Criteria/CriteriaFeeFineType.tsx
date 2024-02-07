@@ -1,9 +1,9 @@
 import { Col, Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
+import { FormattedMessage, useIntl } from 'react-intl';
 import useFeeFineOwners from '../../api/queries/useFeeFineOwners';
 import useFeeFineTypes from '../../api/queries/useFeeFineTypes';
-import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function CriteriaFeeFineType({ prefix }: { prefix: string }) {
   const feeFineOwners = useFeeFineOwners();
