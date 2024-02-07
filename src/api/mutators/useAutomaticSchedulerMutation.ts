@@ -56,13 +56,11 @@ export default function useAutomaticSchedulerMutation() {
     }
   );
 
-  return async (parameters: {
+  return (parameters: {
     bursar: BursarExportJobDTO;
     scheduling: SchedulingDTO;
   }) => {
-    try {
-      mutation.mutate(parameters);
-    } catch (e) {}
+    mutation.mutate(parameters);
     return {};
   };
 }
