@@ -20,7 +20,7 @@ export default function HeaderFooterCreator({
   name,
   index,
   isLast,
-}: HeaderFooterCreatorProps) {
+}: Readonly<HeaderFooterCreatorProps>) {
   const type = useField<HeaderFooterTokenType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? HeaderFooterTokenType.NEWLINE,

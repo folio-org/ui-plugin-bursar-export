@@ -1,5 +1,4 @@
 import { staticFirstWeekDay } from '@folio/stripes/components';
-import { useMemo } from 'react';
 import { IntlShape } from 'react-intl';
 
 export type Weekday =

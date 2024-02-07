@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { HeaderFooterTokenType } from '../../types/TokenTypes';
 import HeaderFooterCreator from '../../components/Token/HeaderFooter/HeaderFooterCreator';
 
-export default function HeaderFooterSection({ name }: { name: string }) {
+export default function HeaderFooterSection({ name }: Readonly<{ name: string }>) {
   return (
     <FieldArray name={name}>
       {({ fields }) => (

@@ -31,7 +31,7 @@ export default function useManualSchedulerMutation() {
 
   return async (parameters: BursarExportJobDTO) => {
     try {
-      await mutation.mutate(parameters);
+      mutation.mutate(parameters);
     } catch (e) {}
     return {};
   };
