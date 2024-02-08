@@ -12,9 +12,7 @@ describe('guardNumber function', () => {
     ['', TEST_FALLBACK],
     [undefined, TEST_FALLBACK],
     ['a123', TEST_FALLBACK],
-  ])('guardNumber(%s) = %s', (input, expected) =>
-    expect(guardNumber(input, TEST_FALLBACK)).toBe(expected)
-  );
+  ])('guardNumber(%s) = %s', (input, expected) => expect(guardNumber(input, TEST_FALLBACK)).toBe(expected));
 
   test('guardNumber custom beforeRound', () => {
     const formatter = jest.fn((v) => v + 1);
@@ -31,7 +29,5 @@ describe('guardNumber function', () => {
     ['-1', 0],
     ['-1000.5', 0],
     ['', 0],
-  ])('guardNumberPositive(%s) = %s', (input, expected) =>
-    expect(guardNumberPositive(input)).toBe(expected)
-  );
+  ])('guardNumberPositive(%s) = %s', (input, expected) => expect(guardNumberPositive(input)).toBe(expected));
 });

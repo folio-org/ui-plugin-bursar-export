@@ -22,8 +22,8 @@ describe('Token card toolbox', () => {
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <TokenCardToolbox
-                fieldArrayName={'test'}
-                name={'test[1]'}
+                fieldArrayName="test"
+                name="test[1]"
                 index={1}
                 isLast
                 showLengthControl={false}
@@ -56,8 +56,8 @@ describe('Token card toolbox', () => {
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <TokenCardToolbox
-                fieldArrayName={'test'}
-                name={'test[1]'}
+                fieldArrayName="test"
+                name="test[1]"
                 index={1}
                 isLast={false}
                 showLengthControl={false}
@@ -95,8 +95,8 @@ describe('Token card toolbox', () => {
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <TokenCardToolbox
-                fieldArrayName={'test'}
-                name={'test[0]'}
+                fieldArrayName="test"
+                name="test[0"
                 index={0}
                 isLast={false}
                 showLengthControl={false}
@@ -130,8 +130,8 @@ describe('Token card toolbox', () => {
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <TokenCardToolbox
-                fieldArrayName={'test'}
-                name={'test[2]'}
+                fieldArrayName="test"
+                name="test[2"
                 index={2}
                 isLast
                 showLengthControl
@@ -163,8 +163,8 @@ describe('Token card toolbox', () => {
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <TokenCardToolbox
-                fieldArrayName={'test'}
-                name={'test[0]'}
+                fieldArrayName="test"
+                name="test[0]"
                 index={0}
                 isLast
                 showLengthControl

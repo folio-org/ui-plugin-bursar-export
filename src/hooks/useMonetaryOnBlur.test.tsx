@@ -43,7 +43,7 @@ it('Monetary onBlur works as expected on a field with nothing typed', async () =
   await userEvent.tab();
   screen.getByRole('spinbutton').blur();
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
-  waitFor (() => expect(submitter).toHaveBeenCalledWith({
+  waitFor(() => expect(submitter).toHaveBeenCalledWith({
     test: '0.00',
   }));
 });
