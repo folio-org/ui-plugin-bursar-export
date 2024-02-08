@@ -22,6 +22,6 @@ jest.mock('@folio/stripes/core', () => {
     }),
     Pluggable: jest.fn(({ children }) => [children]),
     useOkapiKy: jest.fn(),
-    useStripes: () => STRIPES,
+    useStripes: jest.fn(() => STRIPES)
   };
 });

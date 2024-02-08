@@ -11,9 +11,6 @@ import { FORM_ID } from './form/ConfigurationForm';
 import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 
-jest.mock('@folio/stripes/core', () => ({
-  useStripes: jest.fn(),
-}));
 jest.mock('./api/mutators/useManualSchedulerMutation', () => () => jest.fn());
 jest.mock(
   './api/mutators/useAutomaticSchedulerMutation',
