@@ -3,7 +3,7 @@ import { guardNumberPositive } from '../../../utils/guardNumber';
 import { BursarExportTokenLengthControl } from '../types';
 
 export default function lengthControlToDto(
-  lengthControl: LengthControl | undefined
+  lengthControl: LengthControl | undefined,
 ): BursarExportTokenLengthControl | undefined {
   if (lengthControl === undefined) {
     return undefined;

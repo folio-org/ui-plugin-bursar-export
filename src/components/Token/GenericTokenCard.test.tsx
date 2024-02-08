@@ -28,8 +28,8 @@ describe('Generic token card', () => {
               />
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('textbox')).toBeVisible();
@@ -41,35 +41,32 @@ describe('Generic token card', () => {
     [true, false],
     [false, true],
     [false, false],
-  ])(
-    'Does not show length control when state is %s and length control is %s available',
-    (state, available) => {
-      render(
-        withIntlConfiguration(
-          <Form
-            mutators={{ ...arrayMutators }}
-            onSubmit={() => ({})}
-            initialValues={{ test: [{ lengthControl: { drawerOpen: state } }] }}
-          >
-            {({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <GenericTokenCard<'test'>
-                  fieldArrayName="test"
-                  name="test[0]"
-                  index={0}
-                  isLast
-                  SelectComponent={() => null}
-                  BodyComponent={() => null}
-                  isBodyEmpty={() => true}
-                  shouldHaveLengthControl={() => available}
-                />
-              </form>
-            )}
-          </Form>
-        )
-      );
+  ])('Does not show length control when state is %s and length control is %s available', (state, available) => {
+    render(
+      withIntlConfiguration(
+        <Form
+          mutators={{ ...arrayMutators }}
+          onSubmit={() => ({})}
+          initialValues={{ test: [{ lengthControl: { drawerOpen: state } }] }}
+        >
+          {({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <GenericTokenCard<'test'>
+                fieldArrayName="test"
+                name="test[0]"
+                index={0}
+                isLast
+                SelectComponent={() => null}
+                BodyComponent={() => null}
+                isBodyEmpty={() => true}
+                shouldHaveLengthControl={() => available}
+              />
+            </form>
+          )}
+        </Form>,
+      ),
+    );
 
-      expect(screen.queryByRole('textbox')).toBeNull();
-    }
-  );
+    expect(screen.queryByRole('textbox')).toBeNull();
+  });
 });

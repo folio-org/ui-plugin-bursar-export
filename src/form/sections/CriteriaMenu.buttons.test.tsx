@@ -25,8 +25,8 @@ describe('Buttons work as expected', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
   }
 
@@ -55,11 +55,7 @@ describe('Buttons work as expected', () => {
       criteria: [{ type: CriteriaGroupType.ANY_OF, criteria: [] }],
     });
 
-    await userEvent.click(
-      (
-        await screen.findAllByRole('button', { name: 'plus-sign' })
-      )[1]
-    );
+    await userEvent.click((await screen.findAllByRole('button', { name: 'plus-sign' }))[1]);
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(submitter).toHaveBeenLastCalledWith({
@@ -89,11 +85,7 @@ describe('Buttons work as expected', () => {
       ],
     });
 
-    await userEvent.click(
-      (
-        await screen.findAllByRole('button', { name: 'trash' })
-      )[0]
-    );
+    await userEvent.click((await screen.findAllByRole('button', { name: 'trash' }))[0]);
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(submitter).toHaveBeenLastCalledWith({

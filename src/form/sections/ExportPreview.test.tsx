@@ -18,20 +18,16 @@ describe('Export preview component', () => {
       withIntlConfiguration(
         <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
           {() => <ExportPreview />}
-        </Form>
-      )
+        </Form>,
+      ),
     );
     // when undefined
     expect(container.querySelector('.wrap')).toBeVisible();
 
-    await userEvent.click(
-      screen.getByRole('checkbox', { name: 'Wrap long lines' })
-    );
+    await userEvent.click(screen.getByRole('checkbox', { name: 'Wrap long lines' }));
     expect(container.querySelector('.wrap')).toBeNull();
 
-    await userEvent.click(
-      screen.getByRole('checkbox', { name: 'Wrap long lines' })
-    );
+    await userEvent.click(screen.getByRole('checkbox', { name: 'Wrap long lines' }));
     expect(container.querySelector('.wrap')).toBeVisible();
   });
 });

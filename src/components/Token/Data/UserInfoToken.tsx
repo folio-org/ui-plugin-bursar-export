@@ -32,8 +32,7 @@ export default function UserInfoToken({ prefix }: { prefix: string }) {
       value: 'FIRST_NAME',
     },
     {
-      labelId:
-        'ui-plugin-bursar-export.bursarExports.token.userInfo.middlename',
+      labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.middlename',
       value: 'MIDDLE_NAME',
     },
     {
@@ -47,7 +46,7 @@ export default function UserInfoToken({ prefix }: { prefix: string }) {
         label: intl.formatMessage({ id: option.labelId }),
         value: option.value as UserAttribute,
       })),
-    [intl]
+    [intl],
   );
 
   return (

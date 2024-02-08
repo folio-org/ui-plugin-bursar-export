@@ -37,21 +37,10 @@ export default function ExportPreviewData() {
   const contents = useMemo(() => {
     const dataToUse = isAggregate ? dataAggregate : data;
 
-    const { dataPreview, totalAmount, totalCount } = createPreviewData(
-      dataToUse,
-      isAggregate
-    );
+    const { dataPreview, totalAmount, totalCount } = createPreviewData(dataToUse, isAggregate);
 
-    const headerPreview = createHeaderFooterString(
-      header,
-      totalAmount,
-      totalCount
-    );
-    const footerPreview = createHeaderFooterString(
-      footer,
-      totalAmount,
-      totalCount
-    );
+    const headerPreview = createHeaderFooterString(header, totalAmount, totalCount);
+    const footerPreview = createHeaderFooterString(footer, totalAmount, totalCount);
 
     return headerPreview + dataPreview + footerPreview;
   }, [header, data, dataAggregate, footer, isAggregate]);

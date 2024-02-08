@@ -24,18 +24,12 @@ describe('Item info type token', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Value' }),
-      'Patron group ID'
-    );
-    await userEvent.type(
-      screen.getByRole('textbox', { name: 'Fallback value' }),
-      'foo bar fallback'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Value' }), 'Patron group ID');
+    await userEvent.type(screen.getByRole('textbox', { name: 'Fallback value' }), 'foo bar fallback');
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

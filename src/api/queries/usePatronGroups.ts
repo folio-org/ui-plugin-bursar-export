@@ -33,8 +33,6 @@ export default function usePatronGroups() {
 
   return useQuery<PatronGroupDTO[]>(
     ['ui-plugin-bursar-export', 'patron-groups'],
-    async () =>
-      (await ky.get(`groups?limit=${MAX_LIMIT}`).json<PatronGroupResponse>())
-        .usergroups
+    async () => (await ky.get(`groups?limit=${MAX_LIMIT}`).json<PatronGroupResponse>()).usergroups,
   );
 }

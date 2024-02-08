@@ -18,13 +18,11 @@ describe('Date part picker', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
-    expect(screen.getByRole('combobox', { name: 'Format' })).toHaveDisplayValue(
-      'Year (4-digit)'
-    );
+    expect(screen.getByRole('combobox', { name: 'Format' })).toHaveDisplayValue('Year (4-digit)');
     expect(screen.getByRole('option', { name: 'Quarter' })).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));

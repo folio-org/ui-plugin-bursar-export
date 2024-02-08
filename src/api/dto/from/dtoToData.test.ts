@@ -1,19 +1,12 @@
 import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import {
-  DataToken,
-  DataTokenType,
-  DateFormatType,
-} from '../../../types/TokenTypes';
+import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { BursarExportDataTokenDTO } from '../types';
 import dtoToData, { dtoToDataToken } from './dtoToData';
 
 describe('DTO to data conversion for initial values', () => {
   it.each<[BursarExportDataTokenDTO, DataToken]>([
     [{ type: 'Constant', value: '\n' }, { type: DataTokenType.NEWLINE }],
-    [
-      { type: 'Constant', value: '\r\n' },
-      { type: DataTokenType.NEWLINE_MICROSOFT },
-    ],
+    [{ type: 'Constant', value: '\r\n' }, { type: DataTokenType.NEWLINE_MICROSOFT }],
     [{ type: 'Constant', value: ',' }, { type: DataTokenType.COMMA }],
     [{ type: 'Constant', value: '\t' }, { type: DataTokenType.TAB }],
     [
@@ -25,10 +18,7 @@ describe('DTO to data conversion for initial values', () => {
       { type: DataTokenType.ARBITRARY_TEXT, text: 'foo' },
     ],
 
-    [
-      { type: 'Aggregate', value: 'NUM_ROWS', decimal: false },
-      { type: DataTokenType.AGGREGATE_COUNT },
-    ],
+    [{ type: 'Aggregate', value: 'NUM_ROWS', decimal: false }, { type: DataTokenType.AGGREGATE_COUNT }],
     [
       { type: 'Aggregate', value: 'TOTAL_AMOUNT', decimal: false },
       { type: DataTokenType.AGGREGATE_TOTAL, decimal: false },
@@ -127,12 +117,9 @@ describe('DTO to data conversion for initial values', () => {
         else: 'else',
       },
     ],
-  ])('converts token %s to %s', (input, expected) =>
-    expect(dtoToDataToken(input, [], [])).toEqual(expected)
-  );
+  ])('converts token %s to %s', (input, expected) => expect(dtoToDataToken(input, [], [])).toEqual(expected));
 
-  it('converts undefined to empty array', () =>
-    expect(dtoToData(undefined, [], [])).toEqual([]));
+  it('converts undefined to empty array', () => expect(dtoToData(undefined, [], [])).toEqual([]));
 
   it('converts token array to data', () =>
     expect(
@@ -146,8 +133,8 @@ describe('DTO to data conversion for initial values', () => {
           { type: 'Constant', value: 'foo' },
         ],
         [],
-        []
-      )
+        [],
+      ),
     ).toEqual([
       { type: DataTokenType.NEWLINE },
       { type: DataTokenType.NEWLINE_MICROSOFT },

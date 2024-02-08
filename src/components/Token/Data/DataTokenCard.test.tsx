@@ -16,8 +16,8 @@ describe('Data token card', () => {
               <DataTokenCard name="test[0]" index={0} isLast />
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Newline (LF)');
@@ -36,8 +36,8 @@ describe('Data token card', () => {
               <DataTokenCard name="data[0]" index={0} isLast />
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Comma');

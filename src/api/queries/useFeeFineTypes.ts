@@ -35,11 +35,6 @@ export default function useFeeFineTypes() {
 
   return useQuery<FeeFineTypeDTO[]>(
     ['ui-plugin-bursar-export', 'types'],
-    async () =>
-      (
-        await ky
-          .get(`feefines?cql.allRecords=1&limit=${MAX_LIMIT}`)
-          .json<FeeFineTypeResponse>()
-      ).feefines
+    async () => (await ky.get(`feefines?cql.allRecords=1&limit=${MAX_LIMIT}`).json<FeeFineTypeResponse>()).feefines,
   );
 }

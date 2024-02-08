@@ -4,9 +4,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 import { HeaderFooterTokenType } from '../../../types/TokenTypes';
-import HeaderFooterCreatorBody, {
-  isHeaderFooterBodyEmpty,
-} from './HeaderFooterCreatorBody';
+import HeaderFooterCreatorBody, { isHeaderFooterBodyEmpty } from './HeaderFooterCreatorBody';
 
 test.each([
   [undefined, true],
@@ -21,9 +19,7 @@ test.each([
   [HeaderFooterTokenType.SPACE, false],
   [HeaderFooterTokenType.CURRENT_DATE, false],
   [HeaderFooterTokenType.AGGREGATE_TOTAL, false],
-])('Card bodies for type %s are empty = %s', (type, expected) =>
-  expect(isHeaderFooterBodyEmpty(type)).toBe(expected)
-);
+])('Card bodies for type %s are empty = %s', (type, expected) => expect(isHeaderFooterBodyEmpty(type)).toBe(expected));
 
 test.each([
   undefined,
@@ -41,8 +37,8 @@ test.each([
             <HeaderFooterCreatorBody name="test" />
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   expect(container.textContent).toBe('');

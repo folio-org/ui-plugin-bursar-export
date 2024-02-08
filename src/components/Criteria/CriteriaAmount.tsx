@@ -22,9 +22,7 @@ export default function CriteriaAmount({ prefix }: { prefix: string }) {
               marginBottom0
               required
               type="number"
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.amount" />
-              }
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.amount" />}
               min={0}
               step={0.01}
               onBlur={monetaryOnBlur}

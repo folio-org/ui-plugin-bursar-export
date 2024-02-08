@@ -15,9 +15,7 @@ export const EMPTY_BODY_TYPES = [
   HeaderFooterTokenType.TAB,
 ];
 
-export function isHeaderFooterBodyEmpty(
-  type: HeaderFooterTokenType | undefined
-) {
+export function isHeaderFooterBodyEmpty(type: HeaderFooterTokenType | undefined) {
   return EMPTY_BODY_TYPES.includes(type ?? HeaderFooterTokenType.NEWLINE);
 }
 

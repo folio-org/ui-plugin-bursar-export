@@ -68,7 +68,5 @@ describe('Scheduling conversion to DTO', () => {
         weekDays: ['MONDAY', 'THURSDAY'],
       },
     ],
-  ])('converts %s to %s', (input, expected) =>
-    expect(schedulingToDto(input)).toEqual(expected)
-  );
+  ])('converts %s to %s', (input, expected) => expect(schedulingToDto(input)).toEqual(expected));
 });

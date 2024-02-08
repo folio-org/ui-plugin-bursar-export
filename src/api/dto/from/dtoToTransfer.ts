@@ -10,7 +10,7 @@ export default function dtoToTransfer(
   tokens: BursarExportTransferCriteria,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
-  transferAccounts: TransferAccountDTO[]
+  transferAccounts: TransferAccountDTO[],
 ): FormValues['transferInfo'] {
   return {
     conditions: (tokens.conditions ?? []).map(({ condition, account }) => ({
@@ -25,9 +25,6 @@ export default function dtoToTransfer(
   };
 }
 
-export function getOwnerForAccount(
-  transferAccounts: TransferAccountDTO[],
-  accountId: string
-) {
+export function getOwnerForAccount(transferAccounts: TransferAccountDTO[], accountId: string) {
   return transferAccounts.find((type) => type.id === accountId)?.ownerId;
 }

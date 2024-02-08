@@ -10,10 +10,7 @@ export default function AccountDateToken({ prefix }: { prefix: string }) {
   return (
     <>
       <Col xs={12} md={6}>
-        <Field<'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED'>
-          name={`${prefix}dateProperty`}
-          defaultValue="CREATED"
-        >
+        <Field<'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED'> name={`${prefix}dateProperty`} defaultValue="CREATED">
           {(fieldProps) => (
             <Select<'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED'>
               {...fieldProps}
@@ -58,9 +55,7 @@ export default function AccountDateToken({ prefix }: { prefix: string }) {
             <TextField<string>
               {...fieldProps}
               fullWidth
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.fallback" />
-              }
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.fallback" />}
             />
           )}
         </Field>

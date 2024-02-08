@@ -1,14 +1,7 @@
 import { staticFirstWeekDay } from '@folio/stripes/components';
 import { IntlShape } from 'react-intl';
 
-export type Weekday =
-  | 'SUNDAY'
-  | 'MONDAY'
-  | 'TUESDAY'
-  | 'WEDNESDAY'
-  | 'THURSDAY'
-  | 'FRIDAY'
-  | 'SATURDAY';
+export type Weekday = 'SUNDAY' | 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY';
 
 /**
  * Used for algorithmically relating weekdays to each other.  This MUST not be
@@ -35,15 +28,7 @@ export const WEEKDAYS: Record<Weekday, number> = {
  * correspond here as expected.
  * Additionally, the values here will correspond to {@link WEEKDAY_INDEX}
  */
-export const WEEKDAY_INDEX: Weekday[] = [
-  'SUNDAY',
-  'MONDAY',
-  'TUESDAY',
-  'WEDNESDAY',
-  'THURSDAY',
-  'FRIDAY',
-  'SATURDAY',
-];
+export const WEEKDAY_INDEX: Weekday[] = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 
 export interface LocaleWeekdayInfo {
   weekday: Weekday;

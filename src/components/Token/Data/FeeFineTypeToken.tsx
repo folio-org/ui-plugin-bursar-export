@@ -16,9 +16,7 @@ export default function FeeFineTypeToken({ prefix }: { prefix: string }) {
             {...fieldProps}
             required
             marginBottom0
-            label={
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute" />
-            }
+            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute" />}
             dataOptions={[
               {
                 label: intl.formatMessage({

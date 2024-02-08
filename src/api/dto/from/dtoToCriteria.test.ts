@@ -24,7 +24,7 @@ describe('DTO to criteria conversion for initial values', () => {
       {
         type: CriteriaTerminalType.AGE,
         operator: ComparisonOperator.LESS_THAN,
-        numDays: '1'
+        numDays: '1',
       },
     ],
     [
@@ -48,9 +48,7 @@ describe('DTO to criteria conversion for initial values', () => {
       { type: CriteriaTerminalType.SERVICE_POINT, servicePointId: 'sp-id' },
     ],
     [{ type: 'Pass' }, { type: CriteriaTerminalType.PASS }],
-  ])('converts simple criteria %s to %s', (input, expected) =>
-    expect(dtoToCriteria(input, [], [])).toEqual(expected)
-  );
+  ])('converts simple criteria %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [])).toEqual(expected));
 
   it.each<[BursarExportFilterDTO, CriteriaGroup]>([
     [
@@ -61,9 +59,7 @@ describe('DTO to criteria conversion for initial values', () => {
       },
       {
         type: CriteriaGroupType.ALL_OF,
-        criteria: [
-          { type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' },
-        ],
+        criteria: [{ type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' }],
       },
     ],
     [
@@ -74,14 +70,10 @@ describe('DTO to criteria conversion for initial values', () => {
       },
       {
         type: CriteriaGroupType.ANY_OF,
-        criteria: [
-          { type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' },
-        ],
+        criteria: [{ type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' }],
       },
     ],
-  ])('converts condition %s to %s', (input, expected) =>
-    expect(dtoToCriteria(input, [], [])).toEqual(expected)
-  );
+  ])('converts condition %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [])).toEqual(expected));
 
   it.each<[BursarExportFilterNegation, CriteriaGroup]>([
     [
@@ -91,9 +83,7 @@ describe('DTO to criteria conversion for initial values', () => {
       },
       {
         type: CriteriaGroupType.NONE_OF,
-        criteria: [
-          { type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' },
-        ],
+        criteria: [{ type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' }],
       },
     ],
     [
@@ -131,14 +121,10 @@ describe('DTO to criteria conversion for initial values', () => {
       },
       {
         type: CriteriaGroupType.NONE_OF,
-        criteria: [
-          { type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' },
-        ],
+        criteria: [{ type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' }],
       },
     ],
-  ])('converts negation %s to %s', (input, expected) =>
-    expect(dtoToCriteria(input, [], [])).toEqual(expected)
-  );
+  ])('converts negation %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [])).toEqual(expected));
 
   it.each<[BursarExportFilterFeeType, FeeFineTypeDTO[], CriteriaTerminal]>([
     [
@@ -168,10 +154,8 @@ describe('DTO to criteria conversion for initial values', () => {
         feeFineOwnerId: 'owner-id',
       },
     ],
-  ])(
-    'converts fee type %s with known types %s to %s',
-    (input, feeFineTypes, expected) =>
-      expect(dtoToCriteria(input, feeFineTypes, [])).toEqual(expected)
+  ])('converts fee type %s with known types %s to %s', (input, feeFineTypes, expected) =>
+    expect(dtoToCriteria(input, feeFineTypes, [])).toEqual(expected),
   );
 
   it.each<[BursarExportFilterLocation, LocationDTO[], CriteriaTerminal]>([
@@ -209,9 +193,7 @@ describe('DTO to criteria conversion for initial values', () => {
         locationId: 'location-id',
       },
     ],
-  ])(
-    'converts location %s with known locations %s to %s',
-    (input, locations, expected) =>
-      expect(dtoToCriteria(input, [], locations)).toEqual(expected)
+  ])('converts location %s with known locations %s to %s', (input, locations, expected) =>
+    expect(dtoToCriteria(input, [], locations)).toEqual(expected),
   );
 });

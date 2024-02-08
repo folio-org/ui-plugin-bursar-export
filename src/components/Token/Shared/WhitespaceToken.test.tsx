@@ -4,10 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import {
-  DataTokenType,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 
@@ -20,19 +17,15 @@ describe('Whitespace token', () => {
 
     render(
       withIntlConfiguration(
-        <Form
-          mutators={{ ...arrayMutators }}
-          onSubmit={(v) => submitter(v)}
-          initialValues={{ test: { type } }}
-        >
+        <Form mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)} initialValues={{ test: { type } }}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <Component name="test" />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('spinbutton')).toBeVisible();

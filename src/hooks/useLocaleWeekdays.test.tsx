@@ -17,7 +17,6 @@ beforeAll(() => {
   intlAr = getIntl('ar-DZ', 'CET');
 });
 
-
 describe('useLocaleWeekdays.', () => {
   test('useLocaleWeekdays hook works like getLocaleWeekdays', () => {
     let intlToTest = intlEn;

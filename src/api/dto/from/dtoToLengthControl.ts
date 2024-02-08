@@ -3,7 +3,7 @@ import { BursarExportTokenLengthControl } from '../types';
 
 // inverse of ../to/lengthControlToDto
 export default function dtoToLengthControl(
-  lengthControl: BursarExportTokenLengthControl | undefined
+  lengthControl: BursarExportTokenLengthControl | undefined,
 ): LengthControl | undefined {
   if (lengthControl === undefined) {
     return undefined;

@@ -1,15 +1,8 @@
-import {
-  HeaderFooterToken,
-  HeaderFooterTokenType,
-} from '../../types/TokenTypes';
+import { HeaderFooterToken, HeaderFooterTokenType } from '../../types/TokenTypes';
 import { guardNumberPositive } from '../../utils/guardNumber';
 import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 
-export function tokenToString(
-  token: HeaderFooterToken,
-  amount: number,
-  count: number
-): string {
+export function tokenToString(token: HeaderFooterToken, amount: number, count: number): string {
   switch (token.type) {
     case HeaderFooterTokenType.ARBITRARY_TEXT:
       return token.text ?? '';
@@ -25,16 +18,10 @@ export function tokenToString(
       return ' '.repeat(guardNumberPositive(token.repeat));
 
     case HeaderFooterTokenType.CURRENT_DATE:
-      return applyLengthControl(
-        formatDate(token.format, new Date()).toString(),
-        token.lengthControl
-      );
+      return applyLengthControl(formatDate(token.format, new Date()).toString(), token.lengthControl);
 
     case HeaderFooterTokenType.AGGREGATE_TOTAL:
-      return applyLengthControl(
-        applyDecimalFormat(amount, token.decimal),
-        token.lengthControl
-      );
+      return applyLengthControl(applyDecimalFormat(amount, token.decimal), token.lengthControl);
 
     case HeaderFooterTokenType.AGGREGATE_COUNT:
       return applyLengthControl(count.toString(), token.lengthControl);
@@ -47,9 +34,7 @@ export function tokenToString(
 export default function createHeaderFooterString(
   tokens: HeaderFooterToken[],
   totalAmount: number,
-  totalCount: number
+  totalCount: number,
 ): string {
-  return tokens
-    .map((token) => tokenToString(token, totalAmount, totalCount))
-    .join('');
+  return tokens.map((token) => tokenToString(token, totalAmount, totalCount)).join('');
 }

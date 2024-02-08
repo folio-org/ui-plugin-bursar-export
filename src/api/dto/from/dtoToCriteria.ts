@@ -8,17 +8,13 @@ import {
 } from '../../../types/CriteriaTypes';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
-import {
-  BursarExportFilterCondition,
-  BursarExportFilterDTO,
-  BursarExportFilterNegation,
-} from '../types';
+import { BursarExportFilterCondition, BursarExportFilterDTO, BursarExportFilterNegation } from '../types';
 
 // inverse of ../to/criteriaToFilterDto
 export default function dtoToCriteria(
   filter: BursarExportFilterDTO,
   feeFineTypes: FeeFineTypeDTO[],
-  locations: LocationDTO[]
+  locations: LocationDTO[],
 ): CriteriaGroup | CriteriaTerminal {
   switch (filter.type) {
     case CriteriaTerminalType.AGE:
@@ -78,21 +74,17 @@ export default function dtoToCriteria(
 export function dtoToConditionCriteria(
   filter: BursarExportFilterCondition,
   feeFineTypes: FeeFineTypeDTO[],
-  locations: LocationDTO[]
+  locations: LocationDTO[],
 ): CriteriaGroup {
   if (filter.operation === AndOrOperator.AND) {
     return {
       type: CriteriaGroupType.ALL_OF,
-      criteria: filter.criteria.map((criteria) =>
-        dtoToCriteria(criteria, feeFineTypes, locations)
-      ),
+      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations)),
     };
   } else {
     return {
       type: CriteriaGroupType.ANY_OF,
-      criteria: filter.criteria.map((criteria) =>
-        dtoToCriteria(criteria, feeFineTypes, locations)
-      ),
+      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations)),
     };
   }
 }
@@ -100,18 +92,13 @@ export function dtoToConditionCriteria(
 export function dtoToNegationCriteria(
   filter: BursarExportFilterNegation,
   feeFineTypes: FeeFineTypeDTO[],
-  locations: LocationDTO[]
+  locations: LocationDTO[],
 ): CriteriaGroup {
   // NOR gets displayed as "None of" in the UI, so we flatten the inner OR
-  if (
-    filter.criteria.type === 'Condition' &&
-    filter.criteria.operation === AndOrOperator.OR
-  ) {
+  if (filter.criteria.type === 'Condition' && filter.criteria.operation === AndOrOperator.OR) {
     return {
       type: CriteriaGroupType.NONE_OF,
-      criteria: filter.criteria.criteria.map((criteria) =>
-        dtoToCriteria(criteria, feeFineTypes, locations)
-      ),
+      criteria: filter.criteria.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations)),
     };
   }
 
@@ -122,10 +109,7 @@ export function dtoToNegationCriteria(
   };
 }
 
-export function getFeeFineOwnerId(
-  feeFineTypeId: string,
-  feeFineTypes: FeeFineTypeDTO[]
-) {
+export function getFeeFineOwnerId(feeFineTypeId: string, feeFineTypes: FeeFineTypeDTO[]) {
   const feeFineType = feeFineTypes.find((type) => type.id === feeFineTypeId);
 
   if (feeFineType?.ownerId) {
@@ -137,7 +121,7 @@ export function getFeeFineOwnerId(
 
 export function getLocationProperties(
   locationId: string,
-  locations: LocationDTO[]
+  locations: LocationDTO[],
 ): Partial<CriteriaTerminal & { type: CriteriaTerminalType.LOCATION }> {
   const location = locations.find((loc) => loc.id === locationId);
 

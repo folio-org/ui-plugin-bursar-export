@@ -27,13 +27,10 @@ export default function CriteriaPatronGroup({ prefix }: { prefix: string }) {
             fullWidth
             marginBottom0
             required
-            label={
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup" />
-            }
-            dataOptions={[
-              { label: '', value: undefined },
-              ...selectOptions,
-            ].sort((a, b) => a.label.localeCompare(b.label))}
+            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup" />}
+            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) =>
+              a.label.localeCompare(b.label),
+            )}
           />
         )}
       </Field>

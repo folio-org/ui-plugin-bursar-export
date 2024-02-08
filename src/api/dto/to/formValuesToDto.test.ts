@@ -1,13 +1,7 @@
-import {
-  CriteriaAggregateType,
-  CriteriaTerminalType,
-} from '../../../types/CriteriaTypes';
+import { CriteriaAggregateType, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import {
-  DataTokenType,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import formValuesToDto from './formValuesToDto';
 import { BursarExportJobDTO } from '../types';
 
@@ -24,9 +18,7 @@ describe('Form values conversion', () => {
     ],
 
     data: [{ type: DataTokenType.ARBITRARY_TEXT, text: 'non-aggregate data' }],
-    dataAggregate: [
-      { type: DataTokenType.ARBITRARY_TEXT, text: 'aggregate data' },
-    ],
+    dataAggregate: [{ type: DataTokenType.ARBITRARY_TEXT, text: 'aggregate data' }],
 
     footer: [{ type: HeaderFooterTokenType.ARBITRARY_TEXT, text: 'foot' }],
 
@@ -44,10 +36,7 @@ describe('Form values conversion', () => {
     },
   };
 
-  const EXPECTED: Omit<
-    BursarExportJobDTO,
-    'data' | 'groupByPatron' | 'groupByPatronFilter'
-  > = {
+  const EXPECTED: Omit<BursarExportJobDTO, 'data' | 'groupByPatron' | 'groupByPatronFilter'> = {
     filter: {
       type: 'Pass',
     },

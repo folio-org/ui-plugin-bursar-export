@@ -8,6 +8,6 @@ export default function useMonetaryOnBlur(name: string) {
     (e: FocusEvent<HTMLInputElement>) => {
       form.change(name, parseFloat(e.target.value || '0').toFixed(2));
     },
-    [name, form]
+    [name, form],
   );
 }

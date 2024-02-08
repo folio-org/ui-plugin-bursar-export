@@ -4,13 +4,7 @@ import { TransferAccountDTO } from '../../queries/useTransferAccounts';
 import { BursarExportTransferCriteria } from '../types';
 import dtoToTransfer from './dtoToTransfer';
 
-test.each<
-  [
-    BursarExportTransferCriteria,
-    TransferAccountDTO[],
-    FormValues['transferInfo']
-  ]
->([
+test.each<[BursarExportTransferCriteria, TransferAccountDTO[], FormValues['transferInfo']]>([
   [
     { else: { account: 'account' } },
     [],
@@ -34,9 +28,7 @@ test.each<
   ],
   [
     {
-      conditions: [
-        { condition: { type: 'Age', condition: 'GREATER_THAN', numDays: 3 }, account: 'account1' },
-      ],
+      conditions: [{ condition: { type: 'Age', condition: 'GREATER_THAN', numDays: 3 }, account: 'account1' }],
       else: { account: 'account2' },
     },
     [
@@ -49,7 +41,7 @@ test.each<
           condition: {
             type: CriteriaTerminalType.AGE,
             operator: ComparisonOperator.GREATER_THAN,
-            numDays: '3'
+            numDays: '3',
           },
           account: 'account1',
           owner: 'owner1',
@@ -61,8 +53,6 @@ test.each<
       },
     },
   ],
-])(
-  'Converts transfer DTO %s with known accounts %s to %s',
-  (input, transferAccounts, expected) =>
-    expect(dtoToTransfer(input, [], [], transferAccounts)).toEqual(expected)
+])('Converts transfer DTO %s with known accounts %s to %s', (input, transferAccounts, expected) =>
+  expect(dtoToTransfer(input, [], [], transferAccounts)).toEqual(expected),
 );

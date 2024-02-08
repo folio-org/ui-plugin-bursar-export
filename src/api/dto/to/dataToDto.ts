@@ -5,9 +5,7 @@ import { BursarExportDataTokenDTO } from '../types';
 import criteriaToFilterDto from './criteriaToFilterDto';
 import lengthControlToDto from './lengthControlToDto';
 
-export default function dataToDto(
-  tokens: DataToken[] | undefined
-): BursarExportDataTokenDTO[] {
+export default function dataToDto(tokens: DataToken[] | undefined): BursarExportDataTokenDTO[] {
   if (tokens === undefined) {
     return [];
   }
@@ -26,9 +24,7 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
     case DataTokenType.SPACE:
       return {
         type: 'Constant',
-        value: ConvenientConstants[token.type].repeat(
-          guardNumberPositive(token.repeat)
-        ),
+        value: ConvenientConstants[token.type].repeat(guardNumberPositive(token.repeat)),
       };
 
     case DataTokenType.ARBITRARY_TEXT:
@@ -112,15 +108,13 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
   }
 }
 
-export function userDataToDto(
-  token: DataToken & { type: DataTokenType.USER_DATA }
-): BursarExportDataTokenDTO {
+export function userDataToDto(token: DataToken & { type: DataTokenType.USER_DATA }): BursarExportDataTokenDTO {
   if (token.userAttribute == 'FOLIO_ID') {
-      return {
-        type: 'UserData',
-        value: token.userAttribute,
-        lengthControl: lengthControlToDto(token.lengthControl),
-      };
+    return {
+      type: 'UserData',
+      value: token.userAttribute,
+      lengthControl: lengthControlToDto(token.lengthControl),
+    };
 
     // all others (barcode, username, human name) are optional
   } else {

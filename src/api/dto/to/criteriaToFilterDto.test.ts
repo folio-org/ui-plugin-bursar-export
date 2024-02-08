@@ -10,9 +10,7 @@ import { BursarExportFilterDTO } from '../types';
 import criteriaToFilterDto from './criteriaToFilterDto';
 
 describe('Conversion of form values to filter DTO', () => {
-  it.each<
-    [CriteriaGroup | CriteriaTerminal | undefined, BursarExportFilterDTO]
-  >([
+  it.each<[CriteriaGroup | CriteriaTerminal | undefined, BursarExportFilterDTO]>([
     [
       { type: CriteriaTerminalType.AGE, numDays: '1' },
       { type: 'Age', condition: 'LESS_THAN_EQUAL', numDays: 1 },
@@ -21,7 +19,7 @@ describe('Conversion of form values to filter DTO', () => {
       {
         type: CriteriaTerminalType.AGE,
         operator: ComparisonOperator.GREATER_THAN,
-        numDays: '1'
+        numDays: '1',
       },
       { type: 'Age', condition: 'GREATER_THAN', numDays: 1 },
     ],
@@ -39,10 +37,7 @@ describe('Conversion of form values to filter DTO', () => {
       { type: 'Amount', condition: 'GREATER_THAN', amount: 1234 },
     ],
 
-    [
-      { type: CriteriaTerminalType.FEE_FINE_TYPE },
-      { type: 'FeeType', feeFineTypeId: '' },
-    ],
+    [{ type: CriteriaTerminalType.FEE_FINE_TYPE }, { type: 'FeeType', feeFineTypeId: '' }],
     [
       {
         type: CriteriaTerminalType.FEE_FINE_TYPE,
@@ -51,10 +46,7 @@ describe('Conversion of form values to filter DTO', () => {
       { type: 'FeeType', feeFineTypeId: 'fee-fine-type-id' },
     ],
 
-    [
-      { type: CriteriaTerminalType.FEE_FINE_OWNER },
-      { type: 'FeeFineOwner', feeFineOwner: '' },
-    ],
+    [{ type: CriteriaTerminalType.FEE_FINE_OWNER }, { type: 'FeeFineOwner', feeFineOwner: '' }],
     [
       {
         type: CriteriaTerminalType.FEE_FINE_OWNER,
@@ -63,10 +55,7 @@ describe('Conversion of form values to filter DTO', () => {
       { type: 'FeeFineOwner', feeFineOwner: 'fee-fine-owner-id' },
     ],
 
-    [
-      { type: CriteriaTerminalType.LOCATION },
-      { type: 'Location', locationId: '' },
-    ],
+    [{ type: CriteriaTerminalType.LOCATION }, { type: 'Location', locationId: '' }],
     [
       {
         type: CriteriaTerminalType.LOCATION,
@@ -75,10 +64,7 @@ describe('Conversion of form values to filter DTO', () => {
       { type: 'Location', locationId: 'location-id' },
     ],
 
-    [
-      { type: CriteriaTerminalType.PATRON_GROUP },
-      { type: 'PatronGroup', patronGroupId: '' },
-    ],
+    [{ type: CriteriaTerminalType.PATRON_GROUP }, { type: 'PatronGroup', patronGroupId: '' }],
     [
       {
         type: CriteriaTerminalType.PATRON_GROUP,
@@ -87,10 +73,7 @@ describe('Conversion of form values to filter DTO', () => {
       { type: 'PatronGroup', patronGroupId: 'patron-group-id' },
     ],
 
-    [
-      { type: CriteriaTerminalType.PATRON_GROUP },
-      { type: 'PatronGroup', patronGroupId: '' },
-    ],
+    [{ type: CriteriaTerminalType.PATRON_GROUP }, { type: 'PatronGroup', patronGroupId: '' }],
     [
       {
         type: CriteriaTerminalType.PATRON_GROUP,
@@ -99,10 +82,7 @@ describe('Conversion of form values to filter DTO', () => {
       { type: 'PatronGroup', patronGroupId: 'patron-group-id' },
     ],
 
-    [
-      { type: CriteriaTerminalType.SERVICE_POINT },
-      { type: 'ServicePoint', servicePointId: '' },
-    ],
+    [{ type: CriteriaTerminalType.SERVICE_POINT }, { type: 'ServicePoint', servicePointId: '' }],
     [
       {
         type: CriteriaTerminalType.SERVICE_POINT,
@@ -114,19 +94,11 @@ describe('Conversion of form values to filter DTO', () => {
     [undefined, { type: 'Pass' }],
     [{ type: CriteriaTerminalType.PASS }, { type: 'Pass' }],
     [{ type: 'invalid' } as unknown as CriteriaTerminal, { type: 'Pass' }],
-  ])('converts %s into %s', (input, expected) =>
-    expect(criteriaToFilterDto(input)).toEqual(expected)
-  );
+  ])('converts %s into %s', (input, expected) => expect(criteriaToFilterDto(input)).toEqual(expected));
 
   it.each<[CriteriaGroup, BursarExportFilterDTO]>([
-    [
-      { type: CriteriaGroupType.ALL_OF },
-      { type: 'Condition', operation: AndOrOperator.AND, criteria: [] },
-    ],
-    [
-      { type: CriteriaGroupType.ANY_OF },
-      { type: 'Condition', operation: AndOrOperator.OR, criteria: [] },
-    ],
+    [{ type: CriteriaGroupType.ALL_OF }, { type: 'Condition', operation: AndOrOperator.AND, criteria: [] }],
+    [{ type: CriteriaGroupType.ANY_OF }, { type: 'Condition', operation: AndOrOperator.OR, criteria: [] }],
     [
       { type: CriteriaGroupType.NONE_OF },
       {
@@ -208,7 +180,5 @@ describe('Conversion of form values to filter DTO', () => {
         },
       },
     ],
-  ])('converts group %s into %s', (input, expected) =>
-    expect(criteriaToFilterDto(input)).toEqual(expected)
-  );
+  ])('converts group %s into %s', (input, expected) => expect(criteriaToFilterDto(input)).toEqual(expected));
 });

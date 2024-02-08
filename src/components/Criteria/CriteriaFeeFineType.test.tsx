@@ -75,10 +75,7 @@ describe('Fee/fine type criteria displays appropriate form', () => {
     render(
       withIntlConfiguration(
         <QueryClientProvider client={new QueryClient()}>
-          <Form<FormValues>
-            mutators={{ ...arrayMutators }}
-            onSubmit={(v) => submitter(v)}
-          >
+          <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
             {({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <CriteriaCard name="criteria" root alone />
@@ -86,21 +83,16 @@ describe('Fee/fine type criteria displays appropriate form', () => {
               </form>
             )}
           </Form>
-        </QueryClientProvider>
-      )
+        </QueryClientProvider>,
+      ),
     );
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox'),
-      'Fee/fine type'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox'), 'Fee/fine type');
   });
 
   it('Automatic works as expected', async () => {
     // check default fill in
-    expect(
-      screen.getByRole('combobox', { name: 'Fee/fine owner' })
-    ).toHaveDisplayValue('Automatic');
+    expect(screen.getByRole('combobox', { name: 'Fee/fine owner' })).toHaveDisplayValue('Automatic');
 
     expect(screen.getByRole('option', { name: 'Overdue fine' })).toBeVisible();
     expect(screen.getByRole('option', { name: 'Lost item fee' })).toBeVisible();
@@ -108,10 +100,7 @@ describe('Fee/fine type criteria displays appropriate form', () => {
     expect(screen.queryByRole('option', { name: 'Type 2' })).toBeNull();
     expect(screen.queryByRole('option', { name: 'Type 3' })).toBeNull();
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Fee/fine type' }),
-      'Lost item fee'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine type' }), 'Lost item fee');
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(submitter).toHaveBeenLastCalledWith({
@@ -124,20 +113,14 @@ describe('Fee/fine type criteria displays appropriate form', () => {
   });
 
   it('Selecting an owner works as expected', async () => {
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Fee/fine owner' }),
-      'Owner 1'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine owner' }), 'Owner 1');
 
     expect(screen.getByRole('option', { name: 'Type 1' })).toBeVisible();
     expect(screen.getByRole('option', { name: 'Type 2' })).toBeVisible();
     expect(screen.queryByRole('option', { name: 'Type 3' })).toBeNull();
     expect(screen.queryByRole('option', { name: 'Overdue fine' })).toBeNull();
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Fee/fine type' }),
-      'Type 2'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine type' }), 'Type 2');
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(submitter).toHaveBeenLastCalledWith({

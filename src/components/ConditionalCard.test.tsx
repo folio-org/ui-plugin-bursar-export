@@ -4,11 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../test/util/withIntlConfiguration';
-import {
-  CriteriaTerminalType,
-  ComparisonOperator,
-  CriteriaGroupType,
-} from '../types/CriteriaTypes';
+import { CriteriaTerminalType, ComparisonOperator, CriteriaGroupType } from '../types/CriteriaTypes';
 import { DataTokenType } from '../types/TokenTypes';
 import DataTokenCardBody from './Token/Data/DataTokenCardBody';
 
@@ -49,15 +45,13 @@ describe('Conditional card (via constant conditional)', () => {
                 <button type="submit">Submit</button>
               </form>
             )}
-          </Form>
-        )
+          </Form>,
+        ),
       );
     });
 
     it('delete works as expected', async () => {
-      await userEvent.click(
-        screen.getAllByRole('button', { name: 'trash' })[2]
-      );
+      await userEvent.click(screen.getAllByRole('button', { name: 'trash' })[2]);
 
       await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
@@ -78,9 +72,7 @@ describe('Conditional card (via constant conditional)', () => {
     });
 
     it('reorder up works as expected', async () => {
-      await userEvent.click(
-        screen.getAllByRole('button', { name: 'caret-up' })[1]
-      );
+      await userEvent.click(screen.getAllByRole('button', { name: 'caret-up' })[1]);
 
       await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
@@ -107,9 +99,7 @@ describe('Conditional card (via constant conditional)', () => {
     });
 
     it('reorder down works as expected', async () => {
-      await userEvent.click(
-        screen.getAllByRole('button', { name: 'caret-down' })[0]
-      );
+      await userEvent.click(screen.getAllByRole('button', { name: 'caret-down' })[0]);
 
       await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

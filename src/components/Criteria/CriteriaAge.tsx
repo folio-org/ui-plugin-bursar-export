@@ -19,9 +19,7 @@ export default function CriteriaAge({ prefix }: { prefix: string }) {
               marginBottom0
               required
               type="number"
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.age.value" />
-              }
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.age.value" />}
               min={1}
               step={1}
             />

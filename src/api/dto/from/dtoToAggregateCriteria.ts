@@ -1,13 +1,9 @@
-import {
-  ComparisonOperator,
-  CriteriaAggregate,
-  CriteriaAggregateType,
-} from '../../../types/CriteriaTypes';
+import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType } from '../../../types/CriteriaTypes';
 import { BursarExportFilterAggregate } from '../types';
 
 // inverse of ../to/aggregateCriteriaToFilterDto
 export default function dtoToAggregateCriteria(
-  filter: BursarExportFilterAggregate | undefined
+  filter: BursarExportFilterAggregate | undefined,
 ): CriteriaAggregate | undefined {
   switch (filter?.property) {
     case 'NUM_ROWS':

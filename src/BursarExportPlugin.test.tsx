@@ -12,19 +12,15 @@ import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 
 jest.mock('./api/mutators/useManualSchedulerMutation', () => () => jest.fn());
-jest.mock(
-  './api/mutators/useAutomaticSchedulerMutation',
-  () => () => jest.fn()
-);
+jest.mock('./api/mutators/useAutomaticSchedulerMutation', () => () => jest.fn());
 jest.mock('./hooks/useInitialValues', () => jest.fn());
 jest.mock('@folio/stripes/final-form', () => ({
   __esModule: true,
-  default: () => (Component: any) => (props: FormProps) =>
-    (
-      <Form mutators={{ ...arrayMutators }} {...props}>
-        {(formProps) => <Component {...formProps} {...props} />}
-      </Form>
-    ),
+  default: () => (Component: any) => (props: FormProps) => (
+    <Form mutators={{ ...arrayMutators }} {...props}>
+      {(formProps) => <Component {...formProps} {...props} />}
+    </Form>
+  ),
 }));
 
 const feeFineOwner = {
@@ -73,13 +69,19 @@ describe('BursarExportPlugin', () => {
 
     expect(screen.queryByText('Transfer to:')).not.toBeNull();
 
-    const frequencyDropdown = screen.getByRole('combobox', { name: 'Frequency' }) as HTMLSelectElement;
+    const frequencyDropdown = screen.getByRole('combobox', {
+      name: 'Frequency',
+    }) as HTMLSelectElement;
     await userEvent.selectOptions(frequencyDropdown, 'NONE');
 
-    const ownerDropdown = screen.getByRole('combobox', { name: 'Fee/fine owner' }) as HTMLSelectElement;
+    const ownerDropdown = screen.getByRole('combobox', {
+      name: 'Fee/fine owner',
+    }) as HTMLSelectElement;
     await userEvent.selectOptions(ownerDropdown, 'test_owner_id');
 
-    const accountDropdown = screen.getByRole('combobox', { name: 'Transfer account' }) as HTMLSelectElement;
+    const accountDropdown = screen.getByRole('combobox', {
+      name: 'Transfer account',
+    }) as HTMLSelectElement;
     await userEvent.selectOptions(accountDropdown, 'test_account_id');
 
     await userEvent.click(screen.getByText('Save'));

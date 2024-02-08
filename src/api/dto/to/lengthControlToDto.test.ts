@@ -3,9 +3,7 @@ import { BursarExportTokenLengthControl } from '../types';
 import lengthControlToDto from './lengthControlToDto';
 
 describe('Length control conversion', () => {
-  test.each<
-    [LengthControl | undefined, BursarExportTokenLengthControl | undefined]
-  >([
+  test.each<[LengthControl | undefined, BursarExportTokenLengthControl | undefined]>([
     [undefined, undefined],
     [
       {
@@ -48,7 +46,5 @@ describe('Length control conversion', () => {
         truncate: false,
       },
     ],
-  ])('lengthControlToDto(%s) = %s', (input, expected) =>
-    expect(lengthControlToDto(input)).toEqual(expected)
-  );
+  ])('lengthControlToDto(%s) = %s', (input, expected) => expect(lengthControlToDto(input)).toEqual(expected));
 });

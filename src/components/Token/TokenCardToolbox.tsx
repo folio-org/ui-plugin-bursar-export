@@ -19,49 +19,27 @@ export default function TokenCardToolbox({
   showLengthControl,
 }: TokenCardToolboxProps) {
   const fieldArray = useFieldArray(fieldArrayName);
-  const lengthControlOpen = useField<boolean>(
-    `${name}.lengthControl.drawerOpen`,
-    {
-      subscription: { value: true },
-      format: (value) => value ?? false,
-    }
-  );
+  const lengthControlOpen = useField<boolean>(`${name}.lengthControl.drawerOpen`, {
+    subscription: { value: true },
+    format: (value) => value ?? false,
+  });
 
-  const removeCallback = useCallback(
-    () => fieldArray.fields.remove(index),
-    [fieldArray.fields, index]
-  );
+  const removeCallback = useCallback(() => fieldArray.fields.remove(index), [fieldArray.fields, index]);
 
   const lengthControlCallback = useCallback(
     () => lengthControlOpen.input.onChange(!lengthControlOpen.input.value),
-    [lengthControlOpen, index]
+    [lengthControlOpen, index],
   );
 
-  const moveUpCallback = useCallback(
-    () => fieldArray.fields.swap(index, index - 1),
-    [fieldArray.fields, index]
-  );
+  const moveUpCallback = useCallback(() => fieldArray.fields.swap(index, index - 1), [fieldArray.fields, index]);
 
-  const moveDownCallback = useCallback(
-    () => fieldArray.fields.swap(index, index + 1),
-    [fieldArray.fields, index]
-  );
+  const moveDownCallback = useCallback(() => fieldArray.fields.swap(index, index + 1), [fieldArray.fields, index]);
 
   return (
     <>
-      {showLengthControl && (
-        <IconButton icon="gear" onClick={lengthControlCallback} />
-      )}
-      <IconButton
-        icon="caret-up"
-        disabled={index === 0}
-        onClick={moveUpCallback}
-      />
-      <IconButton
-        icon="caret-down"
-        disabled={isLast}
-        onClick={moveDownCallback}
-      />
+      {showLengthControl && <IconButton icon="gear" onClick={lengthControlCallback} />}
+      <IconButton icon="caret-up" disabled={index === 0} onClick={moveUpCallback} />
+      <IconButton icon="caret-down" disabled={isLast} onClick={moveDownCallback} />
       <IconButton icon="trash" onClick={removeCallback} />
     </>
   );

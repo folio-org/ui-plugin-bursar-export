@@ -40,11 +40,6 @@ export default function useFeeFineOwners() {
 
   return useQuery<FeeFineOwnerDTO[]>(
     ['ui-plugin-bursar-export', 'owners'],
-    async () =>
-      (
-        await ky
-          .get(`owners?cql.allRecords=1&limit=${MAX_LIMIT}`)
-          .json<FeeFineOwnerResponse>()
-      ).owners
+    async () => (await ky.get(`owners?cql.allRecords=1&limit=${MAX_LIMIT}`).json<FeeFineOwnerResponse>()).owners,
   );
 }

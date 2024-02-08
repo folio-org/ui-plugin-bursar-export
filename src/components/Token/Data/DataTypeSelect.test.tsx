@@ -19,8 +19,8 @@ describe('Data token type selection', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Newline (LF)');
@@ -46,8 +46,8 @@ describe('Data token type selection', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Fee/fine type');
@@ -73,13 +73,11 @@ describe('Data token type selection', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
-    expect(
-      screen.getByRole('option', { name: optionName })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: optionName })).toBeInTheDocument();
   });
 
   it.each([
@@ -99,8 +97,8 @@ describe('Data token type selection', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.queryByRole('option', { name: optionName })).toBeNull();

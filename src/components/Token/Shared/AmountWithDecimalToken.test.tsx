@@ -3,10 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import {
-  DataTokenType,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 
@@ -32,8 +29,8 @@ describe('Aggregate total token', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('checkbox')).toBeVisible();

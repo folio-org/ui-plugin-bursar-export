@@ -46,10 +46,7 @@ it('Service point type criteria displays appropriate form', async () => {
   render(
     withIntlConfiguration(
       <QueryClientProvider client={new QueryClient()}>
-        <Form<FormValues>
-          mutators={{ ...arrayMutators }}
-          onSubmit={(v) => submitter(v)}
-        >
+        <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <CriteriaCard name="criteria" root alone />
@@ -57,22 +54,16 @@ it('Service point type criteria displays appropriate form', async () => {
             </form>
           )}
         </Form>
-      </QueryClientProvider>
-    )
+      </QueryClientProvider>,
+    ),
   );
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox'),
-    'Item service point'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox'), 'Item service point');
 
   expect(screen.getByRole('option', { name: 'Circ Desk 1' })).toBeVisible();
   expect(screen.getByRole('option', { name: 'Online' })).toBeVisible();
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Service point' }),
-    'Circ Desk 1'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Service point' }), 'Circ Desk 1');
 
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

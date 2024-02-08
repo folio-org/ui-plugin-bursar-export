@@ -33,30 +33,16 @@ export default function ConditionalCard({
 
   return (
     <Card
-      headerStart={
-        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.conditional.card.header" />
-      }
+      headerStart={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.conditional.card.header" />}
       headerEnd={
         <>
-          <IconButton
-            icon="caret-up"
-            disabled={index === 0}
-            onClick={handleMoveUpClick}
-          />
-          <IconButton
-            icon="caret-down"
-            disabled={index + 1 === fields.length}
-            onClick={handleMoveDownClick}
-          />
+          <IconButton icon="caret-up" disabled={index === 0} onClick={handleMoveUpClick} />
+          <IconButton icon="caret-down" disabled={index + 1 === fields.length} onClick={handleMoveDownClick} />
           <IconButton icon="trash" onClick={handleRemoveClick} />
         </>
       }
     >
-      <CriteriaCard
-        name={conditionName}
-        alone
-        patronOnly={patronOnly}
-      />
+      <CriteriaCard name={conditionName} alone patronOnly={patronOnly} />
       {children}
     </Card>
   );

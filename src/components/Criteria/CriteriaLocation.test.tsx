@@ -92,10 +92,7 @@ it('Location criteria displays appropriate form', async () => {
   render(
     withIntlConfiguration(
       <QueryClientProvider client={new QueryClient()}>
-        <Form<FormValues>
-          mutators={{ ...arrayMutators }}
-          onSubmit={(v) => submitter(v)}
-        >
+        <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <CriteriaCard name="criteria" root alone />
@@ -103,8 +100,8 @@ it('Location criteria displays appropriate form', async () => {
             </form>
           )}
         </Form>
-      </QueryClientProvider>
-    )
+      </QueryClientProvider>,
+    ),
   );
 
   function expectOptionInDocument(option: string) {
@@ -126,10 +123,7 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Institution' }),
-    'Test institution'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Institution' }), 'Test institution');
 
   expectOptionInDocument('Matching campus 1');
   expectOptionInDocument('Matching campus 2');
@@ -140,10 +134,7 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Campus' }),
-    'Matching campus 1'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Campus' }), 'Matching campus 1');
 
   expectOptionInDocument('Matching library');
   expectOptionNotInDocument('Non-matching library');
@@ -151,10 +142,7 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Campus' }),
-    'Matching campus 2'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Campus' }), 'Matching campus 2');
 
   expectOptionNotInDocument('Matching library');
   expectOptionNotInDocument('Non-matching library');
@@ -162,10 +150,7 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Campus' }),
-    'Matching campus 1'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Campus' }), 'Matching campus 1');
 
   expectOptionInDocument('Matching library');
   expectOptionNotInDocument('Non-matching library');
@@ -173,19 +158,13 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Library' }),
-    'Matching library'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Library' }), 'Matching library');
 
   expectOptionInDocument('Matching location 1');
   expectOptionInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Location' }),
-    'Matching location 1'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Location' }), 'Matching location 1');
 
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

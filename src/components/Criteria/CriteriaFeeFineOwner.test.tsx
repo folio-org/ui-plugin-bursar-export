@@ -42,10 +42,7 @@ describe('Fee/fine owner criteria displays appropriate form', () => {
     render(
       withIntlConfiguration(
         <QueryClientProvider client={new QueryClient()}>
-          <Form<FormValues>
-            mutators={{ ...arrayMutators }}
-            onSubmit={(v) => submitter(v)}
-          >
+          <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
             {({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <CriteriaCard name="criteria" root alone />
@@ -53,21 +50,15 @@ describe('Fee/fine owner criteria displays appropriate form', () => {
               </form>
             )}
           </Form>
-        </QueryClientProvider>
-      )
+        </QueryClientProvider>,
+      ),
     );
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox'),
-      'Fee/fine owner'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox'), 'Fee/fine owner');
   });
 
   it('Selecting an owner works as expected', async () => {
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Fee/fine owner' }),
-      'Owner 1'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine owner' }), 'Owner 1');
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(submitter).toHaveBeenLastCalledWith({

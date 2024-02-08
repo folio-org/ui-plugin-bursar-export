@@ -1,14 +1,8 @@
-import {
-  ComparisonOperator,
-  CriteriaAggregate,
-  CriteriaAggregateType,
-} from '../../../types/CriteriaTypes';
+import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType } from '../../../types/CriteriaTypes';
 import { BursarExportFilterAggregate } from '../types';
 import dtoToAggregateCriteria from './dtoToAggregateCriteria';
 
-test.each<
-  [BursarExportFilterAggregate | undefined, CriteriaAggregate | undefined]
->([
+test.each<[BursarExportFilterAggregate | undefined, CriteriaAggregate | undefined]>([
   [undefined, undefined],
   [
     {
@@ -36,6 +30,4 @@ test.each<
       amountCurrency: '15.23',
     },
   ],
-])('dtoToAggregateCriteria(%s) === %s', (input, expected) =>
-  expect(dtoToAggregateCriteria(input)).toEqual(expected)
-);
+])('dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input)).toEqual(expected));

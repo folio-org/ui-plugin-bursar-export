@@ -17,8 +17,7 @@ export default function useInitialValues() {
 
   const localeWeekdays = useLocaleWeekdays(useIntl());
 
-  const [initialValues, setInitialValues] =
-    useState<Partial<FormValues> | null>(null);
+  const [initialValues, setInitialValues] = useState<Partial<FormValues> | null>(null);
 
   // this must go in an effect since, otherwise, the form will be reset on query fetch (which happens when selecting certain data/criteria)
   useEffect(() => {
@@ -26,23 +25,12 @@ export default function useInitialValues() {
       return;
     }
 
-    if (
-      !currentConfig.isSuccess ||
-      !feeFineTypes.isSuccess ||
-      !locations.isSuccess ||
-      !transferAccounts.isSuccess
-    ) {
+    if (!currentConfig.isSuccess || !feeFineTypes.isSuccess || !locations.isSuccess || !transferAccounts.isSuccess) {
       return;
     }
 
     setInitialValues(
-      dtoToFormValues(
-        currentConfig.data,
-        localeWeekdays,
-        feeFineTypes.data,
-        locations.data,
-        transferAccounts.data
-      )
+      dtoToFormValues(currentConfig.data, localeWeekdays, feeFineTypes.data, locations.data, transferAccounts.data),
     );
   }, [
     currentConfig.isSuccess,

@@ -46,11 +46,6 @@ export default function useLocations() {
 
   return useQuery<LocationDTO[]>(
     ['ui-plugin-bursar-export', 'locations'],
-    async () =>
-      (
-        await ky
-          .get(`locations?cql.allRecords=1&limit=${MAX_LIMIT}`)
-          .json<LocationsResponse>()
-      ).locations
+    async () => (await ky.get(`locations?cql.allRecords=1&limit=${MAX_LIMIT}`).json<LocationsResponse>()).locations,
   );
 }

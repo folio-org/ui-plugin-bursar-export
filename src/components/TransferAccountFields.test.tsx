@@ -57,51 +57,27 @@ jest.mock('@folio/stripes/core', () => ({
 describe('Transfer account selection', () => {
   it.each([
     ['', [], ['Owner 1 account 1', 'Owner 1 account 2', 'Owner 2 account']],
-    [
-      'Owner 1',
-      ['Owner 1 account 1', 'Owner 1 account 2'],
-      ['Owner 2 account'],
-    ],
-    [
-      'Owner 2',
-      ['Owner 2 account'],
-      ['Owner 1 account 1', 'Owner 1 account 2'],
-    ],
-  ])(
-    'For owner %s, has options %s and not %s',
-    async (owner, includedAccounts, excludedAccounts) => {
-      render(
-        withIntlConfiguration(
-          <QueryClientProvider client={new QueryClient()}>
-            <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
-              {() => <TransferAccountFields prefix="" />}
-            </Form>
-          </QueryClientProvider>
-        )
-      );
+    ['Owner 1', ['Owner 1 account 1', 'Owner 1 account 2'], ['Owner 2 account']],
+    ['Owner 2', ['Owner 2 account'], ['Owner 1 account 1', 'Owner 1 account 2']],
+  ])('For owner %s, has options %s and not %s', async (owner, includedAccounts, excludedAccounts) => {
+    render(
+      withIntlConfiguration(
+        <QueryClientProvider client={new QueryClient()}>
+          <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
+            {() => <TransferAccountFields prefix="" />}
+          </Form>
+        </QueryClientProvider>,
+      ),
+    );
 
-      expect(
-        await screen.findByRole('option', { name: 'Owner 1' })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('option', { name: 'Owner 2' })
-      ).toBeInTheDocument();
+    expect(await screen.findByRole('option', { name: 'Owner 1' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'Owner 2' })).toBeInTheDocument();
 
-      await userEvent.selectOptions(
-        screen.getByRole('combobox', { name: 'Fee/fine owner' }),
-        owner
-      );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine owner' }), owner);
 
-      includedAccounts.forEach((account) =>
-        expect(
-          screen.getByRole('option', { name: account })
-        ).toBeInTheDocument()
-      );
-      excludedAccounts.forEach((account) =>
-        expect(
-          screen.queryByRole('option', { name: account })
-        ).not.toBeInTheDocument()
-      );
-    }
-  );
+    includedAccounts.forEach((account) => expect(screen.getByRole('option', { name: account })).toBeInTheDocument());
+    excludedAccounts.forEach((account) =>
+      expect(screen.queryByRole('option', { name: account })).not.toBeInTheDocument(),
+    );
+  });
 });

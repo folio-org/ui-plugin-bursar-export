@@ -39,21 +39,14 @@ export default function AggregateCriteriaCard() {
         },
       ].sort((a, b) => a.label.localeCompare(b.label)),
     ],
-    [intl]
+    [intl],
   );
 
   return (
-    <Card
-      headerStart={
-        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.header" />
-      }
-    >
+    <Card headerStart={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.header" />}>
       <Row>
         <Col xs={12} md={4}>
-          <Field
-            name="aggregateFilter.type"
-            defaultValue={CriteriaAggregateType.PASS}
-          >
+          <Field name="aggregateFilter.type" defaultValue={CriteriaAggregateType.PASS}>
             {(fieldProps) => (
               <Select<CriteriaAggregateType>
                 {...fieldProps}

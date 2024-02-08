@@ -34,10 +34,6 @@ export default function useTransferAccounts() {
   return useQuery<TransferAccountDTO[]>(
     ['ui-plugin-bursar-export', 'trasfer-accounts'],
     async () =>
-      (
-        await ky
-          .get(`transfers?cql.allRecords=1&limit=${MAX_LIMIT}`)
-          .json<TransferAccountResponse>()
-      ).transfers
+      (await ky.get(`transfers?cql.allRecords=1&limit=${MAX_LIMIT}`).json<TransferAccountResponse>()).transfers,
   );
 }

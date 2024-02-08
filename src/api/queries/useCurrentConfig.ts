@@ -19,6 +19,6 @@ export default function useCurrentConfig() {
             searchParams: { limit: 1, query: 'type==BURSAR_FEES_FINES' },
           })
           .json<CurrentConfigResponse>()
-      ).configs?.[0] ?? null
+      ).configs?.[0] ?? null,
   );
 }

@@ -19,15 +19,13 @@ describe('Aggregate criteria card', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
   });
 
   it('Treats pass as default', async () => {
-    expect(screen.getByRole('combobox', { name: 'Filter type' })).toHaveValue(
-      CriteriaAggregateType.PASS
-    );
+    expect(screen.getByRole('combobox', { name: 'Filter type' })).toHaveValue(CriteriaAggregateType.PASS);
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
@@ -39,14 +37,9 @@ describe('Aggregate criteria card', () => {
   });
 
   it('Pass has no extra boxes/options', async () => {
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Filter type' }),
-      CriteriaAggregateType.PASS
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Filter type' }), CriteriaAggregateType.PASS);
 
-    expect(
-      screen.queryByRole('combobox', { name: 'Comparison operator' })
-    ).toBeNull();
+    expect(screen.queryByRole('combobox', { name: 'Comparison operator' })).toBeNull();
     expect(screen.queryByRole('spinbutton')).toBeNull();
     expect(screen.queryByRole('textbox')).toBeNull();
   });
@@ -54,18 +47,16 @@ describe('Aggregate criteria card', () => {
   it('Quantity has operator and dollar amount', async () => {
     await userEvent.selectOptions(
       screen.getByRole('combobox', { name: 'Filter type' }),
-      CriteriaAggregateType.NUM_ROWS
+      CriteriaAggregateType.NUM_ROWS,
     );
 
     // find to allow for useField hook to update
-    expect(
-      await screen.findByRole('combobox', { name: 'Comparison operator' })
-    ).toBeVisible();
+    expect(await screen.findByRole('combobox', { name: 'Comparison operator' })).toBeVisible();
     expect(screen.getByRole('spinbutton')).toBeVisible();
 
     await userEvent.selectOptions(
       screen.getByRole('combobox', { name: 'Comparison operator' }),
-      'Less than but not equal to'
+      'Less than but not equal to',
     );
     await userEvent.type(screen.getByRole('spinbutton'), '15');
 
@@ -83,18 +74,16 @@ describe('Aggregate criteria card', () => {
   it('Amount has operator and dollar amount', async () => {
     await userEvent.selectOptions(
       screen.getByRole('combobox', { name: 'Filter type' }),
-      CriteriaAggregateType.TOTAL_AMOUNT
+      CriteriaAggregateType.TOTAL_AMOUNT,
     );
 
     // find to allow for useField hook to update
-    expect(
-      await screen.findByRole('combobox', { name: 'Comparison operator' })
-    ).toBeVisible();
+    expect(await screen.findByRole('combobox', { name: 'Comparison operator' })).toBeVisible();
     expect(screen.getByRole('spinbutton')).toBeVisible();
 
     await userEvent.selectOptions(
       screen.getByRole('combobox', { name: 'Comparison operator' }),
-      'Greater than or equal to'
+      'Greater than or equal to',
     );
     await userEvent.type(screen.getByRole('spinbutton'), '10');
 

@@ -1,11 +1,4 @@
-import {
-  Card,
-  Checkbox,
-  Col,
-  Row,
-  Select,
-  TextField,
-} from '@folio/stripes/components';
+import { Card, Checkbox, Col, Row, Select, TextField } from '@folio/stripes/components';
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { DataTokenType, HeaderFooterTokenType } from '../../types/TokenTypes';
@@ -42,44 +35,24 @@ export default function LengthControlDrawer({ prefix }: { prefix: string }) {
         <Col xs={6} md={3}>
           <Field name={`${prefix}length`}>
             {(fieldProps) => (
-              <TextField<number>
-                {...fieldProps}
-                fullWidth
-                marginBottom0
-                type="number"
-                min={1}
-                label="Desired length"
-              />
+              <TextField<number> {...fieldProps} fullWidth marginBottom0 type="number" min={1} label="Desired length" />
             )}
           </Field>
         </Col>
         <Col xs={6} md={3}>
           <Field name={`${prefix}character`}>
             {(fieldProps) => (
-              <TextField<string>
-                {...fieldProps}
-                fullWidth
-                marginBottom0
-                maxLength={1}
-                label="Fill extra space with"
-              />
+              <TextField<string> {...fieldProps} fullWidth marginBottom0 maxLength={1} label="Fill extra space with" />
             )}
           </Field>
         </Col>
         <Col xs={6} md={3}>
-          <Field<'FRONT' | 'BACK'>
-            name={`${prefix}direction`}
-            defaultValue="FRONT"
-          >
+          <Field<'FRONT' | 'BACK'> name={`${prefix}direction`} defaultValue="FRONT">
             {(fieldProps) => (
               <Select<'FRONT' | 'BACK'>
                 {...fieldProps}
                 marginBottom0
-                label={
-                  isTruncateEnabled
-                    ? 'Add/remove characters to/from'
-                    : 'Add characters to'
-                }
+                label={isTruncateEnabled ? 'Add/remove characters to/from' : 'Add characters to'}
                 dataOptions={[
                   { label: 'Start', value: 'FRONT' },
                   { label: 'End', value: 'BACK' },
@@ -89,18 +62,8 @@ export default function LengthControlDrawer({ prefix }: { prefix: string }) {
           </Field>
         </Col>
         <Col xs={6} md={3}>
-          <Field
-            name={`${prefix}truncate`}
-            type="checkbox"
-            defaultValue={false}
-          >
-            {(fieldProps) => (
-              <Checkbox
-                {...fieldProps}
-                fullWidth
-                label="Truncate if too long"
-              />
-            )}
+          <Field name={`${prefix}truncate`} type="checkbox" defaultValue={false}>
+            {(fieldProps) => <Checkbox {...fieldProps} fullWidth label="Truncate if too long" />}
           </Field>
         </Col>{' '}
       </Row>

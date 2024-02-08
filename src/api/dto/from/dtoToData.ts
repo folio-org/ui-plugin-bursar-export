@@ -1,16 +1,8 @@
 import ConvenientConstants from '../../../types/ConvenientConstants';
-import {
-  DataToken,
-  DataTokenType,
-  DateFormatType,
-} from '../../../types/TokenTypes';
+import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
-import {
-  BursarExportDataTokenDTO,
-  BursarExportTokenAggregate,
-  BursarExportTokenConstant,
-} from '../types';
+import { BursarExportDataTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
 import dtoToCriteria from './dtoToCriteria';
 import dtoToLengthControl from './dtoToLengthControl';
 
@@ -18,7 +10,7 @@ import dtoToLengthControl from './dtoToLengthControl';
 export default function dtoToData(
   tokens: BursarExportDataTokenDTO[] | undefined,
   feeFineTypes: FeeFineTypeDTO[],
-  locations: LocationDTO[]
+  locations: LocationDTO[],
 ): DataToken[] {
   if (!tokens) {
     return [];
@@ -30,7 +22,7 @@ export default function dtoToData(
 export function dtoToDataToken(
   token: BursarExportDataTokenDTO,
   feeFineTypes: FeeFineTypeDTO[],
-  locations: LocationDTO[]
+  locations: LocationDTO[],
 ): DataToken {
   switch (token.type) {
     case 'Constant':
@@ -110,9 +102,7 @@ export function dtoToDataToken(
 export function constantToToken(token: BursarExportTokenConstant): DataToken {
   if (token.value === ConvenientConstants[DataTokenType.NEWLINE]) {
     return { type: DataTokenType.NEWLINE };
-  } else if (
-    token.value === ConvenientConstants[DataTokenType.NEWLINE_MICROSOFT]
-  ) {
+  } else if (token.value === ConvenientConstants[DataTokenType.NEWLINE_MICROSOFT]) {
     return { type: DataTokenType.NEWLINE_MICROSOFT };
   } else if (token.value === ConvenientConstants[DataTokenType.TAB]) {
     return { type: DataTokenType.TAB };

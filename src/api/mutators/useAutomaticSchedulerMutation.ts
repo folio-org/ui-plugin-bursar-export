@@ -14,10 +14,7 @@ export default function useAutomaticSchedulerMutation() {
   const currentConfig = useCurrentConfig();
 
   const mutation = useMutation(
-    async (parameters: {
-      bursar: BursarExportJobDTO;
-      scheduling: SchedulingDTO;
-    }) => {
+    async (parameters: { bursar: BursarExportJobDTO; scheduling: SchedulingDTO }) => {
       if (currentConfig.data) {
         return ky.put(`data-export-spring/configs/${currentConfig.data.id}`, {
           json: {
@@ -40,26 +37,24 @@ export default function useAutomaticSchedulerMutation() {
       onError: async () => {
         context.sendCallout({
           type: 'error',
-          message: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.automatic.error' }),
+          message: intl.formatMessage({
+            id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.automatic.error',
+          }),
         });
       },
       onSuccess: async () => {
         context.sendCallout({
           type: 'success',
-          message: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.automatic.success' }),
+          message: intl.formatMessage({
+            id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.automatic.success',
+          }),
         });
-        await queryClient.invalidateQueries([
-          'ui-plugin-bursar-export',
-          'current-config',
-        ]);
+        await queryClient.invalidateQueries(['ui-plugin-bursar-export', 'current-config']);
       },
-    }
+    },
   );
 
-  return (parameters: {
-    bursar: BursarExportJobDTO;
-    scheduling: SchedulingDTO;
-  }) => {
+  return (parameters: { bursar: BursarExportJobDTO; scheduling: SchedulingDTO }) => {
     mutation.mutate(parameters);
     return {};
   };

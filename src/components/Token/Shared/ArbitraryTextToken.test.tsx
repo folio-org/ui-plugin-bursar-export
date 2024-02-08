@@ -3,10 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import {
-  DataTokenType,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 
@@ -31,8 +28,8 @@ describe('Arbitrary text token', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('textbox')).toBeVisible();

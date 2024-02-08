@@ -13,12 +13,9 @@ export default function CriteriaLocation({ prefix }: { prefix: string }) {
   const libraries = useLibraries();
   const locations = useLocations();
 
-  const selectedInstitution = useField<string | undefined>(
-    `${prefix}institutionId`,
-    {
-      subscription: { value: true },
-    }
-  ).input.value;
+  const selectedInstitution = useField<string | undefined>(`${prefix}institutionId`, {
+    subscription: { value: true },
+  }).input.value;
   const selectedCampus = useField<string | undefined>(`${prefix}campusId`, {
     subscription: { value: true },
   }).input.value;
@@ -86,13 +83,10 @@ export default function CriteriaLocation({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.inst" />
-              }
-              dataOptions={[
-                { label: '', value: undefined },
-                ...institutionSelectOptions,
-              ].sort((a, b) => a.label.localeCompare(b.label))}
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.inst" />}
+              dataOptions={[{ label: '', value: undefined }, ...institutionSelectOptions].sort((a, b) =>
+                a.label.localeCompare(b.label),
+              )}
             />
           )}
         </Field>
@@ -105,13 +99,10 @@ export default function CriteriaLocation({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.camp" />
-              }
-              dataOptions={[
-                { label: '', value: undefined },
-                ...campusSelectOptions,
-              ].sort((a, b) => a.label.localeCompare(b.label))}
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.camp" />}
+              dataOptions={[{ label: '', value: undefined }, ...campusSelectOptions].sort((a, b) =>
+                a.label.localeCompare(b.label),
+              )}
             />
           )}
         </Field>
@@ -124,13 +115,10 @@ export default function CriteriaLocation({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.lib" />
-              }
-              dataOptions={[
-                { label: '', value: undefined },
-                ...librarySelectOptions,
-              ].sort((a, b) => a.label.localeCompare(b.label))}
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.lib" />}
+              dataOptions={[{ label: '', value: undefined }, ...librarySelectOptions].sort((a, b) =>
+                a.label.localeCompare(b.label),
+              )}
             />
           )}
         </Field>
@@ -143,13 +131,10 @@ export default function CriteriaLocation({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.loc" />
-              }
-              dataOptions={[
-                { label: '', value: undefined },
-                ...locationSelectOptions,
-              ].sort((a, b) => a.label.localeCompare(b.label))}
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.loc" />}
+              dataOptions={[{ label: '', value: undefined }, ...locationSelectOptions].sort((a, b) =>
+                a.label.localeCompare(b.label),
+              )}
             />
           )}
         </Field>

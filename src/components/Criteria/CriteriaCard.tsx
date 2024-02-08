@@ -3,10 +3,7 @@ import classNames from 'classnames';
 import React, { useMemo } from 'react';
 import { useField } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
-import {
-  CriteriaGroupType,
-  CriteriaTerminalType,
-} from '../../types/CriteriaTypes';
+import { CriteriaGroupType, CriteriaTerminalType } from '../../types/CriteriaTypes';
 import CriteriaAge from './CriteriaAge';
 import CriteriaAmount from './CriteriaAmount';
 import css from '../Card.module.css';
@@ -31,13 +28,10 @@ export default function CriteriaCard({
   patronOnly?: boolean;
   alone: boolean;
 }) {
-  const type = useField<CriteriaGroupType | CriteriaTerminalType>(
-    `${name}.type`,
-    {
-      subscription: { value: true },
-      format: (value) => value ?? CriteriaTerminalType.PASS,
-    }
-  ).input.value;
+  const type = useField<CriteriaGroupType | CriteriaTerminalType>(`${name}.type`, {
+    subscription: { value: true },
+    format: (value) => value ?? CriteriaTerminalType.PASS,
+  }).input.value;
 
   const cardInterior = useMemo(() => {
     switch (type) {
@@ -114,21 +108,8 @@ export default function CriteriaCard({
     <Card
       cardClass={css.cardClass}
       headerClass={css.headerClass}
-      headerStart={
-        <CriteriaCardSelect
-          name={`${name}.type`}
-          root={root}
-          patronOnly={patronOnly}
-        />
-      }
-      headerEnd={
-        <CriteriaCardToolbox
-          prefix={`${name}.`}
-          root={root}
-          alone={alone}
-          onRemove={onRemove}
-        />
-      }
+      headerStart={<CriteriaCardSelect name={`${name}.type`} root={root} patronOnly={patronOnly} />}
+      headerEnd={<CriteriaCardToolbox prefix={`${name}.`} root={root} alone={alone} onRemove={onRemove} />}
       bodyClass={classNames({
         [css.emptyBody]: type === CriteriaTerminalType.PASS,
       })}

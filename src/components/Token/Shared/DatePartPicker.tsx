@@ -13,9 +13,7 @@ export default function DatePartPicker({ prefix }: { prefix: string }) {
           {...fieldProps}
           required
           marginBottom0
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.currentDate.format" />
-          }
+          label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.currentDate.format" />}
           dataOptions={[
             {
               label: intl.formatMessage({

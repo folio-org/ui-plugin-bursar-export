@@ -26,23 +26,13 @@ export default function dtoToFormValues(
     return {
       scheduling: dtoToScheduling(values, localeWeekdays),
 
-      criteria: dtoToCriteria(
-        values.exportTypeSpecificParameters.bursarFeeFines.filter,
-        feeFineTypes,
-        locations,
-      ),
+      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations),
 
       aggregate: true,
-      aggregateFilter: dtoToAggregateCriteria(
-        values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter,
-      ),
+      aggregateFilter: dtoToAggregateCriteria(values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter),
 
       header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
-      dataAggregate: dtoToData(
-        values.exportTypeSpecificParameters.bursarFeeFines.data,
-        feeFineTypes,
-        locations,
-      ),
+      dataAggregate: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations),
       footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
 
       transferInfo: dtoToTransfer(
@@ -56,20 +46,12 @@ export default function dtoToFormValues(
     return {
       scheduling: dtoToScheduling(values, localeWeekdays),
 
-      criteria: dtoToCriteria(
-        values.exportTypeSpecificParameters.bursarFeeFines.filter,
-        feeFineTypes,
-        locations,
-      ),
+      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations),
 
       aggregate: false,
 
       header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
-      data: dtoToData(
-        values.exportTypeSpecificParameters.bursarFeeFines.data,
-        feeFineTypes,
-        locations,
-      ),
+      data: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations),
       footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
 
       transferInfo: dtoToTransfer(

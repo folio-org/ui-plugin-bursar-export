@@ -13,18 +13,15 @@ test('Add button works as expected', async () => {
 
   render(
     withIntlConfiguration(
-      <Form<FormValues>
-        mutators={{ ...arrayMutators }}
-        onSubmit={(v) => submitter(v)}
-      >
+      <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <DataTokenSection />
             <button type="submit">Submit</button>
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   await userEvent.click(screen.getByRole('button', { name: 'Add' }));
@@ -34,11 +31,7 @@ test('Add button works as expected', async () => {
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
   expect(submitter).toHaveBeenCalledWith({
-    data: [
-      { type: DataTokenType.NEWLINE },
-      { type: DataTokenType.NEWLINE },
-      { type: DataTokenType.NEWLINE },
-    ],
+    data: [{ type: DataTokenType.NEWLINE }, { type: DataTokenType.NEWLINE }, { type: DataTokenType.NEWLINE }],
   });
 });
 
@@ -58,8 +51,8 @@ test('Add button in aggregate mode works as expected', async () => {
             <button type="submit">Submit</button>
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   await userEvent.click(screen.getByRole('button', { name: 'Add' }));
@@ -70,10 +63,6 @@ test('Add button in aggregate mode works as expected', async () => {
 
   expect(submitter).toHaveBeenCalledWith({
     aggregate: true,
-    dataAggregate: [
-      { type: DataTokenType.NEWLINE },
-      { type: DataTokenType.NEWLINE },
-      { type: DataTokenType.NEWLINE },
-    ],
+    dataAggregate: [{ type: DataTokenType.NEWLINE }, { type: DataTokenType.NEWLINE }, { type: DataTokenType.NEWLINE }],
   });
 });

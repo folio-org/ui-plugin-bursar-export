@@ -64,6 +64,4 @@ test.each<[SavedJobDTO | null | undefined, Partial<FormValues>]>([
       },
     },
   ],
-])('Converts DTO %s to %s', (input, expected) =>
-  expect(dtoToFormValues(input, [], [], [], [])).toEqual(expected)
-);
+])('Converts DTO %s to %s', (input, expected) => expect(dtoToFormValues(input, [], [], [], [])).toEqual(expected));

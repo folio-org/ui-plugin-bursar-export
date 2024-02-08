@@ -17,8 +17,8 @@ describe('Scheduling menu', () => {
           }}
         >
           {() => <SchedulingMenu />}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     // no interval, weekdays, or time
@@ -35,14 +35,12 @@ describe('Scheduling menu', () => {
           }}
         >
           {() => <SchedulingMenu />}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.queryAllByRole('textbox')).toHaveLength(1);
-    expect(
-      screen.getByRole('textbox', { name: 'Hours between runs' })
-    ).toBeVisible();
+    expect(screen.getByRole('textbox', { name: 'Hours between runs' })).toBeVisible();
   });
 
   it('Days option shows interval and start time options only', () => {
@@ -55,18 +53,16 @@ describe('Scheduling menu', () => {
           }}
         >
           {() => <SchedulingMenu />}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.queryAllByRole('textbox')).toHaveLength(2);
-    expect(
-      screen.getByRole('textbox', { name: 'Days between runs' })
-    ).toBeVisible();
+    expect(screen.getByRole('textbox', { name: 'Days between runs' })).toBeVisible();
     expect(
       screen.getByRole('textbox', {
         name: (name) => name.startsWith('Start time'),
-      })
+      }),
     ).toBeVisible();
   });
 
@@ -80,21 +76,17 @@ describe('Scheduling menu', () => {
           }}
         >
           {() => <SchedulingMenu />}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.queryAllByRole('textbox')).toHaveLength(3);
-    expect(
-      screen.getByRole('textbox', { name: 'Weeks between runs' })
-    ).toBeVisible();
+    expect(screen.getByRole('textbox', { name: 'Weeks between runs' })).toBeVisible();
     expect(
       screen.getByRole('textbox', {
         name: (name) => name.startsWith('Start time'),
-      })
+      }),
     ).toBeVisible();
-    expect(
-      screen.getByRole('textbox', { name: 'Run on weekdays' })
-    ).toBeVisible();
+    expect(screen.getByRole('textbox', { name: 'Run on weekdays' })).toBeVisible();
   });
 });

@@ -23,9 +23,7 @@ test.each([
   [DataTokenType.ITEM_INFO, false],
   [DataTokenType.USER_DATA, false],
   [DataTokenType.CONSTANT_CONDITIONAL, false],
-])('Card bodies for type %s are empty = %s', (type, expected) =>
-  expect(isDataBodyEmpty(type)).toBe(expected)
-);
+])('Card bodies for type %s are empty = %s', (type, expected) => expect(isDataBodyEmpty(type)).toBe(expected));
 
 test.each([
   undefined,
@@ -43,8 +41,8 @@ test.each([
             <DataTokenCardBody name="test" />
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   expect(container.textContent).toBe('');

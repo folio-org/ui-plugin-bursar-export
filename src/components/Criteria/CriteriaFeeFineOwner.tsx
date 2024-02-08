@@ -30,13 +30,8 @@ export default function CriteriaFeeFineOwner({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />
-              }
-              dataOptions={[
-                { label: '', value: '', disabled: true },
-                ...ownersSelectOptions,
-              ]}
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
+              dataOptions={[{ label: '', value: '', disabled: true }, ...ownersSelectOptions]}
             />
           )}
         </Field>

@@ -43,7 +43,7 @@ export default function ItemInfoToken({ prefix }: { prefix: string }) {
           value: option.value as ItemAttribute,
         }))
         .sort((a, b) => a.label.localeCompare(b.label)),
-    [intl]
+    [intl],
   );
 
   return (

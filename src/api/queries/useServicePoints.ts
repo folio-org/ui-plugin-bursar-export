@@ -34,10 +34,6 @@ export default function useServicePoints() {
   return useQuery<ServicePointDTO[]>(
     ['ui-plugin-bursar-export', 'service-points'],
     async () =>
-      (
-        await ky
-          .get(`service-points?cql.allRecords=1&limit=${MAX_LIMIT}`)
-          .json<ServicePointResponse>()
-      ).servicepoints
+      (await ky.get(`service-points?cql.allRecords=1&limit=${MAX_LIMIT}`).json<ServicePointResponse>()).servicepoints,
   );
 }

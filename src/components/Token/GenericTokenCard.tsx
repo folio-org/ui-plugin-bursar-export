@@ -34,25 +34,18 @@ export default function GenericTokenCard<TypeEnum>({
   }).input.value;
 
   // cache this since we use it multiple times
-  const lengthControlAvailable = useMemo(
-    () => shouldHaveLengthControl(type),
-    [type, shouldHaveLengthControl]
-  );
+  const lengthControlAvailable = useMemo(() => shouldHaveLengthControl(type), [type, shouldHaveLengthControl]);
 
-  const lengthControlOpen = useField<boolean>(
-    `${name}.lengthControl.drawerOpen`,
-    {
-      subscription: { value: true },
-      format: (value) => value ?? false,
-    }
-  ).input.value;
+  const lengthControlOpen = useField<boolean>(`${name}.lengthControl.drawerOpen`, {
+    subscription: { value: true },
+    format: (value) => value ?? false,
+  }).input.value;
 
   return (
     <>
       <Card
         cardClass={classNames(css.cardClass, {
-          [css.cardWithLengthControl]:
-            lengthControlAvailable && lengthControlOpen,
+          [css.cardWithLengthControl]: lengthControlAvailable && lengthControlOpen,
         })}
         headerClass={css.headerClass}
         headerStart={<SelectComponent name={`${name}.type`} />}
@@ -71,9 +64,7 @@ export default function GenericTokenCard<TypeEnum>({
       >
         <BodyComponent name={name} />
       </Card>
-      {lengthControlAvailable && lengthControlOpen && (
-        <LengthControlDrawer prefix={`${name}.lengthControl.`} />
-      )}
+      {lengthControlAvailable && lengthControlOpen && <LengthControlDrawer prefix={`${name}.lengthControl.`} />}
     </>
   );
 }

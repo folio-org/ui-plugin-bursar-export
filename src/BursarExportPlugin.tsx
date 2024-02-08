@@ -1,9 +1,4 @@
-import {
-  Button,
-  LoadingPane,
-  Pane,
-  PaneFooter,
-} from '@folio/stripes/components';
+import { Button, LoadingPane, Pane, PaneFooter } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
@@ -48,9 +43,7 @@ export default function BursarExportPlugin() {
   if (initialValues === null) {
     return (
       <LoadingPane
-        paneTitle={
-          <FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />
-        }
+        paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
         defaultWidth="fill"
         footer={
           <PaneFooter
@@ -99,15 +92,9 @@ export default function BursarExportPlugin() {
         />
       }
       id="pane-batch-group-configuration"
-      paneTitle={
-        <FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />
-      }
+      paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
     >
-      <ConfigurationForm
-        initialValues={initialValues}
-        onSubmit={submitCallback}
-        formApiRef={formApiRef}
-      />
+      <ConfigurationForm initialValues={initialValues} onSubmit={submitCallback} formApiRef={formApiRef} />
     </Pane>
   );
 }

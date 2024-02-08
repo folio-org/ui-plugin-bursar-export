@@ -17,9 +17,7 @@ export default function ExportPreview() {
   return (
     <>
       <Card
-        headerStart={
-          <FormattedMessage id="ui-plugin-bursar-export.bursarExports.preview.header" />
-        }
+        headerStart={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.preview.header" />}
         bodyClass={classNames(css.preview, { [css.wrap]: wrap })}
       >
         <ExportPreviewData />

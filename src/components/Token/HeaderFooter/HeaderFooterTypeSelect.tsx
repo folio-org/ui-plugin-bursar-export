@@ -89,14 +89,7 @@ export default function HeaderFooterTypeSelect({ name }: { name: string }) {
         id: 'ui-plugin-bursar-export.bursarExports.token.headerFooter.typeSelect',
       })}
     >
-      {(fieldProps) => (
-        <Select<HeaderFooterTokenType>
-          {...fieldProps}
-          required
-          marginBottom0
-          dataOptions={options}
-        />
-      )}
+      {(fieldProps) => <Select<HeaderFooterTokenType> {...fieldProps} required marginBottom0 dataOptions={options} />}
     </Field>
   );
 }

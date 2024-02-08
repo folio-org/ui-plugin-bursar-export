@@ -68,9 +68,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'service-points?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('service-points?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       { id: '1', name: 'Circ desk 1' },
       { id: '2', name: 'Online' },
@@ -109,9 +107,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'locations?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('locations?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         id: '1',
@@ -161,9 +157,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'owners?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('owners?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         id: '9cb8f9fd-4386-45d0-bb6e-aa8b33e577b0',
@@ -209,9 +203,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'feefines?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('feefines?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         id: '9523cb96-e752-40c2-89da-60f3961a488d',
@@ -254,9 +246,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'transfers?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('transfers?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         accountName: 'test account 1',
@@ -288,9 +278,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'location-units/institutions?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('location-units/institutions?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         id: '40ee00ca-a518-4b49-be01-0638d0a4ac57',
@@ -324,9 +312,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'location-units/campuses?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('location-units/campuses?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         id: '62cf76b7-cca5-4d33-9217-edf42ce1a848',
@@ -367,9 +353,7 @@ describe('API Query Tests', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(kyMock).toHaveBeenCalledWith(
-      'location-units/libraries?cql.allRecords=1&limit=2147483647'
-    );
+    expect(kyMock).toHaveBeenCalledWith('location-units/libraries?cql.allRecords=1&limit=2147483647');
     expect(result.current.data).toStrictEqual([
       {
         id: '5d78803e-ca04-4b4a-aeae-2c63b924518b',
@@ -390,23 +374,20 @@ describe('API Query Tests', () => {
     [undefined, null],
     [[], null],
     [[{ id: 'foo' }], { id: 'foo' }],
-  ])(
-    'Current config query with response %s gives %s',
-    async (configs, expected) => {
-      responseMock.mockResolvedValue({
-        configs,
-      });
+  ])('Current config query with response %s gives %s', async (configs, expected) => {
+    responseMock.mockResolvedValue({
+      configs,
+    });
 
-      const { result } = renderHook(() => useCurrentConfig(), {
-        wrapper,
-      });
+    const { result } = renderHook(() => useCurrentConfig(), {
+      wrapper,
+    });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-      expect(kyMock).toHaveBeenCalledWith('data-export-spring/configs', {
-        searchParams: { limit: 1, query: 'type==BURSAR_FEES_FINES' },
-      });
-      expect(result.current.data).toStrictEqual(expected);
-    }
-  );
+    expect(kyMock).toHaveBeenCalledWith('data-export-spring/configs', {
+      searchParams: { limit: 1, query: 'type==BURSAR_FEES_FINES' },
+    });
+    expect(result.current.data).toStrictEqual(expected);
+  });
 });

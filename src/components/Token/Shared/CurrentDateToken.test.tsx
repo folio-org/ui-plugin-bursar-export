@@ -3,10 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import {
-  DataTokenType,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
 
@@ -28,21 +25,15 @@ describe('Current date token', () => {
           )}
         </Form>,
         'en-US',
-        'America/Chicago'
-      )
+        'America/Chicago',
+      ),
     );
 
-    expect(screen.getByRole('combobox', { name: 'Format' })).toHaveDisplayValue(
-      'Year (4-digit)'
-    );
+    expect(screen.getByRole('combobox', { name: 'Format' })).toHaveDisplayValue('Year (4-digit)');
     expect(screen.getByRole('option', { name: 'Quarter' })).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('combobox', { name: 'Timezone' })
-    ).toHaveDisplayValue('America/Chicago');
-    expect(
-      screen.getByRole('option', { name: 'Europe/Lisbon' })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('combobox', { name: 'Timezone' })).toHaveDisplayValue('America/Chicago');
+    expect(screen.getByRole('option', { name: 'Europe/Lisbon' })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'UTC' })).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));

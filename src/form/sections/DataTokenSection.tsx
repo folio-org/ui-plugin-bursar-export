@@ -25,12 +25,7 @@ export default function DataTokenSection() {
       {({ fields }) => (
         <>
           {fields.map((innerName, index) => (
-            <DataTokenCard
-              key={innerName}
-              name={innerName}
-              index={index}
-              isLast={index + 1 === fields.length}
-            />
+            <DataTokenCard key={innerName} name={innerName} index={index} isLast={index + 1 === fields.length} />
           ))}
           <Button onClick={() => fields.push({ type: DataTokenType.NEWLINE })}>
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.add" />

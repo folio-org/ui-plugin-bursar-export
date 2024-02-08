@@ -1,19 +1,12 @@
 import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import {
-  DataToken,
-  DataTokenType,
-  DateFormatType,
-} from '../../../types/TokenTypes';
+import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { BursarExportDataTokenDTO } from '../types';
 import dataToDto, { dataTokenToDto } from './dataToDto';
 
 describe('Data token conversion', () => {
   test.each<[DataToken, BursarExportDataTokenDTO]>([
     [{ type: DataTokenType.NEWLINE }, { type: 'Constant', value: '\n' }],
-    [
-      { type: DataTokenType.NEWLINE_MICROSOFT },
-      { type: 'Constant', value: '\r\n' },
-    ],
+    [{ type: DataTokenType.NEWLINE_MICROSOFT }, { type: 'Constant', value: '\r\n' }],
     [{ type: DataTokenType.TAB }, { type: 'Constant', value: '\t' }],
     [{ type: DataTokenType.COMMA }, { type: 'Constant', value: ',' }],
     [
@@ -29,10 +22,7 @@ describe('Data token conversion', () => {
       { type: 'Constant', value: 'foo' },
     ],
 
-    [
-      { type: DataTokenType.AGGREGATE_COUNT },
-      { type: 'Aggregate', value: 'NUM_ROWS', decimal: false },
-    ],
+    [{ type: DataTokenType.AGGREGATE_COUNT }, { type: 'Aggregate', value: 'NUM_ROWS', decimal: false }],
 
     [
       { type: DataTokenType.AGGREGATE_TOTAL, decimal: false },
@@ -186,9 +176,7 @@ describe('Data token conversion', () => {
         else: { type: 'Constant', value: 'else' },
       },
     ],
-  ])('Converts %s into %s', (token, expected) =>
-    expect(dataTokenToDto(token)).toEqual(expected)
-  );
+  ])('Converts %s into %s', (token, expected) => expect(dataTokenToDto(token)).toEqual(expected));
 
   test.each<[DataToken[] | undefined, BursarExportDataTokenDTO[]]>([
     [undefined, []],
@@ -200,7 +188,5 @@ describe('Data token conversion', () => {
         { type: 'Constant', value: ',' },
       ],
     ],
-  ])('Bulk converts %s into %s', (token, expected) =>
-    expect(dataToDto(token)).toEqual(expected)
-  );
+  ])('Bulk converts %s into %s', (token, expected) => expect(dataToDto(token)).toEqual(expected));
 });

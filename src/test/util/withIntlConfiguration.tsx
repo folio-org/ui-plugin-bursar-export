@@ -24,7 +24,7 @@ export const translationSets = [
 export function withIntlConfigurationAnyTimezone(
   children: ReactNode,
   locale = 'en-US',
-  timeZone?: string
+  timeZone?: string,
 ): React.JSX.Element {
   const allTranslations: Record<string, string> = {};
 
@@ -36,11 +36,7 @@ export function withIntlConfigurationAnyTimezone(
   });
 
   return (
-    <IntlProvider
-      locale={locale}
-      timeZone={timeZone}
-      messages={allTranslations}
-    >
+    <IntlProvider locale={locale} timeZone={timeZone} messages={allTranslations}>
       {children}
     </IntlProvider>
   );
@@ -49,7 +45,7 @@ export function withIntlConfigurationAnyTimezone(
 export default function withIntlConfiguration(
   children: ReactNode,
   locale = 'en-US',
-  timeZone = 'UTC'
+  timeZone = 'UTC',
 ): React.JSX.Element {
   return withIntlConfigurationAnyTimezone(children, locale, timeZone);
 }

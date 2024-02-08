@@ -15,7 +15,7 @@ describe('Export preview data component', () => {
     const { container } = render(
       <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
         {() => <ExportPreviewData />}
-      </Form>
+      </Form>,
     );
     expect(container).toHaveTextContent('');
   });
@@ -40,13 +40,9 @@ describe('Export preview data component', () => {
 
   it('renders from form context', () => {
     const { container } = render(
-      <Form
-        mutators={{ ...arrayMutators }}
-        onSubmit={jest.fn()}
-        initialValues={SAMPLE_DATA}
-      >
+      <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()} initialValues={SAMPLE_DATA}>
         {() => <ExportPreviewData />}
-      </Form>
+      </Form>,
     );
     expect(container).toHaveTextContent('HEADER DATA DATA FOOTER');
   });
@@ -59,23 +55,17 @@ describe('Export preview data component', () => {
         initialValues={{ ...SAMPLE_DATA, preview: { invisible: true } }}
       >
         {() => <ExportPreviewData />}
-      </Form>
+      </Form>,
     );
     expect(container).toHaveTextContent('HEADER•DATA•DATA•FOOTER');
   });
 
   it('uses aggregate data when applicable', () => {
     const { container } = render(
-      <Form
-        mutators={{ ...arrayMutators }}
-        onSubmit={jest.fn()}
-        initialValues={{ ...SAMPLE_DATA, aggregate: true }}
-      >
+      <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()} initialValues={{ ...SAMPLE_DATA, aggregate: true }}>
         {() => <ExportPreviewData />}
-      </Form>
+      </Form>,
     );
-    expect(container).toHaveTextContent(
-      'HEADER DATA_AGGREGATE DATA_AGGREGATE FOOTER'
-    );
+    expect(container).toHaveTextContent('HEADER DATA_AGGREGATE DATA_AGGREGATE FOOTER');
   });
 });

@@ -34,10 +34,6 @@ export default function useCampuses() {
   return useQuery<CampusDTO[]>(
     ['ui-plugin-bursar-export', 'campuses'],
     async () =>
-      (
-        await ky
-          .get(`location-units/campuses?cql.allRecords=1&limit=${MAX_LIMIT}`)
-          .json<CampusesResponse>()
-      ).loccamps
+      (await ky.get(`location-units/campuses?cql.allRecords=1&limit=${MAX_LIMIT}`).json<CampusesResponse>()).loccamps,
   );
 }

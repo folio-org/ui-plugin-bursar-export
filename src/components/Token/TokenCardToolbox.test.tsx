@@ -21,18 +21,12 @@ describe('Token card toolbox', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <TokenCardToolbox
-                fieldArrayName="test"
-                name="test[1]"
-                index={1}
-                isLast
-                showLengthControl={false}
-              />
+              <TokenCardToolbox fieldArrayName="test" name="test[1]" index={1} isLast showLengthControl={false} />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'trash' }));
@@ -65,8 +59,8 @@ describe('Token card toolbox', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'caret-up' }));
@@ -104,14 +98,12 @@ describe('Token card toolbox', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('button', { name: 'caret-up' })).toBeDisabled();
-    expect(
-      screen.getByRole('button', { name: 'caret-down' })
-    ).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: 'caret-down' })).not.toBeDisabled();
     expect(screen.queryByRole('button', { name: 'gear' })).toBeNull();
   });
 
@@ -129,18 +121,12 @@ describe('Token card toolbox', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <TokenCardToolbox
-                fieldArrayName="test"
-                name="test[2"
-                index={2}
-                isLast
-                showLengthControl
-              />
+              <TokenCardToolbox fieldArrayName="test" name="test[2" index={2} isLast showLengthControl />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('button', { name: 'caret-up' })).not.toBeDisabled();
@@ -162,18 +148,12 @@ describe('Token card toolbox', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <TokenCardToolbox
-                fieldArrayName="test"
-                name="test[0]"
-                index={0}
-                isLast
-                showLengthControl
-              />
+              <TokenCardToolbox fieldArrayName="test" name="test[0]" index={0} isLast showLengthControl />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'gear' }));

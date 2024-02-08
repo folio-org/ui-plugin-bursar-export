@@ -1,11 +1,5 @@
-import {
-  DateFormatType,
-  HeaderFooterToken,
-  HeaderFooterTokenType,
-} from '../../types/TokenTypes';
-import createHeaderFooterString, {
-  tokenToString,
-} from './createHeaderFooterString';
+import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../types/TokenTypes';
+import createHeaderFooterString, { tokenToString } from './createHeaderFooterString';
 
 describe('Preview data generation', () => {
   const TEST_AMOUNT = 12.34;
@@ -31,9 +25,7 @@ describe('Preview data generation', () => {
     [{ type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: false }, '1234'],
     [{ type: HeaderFooterTokenType.AGGREGATE_COUNT }, '5'],
   ] as const)('tokenToString(%o)=%s', (token, expected) =>
-    expect(
-      tokenToString(token as HeaderFooterToken, TEST_AMOUNT, TEST_COUNT)
-    ).toBe(expected)
+    expect(tokenToString(token as HeaderFooterToken, TEST_AMOUNT, TEST_COUNT)).toBe(expected),
   );
 
   test('createHeaderFooterString works as expected', () =>
@@ -45,7 +37,7 @@ describe('Preview data generation', () => {
           { type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: true },
         ] as HeaderFooterToken[],
         12.34,
-        5
-      )
+        5,
+      ),
     ).toStrictEqual('5,12.34'));
 });

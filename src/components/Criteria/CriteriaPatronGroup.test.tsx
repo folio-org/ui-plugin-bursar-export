@@ -53,10 +53,7 @@ it('Patron group type criteria displays appropriate form', async () => {
   render(
     withIntlConfiguration(
       <QueryClientProvider client={new QueryClient()}>
-        <Form<FormValues>
-          mutators={{ ...arrayMutators }}
-          onSubmit={(v) => submitter(v)}
-        >
+        <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <CriteriaCard name="criteria" root alone />
@@ -64,8 +61,8 @@ it('Patron group type criteria displays appropriate form', async () => {
             </form>
           )}
         </Form>
-      </QueryClientProvider>
-    )
+      </QueryClientProvider>,
+    ),
   );
 
   await userEvent.selectOptions(screen.getByRole('combobox'), 'Patron group');
@@ -73,10 +70,7 @@ it('Patron group type criteria displays appropriate form', async () => {
   expect(screen.getByRole('option', { name: 'faculty' })).toBeVisible();
   expect(screen.getByRole('option', { name: 'undergrad' })).toBeVisible();
 
-  await userEvent.selectOptions(
-    screen.getByRole('combobox', { name: 'Patron group' }),
-    'staff'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Patron group' }), 'staff');
 
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

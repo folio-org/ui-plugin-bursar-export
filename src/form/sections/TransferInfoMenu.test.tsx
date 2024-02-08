@@ -5,10 +5,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
-import {
-  ComparisonOperator,
-  CriteriaTerminalType,
-} from '../../types/CriteriaTypes';
+import { ComparisonOperator, CriteriaTerminalType } from '../../types/CriteriaTypes';
 import TransferInfoMenu from './TransferInfoMenu';
 
 const getResponse = jest.fn((endpoint: string) => {
@@ -73,35 +70,26 @@ describe('Transfer criteria menu', () => {
           <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
             {() => <TransferInfoMenu />}
           </Form>
-        </QueryClientProvider>
-      )
+        </QueryClientProvider>,
+      ),
     );
 
     expect(screen.getByText('Transfer to:')).toBeVisible();
     expect(screen.queryByText('Otherwise:')).toBeNull();
-    expect(
-      screen.getByText(/Conditions will be evaluated in order/)
-    ).not.toBeVisible();
+    expect(screen.getByText(/Conditions will be evaluated in order/)).not.toBeVisible();
 
-    await userEvent.click(
-      screen.getByRole('button', { name: 'Add condition' })
-    );
+    await userEvent.click(screen.getByRole('button', { name: 'Add condition' }));
     waitFor(() => {
       expect(screen.queryByText('Transfer to:')).toBeNull();
       expect(screen.getByText('Otherwise:')).toBeVisible();
-      expect(
-        screen.getByText(/Conditions will be evaluated in order/)
-      ).toBeVisible();
-    })
-
+      expect(screen.getByText(/Conditions will be evaluated in order/)).toBeVisible();
+    });
 
     await userEvent.click(screen.getAllByRole('button', { name: 'trash' })[0]);
 
     expect(screen.getByText('Transfer to:')).toBeVisible();
     expect(screen.queryByText('Otherwise:')).toBeNull();
-    expect(
-      screen.getByText(/Conditions will be evaluated in order/)
-    ).not.toBeVisible();
+    expect(screen.getByText(/Conditions will be evaluated in order/)).not.toBeVisible();
   });
 
   describe('buttons work as expected', () => {
@@ -150,26 +138,18 @@ describe('Transfer criteria menu', () => {
                 </form>
               )}
             </Form>
-          </QueryClientProvider>
-        )
+          </QueryClientProvider>,
+        ),
       );
     });
 
     it('add works as expected', async () => {
-      await userEvent.click(
-        screen.getByRole('button', { name: 'Add condition' })
-      );
-      await userEvent.selectOptions(
-        screen.getByRole('combobox', { name: 'Patron group' }),
-        'staff'
-      );
-      await userEvent.selectOptions(
-        screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[2],
-        'Owner 2'
-      );
+      await userEvent.click(screen.getByRole('button', { name: 'Add condition' }));
+      await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Patron group' }), 'staff');
+      await userEvent.selectOptions(screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[2], 'Owner 2');
       await userEvent.selectOptions(
         screen.getAllByRole('combobox', { name: 'Transfer account' })[2],
-        'Owner 2 account'
+        'Owner 2 account',
       );
 
       await userEvent.click(screen.getByRole('button', { name: 'Submit' }));

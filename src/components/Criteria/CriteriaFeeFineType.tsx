@@ -10,14 +10,11 @@ export default function CriteriaFeeFineType({ prefix }: { prefix: string }) {
   const feeFineTypes = useFeeFineTypes();
   const intl = useIntl();
 
-  const selectedOwner = useField<string | undefined>(
-    `${prefix}feeFineOwnerId`,
-    {
-      subscription: { value: true },
-      // provide default value for when the field is not yet initialized
-      format: (value) => value ?? 'automatic',
-    }
-  ).input.value;
+  const selectedOwner = useField<string | undefined>(`${prefix}feeFineOwnerId`, {
+    subscription: { value: true },
+    // provide default value for when the field is not yet initialized
+    format: (value) => value ?? 'automatic',
+  }).input.value;
 
   const ownersSelectOptions = useMemo(() => {
     if (!feeFineOwners.isSuccess) {
@@ -62,9 +59,7 @@ export default function CriteriaFeeFineType({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />
-              }
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
               dataOptions={[
                 {
                   label: intl.formatMessage({
@@ -86,13 +81,10 @@ export default function CriteriaFeeFineType({ prefix }: { prefix: string }) {
               fullWidth
               marginBottom0
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.type" />
-              }
-              dataOptions={[
-                { label: '', value: undefined },
-                ...typeSelectOptions,
-              ].sort((a, b) => a.label.localeCompare(b.label))}
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.type" />}
+              dataOptions={[{ label: '', value: undefined }, ...typeSelectOptions].sort((a, b) =>
+                a.label.localeCompare(b.label),
+              )}
             />
           )}
         </Field>

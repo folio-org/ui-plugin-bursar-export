@@ -1,29 +1,17 @@
 import ConvenientConstants from '../../../types/ConvenientConstants';
-import {
-  DateFormatType,
-  HeaderFooterToken,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
-import {
-  BursarExportHeaderFooterTokenDTO,
-  BursarExportTokenAggregate,
-  BursarExportTokenConstant,
-} from '../types';
+import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { BursarExportHeaderFooterTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
 import dtoToLengthControl from './dtoToLengthControl';
 
 // inverse of ../to/headerFooterToDto
-export default function dtoToHeaderFooter(
-  tokens: BursarExportHeaderFooterTokenDTO[] | undefined
-): HeaderFooterToken[] {
+export default function dtoToHeaderFooter(tokens: BursarExportHeaderFooterTokenDTO[] | undefined): HeaderFooterToken[] {
   if (tokens === undefined) {
     return [];
   }
   return tokens.map(dtoToHeaderFooterToken);
 }
 
-export function dtoToHeaderFooterToken(
-  token: BursarExportHeaderFooterTokenDTO
-): HeaderFooterToken {
+export function dtoToHeaderFooterToken(token: BursarExportHeaderFooterTokenDTO): HeaderFooterToken {
   switch (token.type) {
     case 'Constant':
       return constantToToken(token);
@@ -42,14 +30,10 @@ export function dtoToHeaderFooterToken(
   }
 }
 
-export function constantToToken(
-  token: BursarExportTokenConstant
-): HeaderFooterToken {
+export function constantToToken(token: BursarExportTokenConstant): HeaderFooterToken {
   if (token.value === ConvenientConstants[HeaderFooterTokenType.NEWLINE]) {
     return { type: HeaderFooterTokenType.NEWLINE };
-  } else if (
-    token.value === ConvenientConstants[HeaderFooterTokenType.NEWLINE_MICROSOFT]
-  ) {
+  } else if (token.value === ConvenientConstants[HeaderFooterTokenType.NEWLINE_MICROSOFT]) {
     return { type: HeaderFooterTokenType.NEWLINE_MICROSOFT };
   } else if (token.value === ConvenientConstants[HeaderFooterTokenType.TAB]) {
     return { type: HeaderFooterTokenType.TAB };
@@ -65,9 +49,7 @@ export function constantToToken(
   }
 }
 
-export function aggregateToToken(
-  token: BursarExportTokenAggregate
-): HeaderFooterToken {
+export function aggregateToToken(token: BursarExportTokenAggregate): HeaderFooterToken {
   if (token.value === 'NUM_ROWS') {
     return {
       type: HeaderFooterTokenType.AGGREGATE_COUNT,

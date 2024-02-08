@@ -1,9 +1,5 @@
 import { CriteriaTerminalType } from '../../types/CriteriaTypes';
-import {
-  DataToken,
-  DataTokenType,
-  DateFormatType,
-} from '../../types/TokenTypes';
+import { DataToken, DataTokenType, DateFormatType } from '../../types/TokenTypes';
 import createPreviewData, {
   formatFeeFineToken,
   formatItemToken,
@@ -30,18 +26,14 @@ describe('Preview data generation', () => {
   test.each([
     ['FEE_FINE_TYPE_ID', 'UUID'],
     ['FEE_FINE_TYPE_NAME', 'WORD WORD'],
-  ] as const)('formatFeeFineToken(%s)=%s', (type, expected) =>
-    expect(formatFeeFineToken(type)).toBe(expected)
-  );
+  ] as const)('formatFeeFineToken(%s)=%s', (type, expected) => expect(formatFeeFineToken(type)).toBe(expected));
 
   test.each([
     ['BARCODE', 'ALPHANUMERIC'],
     ['NAME', 'WORDS WORDS WORDS'],
     ['MATERIAL_TYPE', 'WORD'],
     ['LIBRARY_ID', 'UUID'],
-  ] as const)('formatItemToken(%s)=%s', (type, expected) =>
-    expect(formatItemToken(type)).toBe(expected)
-  );
+  ] as const)('formatItemToken(%s)=%s', (type, expected) => expect(formatItemToken(type)).toBe(expected));
 
   test.each([
     ['FOLIO_ID', 'UUID'],
@@ -51,9 +43,7 @@ describe('Preview data generation', () => {
     ['FIRST_NAME', 'FIRST_NAME'],
     ['MIDDLE_NAME', 'LAST_NAME'],
     ['LAST_NAME', 'LAST_NAME'],
-  ] as const)('formatUserToken(%s)=%s', (type, expected) =>
-    expect(formatUserToken(type)).toBe(expected)
-  );
+  ] as const)('formatUserToken(%s)=%s', (type, expected) => expect(formatUserToken(type)).toBe(expected));
 
   const TEST_AMOUNT = 12.34;
   const TEST_COUNT = 5;
@@ -67,16 +57,10 @@ describe('Preview data generation', () => {
     [{ type: DataTokenType.TAB }, '\t'],
     [{ type: DataTokenType.COMMA }, ','],
     [{ type: DataTokenType.SPACE, repeat: '3' }, '   '],
-    [
-      { type: DataTokenType.CURRENT_DATE, format: DateFormatType.YEAR_LONG },
-      new Date().getFullYear().toString(),
-    ],
+    [{ type: DataTokenType.CURRENT_DATE, format: DateFormatType.YEAR_LONG }, new Date().getFullYear().toString()],
     [{ type: DataTokenType.AGGREGATE_TOTAL, decimal: true }, '12.34'],
     [{ type: DataTokenType.ACCOUNT_AMOUNT, decimal: false }, '1234'],
-    [
-      { type: DataTokenType.ACCOUNT_DATE, format: DateFormatType.YEAR_LONG },
-      '2001',
-    ],
+    [{ type: DataTokenType.ACCOUNT_DATE, format: DateFormatType.YEAR_LONG }, '2001'],
     [
       {
         type: DataTokenType.FEE_FINE_TYPE,
@@ -85,10 +69,7 @@ describe('Preview data generation', () => {
       'UUID',
     ],
     [{ type: DataTokenType.ITEM_INFO }, 'UUID'],
-    [
-      { type: DataTokenType.USER_DATA, userAttribute: 'BARCODE' },
-      'ALPHANUMERIC',
-    ],
+    [{ type: DataTokenType.USER_DATA, userAttribute: 'BARCODE' }, 'ALPHANUMERIC'],
     [
       {
         type: DataTokenType.CONSTANT_CONDITIONAL,
@@ -106,31 +87,27 @@ describe('Preview data generation', () => {
     ],
     [{ type: DataTokenType.AGGREGATE_COUNT }, '5'],
   ])('tokenToString(%o)=%s', (token, expected) =>
-    expect(tokenToString(token as DataToken, TEST_AMOUNT, TEST_COUNT)).toBe(
-      expected
-    )
+    expect(tokenToString(token as DataToken, TEST_AMOUNT, TEST_COUNT)).toBe(expected),
   );
 
   test.each([
     [true, 7, ['7', ',', '12.34']],
     [false, 1, ['1', ',', '12.34']],
-  ])(
-    'generateEntry(aggregate=%s) gives count=%s and elements=%s',
-    (aggregate, expectedCount, expectedElements) =>
-      expect(
-        generateEntry(
-          [
-            { type: DataTokenType.AGGREGATE_COUNT },
-            { type: DataTokenType.COMMA },
-            { type: DataTokenType.AGGREGATE_TOTAL, decimal: true },
-          ],
-          aggregate
-        )
-      ).toStrictEqual({
-        amount: 12.34,
-        count: expectedCount,
-        elements: expectedElements,
-      })
+  ])('generateEntry(aggregate=%s) gives count=%s and elements=%s', (aggregate, expectedCount, expectedElements) =>
+    expect(
+      generateEntry(
+        [
+          { type: DataTokenType.AGGREGATE_COUNT },
+          { type: DataTokenType.COMMA },
+          { type: DataTokenType.AGGREGATE_TOTAL, decimal: true },
+        ],
+        aggregate,
+      ),
+    ).toStrictEqual({
+      amount: 12.34,
+      count: expectedCount,
+      elements: expectedElements,
+    }),
   );
 
   test.each([
@@ -156,22 +133,11 @@ describe('Preview data generation', () => {
       '7 12.34,'.repeat(7),
       7 * 7,
     ],
-  ])(
-    'createPreviewData(%s, %s) to be data=%s, count=%s',
-    (tokens, aggregate, expectedData, expectedCount) => {
-      expect(
-        createPreviewData(tokens as DataToken[], aggregate)
-      ).toHaveProperty('dataPreview', expectedData);
-      expect(
-        createPreviewData(tokens as DataToken[], aggregate)
-      ).toHaveProperty('totalCount', expectedCount);
+  ])('createPreviewData(%s, %s) to be data=%s, count=%s', (tokens, aggregate, expectedData, expectedCount) => {
+    expect(createPreviewData(tokens as DataToken[], aggregate)).toHaveProperty('dataPreview', expectedData);
+    expect(createPreviewData(tokens as DataToken[], aggregate)).toHaveProperty('totalCount', expectedCount);
 
-      // must round to test because floats
-      expect(
-        createPreviewData(tokens as DataToken[], aggregate).totalAmount.toFixed(
-          2
-        )
-      ).toBe((12.34 * 7).toFixed(2));
-    }
-  );
+    // must round to test because floats
+    expect(createPreviewData(tokens as DataToken[], aggregate).totalAmount.toFixed(2)).toBe((12.34 * 7).toFixed(2));
+  });
 });

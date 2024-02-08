@@ -5,9 +5,7 @@ jest.mock('@folio/stripes/core', () => {
 
   return {
     IfInterface: jest.fn(({ name, children }) => {
-      return name === 'interface' || name === 'service-points-users'
-        ? children
-        : null;
+      return name === 'interface' || name === 'service-points-users' ? children : null;
     }),
     IfPermission: jest.fn(({ perm, children }) => {
       if (perm === 'permission') {
@@ -22,6 +20,6 @@ jest.mock('@folio/stripes/core', () => {
     }),
     Pluggable: jest.fn(({ children }) => [children]),
     useOkapiKy: jest.fn(),
-    useStripes: jest.fn(() => STRIPES)
+    useStripes: jest.fn(() => STRIPES),
   };
 });

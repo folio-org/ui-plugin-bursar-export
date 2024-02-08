@@ -2,7 +2,7 @@
 export default function guardNumber(
   value: string | undefined,
   fallback: number,
-  preRound: (value: number) => number = (v) => v
+  preRound: (value: number) => number = (v) => v,
 ): number {
   const parsed = parseFloat(value ?? '');
 

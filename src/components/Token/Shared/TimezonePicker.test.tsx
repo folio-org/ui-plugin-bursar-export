@@ -2,9 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration, {
-  withIntlConfigurationAnyTimezone,
-} from '../../../test/util/withIntlConfiguration';
+import withIntlConfiguration, { withIntlConfigurationAnyTimezone } from '../../../test/util/withIntlConfiguration';
 import TimezonePicker from './TimezonePicker';
 
 describe('Timezone picker', () => {
@@ -22,16 +20,12 @@ describe('Timezone picker', () => {
           )}
         </Form>,
         'en-US',
-        'America/Chicago'
-      )
+        'America/Chicago',
+      ),
     );
 
-    expect(
-      screen.getByRole('combobox', { name: 'Timezone' })
-    ).toHaveDisplayValue('America/Chicago');
-    expect(
-      screen.getByRole('option', { name: 'Europe/Lisbon' })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('combobox', { name: 'Timezone' })).toHaveDisplayValue('America/Chicago');
+    expect(screen.getByRole('option', { name: 'Europe/Lisbon' })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'UTC' })).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
@@ -54,13 +48,11 @@ describe('Timezone picker', () => {
             </form>
           )}
         </Form>,
-        'en-US'
-      )
+        'en-US',
+      ),
     );
 
-    expect(
-      screen.getByRole('combobox', { name: 'Timezone' })
-    ).toHaveDisplayValue('UTC');
+    expect(screen.getByRole('combobox', { name: 'Timezone' })).toHaveDisplayValue('UTC');
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

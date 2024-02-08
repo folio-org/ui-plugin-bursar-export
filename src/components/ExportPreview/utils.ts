@@ -37,10 +37,7 @@ export function formatDate(format: DateFormatType, date: Date): number {
   }
 }
 
-export function applyLengthControl(
-  value: string,
-  lengthControl?: LengthControl
-): string {
+export function applyLengthControl(value: string, lengthControl?: LengthControl): string {
   if (lengthControl === undefined || lengthControl.character?.length !== 1) {
     return value;
   }
@@ -52,13 +49,9 @@ export function applyLengthControl(
 
   if (value.length < desiredLength) {
     if (lengthControl.direction === 'FRONT') {
-      return (
-        lengthControl.character.repeat(desiredLength - value.length) + value
-      );
+      return lengthControl.character.repeat(desiredLength - value.length) + value;
     } else {
-      return (
-        value + lengthControl.character.repeat(desiredLength - value.length)
-      );
+      return value + lengthControl.character.repeat(desiredLength - value.length);
     }
   } else if (lengthControl.truncate) {
     if (lengthControl.direction === 'FRONT') {

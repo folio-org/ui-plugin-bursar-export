@@ -12,24 +12,21 @@ it('Amount criteria displays appropriate form', async () => {
 
   render(
     withIntlConfiguration(
-      <Form<FormValues>
-        mutators={{ ...arrayMutators }}
-        onSubmit={(v) => submitter(v)}
-      >
+      <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <CriteriaCard name="criteria" root alone />
             <button type="submit">Submit</button>
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   await userEvent.selectOptions(screen.getByRole('combobox'), 'Amount');
   await userEvent.selectOptions(
     screen.getByRole('combobox', { name: 'Comparison operator' }),
-    'Greater than but not equal to'
+    'Greater than but not equal to',
   );
   await userEvent.type(screen.getByRole('spinbutton'), '12');
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));

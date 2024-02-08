@@ -13,9 +13,7 @@ export default function ArbitraryTextToken({ prefix }: { prefix: string }) {
             fullWidth
             marginBottom0
             required
-            label={
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.value" />
-            }
+            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.value" />}
           />
         )}
       </Field>

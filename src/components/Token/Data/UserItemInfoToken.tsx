@@ -1,17 +1,10 @@
-import {
-  Col,
-  Select,
-  SelectOptionType,
-  TextField,
-} from '@folio/stripes/components';
+import { Col, Select, SelectOptionType, TextField } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import { ItemAttribute, UserAttribute } from '../../../types/TokenTypes';
 
-export default function UserItemInfoToken<
-  T extends ItemAttribute | UserAttribute
->({
+export default function UserItemInfoToken<T extends ItemAttribute | UserAttribute>({
   defaultValue,
   prefix,
   attributeName,
@@ -25,17 +18,12 @@ export default function UserItemInfoToken<
   return (
     <>
       <Col xs={12} md={6}>
-        <Field<T>
-          name={`${prefix}${attributeName}`}
-          defaultValue={defaultValue}
-        >
+        <Field<T> name={`${prefix}${attributeName}`} defaultValue={defaultValue}>
           {(fieldProps) => (
             <Select<T>
               {...fieldProps}
               required
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.value" />
-              }
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.value" />}
               dataOptions={options}
             />
           )}
@@ -47,9 +35,7 @@ export default function UserItemInfoToken<
             <TextField<string>
               {...fieldProps}
               fullWidth
-              label={
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.fallback" />
-              }
+              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.fallback" />}
             />
           )}
         </Field>

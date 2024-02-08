@@ -2,12 +2,7 @@ import { IconButton } from '@folio/stripes/components';
 import React, { useCallback } from 'react';
 import { useField } from 'react-final-form';
 import { useFieldArray } from 'react-final-form-arrays';
-import {
-  CriteriaGroupType,
-  CriteriaTerminalType,
-  CriteriaGroup,
-  CriteriaTerminal,
-} from '../../types/CriteriaTypes';
+import { CriteriaGroupType, CriteriaTerminalType, CriteriaGroup, CriteriaTerminal } from '../../types/CriteriaTypes';
 
 export interface CriteriaCardToolboxProps {
   prefix: string;
@@ -28,11 +23,9 @@ export default function CriteriaCardToolbox({
     {
       subscription: { value: true },
       format: (value) => value || CriteriaTerminalType.PASS,
-    }
+    },
   ).input.value;
-  const criteria = useFieldArray<CriteriaGroup | CriteriaTerminal>(
-    `${prefix}criteria`
-  );
+  const criteria = useFieldArray<CriteriaGroup | CriteriaTerminal>(`${prefix}criteria`);
 
   const addCallback = useCallback(() => {
     criteria.fields.push({
@@ -44,11 +37,10 @@ export default function CriteriaCardToolbox({
   return (
     <div>
       {(
-        [
-          CriteriaGroupType.ALL_OF,
-          CriteriaGroupType.ANY_OF,
-          CriteriaGroupType.NONE_OF,
-        ] as (CriteriaGroupType | CriteriaTerminalType)[]
+        [CriteriaGroupType.ALL_OF, CriteriaGroupType.ANY_OF, CriteriaGroupType.NONE_OF] as (
+          | CriteriaGroupType
+          | CriteriaTerminalType
+        )[]
       ).includes(type) && <IconButton icon="plus-sign" onClick={addCallback} />}
       {!root && <IconButton icon="trash" onClick={onRemove} disabled={alone} />}
     </div>

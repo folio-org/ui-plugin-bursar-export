@@ -8,17 +8,11 @@ import CriteriaCard from './CriteriaCard';
 it('Criteria card with unknown type should display loading', () => {
   const { container } = render(
     withIntlConfiguration(
-      <Form
-        mutators={{ ...arrayMutators }}
-        onSubmit={jest.fn()}
-        initialValues={{ criteria: { type: 'foobar' } }}
-      >
+      <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()} initialValues={{ criteria: { type: 'foobar' } }}>
         {() => <CriteriaCard name="criteria" root alone />}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
-  expect(
-    container.querySelector('[data-test-card-body] .spinner')
-  ).toBeVisible();
+  expect(container.querySelector('[data-test-card-body] .spinner')).toBeVisible();
 });

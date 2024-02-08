@@ -1,10 +1,4 @@
-import {
-  Accordion,
-  AccordionSet,
-  Col,
-  ExpandAllButton,
-  Row,
-} from '@folio/stripes/components';
+import { Accordion, AccordionSet, Col, ExpandAllButton, Row } from '@folio/stripes/components';
 import stripesFinalForm from '@folio/stripes/final-form';
 import { FormApi } from 'final-form';
 import React, { FormEvent, MutableRefObject, useCallback } from 'react';
@@ -25,11 +19,7 @@ interface ConfigurationFormProps {
   formApiRef: MutableRefObject<FormApi<FormValues> | null>;
 }
 
-function ConfigurationForm({
-  handleSubmit,
-  formApiRef,
-  form,
-}: FormRenderProps<FormValues> & ConfigurationFormProps) {
+function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<FormValues> & ConfigurationFormProps) {
   formApiRef.current = form;
 
   const submitter = useCallback(
@@ -38,7 +28,7 @@ function ConfigurationForm({
         throw new Error();
       });
     },
-    [handleSubmit]
+    [handleSubmit],
   );
 
   const aggregateEnabled = useField<boolean>('aggregate', {
@@ -54,32 +44,16 @@ function ConfigurationForm({
             <ExpandAllButton />
           </Col>
         </Row>
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.accordion" />}>
           <SchedulingMenu />
         </Accordion>
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.accordion" />}>
           <CriteriaMenu />
         </Accordion>
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.accordion" />}>
           <AggregateMenu />
         </Accordion>
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.header.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.header.accordion" />}>
           <HeaderFooterSection name="header" />
         </Accordion>
         <Accordion
@@ -93,27 +67,15 @@ function ConfigurationForm({
         >
           <DataTokenSection />
         </Accordion>
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.footer.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.footer.accordion" />}>
           <HeaderFooterSection name="footer" />
         </Accordion>
 
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.preview.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.preview.accordion" />}>
           <ExportPreview />
         </Accordion>
 
-        <Accordion
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.accordion" />
-          }
-        >
+        <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.accordion" />}>
           <TransferInfoMenu />
         </Accordion>
       </AccordionSet>

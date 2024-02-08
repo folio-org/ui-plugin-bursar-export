@@ -21,9 +21,7 @@ describe('Export preview utility functions', () => {
 
       // garbage in = garbage out, so we don't care what the output is
       ['' as DateFormatType, 1],
-    ])('Format %s gives %s', (format, expected) =>
-      expect(formatDate(format, TEST_DATE)).toBe(expected)
-    );
+    ])('Format %s gives %s', (format, expected) => expect(formatDate(format, TEST_DATE)).toBe(expected));
   });
 
   describe('length control', () => {
@@ -38,14 +36,9 @@ describe('Export preview utility functions', () => {
       [{ length: 12, character: '.', direction: 'BACK' }, '0123456789..'],
       [{ length: 8, character: '.' }, '0123456789'],
       [{ length: 8, character: '.', truncate: true }, '01234567'],
-      [
-        { length: 8, character: '.', truncate: true, direction: 'FRONT' },
-        '23456789',
-      ],
-    ] as [LengthControl, string][])(
-      'length control %s gives %s',
-      (lengthControl, expected) =>
-        expect(applyLengthControl(TEST_VALUE, lengthControl)).toBe(expected)
+      [{ length: 8, character: '.', truncate: true, direction: 'FRONT' }, '23456789'],
+    ] as [LengthControl, string][])('length control %s gives %s', (lengthControl, expected) =>
+      expect(applyLengthControl(TEST_VALUE, lengthControl)).toBe(expected),
     );
   });
 
@@ -55,8 +48,6 @@ describe('Export preview utility functions', () => {
     test.each([
       [true, '1234.57'],
       [false, '123457'],
-    ])('decimal=%s gives %s', (decimal, expected) =>
-      expect(applyDecimalFormat(TEST_VALUE, decimal)).toBe(expected)
-    );
+    ])('decimal=%s gives %s', (decimal, expected) => expect(applyDecimalFormat(TEST_VALUE, decimal)).toBe(expected));
   });
 });

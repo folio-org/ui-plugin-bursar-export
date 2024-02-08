@@ -18,15 +18,21 @@ export default function useManualSchedulerMutation() {
         },
       }),
     {
-      onError: () => context.sendCallout({
-        type: 'error',
-        message: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.error' })
-      }),
-      onSuccess: () => context.sendCallout({
-        type: 'success',
-        message: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.success' }),
-      }),
-    }
+      onError: () =>
+        context.sendCallout({
+          type: 'error',
+          message: intl.formatMessage({
+            id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.error',
+          }),
+        }),
+      onSuccess: () =>
+        context.sendCallout({
+          type: 'success',
+          message: intl.formatMessage({
+            id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.success',
+          }),
+        }),
+    },
   );
 
   return (parameters: BursarExportJobDTO) => {

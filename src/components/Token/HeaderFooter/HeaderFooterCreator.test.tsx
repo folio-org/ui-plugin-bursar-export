@@ -13,16 +13,11 @@ describe('Header/footer card', () => {
         <Form mutators={{ ...arrayMutators }} onSubmit={() => ({})}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <HeaderFooterCreator
-                fieldArrayName="test"
-                name="test[0]"
-                index={0}
-                isLast
-              />
+              <HeaderFooterCreator fieldArrayName="test" name="test[0]" index={0} isLast />
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Newline (LF)');
@@ -38,16 +33,11 @@ describe('Header/footer card', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <HeaderFooterCreator
-                fieldArrayName="test"
-                name="test[0]"
-                index={0}
-                isLast
-              />
+              <HeaderFooterCreator fieldArrayName="test" name="test[0]" index={0} isLast />
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Comma');

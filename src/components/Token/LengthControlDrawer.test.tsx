@@ -13,18 +13,15 @@ describe('Length control drawer', () => {
   beforeEach(() => {
     render(
       withIntlConfiguration(
-        <Form<FormValues>
-          mutators={{ ...arrayMutators }}
-          onSubmit={(v) => submitter(v)}
-        >
+        <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <LengthControlDrawer prefix="test." />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
   });
 
@@ -55,10 +52,7 @@ describe('Length control drawer', () => {
   it('gives correct result if truncate and direction changed from default', async () => {
     await userEvent.type(screen.getByLabelText('Desired length'), '12');
     await userEvent.type(screen.getByLabelText('Fill extra space with'), ' ');
-    await userEvent.selectOptions(
-      screen.getByLabelText('Add characters to'),
-      'BACK'
-    );
+    await userEvent.selectOptions(screen.getByLabelText('Add characters to'), 'BACK');
     await userEvent.click(screen.getByLabelText('Truncate if too long'));
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
@@ -76,9 +70,7 @@ describe('Length control drawer', () => {
   it('updates front/back label appropriately', async () => {
     expect(screen.getByLabelText('Add characters to')).toBeVisible();
     await userEvent.click(screen.getByLabelText('Truncate if too long'));
-    expect(
-      screen.getByLabelText('Add/remove characters to/from')
-    ).toBeVisible();
+    expect(screen.getByLabelText('Add/remove characters to/from')).toBeVisible();
     await userEvent.click(screen.getByLabelText('Truncate if too long'));
     expect(screen.getByLabelText('Add characters to')).toBeVisible();
   });

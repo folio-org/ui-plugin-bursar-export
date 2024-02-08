@@ -13,18 +13,15 @@ test('Add button works as expected', async () => {
 
   render(
     withIntlConfiguration(
-      <Form<FormValues>
-        mutators={{ ...arrayMutators }}
-        onSubmit={(v) => submitter(v)}
-      >
+      <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={(v) => submitter(v)}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <HeaderFooterSection name="test" />
             <button type="submit">Submit</button>
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   await userEvent.click(screen.getByRole('button', { name: 'Add' }));

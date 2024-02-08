@@ -58,7 +58,5 @@ describe('Transfer info conversion', () => {
         else: { account: 'else-sp' },
       },
     ],
-  ])('Converts %s into %s', (token, expected) =>
-    expect(transferToDto(token)).toEqual(expected)
-  );
+  ])('Converts %s into %s', (token, expected) => expect(transferToDto(token)).toEqual(expected));
 });

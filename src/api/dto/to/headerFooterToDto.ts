@@ -1,15 +1,10 @@
 import ConvenientConstants from '../../../types/ConvenientConstants';
-import {
-  HeaderFooterToken,
-  HeaderFooterTokenType,
-} from '../../../types/TokenTypes';
+import { HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import { guardNumberPositive } from '../../../utils/guardNumber';
 import { BursarExportHeaderFooterTokenDTO } from '../types';
 import lengthControlToDto from './lengthControlToDto';
 
-export default function headerFooterToDto(
-  tokens: HeaderFooterToken[] | undefined
-): BursarExportHeaderFooterTokenDTO[] {
+export default function headerFooterToDto(tokens: HeaderFooterToken[] | undefined): BursarExportHeaderFooterTokenDTO[] {
   if (tokens === undefined) {
     return [];
   }
@@ -17,9 +12,7 @@ export default function headerFooterToDto(
   return tokens.map(headerFooterTokenToDto);
 }
 
-export function headerFooterTokenToDto(
-  token: HeaderFooterToken
-): BursarExportHeaderFooterTokenDTO {
+export function headerFooterTokenToDto(token: HeaderFooterToken): BursarExportHeaderFooterTokenDTO {
   switch (token.type) {
     case HeaderFooterTokenType.NEWLINE:
     case HeaderFooterTokenType.NEWLINE_MICROSOFT:
@@ -30,9 +23,7 @@ export function headerFooterTokenToDto(
     case HeaderFooterTokenType.SPACE:
       return {
         type: 'Constant',
-        value: ConvenientConstants[token.type].repeat(
-          guardNumberPositive(token.repeat)
-        ),
+        value: ConvenientConstants[token.type].repeat(guardNumberPositive(token.repeat)),
       };
 
     case HeaderFooterTokenType.ARBITRARY_TEXT:

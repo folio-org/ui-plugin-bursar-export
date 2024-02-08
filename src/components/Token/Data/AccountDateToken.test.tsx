@@ -12,36 +12,21 @@ describe('Account date token', () => {
 
     render(
       withIntlConfiguration(
-        <Form
-          onSubmit={(v) => submitter(v)}
-          initialValues={{ test: { type: DataTokenType.ACCOUNT_DATE } }}
-        >
+        <Form onSubmit={(v) => submitter(v)} initialValues={{ test: { type: DataTokenType.ACCOUNT_DATE } }}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <DataTokenCardBody name="test" />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Format' }),
-      'Quarter'
-    );
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Timezone' }),
-      'UTC'
-    );
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Date' }),
-      'Last updated date'
-    );
-    await userEvent.type(
-      screen.getByRole('textbox', { name: 'Fallback value' }),
-      'placeholder'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Format' }), 'Quarter');
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Timezone' }), 'UTC');
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Date' }), 'Last updated date');
+    await userEvent.type(screen.getByRole('textbox', { name: 'Fallback value' }), 'placeholder');
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

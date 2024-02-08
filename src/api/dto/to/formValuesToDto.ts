@@ -6,9 +6,7 @@ import dataToDto from './dataToDto';
 import headerFooterToDto from './headerFooterToDto';
 import transferToDto from './transferToDto';
 
-export default function formValuesToDto(
-  values: FormValues
-): BursarExportJobDTO {
+export default function formValuesToDto(values: FormValues): BursarExportJobDTO {
   if (values.aggregate) {
     return {
       filter: criteriaToFilterDto(values.criteria),

@@ -19,9 +19,7 @@ export default function HeaderFooterSection({ name }: Readonly<{ name: string }>
               isLast={index + 1 === fields.length}
             />
           ))}
-          <Button
-            onClick={() => fields.push({ type: HeaderFooterTokenType.NEWLINE })}
-          >
+          <Button onClick={() => fields.push({ type: HeaderFooterTokenType.NEWLINE })}>
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.add" />
           </Button>
         </>

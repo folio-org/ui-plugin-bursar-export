@@ -22,8 +22,8 @@ test('Aggregate menu displays criteria on check', async () => {
             <button type="submit">Submit</button>
           </form>
         )}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   // do not display criteria initially

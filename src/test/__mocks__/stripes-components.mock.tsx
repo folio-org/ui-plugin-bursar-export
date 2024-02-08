@@ -6,9 +6,7 @@ global.React = React;
 // relies on Webpack's require.context
 jest.mock('@folio/stripes-components/lib/Icon', () => {
   return (props: Record<string, unknown>) => (
-    <span data-testid={props?.['data-testid']}>
-      {props.children as ReactNode}
-    </span>
+    <span data-testid={props?.['data-testid']}>{props.children as ReactNode}</span>
   );
 });
 

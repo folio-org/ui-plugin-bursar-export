@@ -15,9 +15,7 @@ export default function WhitespaceToken({ prefix }: { prefix: string }) {
             required
             type="number"
             min={1}
-            label={
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.whitespace.numSpaces" />
-            }
+            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.whitespace.numSpaces" />}
           />
         )}
       </Field>

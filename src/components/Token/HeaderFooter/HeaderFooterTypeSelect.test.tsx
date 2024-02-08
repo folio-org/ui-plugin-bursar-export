@@ -19,8 +19,8 @@ describe('Header/footer type selection', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Newline (LF)');
@@ -46,8 +46,8 @@ describe('Header/footer type selection', () => {
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     expect(screen.getByRole('combobox')).toHaveDisplayValue('Text');

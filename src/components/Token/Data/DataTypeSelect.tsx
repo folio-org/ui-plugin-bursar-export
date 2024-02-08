@@ -117,7 +117,7 @@ export default function DataTypeSelect({ name }: { name: string }) {
           value: DataTokenType.ITEM_INFO,
         },
       ].sort((a, b) => a.label.localeCompare(b.label)),
-    [intl]
+    [intl],
   );
 
   const aggregateOptions = useMemo(
@@ -142,7 +142,7 @@ export default function DataTypeSelect({ name }: { name: string }) {
           value: DataTokenType.AGGREGATE_COUNT,
         },
       ].sort((a, b) => a.label.localeCompare(b.label)),
-    [intl]
+    [intl],
   );
 
   return (
@@ -158,10 +158,7 @@ export default function DataTypeSelect({ name }: { name: string }) {
           {...fieldProps}
           required
           marginBottom0
-          dataOptions={[
-            ...alwaysAvailableOptions,
-            ...(isAggregate ? aggregateOptions : noneAggregateOptions),
-          ]}
+          dataOptions={[...alwaysAvailableOptions, ...(isAggregate ? aggregateOptions : noneAggregateOptions)]}
         />
       )}
     </Field>

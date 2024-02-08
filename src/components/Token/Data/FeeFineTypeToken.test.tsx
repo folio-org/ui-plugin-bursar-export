@@ -12,18 +12,15 @@ describe('Fee/fine type token', () => {
 
     render(
       withIntlConfiguration(
-        <Form
-          onSubmit={(v) => submitter(v)}
-          initialValues={{ test: { type: DataTokenType.FEE_FINE_TYPE } }}
-        >
+        <Form onSubmit={(v) => submitter(v)} initialValues={{ test: { type: DataTokenType.FEE_FINE_TYPE } }}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <DataTokenCardBody name="test" />
               <button type="submit">Submit</button>
             </form>
           )}
-        </Form>
-      )
+        </Form>,
+      ),
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
@@ -35,10 +32,7 @@ describe('Fee/fine type token', () => {
       },
     });
 
-    await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Attribute' }),
-      'Type ID'
-    );
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Attribute' }), 'Type ID');
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

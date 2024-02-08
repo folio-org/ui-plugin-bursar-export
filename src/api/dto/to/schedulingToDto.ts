@@ -3,9 +3,7 @@ import SchedulingFrequency from '../../../types/SchedulingFrequency';
 import { guardNumberPositive } from '../../../utils/guardNumber';
 import { SchedulingDTO } from '../types';
 
-export default function schedulingToDto(
-  values: FormValues['scheduling']
-): SchedulingDTO {
+export default function schedulingToDto(values: FormValues['scheduling']): SchedulingDTO {
   switch (values.frequency) {
     case SchedulingFrequency.Manual:
       return { schedulePeriod: SchedulingFrequency.Manual };

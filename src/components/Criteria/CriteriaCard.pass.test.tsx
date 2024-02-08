@@ -12,20 +12,13 @@ it('Criteria card with "no criteria" should be empty', async () => {
     withIntlConfiguration(
       <Form<FormValues> mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
         {() => <CriteriaCard name="criteria" root alone />}
-      </Form>
-    )
+      </Form>,
+    ),
   );
 
   await userEvent.selectOptions(screen.getByRole('combobox'), 'All of:');
-  await userEvent.selectOptions(
-    screen.getByRole('combobox'),
-    'No criteria (always run)'
-  );
+  await userEvent.selectOptions(screen.getByRole('combobox'), 'No criteria (always run)');
 
-  expect(container.querySelector('[data-test-card-body]')).toHaveTextContent(
-    ''
-  );
-  expect(container.querySelector('[data-test-card-body]')).toHaveClass(
-    'emptyBody'
-  );
+  expect(container.querySelector('[data-test-card-body]')).toHaveTextContent('');
+  expect(container.querySelector('[data-test-card-body]')).toHaveClass('emptyBody');
 });

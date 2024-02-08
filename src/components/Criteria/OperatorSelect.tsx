@@ -14,9 +14,7 @@ export default function OperatorSelect({ name }: { name: string }) {
           fullWidth
           marginBottom0
           required
-          label={
-            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.operator" />
-          }
+          label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.operator" />}
           dataOptions={[
             { label: '', value: undefined },
             {
