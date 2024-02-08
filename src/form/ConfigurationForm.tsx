@@ -12,8 +12,7 @@ import ExportPreview from './sections/ExportPreview';
 import HeaderFooterSection from './sections/HeaderFooterSection';
 import SchedulingMenu from './sections/SchedulingMenu';
 import TransferInfoMenu from './sections/TransferInfoMenu';
-
-export const FORM_ID = 'ui-plugin-bursar-export-form';
+import { FORM_ID } from '../constants';
 
 interface ConfigurationFormProps {
   formApiRef: MutableRefObject<FormApi<FormValues> | null>;

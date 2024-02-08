@@ -7,9 +7,10 @@ import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 import useAutomaticSchedulerMutation from './api/mutators/useAutomaticSchedulerMutation';
 import useManualSchedulerMutation from './api/mutators/useManualSchedulerMutation';
-import ConfigurationForm, { FORM_ID } from './form/ConfigurationForm';
+import ConfigurationForm from './form/ConfigurationForm';
 import useInitialValues from './hooks/useInitialValues';
 import FormValues from './types/FormValues';
+import { FORM_ID } from './constants';
 
 export default function BursarExportPlugin() {
   const stripes = useStripes();

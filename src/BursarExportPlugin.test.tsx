@@ -7,7 +7,7 @@ import { Form, FormProps } from 'react-final-form';
 import BursarExportPlugin from './index';
 import withIntlConfiguration from './test/util/withIntlConfiguration';
 import useInitialValues from './hooks/useInitialValues';
-import { FORM_ID } from './form/ConfigurationForm';
+import { FORM_ID } from './constants';
 import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 
