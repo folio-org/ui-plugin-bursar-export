@@ -1,8 +1,8 @@
 # Change history for ui-plugin-bursar-export
 
 ## 4.0.0 (IN PROGRESS)
-* Merge [@folio-org/bama](https://github.com/orgs/folio-org/teams/bama)'s changes in ui-plugin-bursar-export. Refs UXPROD-3903.
-* Support the new bursar export configuration feature and revamped UI for the `transfer-criteria`` section.
+* Support the new bursar export configuration feature and revamped UI. Refs UXPROD-3603.
+* Also support `feesfines` interface version `19.0`. Refs UIPBEX-55.
 
 ## [3.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v3.0.0) (2023-10-16)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v2.4.0...v3.0.0)
