@@ -9,11 +9,11 @@ export default function CriteriaCardSelect({
   name,
   root = false,
   patronOnly = false,
-}: {
+}: Readonly<{
   name: string;
   root?: boolean;
   patronOnly?: boolean;
-}) {
+}>) {
   const selectDefaultValue = useMemo(() => {
     if (root) {
       return CriteriaTerminalType.PASS;

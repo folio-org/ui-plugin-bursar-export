@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import useFeeFineOwners from '../../api/queries/useFeeFineOwners';
 import useFeeFineTypes from '../../api/queries/useFeeFineTypes';
 
-export default function CriteriaFeeFineType({ prefix }: { prefix: string }) {
+export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: string }>) {
   const feeFineOwners = useFeeFineOwners();
   const feeFineTypes = useFeeFineTypes();
   const intl = useIntl();

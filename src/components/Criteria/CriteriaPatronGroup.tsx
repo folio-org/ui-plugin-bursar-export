@@ -4,7 +4,7 @@ import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import usePatronGroups from '../../api/queries/usePatronGroups';
 
-export default function CriteriaPatronGroup({ prefix }: { prefix: string }) {
+export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: string }>) {
   const patronGroups = usePatronGroups();
 
   const selectOptions = useMemo(() => {

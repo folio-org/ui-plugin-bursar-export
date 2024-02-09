@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import useMonetaryOnBlur from '../../hooks/useMonetaryOnBlur';
 import OperatorSelect from './OperatorSelect';
 
-export default function CriteriaAmount({ prefix }: { prefix: string }) {
+export default function CriteriaAmount({ prefix }: Readonly<{ prefix: string }>) {
   const monetaryOnBlur = useMonetaryOnBlur(`${prefix}amountCurrency`);
 
   return (

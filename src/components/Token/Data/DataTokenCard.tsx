@@ -12,7 +12,7 @@ export interface DataTokenCardProps {
   isLast: boolean;
 }
 
-export default function DataTokenCard({ name, index, isLast }: DataTokenCardProps) {
+export default function DataTokenCard({ name, index, isLast }: Readonly<DataTokenCardProps>) {
   const type = useField<DataTokenType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? DataTokenType.NEWLINE,

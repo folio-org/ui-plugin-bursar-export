@@ -10,13 +10,13 @@ export default function ConditionalCard({
   fieldArrayName,
   patronOnly = false,
   index,
-}: {
+}: Readonly<{
   children: ReactNode;
   conditionName: string;
   fieldArrayName: string;
   patronOnly?: boolean;
   index: number;
-}) {
+}>) {
   const { fields } = useFieldArray(fieldArrayName);
 
   const handleMoveUpClick = useCallback(() => {

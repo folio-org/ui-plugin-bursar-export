@@ -3,7 +3,7 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { useIntl } from 'react-intl';
 
-export default function AmountWithDecimalToken({ prefix }: { prefix: string }) {
+export default function AmountWithDecimalToken({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
   return (
     <Col xs={12}>

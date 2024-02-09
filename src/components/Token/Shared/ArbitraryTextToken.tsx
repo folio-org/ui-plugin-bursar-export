@@ -3,7 +3,7 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
-export default function ArbitraryTextToken({ prefix }: { prefix: string }) {
+export default function ArbitraryTextToken({ prefix }: Readonly<{ prefix: string }>) {
   return (
     <Col xs={12}>
       <Field name={`${prefix}text`}>

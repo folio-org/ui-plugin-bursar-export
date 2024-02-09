@@ -4,7 +4,7 @@ import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import useServicePoints from '../../api/queries/useServicePoints';
 
-export default function CriteriaServicePoint({ prefix }: { prefix: string }) {
+export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: string }>) {
   const servicePoints = useServicePoints();
 
   const selectOptions = useMemo(() => {

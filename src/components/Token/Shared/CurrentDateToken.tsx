@@ -3,7 +3,7 @@ import React from 'react';
 import TimezonePicker from './TimezonePicker';
 import DatePartPicker from './DatePartPicker';
 
-export default function CurrentDateToken({ prefix }: { prefix: string }) {
+export default function CurrentDateToken({ prefix }: Readonly<{ prefix: string }>) {
   return (
     <>
       <Col xs={6}>

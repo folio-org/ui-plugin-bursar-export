@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { ItemAttribute } from '../../../types/TokenTypes';
 import UserItemInfoToken from './UserItemInfoToken';
 
-export default function ItemInfoToken({ prefix }: { prefix: string }) {
+export default function ItemInfoToken({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
   const attributeOptions = [
     {

@@ -4,7 +4,7 @@ import { Select } from '@folio/stripes/components';
 import { Field } from 'react-final-form';
 import { useIntl } from 'react-intl';
 
-export default function HeaderFooterTypeSelect({ name }: { name: string }) {
+export default function HeaderFooterTypeSelect({ name }: Readonly<{ name: string }>) {
   const intl = useIntl();
   const options = useMemo(() => {
     const topSection = [

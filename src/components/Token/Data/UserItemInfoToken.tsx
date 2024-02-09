@@ -9,12 +9,12 @@ export default function UserItemInfoToken<T extends ItemAttribute | UserAttribut
   prefix,
   attributeName,
   options,
-}: {
+}: Readonly<{
   defaultValue: T;
   prefix: string;
   attributeName: string;
   options: SelectOptionType<T>[];
-}) {
+}>) {
   return (
     <>
       <Col xs={12} md={6}>

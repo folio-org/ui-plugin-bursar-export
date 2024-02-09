@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { CriteriaGroupType, CriteriaTerminalType, CriteriaGroup, CriteriaTerminal } from '../../../types/CriteriaTypes';
 import ConditionalCard from '../../ConditionalCard';
 
-export default function ConstantConditionalToken({ prefix }: { prefix: string }) {
+export default function ConstantConditionalToken({ prefix }: Readonly<{ prefix: string }>) {
   const aggregate = useField<boolean>('aggregate', {
     subscription: { value: true },
     format: (value) => value ?? false,

@@ -4,7 +4,7 @@ import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import OperatorSelect from './OperatorSelect';
 
-export default function CriteriaAge({ prefix }: { prefix: string }) {
+export default function CriteriaAge({ prefix }: Readonly<{ prefix: string }>) {
   return (
     <>
       <Col xs={6}>

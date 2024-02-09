@@ -4,7 +4,7 @@ import { Field, useField } from 'react-final-form';
 import { useIntl } from 'react-intl';
 import { DataTokenType } from '../../../types/TokenTypes';
 
-export default function DataTypeSelect({ name }: { name: string }) {
+export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
   const isAggregate = useField<boolean>('aggregate', {
     subscription: { value: true },
     format: (value) => value ?? false,

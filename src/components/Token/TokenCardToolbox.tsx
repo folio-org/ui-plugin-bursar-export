@@ -17,7 +17,7 @@ export default function TokenCardToolbox({
   index,
   isLast,
   showLengthControl,
-}: TokenCardToolboxProps) {
+}: Readonly<TokenCardToolboxProps>) {
   const fieldArray = useFieldArray(fieldArrayName);
   const lengthControlOpen = useField<boolean>(`${name}.lengthControl.drawerOpen`, {
     subscription: { value: true },

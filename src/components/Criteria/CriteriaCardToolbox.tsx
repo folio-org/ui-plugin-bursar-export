@@ -16,7 +16,7 @@ export default function CriteriaCardToolbox({
   root = false,
   alone = false,
   onRemove,
-}: CriteriaCardToolboxProps) {
+}: Readonly<CriteriaCardToolboxProps>) {
   const type = useField<CriteriaGroupType | CriteriaTerminalType>(
     `${prefix}type`,
     // format ensures undefined is treated as default (pass)

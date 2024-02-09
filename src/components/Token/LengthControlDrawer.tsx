@@ -23,7 +23,7 @@ function FakeHeader() {
   return <div />;
 }
 
-export default function LengthControlDrawer({ prefix }: { prefix: string }) {
+export default function LengthControlDrawer({ prefix }: Readonly<{ prefix: string }>) {
   const isTruncateEnabled = useField<boolean>(`${prefix}truncate`, {
     subscription: { value: true },
     format: (value) => value ?? false,

@@ -7,7 +7,7 @@ import useInstitutions from '../../api/queries/useInstitutions';
 import useLibraries from '../../api/queries/useLibraries';
 import useLocations from '../../api/queries/useLocations';
 
-export default function CriteriaLocation({ prefix }: { prefix: string }) {
+export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }>) {
   const institutions = useInstitutions();
   const campuses = useCampuses();
   const libraries = useLibraries();

@@ -21,13 +21,13 @@ export default function CriteriaCard({
   root = false,
   patronOnly = false,
   alone,
-}: {
+}: Readonly<{
   name: string;
   onRemove?: () => void;
   root?: boolean;
   patronOnly?: boolean;
   alone: boolean;
-}) {
+}>) {
   const type = useField<CriteriaGroupType | CriteriaTerminalType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? CriteriaTerminalType.PASS,

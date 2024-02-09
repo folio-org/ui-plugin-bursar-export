@@ -4,7 +4,7 @@ import { Field } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { ComparisonOperator } from '../../types/CriteriaTypes';
 
-export default function OperatorSelect({ name }: { name: string }) {
+export default function OperatorSelect({ name }: Readonly<{ name: string }>) {
   const intl = useIntl();
   return (
     <Field name={name}>

@@ -26,7 +26,7 @@ export default function GenericTokenCard<TypeEnum>({
   BodyComponent,
   isBodyEmpty,
   shouldHaveLengthControl,
-}: GenericTokenCardProps<TypeEnum>) {
+}: Readonly<GenericTokenCardProps<TypeEnum>>) {
   const type = useField<TypeEnum | undefined>(`${name}.type`, {
     subscription: { value: true },
     // preserve undefined

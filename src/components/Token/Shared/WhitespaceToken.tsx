@@ -3,7 +3,7 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
-export default function WhitespaceToken({ prefix }: { prefix: string }) {
+export default function WhitespaceToken({ prefix }: Readonly<{ prefix: string }>) {
   return (
     <Col xs={12}>
       <Field name={`${prefix}repeat`}>

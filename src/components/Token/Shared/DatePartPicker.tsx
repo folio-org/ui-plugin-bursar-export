@@ -4,7 +4,7 @@ import { Field } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { DateFormatType } from '../../../types/TokenTypes';
 
-export default function DatePartPicker({ prefix }: { prefix: string }) {
+export default function DatePartPicker({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
   return (
     <Field name={`${prefix}format`} defaultValue={DateFormatType.YEAR_LONG}>

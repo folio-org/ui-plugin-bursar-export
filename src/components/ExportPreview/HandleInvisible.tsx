@@ -17,11 +17,11 @@ export function splitAndInsert(haystack: string | ReactNode, needle: string, rep
     .filter((piece) => piece !== '');
 }
 
-function Invisible({ children }: { children: ReactNode }) {
+function Invisible({ children }: Readonly<{ children: ReactNode }>) {
   return <span style={{ color: 'gray' }}>{children}</span>;
 }
 
-export default function HandleInvisible({ text, showInvisible }: { text: string; showInvisible: boolean }) {
+export default function HandleInvisible({ text, showInvisible }: Readonly<{ text: string; showInvisible: boolean }>) {
   let pieces: ReactNode[] = [text];
 
   // denote appropriately

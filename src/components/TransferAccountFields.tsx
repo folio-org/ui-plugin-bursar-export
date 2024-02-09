@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import useFeeFineOwners from '../api/queries/useFeeFineOwners';
 import useTransferAccounts from '../api/queries/useTransferAccounts';
 
-export default function TransferAccountFields({ prefix }: { prefix: string }) {
+export default function TransferAccountFields({ prefix }: Readonly<{ prefix: string }>) {
   const feeFineOwners = useFeeFineOwners();
   const transferAccounts = useTransferAccounts();
 
