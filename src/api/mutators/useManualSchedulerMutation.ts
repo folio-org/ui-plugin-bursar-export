@@ -35,8 +35,5 @@ export default function useManualSchedulerMutation() {
     },
   );
 
-  return (parameters: BursarExportJobDTO) => {
-    mutation.mutate(parameters);
-    return {};
-  };
+  return mutation.mutate;
 }

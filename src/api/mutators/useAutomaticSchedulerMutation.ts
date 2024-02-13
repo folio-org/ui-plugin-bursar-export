@@ -54,8 +54,6 @@ export default function useAutomaticSchedulerMutation() {
     },
   );
 
-  return (parameters: { bursar: BursarExportJobDTO; scheduling: SchedulingDTO }) => {
-    mutation.mutate(parameters);
-    return {};
-  };
+  return mutation.mutate;
 }
+
