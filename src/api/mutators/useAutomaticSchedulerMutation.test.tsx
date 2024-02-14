@@ -21,10 +21,6 @@ jest.mock('@folio/stripes/core', () => ({
 describe('Automatic scheduling mutation', () => {
   const original = console.error;
 
-  beforeAll(() => {
-    console.error = jest.fn(); // hush when we do Promise.reject
-  });
-
   afterAll(() => {
     console.error = original;
   });
