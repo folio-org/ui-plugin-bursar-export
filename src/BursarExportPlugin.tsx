@@ -41,25 +41,39 @@ export default function BursarExportPlugin() {
     formApiRef.current?.change('buttonClicked', 'save');
   }, []);
 
+
+  const footer = (
+    <PaneFooter
+      renderStart={
+        <Button
+          disabled={initialValues == null || !stripes.hasPerm('data-export.job.item.post')}
+          type="submit"
+          form={FORM_ID}
+          onClick={handleRunManuallyClick}
+        >
+          <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.runManually" />
+        </Button>
+      }
+      renderEnd={
+        <Button
+          disabled={initialValues == null || !stripes.hasPerm('data-export.config.item.post')}
+          buttonStyle="primary"
+          type="submit"
+          form={FORM_ID}
+          onClick={handleSaveClick}
+        >
+          <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.save" />
+        </Button>
+      }
+    />
+  );
+
   if (initialValues === null) {
     return (
       <LoadingPane
         paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
         defaultWidth="fill"
-        footer={
-          <PaneFooter
-            renderStart={
-              <Button disabled>
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.runManually" />
-              </Button>
-            }
-            renderEnd={
-              <Button disabled buttonStyle="primary">
-                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.save" />
-              </Button>
-            }
-          />
-        }
+        footer={footer}
       />
     );
   }
@@ -67,31 +81,7 @@ export default function BursarExportPlugin() {
   return (
     <Pane
       defaultWidth="fill"
-      footer={
-        <PaneFooter
-          renderStart={
-            <Button
-              disabled={!stripes.hasPerm('data-export.job.item.post')}
-              type="submit"
-              form={FORM_ID}
-              onClick={handleRunManuallyClick}
-            >
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.runManually" />
-            </Button>
-          }
-          renderEnd={
-            <Button
-              disabled={!stripes.hasPerm('data-export.config.item.post')}
-              buttonStyle="primary"
-              type="submit"
-              form={FORM_ID}
-              onClick={handleSaveClick}
-            >
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.save" />
-            </Button>
-          }
-        />
-      }
+      footer={footer}
       id="pane-batch-group-configuration"
       paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
     >
