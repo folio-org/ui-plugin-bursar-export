@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import DatePartPicker from '../Shared/DatePartPicker';
 import TimezonePicker from '../Shared/TimezonePicker';
 
-export default function AccountDateToken({ prefix }: { prefix: string }) {
+export default function AccountDateToken({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
   return (
     <>

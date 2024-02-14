@@ -21,21 +21,19 @@ export default function CriteriaFeeFineOwner({ prefix }: Readonly<{ prefix: stri
   }, [feeFineOwners]);
 
   return (
-    <>
-      <Col xs={12}>
-        <Field name={`${prefix}feeFineOwnerId`}>
-          {(fieldProps) => (
-            <Select<string | undefined>
-              {...fieldProps}
-              fullWidth
-              marginBottom0
-              required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
-              dataOptions={[{ label: '', value: '', disabled: true }, ...ownersSelectOptions]}
-            />
-          )}
-        </Field>
-      </Col>
-    </>
+    <Col xs={12}>
+      <Field name={`${prefix}feeFineOwnerId`}>
+        {(fieldProps) => (
+          <Select<string | undefined>
+            {...fieldProps}
+            fullWidth
+            marginBottom0
+            required
+            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
+            dataOptions={[{ label: '', value: '', disabled: true }, ...ownersSelectOptions]}
+          />
+        )}
+      </Field>
+    </Col>
   );
 }

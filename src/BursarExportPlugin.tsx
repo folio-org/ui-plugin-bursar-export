@@ -20,16 +20,16 @@ export default function BursarExportPlugin() {
 
   const formApiRef = useRef<FormApi<FormValues>>(null);
 
-  const submitCallback = useCallback(async (values: FormValues) => {
+  const submitCallback = useCallback((values: FormValues) => {
     if (values.buttonClicked === 'manual') {
-      await scheduleManually(formValuesToDto(values));
+      scheduleManually(formValuesToDto(values));
     } else {
-      await scheduleAutomatically({
+      scheduleAutomatically({
         bursar: formValuesToDto(values),
         scheduling: schedulingToDto(values.scheduling),
       });
     }
-  }, []);
+  }, [scheduleAutomatically, scheduleManually]);
 
   const initialValues = useInitialValues();
 

@@ -63,13 +63,19 @@ export type DateFormatType =
   | 'MMDDYYYY'
   | 'DDMMYYYY';
 
+export type ComparisonOperator =
+  | 'LESS_THAN_EQUAL'
+  | 'LESS_THAN'
+  | 'GREATER_THAN'
+  | 'GREATER_THAN_EQUAL';
+
 /**
  * Filter by fees older than certain number of days
  */
 export interface BursarExportFilterAge {
   type: 'Age';
   numDays: number;
-  condition: 'LESS_THAN_EQUAL' | 'LESS_THAN' | 'GREATER_THAN' | 'GREATER_THAN_EQUAL';
+  condition: ComparisonOperator;
 }
 /**
  * Filter by fee amount
@@ -77,7 +83,7 @@ export interface BursarExportFilterAge {
 export interface BursarExportFilterAmount {
   type: 'Amount';
   amount: number;
-  condition: 'LESS_THAN_EQUAL' | 'LESS_THAN' | 'GREATER_THAN' | 'GREATER_THAN_EQUAL';
+  condition: ComparisonOperator;
 }
 /**
  * Filter by fee type
@@ -145,7 +151,7 @@ export interface BursarExportFilterAggregate {
   type: 'Aggregate';
   property: 'NUM_ROWS' | 'TOTAL_AMOUNT';
   amount: number;
-  condition: 'LESS_THAN_EQUAL' | 'LESS_THAN' | 'GREATER_THAN' | 'GREATER_THAN_EQUAL';
+  condition: ComparisonOperator;
 }
 /**
  * Token to represent aggregated result of multiple fees
