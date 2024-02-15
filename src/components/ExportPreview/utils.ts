@@ -30,10 +30,12 @@ export function formatDate(format: DateFormatType, date: Date): number {
 
     case DateFormatType.WEEK_OF_YEAR_ISO:
     // garbage in = garbage out, so we don't care what the output is in default
-    default:
+
+    default: {
       const janFirst = new Date(date.getFullYear(), 0, 1);
       const dayOfYear = (date.getTime() - janFirst.getTime()) / 86400000 + 1;
       return Math.ceil(dayOfYear / 7);
+    }
   }
 }
 

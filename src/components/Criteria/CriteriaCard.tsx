@@ -43,15 +43,14 @@ export default function CriteriaCard({
       case CriteriaGroupType.NONE_OF:
         return (
           <FieldArray name={`${name}.criteria`}>
-            {({ fields }) =>
-              fields.map((innerName, index) => (
-                <CriteriaCard
-                  key={innerName}
-                  name={innerName}
-                  alone={fields.length === 1}
-                  onRemove={() => fields.remove(index)}
-                />
-              ))
+            {({ fields }) => fields.map((innerName, index) => (
+              <CriteriaCard
+                key={innerName}
+                name={innerName}
+                alone={fields.length === 1}
+                onRemove={() => fields.remove(index)}
+              />
+            ))
             }
           </FieldArray>
         );
