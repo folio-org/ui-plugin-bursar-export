@@ -14,7 +14,7 @@ export default function dtoToAggregateCriteria(
       return {
         type: CriteriaAggregateType.NUM_ROWS,
         operator: filter.condition as ComparisonOperator,
-        amount: filter.amount.toString(),
+        amount: intl.formatNumber(filter.amount, { style: 'currency', currency: stripes.currency }),
       };
     case 'TOTAL_AMOUNT':
       return {

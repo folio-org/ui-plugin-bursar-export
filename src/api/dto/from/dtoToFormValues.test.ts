@@ -1,5 +1,5 @@
 import { IntlShape } from 'react-intl';
-import { useStripes } from '@folio/stripes/core';
+import { StripesType, useStripes } from '@folio/stripes/core';
 import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
@@ -15,13 +15,7 @@ beforeAll(() => {
   intlEn = getIntl('en-US', 'EST');
 });
 
-jest.mock('@folio/stripes/core');
-
-const mockedUseStripes = useStripes as jest.Mock;
-
 describe('dtoToFormValues', () => {
-  const stripes = mockedUseStripes();
-
   test.each<[SavedJobConfiguration | null | undefined, Partial<FormValues>]>([
     [null, {}],
     [undefined, {}],
@@ -81,5 +75,5 @@ describe('dtoToFormValues', () => {
         },
       },
     ],
-  ])('Converts DTO %s to %s', (input, expected) => expect(dtoToFormValues(input, [], [], [], [], stripes, intlEn)).toEqual(expected));
+  ])('Converts DTO %s to %s', (input, expected) => expect(dtoToFormValues(input, [], [], [], [], { currency: 'USD' } as StripesType, intlEn)).toEqual(expected));
 });

@@ -1,5 +1,5 @@
 import { IntlShape } from 'react-intl';
-import { useStripes } from '@folio/stripes/core';
+import { StripesType, useStripes } from '@folio/stripes/core';
 import getIntl from '../../../test/util/getIntl';
 import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
@@ -13,13 +13,7 @@ beforeAll(() => {
   intlEn = getIntl('en-US', 'EST');
 });
 
-jest.mock('@folio/stripes/core');
-
-const mockedUseStripes = useStripes as jest.Mock;
-
 describe('DTO to data conversion for initial values', () => {
-  const stripes = mockedUseStripes();
-
   it.each<[BursarExportDataTokenDTO, DataToken]>([
     [{ type: 'Constant', value: '\n' }, { type: DataTokenType.NEWLINE }],
     [{ type: 'Constant', value: '\r\n' }, { type: DataTokenType.NEWLINE_MICROSOFT }],
@@ -133,9 +127,9 @@ describe('DTO to data conversion for initial values', () => {
         else: 'else',
       },
     ],
-  ])('converts token %s to %s', (input, expected) => expect(dtoToDataToken(input, [], [], stripes, intlEn)).toEqual(expected));
+  ])('converts token %s to %s', (input, expected) => expect(dtoToDataToken(input, [], [], { currency: 'USD' } as StripesType, intlEn)).toEqual(expected));
 
-  it('converts undefined to empty array', () => expect(dtoToData(undefined, [], [], stripes, intlEn)).toEqual([]));
+  it('converts undefined to empty array', () => expect(dtoToData(undefined, [], [], { currency: 'USD' } as StripesType, intlEn)).toEqual([]));
 
   it('converts token array to data', () =>
     expect(
@@ -150,7 +144,7 @@ describe('DTO to data conversion for initial values', () => {
         ],
         [],
         [],
-        stripes,
+        { currency: 'USD' } as StripesType,
         intlEn
       ),
     ).toEqual([

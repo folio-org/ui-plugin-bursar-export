@@ -1,5 +1,5 @@
 import { IntlShape } from 'react-intl';
-import { useStripes } from '@folio/stripes/core';
+import { StripesType, useStripes } from '@folio/stripes/core';
 import getIntl from '../../../test/util/getIntl';
 import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType } from '../../../types/CriteriaTypes';
 import { BursarExportFilterAggregate } from '../types';
@@ -12,13 +12,7 @@ beforeAll(() => {
   intlEn = getIntl('en-US', 'EST');
 });
 
-jest.mock('@folio/stripes/core');
-
-const mockedUseStripes = useStripes as jest.Mock;
-
 describe('dtoToAggregateCriteria', () => {
-  const stripes = mockedUseStripes();
-
   test.each<[BursarExportFilterAggregate | undefined, CriteriaAggregate | undefined]>([
     [undefined, undefined],
     [
@@ -31,7 +25,7 @@ describe('dtoToAggregateCriteria', () => {
       {
         type: CriteriaAggregateType.NUM_ROWS,
         operator: ComparisonOperator.LESS_THAN_EQUAL,
-        amount: '1523',
+        amount: '$1,523.00',
       },
     ],
     [
@@ -44,8 +38,8 @@ describe('dtoToAggregateCriteria', () => {
       {
         type: CriteriaAggregateType.TOTAL_AMOUNT,
         operator: ComparisonOperator.GREATER_THAN,
-        amountCurrency: '15.23',
+        amountCurrency: '$15.23',
       },
     ],
-  ])('dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input, stripes, intlEn)).toEqual(expected));
+  ])('dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input, { currency: 'USD' } as StripesType, intlEn)).toEqual(expected));
 });

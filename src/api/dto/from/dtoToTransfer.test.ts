@@ -1,5 +1,5 @@
 import { IntlShape } from 'react-intl';
-import { useStripes } from '@folio/stripes/core';
+import { Stripes, StripesType, useStripes } from '@folio/stripes/core';
 import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
@@ -14,13 +14,7 @@ beforeAll(() => {
   intlEn = getIntl('en-US', 'EST');
 });
 
-jest.mock('@folio/stripes/core');
-
-const mockedUseStripes = useStripes as jest.Mock;
-
 describe('dtoToTransfer', () => {
-  const stripes = mockedUseStripes();
-
   test.each<[BursarExportTransferCriteria, TransferAccountDTO[], FormValues['transferInfo']]>([
     [
       { else: { account: 'account' } },
@@ -71,6 +65,6 @@ describe('dtoToTransfer', () => {
       },
     ],
   ])('Converts transfer DTO %s with known accounts %s to %s', (input, transferAccounts, expected) =>
-    expect(dtoToTransfer(input, [], [], transferAccounts, stripes, intlEn)).toEqual(expected),
+    expect(dtoToTransfer(input, [], [], transferAccounts, { currency: 'USD' } as StripesType, intlEn)).toEqual(expected),
   );
 });
