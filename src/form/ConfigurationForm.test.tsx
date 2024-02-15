@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import arrayMutators from 'final-form-arrays';
 import React, { ComponentType } from 'react';
 import { Form, FormProps } from 'react-final-form';

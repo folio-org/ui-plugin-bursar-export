@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
-import userEvent from '@testing-library/user-event';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import ExportPreview from './ExportPreview';
 import { DataTokenType, HeaderFooterTokenType } from '../../types/TokenTypes';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';

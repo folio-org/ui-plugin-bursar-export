@@ -1,5 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';

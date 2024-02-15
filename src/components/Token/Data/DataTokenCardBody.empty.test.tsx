@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';

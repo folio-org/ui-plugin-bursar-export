@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';

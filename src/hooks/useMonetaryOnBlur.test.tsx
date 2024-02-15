@@ -1,6 +1,6 @@
 import { TextField } from '@folio/stripes/components';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 import withIntlConfiguration from '../test/util/withIntlConfiguration';

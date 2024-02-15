@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { Form } from 'react-final-form';
 import CriteriaCardSelect from './CriteriaCardSelect';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
@@ -61,7 +61,7 @@ describe('Scheduling menu', () => {
     expect(screen.getByRole('textbox', { name: 'Days between runs' })).toBeVisible();
     expect(
       screen.getByRole('textbox', {
-        name: (name) => name.startsWith('Start time'),
+        name: (name: string) => name.startsWith('Start time'),
       }),
     ).toBeVisible();
   });
@@ -84,7 +84,7 @@ describe('Scheduling menu', () => {
     expect(screen.getByRole('textbox', { name: 'Weeks between runs' })).toBeVisible();
     expect(
       screen.getByRole('textbox', {
-        name: (name) => name.startsWith('Start time'),
+        name: (name: string) => name.startsWith('Start time'),
       }),
     ).toBeVisible();
     expect(screen.getByRole('textbox', { name: 'Run on weekdays' })).toBeVisible();

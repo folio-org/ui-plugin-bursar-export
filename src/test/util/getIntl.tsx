@@ -1,4 +1,4 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render } from '@folio/jest-config-stripes/testing-library/react';
 import React, { FunctionComponent } from 'react';
 import { IntlContext, IntlShape } from 'react-intl';
 import withIntlConfiguration from './withIntlConfiguration';

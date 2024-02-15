@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext } from 'react';
-import { waitFor, act, renderHook } from '@testing-library/react';
+import { waitFor, act, renderHook } from '@folio/jest-config-stripes/testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { CalloutContext } from '@folio/stripes/core';
 import useAutomaticSchedulerMutation from './useAutomaticSchedulerMutation';

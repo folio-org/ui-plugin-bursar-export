@@ -1,27 +1,19 @@
 const { join } = require('path');
+const config = require('@folio/jest-config-stripes');
 
 const esModules = ['@folio', 'ky'].join('|');
 
 /** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
-  testEnvironment: 'jsdom',
+  ...config,
 
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.(t|j)sx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
-  },
-  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   coverageProvider: 'v8',
 
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
 
   testMatch: ['**/src/**/?(*.)test.{js,jsx,ts,tsx}'],
-  testPathIgnorePatterns: ['/node_modules/', 'src/typings/'],
-
-  reporters: ['default', 'jest-junit'],
 
   coverageReporters: ['lcov', 'text'],
-  coverageDirectory: './artifacts/coverage-jest/',
   collectCoverageFrom: [
     '<rootDir>/index.ts',
     '<rootDir>/src/**/*.{ts,tsx}',
@@ -31,8 +23,17 @@ module.exports = {
     '!**/node_modules/**',
   ],
 
-  setupFiles: [join(__dirname, './src/test/setupTests.ts')],
+  setupFiles: [
+    ...config.setupFiles,
+    join(__dirname, './src/test/setupTests.ts')
+  ],
   setupFilesAfterEnv: [join(__dirname, './src/test/jest.setup.ts')],
+
+  preset: 'ts-jest',
+  transform: {
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    ...config.transform
+  },
 
   moduleNameMapper: {
     '^.+\\.(css|svg)$': 'identity-obj-proxy',
