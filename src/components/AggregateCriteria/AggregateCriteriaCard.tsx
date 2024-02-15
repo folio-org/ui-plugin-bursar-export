@@ -4,7 +4,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Field, useField } from 'react-final-form';
 import { CriteriaAggregateType } from '../../types/CriteriaTypes';
 import OperatorSelect from '../Criteria/OperatorSelect';
-import useMonetaryOnBlur from '../../hooks/useMonetaryOnBlur';
 import css from '../Card.module.css';
 
 export default function AggregateCriteriaCard() {
@@ -13,7 +12,6 @@ export default function AggregateCriteriaCard() {
     format: (value) => value ?? CriteriaAggregateType.PASS,
   }).input.value;
 
-  const monetaryOnBlur = useMonetaryOnBlur('aggregateFilter.amountCurrency');
   const intl = useIntl();
 
   const criteriaOptions = useMemo(
@@ -102,7 +100,6 @@ export default function AggregateCriteriaCard() {
                   }
                   min={0}
                   step={0.01}
-                  onBlur={monetaryOnBlur}
                 />
               )}
             </Field>

@@ -83,5 +83,5 @@ function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<F
 }
 
 export default stripesFinalForm<ConfigurationFormProps, FormValues>({
-  validateOnBlur: true,
+  validateOnBlur: false,
 })(ConfigurationForm);
