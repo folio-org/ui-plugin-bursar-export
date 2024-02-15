@@ -1,4 +1,4 @@
-import { render } from '@folio/jest-config-stripes/testing-library/react';
+import { render, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
@@ -38,16 +38,16 @@ describe('Export preview data component', () => {
     preview: { invisible: false },
   };
 
-  it('renders from form context', () => {
+  it('renders from form context', async () => {
     const { container } = render(
       <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()} initialValues={SAMPLE_DATA}>
         {() => <ExportPreviewData />}
       </Form>,
     );
-    expect(container).toHaveTextContent('HEADER DATA DATA FOOTER');
+    await waitFor(() => { expect(container).toHaveTextContent('HEADER DATA DATA FOOTER'); });
   });
 
-  it('shows whitespace when selected', () => {
+  it('shows whitespace when selected', async () => {
     const { container } = render(
       <Form
         mutators={{ ...arrayMutators }}
@@ -57,15 +57,15 @@ describe('Export preview data component', () => {
         {() => <ExportPreviewData />}
       </Form>,
     );
-    expect(container).toHaveTextContent('HEADER•DATA•DATA•FOOTER');
+    await waitFor(() => { expect(container).toHaveTextContent('HEADER•DATA•DATA•FOOTER'); });
   });
 
-  it('uses aggregate data when applicable', () => {
+  it('uses aggregate data when applicable', async () => {
     const { container } = render(
       <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()} initialValues={{ ...SAMPLE_DATA, aggregate: true }}>
         {() => <ExportPreviewData />}
       </Form>,
     );
-    expect(container).toHaveTextContent('HEADER DATA_AGGREGATE DATA_AGGREGATE FOOTER');
+    await waitFor(() => { expect(container).toHaveTextContent('HEADER DATA_AGGREGATE DATA_AGGREGATE FOOTER'); });
   });
 });

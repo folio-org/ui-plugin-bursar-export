@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useField } from 'react-final-form';
 import { useFieldArray } from 'react-final-form-arrays';
 import { DataToken, HeaderFooterToken } from '../../types/TokenTypes';
@@ -34,15 +34,20 @@ export default function ExportPreviewData() {
     format: (value) => value ?? false,
   }).input.value;
 
-  const contents = useMemo(() => {
-    const dataToUse = isAggregate ? dataAggregate : data;
+  const [contents, setContents] = useState('');
 
-    const { dataPreview, totalAmount, totalCount } = createPreviewData(dataToUse, isAggregate);
+  useEffect(() => {
+    const fetchData = async () => {
+      const dataToUse = isAggregate ? dataAggregate : data;
+      const { dataPreview, totalAmount, totalCount } = await createPreviewData(dataToUse, isAggregate);
+      const headerPreview = await createHeaderFooterString(header, totalAmount, totalCount);
+      const footerPreview = await createHeaderFooterString(footer, totalAmount, totalCount);
 
-    const headerPreview = createHeaderFooterString(header, totalAmount, totalCount);
-    const footerPreview = createHeaderFooterString(footer, totalAmount, totalCount);
+      // Concatenate header, data, and footer then update state
+      setContents(headerPreview + dataPreview + footerPreview);
+    };
 
-    return headerPreview + dataPreview + footerPreview;
+    fetchData();
   }, [header, data, dataAggregate, footer, isAggregate]);
 
   return <HandleInvisible text={contents} showInvisible={showInvisible} />;

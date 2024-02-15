@@ -26,14 +26,14 @@ describe('Preview data generation', () => {
   test.each([
     ['FEE_FINE_TYPE_ID', 'UUID'],
     ['FEE_FINE_TYPE_NAME', 'WORD WORD'],
-  ] as const)('formatFeeFineToken(%s)=%s', (type, expected) => expect(formatFeeFineToken(type)).toBe(expected));
+  ] as const)('formatFeeFineToken(%s)=%s', async (type, expected) => expect(await formatFeeFineToken(type)).toBe(expected));
 
   test.each([
     ['BARCODE', 'ALPHANUMERIC'],
     ['NAME', 'WORDS WORDS WORDS'],
     ['MATERIAL_TYPE', 'WORD'],
     ['LIBRARY_ID', 'UUID'],
-  ] as const)('formatItemToken(%s)=%s', (type, expected) => expect(formatItemToken(type)).toBe(expected));
+  ] as const)('formatItemToken(%s)=%s', async (type, expected) => expect(await formatItemToken(type)).toBe(expected));
 
   test.each([
     ['FOLIO_ID', 'UUID'],
@@ -43,7 +43,7 @@ describe('Preview data generation', () => {
     ['FIRST_NAME', 'FIRST_NAME'],
     ['MIDDLE_NAME', 'LAST_NAME'],
     ['LAST_NAME', 'LAST_NAME'],
-  ] as const)('formatUserToken(%s)=%s', (type, expected) => expect(formatUserToken(type)).toBe(expected));
+  ] as const)('formatUserToken(%s)=%s', async (type, expected) => expect(await formatUserToken(type)).toBe(expected));
 
   const TEST_AMOUNT = 12.34;
   const TEST_COUNT = 5;
@@ -86,29 +86,25 @@ describe('Preview data generation', () => {
       'foo',
     ],
     [{ type: DataTokenType.AGGREGATE_COUNT }, '5'],
-  ])('tokenToString(%o)=%s', (token, expected) =>
-    expect(tokenToString(token as DataToken, TEST_AMOUNT, TEST_COUNT)).toBe(expected),
-  );
+  ])('tokenToString(%o)=%s', async (token, expected) => expect(await tokenToString(token as DataToken, TEST_AMOUNT, TEST_COUNT)).toBe(expected));
 
   test.each([
     [true, 7, ['7', ',', '12.34']],
     [false, 1, ['1', ',', '12.34']],
-  ])('generateEntry(aggregate=%s) gives count=%s and elements=%s', (aggregate, expectedCount, expectedElements) =>
-    expect(
-      generateEntry(
-        [
-          { type: DataTokenType.AGGREGATE_COUNT },
-          { type: DataTokenType.COMMA },
-          { type: DataTokenType.AGGREGATE_TOTAL, decimal: true },
-        ],
-        aggregate,
-      ),
-    ).toStrictEqual({
-      amount: 12.34,
-      count: expectedCount,
-      elements: expectedElements,
-    }),
-  );
+  ])('generateEntry(aggregate=%s) gives count=%s and elements=%s', async (aggregate, expectedCount, expectedElements) => expect(
+    await generateEntry(
+      [
+        { type: DataTokenType.AGGREGATE_COUNT },
+        { type: DataTokenType.COMMA },
+        { type: DataTokenType.AGGREGATE_TOTAL, decimal: true },
+      ],
+      aggregate,
+    ),
+  ).toStrictEqual({
+    amount: 12.34,
+    count: expectedCount,
+    elements: expectedElements,
+  }));
 
   test.each([
     [
@@ -133,11 +129,11 @@ describe('Preview data generation', () => {
       '7 12.34,'.repeat(7),
       7 * 7,
     ],
-  ])('createPreviewData(%s, %s) to be data=%s, count=%s', (tokens, aggregate, expectedData, expectedCount) => {
-    expect(createPreviewData(tokens as DataToken[], aggregate)).toHaveProperty('dataPreview', expectedData);
-    expect(createPreviewData(tokens as DataToken[], aggregate)).toHaveProperty('totalCount', expectedCount);
+  ])('createPreviewData(%s, %s) to be data=%s, count=%s', async (tokens, aggregate, expectedData, expectedCount) => {
+    expect(await createPreviewData(tokens as DataToken[], aggregate)).toHaveProperty('dataPreview', expectedData);
+    expect(await createPreviewData(tokens as DataToken[], aggregate)).toHaveProperty('totalCount', expectedCount);
 
     // must round to test because floats
-    expect(createPreviewData(tokens as DataToken[], aggregate).totalAmount.toFixed(2)).toBe((12.34 * 7).toFixed(2));
+    expect((await createPreviewData(tokens as DataToken[], aggregate)).totalAmount.toFixed(2)).toBe((12.34 * 7).toFixed(2));
   });
 });

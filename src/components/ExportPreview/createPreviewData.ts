@@ -1,9 +1,14 @@
-import * as faker from '@ngneat/falso';
 import { DataToken, DataTokenType, ItemAttribute, UserAttribute } from '../../types/TokenTypes';
 import { guardNumberPositive } from '../../utils/guardNumber';
 import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 
-export function formatFeeFineToken(attribute: 'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME'): string {
+async function lazyLoadFaker() {
+  const module = await import('@ngneat/falso');
+  return module;
+}
+
+export async function formatFeeFineToken(attribute: 'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME'): Promise<string> {
+  const faker = await lazyLoadFaker();
   if (attribute === 'FEE_FINE_TYPE_ID') {
     return faker.randUuid();
   } else {
@@ -11,7 +16,8 @@ export function formatFeeFineToken(attribute: 'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYP
   }
 }
 
-export function formatItemToken(attribute: ItemAttribute) {
+export async function formatItemToken(attribute: ItemAttribute) {
+  const faker = await lazyLoadFaker();
   switch (attribute) {
     case 'BARCODE':
       return faker.randPassword({ size: 11 });
@@ -24,7 +30,8 @@ export function formatItemToken(attribute: ItemAttribute) {
   }
 }
 
-export function formatUserToken(attribute: UserAttribute) {
+export async function formatUserToken(attribute: UserAttribute) {
+  const faker = await lazyLoadFaker();
   switch (attribute) {
     case 'BARCODE':
     case 'EXTERNAL_SYSTEM_ID':
@@ -42,7 +49,8 @@ export function formatUserToken(attribute: UserAttribute) {
   }
 }
 
-export function tokenToString(dataToken: DataToken, amount: number, count: number): string {
+export async function tokenToString(dataToken: DataToken, amount: number, count: number): Promise<string> {
+  const faker = await lazyLoadFaker();
   switch (dataToken.type) {
     case DataTokenType.ARBITRARY_TEXT:
       return dataToken.text ?? '';
@@ -68,13 +76,13 @@ export function tokenToString(dataToken: DataToken, amount: number, count: numbe
       return applyLengthControl(formatDate(dataToken.format, faker.randPastDate()).toString(), dataToken.lengthControl);
 
     case DataTokenType.FEE_FINE_TYPE:
-      return applyLengthControl(formatFeeFineToken(dataToken.feeFineAttribute), dataToken.lengthControl);
+      return applyLengthControl(await formatFeeFineToken(dataToken.feeFineAttribute), dataToken.lengthControl);
 
     case DataTokenType.ITEM_INFO:
-      return applyLengthControl(formatItemToken(dataToken.itemAttribute), dataToken.lengthControl);
+      return applyLengthControl(await formatItemToken(dataToken.itemAttribute), dataToken.lengthControl);
 
     case DataTokenType.USER_DATA:
-      return applyLengthControl(formatUserToken(dataToken.userAttribute), dataToken.lengthControl);
+      return applyLengthControl(await formatUserToken(dataToken.userAttribute), dataToken.lengthControl);
 
     case DataTokenType.CONSTANT_CONDITIONAL:
       return faker.rand([...(dataToken.conditions ?? []).map((cond) => cond.value).filter((v) => v), dataToken.else]);
@@ -87,39 +95,43 @@ export function tokenToString(dataToken: DataToken, amount: number, count: numbe
   }
 }
 
-export function generateEntry(
+export async function generateEntry(
   tokens: DataToken[],
   isAggregate: boolean,
-): { elements: string[]; amount: number; count: number } {
+): Promise<{ elements: string[]; amount: number; count: number }> {
+  const faker = await lazyLoadFaker();
   const amount = faker.randFloat({ min: 5, max: 100, precision: 0.01 });
   const count = isAggregate ? faker.randNumber({ min: 1, max: 10 }) : 1;
 
-  return {
-    elements: tokens.map((token) => tokenToString(token, amount, count)),
+  const elements = await Promise.all(tokens.map((token) => tokenToString(token, amount, count)));
+
+  return Promise.resolve({
+    elements,
     amount,
     count,
-  };
+  });
 }
 
-export default function createPreviewData(
+export default async function createPreviewData(
   tokens: DataToken[],
   isAggregate: boolean,
-): { dataPreview: string; totalAmount: number; totalCount: number } {
+): Promise<{ dataPreview: string; totalAmount: number; totalCount: number }> {
+  const faker = await lazyLoadFaker();
   const numEntries = faker.randNumber({ min: 3, max: 12 });
 
   const results: string[] = [];
   let totalAmount = 0;
   let totalCount = 0;
   for (let i = 0; i < numEntries; i++) {
-    const { elements, amount, count } = generateEntry(tokens, isAggregate);
+    const { elements, amount, count } = await generateEntry(tokens, isAggregate);
     results.push(...elements);
     totalAmount += amount;
     totalCount += count;
   }
 
-  return {
+  return Promise.resolve({
     dataPreview: results.join(''),
     totalAmount,
     totalCount,
-  };
+  });
 }
