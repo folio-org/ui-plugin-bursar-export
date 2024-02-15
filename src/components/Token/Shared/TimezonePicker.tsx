@@ -1,13 +1,12 @@
-import { Select } from '@folio/stripes/components';
+import { Select, timezones } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import timeZones from '../../../utils/timezones';
 
 export default function TimezonePicker({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
 
-  const timeZonesForSelect = useMemo(() => timeZones.map(({ value }) => ({ value, label: value })), [timeZones]);
+  const timeZonesForSelect = useMemo(() => timezones.map(({ value }) => ({ value, label: value })), [timezones]);
 
   return (
     <Field name={`${prefix}timezone`} defaultValue={intl.timeZone ?? 'UTC'}>
