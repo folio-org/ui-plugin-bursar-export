@@ -1,3 +1,5 @@
+import { StripesType } from '@folio/stripes/core';
+import { IntlShape } from 'react-intl';
 import ConvenientConstants from '../../../types/ConvenientConstants';
 import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
@@ -11,18 +13,22 @@ export default function dtoToData(
   tokens: BursarExportDataTokenDTO[] | undefined,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): DataToken[] {
   if (!tokens) {
     return [];
   }
 
-  return tokens.map((token) => dtoToDataToken(token, feeFineTypes, locations));
+  return tokens.map((token) => dtoToDataToken(token, feeFineTypes, locations, stripes, intl));
 }
 
 export function dtoToDataToken(
   token: BursarExportDataTokenDTO,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): DataToken {
   switch (token.type) {
     case 'Constant':
@@ -91,7 +97,7 @@ export function dtoToDataToken(
       return {
         type: DataTokenType.CONSTANT_CONDITIONAL,
         conditions: token.conditions.map((condition) => ({
-          ...dtoToCriteria(condition.condition, feeFineTypes, locations),
+          ...dtoToCriteria(condition.condition, feeFineTypes, locations, stripes, intl),
           value: condition.value.value,
         })),
         else: token.else.value,

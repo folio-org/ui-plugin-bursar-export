@@ -1,3 +1,5 @@
+import { IntlShape } from 'react-intl';
+import { useStripes } from '@folio/stripes/core';
 import {
   AndOrOperator,
   ComparisonOperator,
@@ -10,14 +12,27 @@ import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import {
   BursarExportFilterDTO,
-  BursarExportFilterFeeFineOwner,
   BursarExportFilterFeeType,
   BursarExportFilterLocation,
   BursarExportFilterNegation,
 } from '../types';
 import dtoToCriteria from './dtoToCriteria';
+import getIntl from '../../../test/util/getIntl';
+
+// United States
+let intlEn: IntlShape;
+
+beforeAll(() => {
+  intlEn = getIntl('en-US', 'EST');
+});
+
+jest.mock('@folio/stripes/core');
+
+const mockedUseStripes = useStripes as jest.Mock;
 
 describe('DTO to criteria conversion for initial values', () => {
+  const stripes = mockedUseStripes();
+
   it.each<[BursarExportFilterDTO, CriteriaGroup | CriteriaTerminal]>([
     [
       { type: 'Age', condition: 'LESS_THAN', numDays: 1 },
@@ -48,7 +63,7 @@ describe('DTO to criteria conversion for initial values', () => {
       { type: CriteriaTerminalType.SERVICE_POINT, servicePointId: 'sp-id' },
     ],
     [{ type: 'Pass' }, { type: CriteriaTerminalType.PASS }],
-  ])('converts simple criteria %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [])).toEqual(expected));
+  ])('converts simple criteria %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [], stripes, intlEn)).toEqual(expected));
 
   it.each<[BursarExportFilterDTO, CriteriaGroup]>([
     [
@@ -73,7 +88,7 @@ describe('DTO to criteria conversion for initial values', () => {
         criteria: [{ type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' }],
       },
     ],
-  ])('converts condition %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [])).toEqual(expected));
+  ])('converts condition %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [], stripes, intlEn)).toEqual(expected));
 
   it.each<[BursarExportFilterNegation, CriteriaGroup]>([
     [
@@ -124,7 +139,7 @@ describe('DTO to criteria conversion for initial values', () => {
         criteria: [{ type: CriteriaTerminalType.PATRON_GROUP, patronGroupId: 'pg-id' }],
       },
     ],
-  ])('converts negation %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [])).toEqual(expected));
+  ])('converts negation %s to %s', (input, expected) => expect(dtoToCriteria(input, [], [], stripes, intlEn)).toEqual(expected));
 
   it.each<[BursarExportFilterFeeType, FeeFineTypeDTO[], CriteriaTerminal]>([
     [
@@ -155,7 +170,7 @@ describe('DTO to criteria conversion for initial values', () => {
       },
     ],
   ])('converts fee type %s with known types %s to %s', (input, feeFineTypes, expected) =>
-    expect(dtoToCriteria(input, feeFineTypes, [])).toEqual(expected),
+    expect(dtoToCriteria(input, feeFineTypes, [], stripes, intlEn)).toEqual(expected),
   );
 
   it.each<[BursarExportFilterLocation, LocationDTO[], CriteriaTerminal]>([
@@ -194,6 +209,6 @@ describe('DTO to criteria conversion for initial values', () => {
       },
     ],
   ])('converts location %s with known locations %s to %s', (input, locations, expected) =>
-    expect(dtoToCriteria(input, [], locations)).toEqual(expected),
+    expect(dtoToCriteria(input, [], locations, stripes, intlEn)).toEqual(expected),
   );
 });

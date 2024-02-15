@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
+import { useStripes } from '@folio/stripes/core';
 import dtoToFormValues from '../api/dto/from/dtoToFormValues';
 import useCurrentConfig from '../api/queries/useCurrentConfig';
 import useFeeFineTypes from '../api/queries/useFeeFineTypes';
@@ -17,6 +18,9 @@ export default function useInitialValues() {
 
   const localeWeekdays = useLocaleWeekdays(useIntl());
 
+  const stripes = useStripes();
+  const intl = useIntl();
+
   const [initialValues, setInitialValues] = useState<Partial<FormValues> | null>(null);
 
   // this must go in an effect since, otherwise, the form will be reset on query fetch (which happens when selecting certain data/criteria)
@@ -30,7 +34,7 @@ export default function useInitialValues() {
     }
 
     setInitialValues(
-      dtoToFormValues(currentConfig.data, localeWeekdays, feeFineTypes.data, locations.data, transferAccounts.data),
+      dtoToFormValues(currentConfig.data, localeWeekdays, feeFineTypes.data, locations.data, transferAccounts.data, stripes, intl)
     );
   }, [
     currentConfig.isSuccess,
@@ -38,6 +42,13 @@ export default function useInitialValues() {
     feeFineTypes.isSuccess,
     locations.isSuccess,
     transferAccounts.isSuccess,
+    initialValues,
+    currentConfig.data,
+    feeFineTypes.data,
+    locations.data,
+    transferAccounts.data,
+    stripes,
+    intl,
   ]);
 
   return initialValues;

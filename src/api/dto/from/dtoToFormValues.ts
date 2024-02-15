@@ -1,3 +1,5 @@
+import { IntlShape } from 'react-intl';
+import { StripesType } from '@folio/stripes/core';
 import FormValues from '../../../types/FormValues';
 import { LocaleWeekdayInfo } from '../../../utils/WeekdayUtils';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
@@ -17,6 +19,8 @@ export default function dtoToFormValues(
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
   transferAccounts: TransferAccountDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): Partial<FormValues> {
   if (!values) {
     return {};
@@ -26,13 +30,13 @@ export default function dtoToFormValues(
     return {
       scheduling: dtoToScheduling(values, localeWeekdays),
 
-      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations),
+      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations, stripes, intl),
 
       aggregate: true,
-      aggregateFilter: dtoToAggregateCriteria(values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter),
+      aggregateFilter: dtoToAggregateCriteria(values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter, stripes, intl),
 
       header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
-      dataAggregate: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations),
+      dataAggregate: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations, stripes, intl),
       footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
 
       transferInfo: dtoToTransfer(
@@ -40,18 +44,20 @@ export default function dtoToFormValues(
         feeFineTypes,
         locations,
         transferAccounts,
+        stripes,
+        intl,
       ),
     };
   } else {
     return {
       scheduling: dtoToScheduling(values, localeWeekdays),
 
-      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations),
+      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations, stripes, intl),
 
       aggregate: false,
 
       header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
-      data: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations),
+      data: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations, stripes, intl),
       footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
 
       transferInfo: dtoToTransfer(
@@ -59,6 +65,8 @@ export default function dtoToFormValues(
         feeFineTypes,
         locations,
         transferAccounts,
+        stripes,
+        intl,
       ),
     };
   }

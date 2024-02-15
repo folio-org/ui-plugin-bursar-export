@@ -1,3 +1,5 @@
+import { StripesType } from '@folio/stripes/core';
+import { IntlShape } from 'react-intl';
 import {
   AndOrOperator,
   ComparisonOperator,
@@ -15,6 +17,8 @@ export default function dtoToCriteria(
   filter: BursarExportFilterDTO,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): CriteriaGroup | CriteriaTerminal {
   switch (filter.type) {
     case CriteriaTerminalType.AGE:
@@ -27,7 +31,7 @@ export default function dtoToCriteria(
       return {
         type: CriteriaTerminalType.AMOUNT,
         operator: filter.condition as ComparisonOperator,
-        amountCurrency: (filter.amount / 100).toFixed(2),
+        amountCurrency: intl.formatNumber(filter.amount / 100, { style: 'currency', currency: stripes.currency }),
       };
     case CriteriaTerminalType.FEE_FINE_OWNER:
       return {
@@ -58,10 +62,10 @@ export default function dtoToCriteria(
       };
 
     case 'Condition':
-      return dtoToConditionCriteria(filter, feeFineTypes, locations);
+      return dtoToConditionCriteria(filter, feeFineTypes, locations, stripes, intl);
 
     case 'Negation':
-      return dtoToNegationCriteria(filter, feeFineTypes, locations);
+      return dtoToNegationCriteria(filter, feeFineTypes, locations, stripes, intl);
 
     case CriteriaTerminalType.PASS:
     default:
@@ -75,16 +79,18 @@ export function dtoToConditionCriteria(
   filter: BursarExportFilterCondition,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): CriteriaGroup {
   if (filter.operation === AndOrOperator.AND) {
     return {
       type: CriteriaGroupType.ALL_OF,
-      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations)),
+      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)),
     };
   } else {
     return {
       type: CriteriaGroupType.ANY_OF,
-      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations)),
+      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)),
     };
   }
 }
@@ -93,19 +99,21 @@ export function dtoToNegationCriteria(
   filter: BursarExportFilterNegation,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): CriteriaGroup {
   // NOR gets displayed as "None of" in the UI, so we flatten the inner OR
   if (filter.criteria.type === 'Condition' && filter.criteria.operation === AndOrOperator.OR) {
     return {
       type: CriteriaGroupType.NONE_OF,
-      criteria: filter.criteria.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations)),
+      criteria: filter.criteria.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)),
     };
   }
 
   // otherwise, just negate the single inner criteria
   return {
     type: CriteriaGroupType.NONE_OF,
-    criteria: [dtoToCriteria(filter.criteria, feeFineTypes, locations)],
+    criteria: [dtoToCriteria(filter.criteria, feeFineTypes, locations, stripes, intl)],
   };
 }
 

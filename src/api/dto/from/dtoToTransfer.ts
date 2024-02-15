@@ -1,3 +1,5 @@
+import { StripesType } from '@folio/stripes/core';
+import { IntlShape } from 'react-intl';
 import FormValues from '../../../types/FormValues';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
@@ -11,10 +13,12 @@ export default function dtoToTransfer(
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
   transferAccounts: TransferAccountDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
 ): FormValues['transferInfo'] {
   return {
     conditions: (tokens.conditions ?? []).map(({ condition, account }) => ({
-      condition: dtoToCriteria(condition, feeFineTypes, locations),
+      condition: dtoToCriteria(condition, feeFineTypes, locations, stripes, intl),
       owner: getOwnerForAccount(transferAccounts, account),
       account,
     })),
