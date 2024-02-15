@@ -2,10 +2,10 @@ import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
 import { DataTokenType } from '../../../types/TokenTypes';
-import { SavedJobDTO } from '../types';
+import { SavedJobConfiguration } from '../types';
 import dtoToFormValues from './dtoToFormValues';
 
-test.each<[SavedJobDTO | null | undefined, Partial<FormValues>]>([
+test.each<[SavedJobConfiguration | null | undefined, Partial<FormValues>]>([
   [null, {}],
   [undefined, {}],
   [

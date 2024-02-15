@@ -315,7 +315,7 @@ export interface SchedulingDTO {
   weekDays?: Weekday[];
 }
 
-export interface SavedJobDTO extends SchedulingDTO {
+export interface SavedJobConfiguration extends SchedulingDTO {
   id: string;
   type: 'BURSAR_FEES_FINES';
   tenant: string;

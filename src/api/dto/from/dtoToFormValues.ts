@@ -3,7 +3,7 @@ import { LocaleWeekdayInfo } from '../../../utils/WeekdayUtils';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
-import { SavedJobDTO } from '../types';
+import { SavedJobConfiguration } from '../types';
 import dtoToAggregateCriteria from './dtoToAggregateCriteria';
 import dtoToCriteria from './dtoToCriteria';
 import dtoToData from './dtoToData';
@@ -12,7 +12,7 @@ import dtoToScheduling from './dtoToScheduling';
 import dtoToTransfer from './dtoToTransfer';
 
 export default function dtoToFormValues(
-  values: SavedJobDTO | null | undefined,
+  values: SavedJobConfiguration | null | undefined,
   localeWeekdays: LocaleWeekdayInfo[],
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],

@@ -1,16 +1,16 @@
 import { useOkapiKy } from '@folio/stripes/core';
 import { useQuery } from 'react-query';
-import { SavedJobDTO } from '../dto/types';
+import { SavedJobConfiguration } from '../dto/types';
 
 export interface CurrentConfigResponse {
   totalRecords: number;
-  configs?: SavedJobDTO[];
+  configs?: SavedJobConfiguration[];
 }
 
 export default function useCurrentConfig() {
   const ky = useOkapiKy();
 
-  return useQuery<SavedJobDTO | null>(
+  return useQuery<SavedJobConfiguration | null>(
     ['ui-plugin-bursar-export', 'current-config'],
     async () =>
       (
