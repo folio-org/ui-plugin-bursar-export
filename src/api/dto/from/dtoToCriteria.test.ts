@@ -21,9 +21,11 @@ import getIntl from '../../../test/util/getIntl';
 
 // United States
 let intlEn: IntlShape;
+let intlEu: IntlShape;
 
 beforeAll(() => {
   intlEn = getIntl('en-US', 'EST');
+  intlEu = getIntl('fr-FR', 'CET');
 });
 
 describe('DTO to criteria conversion for initial values', () => {
@@ -205,4 +207,14 @@ describe('DTO to criteria conversion for initial values', () => {
   ])('converts location %s with known locations %s to %s', (input, locations, expected) =>
     expect(dtoToCriteria(input, [], locations, { currency: 'USD' } as StripesType, intlEn)).toEqual(expected),
   );
+
+  it('converts amount with EUR currency', () => {
+    const input: BursarExportFilterDTO = { type: 'Amount', condition: 'LESS_THAN', amount: 124 };
+    const expected: CriteriaTerminal = {
+      type: CriteriaTerminalType.AMOUNT,
+      operator: ComparisonOperator.LESS_THAN,
+      amountCurrency: '1,24\xa0€',
+    };
+    expect(dtoToCriteria(input, [], [], { currency: 'EUR' } as StripesType, intlEu)).toEqual(expected);
+  });
 });

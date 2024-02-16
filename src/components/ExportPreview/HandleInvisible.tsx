@@ -41,7 +41,7 @@ export default function HandleInvisible({ text, showInvisible }: Readonly<{ text
       .flatMap((piece) => splitAndInsert(piece, '\t', <Invisible>\t</Invisible>))
       .flatMap((piece) => splitAndInsert(piece, ' ', <Invisible>•</Invisible>));
   } else {
-    pieces = pieces.flatMap((piece, index) => splitAndInsert(piece, '\n', <br key={'br'+index} />));
+    pieces = pieces.flatMap((piece, index) => splitAndInsert(piece, '\n', <br key={'br' + index} />));
   }
 
   pieces = pieces.map((piece) => {

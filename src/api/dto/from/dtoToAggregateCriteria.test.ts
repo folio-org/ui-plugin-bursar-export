@@ -7,9 +7,11 @@ import dtoToAggregateCriteria from './dtoToAggregateCriteria';
 
 // United States
 let intlEn: IntlShape;
+let intlEu: IntlShape;
 
 beforeAll(() => {
   intlEn = getIntl('en-US', 'EST');
+  intlEu = getIntl('fr-FR', 'CET');
 });
 
 describe('dtoToAggregateCriteria', () => {
@@ -42,4 +44,21 @@ describe('dtoToAggregateCriteria', () => {
       },
     ],
   ])('dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input, { currency: 'USD' } as StripesType, intlEn)).toEqual(expected));
+
+  // test for conversion to eur
+  test.each<[BursarExportFilterAggregate | undefined, CriteriaAggregate | undefined]>([
+    [
+      {
+        type: 'Aggregate',
+        property: 'TOTAL_AMOUNT',
+        condition: 'GREATER_THAN',
+        amount: 1523,
+      },
+      {
+        type: CriteriaAggregateType.TOTAL_AMOUNT,
+        operator: ComparisonOperator.GREATER_THAN,
+        amountCurrency: '15,23\xa0€',
+      },
+    ],
+  ])('with EUR dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input, { currency: 'EUR' } as StripesType, intlEu)).toEqual(expected));
 });
