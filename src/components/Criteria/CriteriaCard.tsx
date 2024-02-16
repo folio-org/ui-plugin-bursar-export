@@ -33,6 +33,20 @@ export default function CriteriaCard({
     format: (value) => value ?? CriteriaTerminalType.PASS,
   }).input.value;
 
+  const noneOfReturnType = (
+    <FieldArray name={`${name}.criteria`}>
+      {({ fields }) => fields.map((innerName, index) => (
+        <CriteriaCard
+          key={innerName}
+          name={innerName}
+          alone={fields.length === 1}
+          onRemove={() => fields.remove(index)}
+        />
+      ))
+      }
+    </FieldArray>
+  );
+
   const cardInterior = useMemo(() => {
     switch (type) {
       case CriteriaTerminalType.PASS:
@@ -41,19 +55,7 @@ export default function CriteriaCard({
       case CriteriaGroupType.ALL_OF:
       case CriteriaGroupType.ANY_OF:
       case CriteriaGroupType.NONE_OF:
-        return (
-          <FieldArray name={`${name}.criteria`}>
-            {({ fields }) => fields.map((innerName, index) => (
-              <CriteriaCard
-                key={innerName}
-                name={innerName}
-                alone={fields.length === 1}
-                onRemove={() => fields.remove(index)}
-              />
-            ))
-            }
-          </FieldArray>
-        );
+        return (noneOfReturnType);
 
       case CriteriaTerminalType.AGE:
         return (
@@ -101,7 +103,7 @@ export default function CriteriaCard({
       default:
         return <Loading />;
     }
-  }, [name, type]);
+  }, [type]);
 
   return (
     <Card
