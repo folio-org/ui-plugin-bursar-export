@@ -75,6 +75,7 @@ const getResponse = jest.fn((endpoint: string) => {
     };
   } else {
     fail(`Unexpected endpoint: ${endpoint}`);
+    return {};
   }
 });
 

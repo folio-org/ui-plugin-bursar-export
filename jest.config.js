@@ -1,8 +1,6 @@
 const { join } = require('path');
 const config = require('@folio/jest-config-stripes');
 
-const esModules = ['@folio', 'ky'].join('|');
-
 /** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
   ...config,

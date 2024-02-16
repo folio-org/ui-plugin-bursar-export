@@ -84,64 +84,62 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
   }, [intl]);
 
   const noneAggregateOptions = useMemo(
-    () =>
-      [
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.userData',
-          }),
-          value: DataTokenType.USER_DATA,
-        },
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.accountAmount',
-          }),
-          value: DataTokenType.ACCOUNT_AMOUNT,
-        },
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.accountDate',
-          }),
-          value: DataTokenType.ACCOUNT_DATE,
-        },
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType',
-          }),
-          value: DataTokenType.FEE_FINE_TYPE,
-        },
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.itemInfo',
-          }),
-          value: DataTokenType.ITEM_INFO,
-        },
-      ].sort((a, b) => a.label.localeCompare(b.label)),
+    () => [
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.userData',
+        }),
+        value: DataTokenType.USER_DATA,
+      },
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.accountAmount',
+        }),
+        value: DataTokenType.ACCOUNT_AMOUNT,
+      },
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.accountDate',
+        }),
+        value: DataTokenType.ACCOUNT_DATE,
+      },
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType',
+        }),
+        value: DataTokenType.FEE_FINE_TYPE,
+      },
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.itemInfo',
+        }),
+        value: DataTokenType.ITEM_INFO,
+      },
+    ].sort((a, b) => a.label.localeCompare(b.label)),
     [intl],
   );
 
   const aggregateOptions = useMemo(
-    () =>
-      [
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.userData',
-          }),
-          value: DataTokenType.USER_DATA,
-        },
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.totalAmount',
-          }),
-          value: DataTokenType.AGGREGATE_TOTAL,
-        },
-        {
-          label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.token.numAccounts',
-          }),
-          value: DataTokenType.AGGREGATE_COUNT,
-        },
-      ].sort((a, b) => a.label.localeCompare(b.label)),
+    () => [
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.userData',
+        }),
+        value: DataTokenType.USER_DATA,
+      },
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.totalAmount',
+        }),
+        value: DataTokenType.AGGREGATE_TOTAL,
+      },
+      {
+        label: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.token.numAccounts',
+        }),
+        value: DataTokenType.AGGREGATE_COUNT,
+      },
+    ].sort((a, b) => a.label.localeCompare(b.label)),
     [intl],
   );
 

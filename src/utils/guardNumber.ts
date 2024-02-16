@@ -6,7 +6,7 @@ export default function guardNumber(
 ): number {
   const parsed = parseFloat(value ?? '');
 
-  if (isNaN(parsed)) {
+  if (Number.isNaN(parsed)) {
     return fallback;
   }
 

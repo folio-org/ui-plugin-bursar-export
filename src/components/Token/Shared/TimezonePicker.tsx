@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 export default function TimezonePicker({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
 
-  const timeZonesForSelect = useMemo(() => timezones.map(({ value }) => ({ value, label: value })), [timezones]);
+  const timeZonesForSelect = useMemo(() => timezones.map(({ value }) => ({ value, label: value })), []);
 
   return (
     <Field name={`${prefix}timezone`} defaultValue={intl.timeZone ?? 'UTC'}>

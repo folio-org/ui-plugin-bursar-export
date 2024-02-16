@@ -1,5 +1,5 @@
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
-import React, { ComponentType } from 'react';
+import React from 'react';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { useStripes } from '@folio/stripes/core';
 import arrayMutators from 'final-form-arrays';

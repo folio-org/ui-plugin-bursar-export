@@ -68,7 +68,7 @@ describe('Criteria card toolbox', () => {
       expect(screen.queryAllByRole('button')).toHaveLength(2);
       expect(screen.getByRole('button', { name: 'plus-sign' })).toBeVisible();
       expect(screen.getByRole('button', { name: 'trash' })).toBeVisible();
-      expect(screen.getByRole('button', { name: 'trash' })).toBeDisabled;
+      expect(screen.getByRole('button', { name: 'trash' })).toBeDisabled();
     },
   );
 
@@ -85,7 +85,7 @@ describe('Criteria card toolbox', () => {
 
       expect(screen.queryAllByRole('button')).toHaveLength(1);
       expect(screen.getByRole('button', { name: 'trash' })).toBeVisible();
-      expect(screen.getByRole('button', { name: 'trash' })).toBeDisabled;
+      expect(screen.getByRole('button', { name: 'trash' })).toBeDisabled();
     },
   );
 

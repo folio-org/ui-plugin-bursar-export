@@ -35,10 +35,9 @@ export default function TransferInfoMenu() {
           </Card>
 
           <Button
-            onClick={() =>
-              fields.push({
-                condition: { type: CriteriaTerminalType.PATRON_GROUP },
-              })
+            onClick={() => fields.push({
+              condition: { type: CriteriaTerminalType.PATRON_GROUP },
+            })
             }
           >
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.addCondition" />

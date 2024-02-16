@@ -45,7 +45,7 @@ export function applyLengthControl(value: string, lengthControl?: LengthControl)
   }
 
   const desiredLength = parseInt(lengthControl.length, 10);
-  if (isNaN(desiredLength)) {
+  if (Number.isNaN(desiredLength)) {
     return value;
   }
 

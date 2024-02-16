@@ -41,12 +41,11 @@ export default function UserInfoToken({ prefix }: Readonly<{ prefix: string }>) 
     },
   ];
   const options = useMemo(
-    () =>
-      attributeOptions.map((option) => ({
-        label: intl.formatMessage({ id: option.labelId }),
-        value: option.value as UserAttribute,
-      })),
-    [intl],
+    () => attributeOptions.map((option) => ({
+      label: intl.formatMessage({ id: option.labelId }),
+      value: option.value as UserAttribute,
+    })),
+    [intl, attributeOptions],
   );
 
   return (

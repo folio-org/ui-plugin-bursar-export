@@ -28,7 +28,7 @@ export default function TokenCardToolbox({
 
   const lengthControlCallback = useCallback(
     () => lengthControlOpen.input.onChange(!lengthControlOpen.input.value),
-    [lengthControlOpen, index],
+    [lengthControlOpen],
   );
 
   const moveUpCallback = useCallback(() => fieldArray.fields.swap(index, index - 1), [fieldArray.fields, index]);

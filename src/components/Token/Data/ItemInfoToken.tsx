@@ -36,14 +36,13 @@ export default function ItemInfoToken({ prefix }: Readonly<{ prefix: string }>) 
     },
   ];
   const options = useMemo(
-    () =>
-      attributeOptions
-        .map((option) => ({
-          label: intl.formatMessage({ id: option.labelId }),
-          value: option.value as ItemAttribute,
-        }))
-        .sort((a, b) => a.label.localeCompare(b.label)),
-    [intl],
+    () => attributeOptions
+      .map((option) => ({
+        label: intl.formatMessage({ id: option.labelId }),
+        value: option.value as ItemAttribute,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+    [intl, attributeOptions],
   );
 
   return (

@@ -35,57 +35,56 @@ export default function useCriteriaCardOptions(root: boolean, patronOnly: boolea
 
       ...(patronOnly
         ? [
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup',
-              }),
-              value: CriteriaTerminalType.PATRON_GROUP,
-            },
-          ]
-        : [
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.age',
-              }),
-              value: CriteriaTerminalType.AGE,
-            },
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.amount',
-              }),
-              value: CriteriaTerminalType.AMOUNT,
-            },
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.owner',
-              }),
-              value: CriteriaTerminalType.FEE_FINE_OWNER,
-            },
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.type',
-              }),
-              value: CriteriaTerminalType.FEE_FINE_TYPE,
-            },
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.location',
-              }),
-              value: CriteriaTerminalType.LOCATION,
-            },
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.servicePoint',
-              }),
-              value: CriteriaTerminalType.SERVICE_POINT,
-            },
-            {
-              label: intl.formatMessage({
-                id: 'ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup',
-              }),
-              value: CriteriaTerminalType.PATRON_GROUP,
-            },
-          ]
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup',
+            }),
+            value: CriteriaTerminalType.PATRON_GROUP,
+          },
+        ] : [
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.age',
+            }),
+            value: CriteriaTerminalType.AGE,
+          },
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.amount',
+            }),
+            value: CriteriaTerminalType.AMOUNT,
+          },
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.owner',
+            }),
+            value: CriteriaTerminalType.FEE_FINE_OWNER,
+          },
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.type',
+            }),
+            value: CriteriaTerminalType.FEE_FINE_TYPE,
+          },
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.location',
+            }),
+            value: CriteriaTerminalType.LOCATION,
+          },
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.servicePoint',
+            }),
+            value: CriteriaTerminalType.SERVICE_POINT,
+          },
+          {
+            label: intl.formatMessage({
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup',
+            }),
+            value: CriteriaTerminalType.PATRON_GROUP,
+          },
+        ]
       ).sort((a, b) => a.label.localeCompare(b.label)),
     ];
 
@@ -99,5 +98,5 @@ export default function useCriteriaCardOptions(root: boolean, patronOnly: boolea
     }
 
     return options;
-  }, [patronOnly, root]);
+  }, [intl, patronOnly, root]);
 }

@@ -93,7 +93,7 @@ export default function DataTokenCardBody({ name }: Readonly<{ name: string }>) 
       default:
         return <div />;
     }
-  }, [type]);
+  }, [type, name]);
 
   return <div>{cardInterior}</div>;
 }

@@ -55,7 +55,7 @@ export default function HeaderFooterCreatorBody({ name }: Readonly<{ name: strin
       default:
         return <div />;
     }
-  }, [type]);
+  }, [type, name]);
 
   return <div>{cardInterior}</div>;
 }
