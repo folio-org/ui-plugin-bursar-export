@@ -1,6 +1,6 @@
 import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
-import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType } from '../../../types/CriteriaTypes';
+import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType, CriteriaTokenType } from '../../../types/CriteriaTypes';
 import { BursarExportFilterAggregate } from '../types';
 
 // inverse of ../to/aggregateCriteriaToFilterDto
@@ -10,13 +10,13 @@ export default function dtoToAggregateCriteria(
   intl: IntlShape,
 ): CriteriaAggregate | undefined {
   switch (filter?.property) {
-    case 'NUM_ROWS':
+    case CriteriaTokenType.NUM_ROWS:
       return {
         type: CriteriaAggregateType.NUM_ROWS,
         operator: filter.condition as ComparisonOperator,
         amount: intl.formatNumber(filter.amount, { style: 'currency', currency: stripes.currency }),
       };
-    case 'TOTAL_AMOUNT':
+    case CriteriaTokenType.TOTAL_AMOUNT:
       return {
         type: CriteriaAggregateType.TOTAL_AMOUNT,
         operator: filter.condition as ComparisonOperator,

@@ -1,4 +1,5 @@
 import ConvenientConstants from '../../../types/ConvenientConstants';
+import { CriteriaTokenType } from '../../../types/CriteriaTypes';
 import { DataToken, DataTokenType } from '../../../types/TokenTypes';
 import { guardNumberPositive } from '../../../utils/guardNumber';
 import { BursarExportDataTokenDTO } from '../types';
@@ -33,7 +34,7 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
     case DataTokenType.AGGREGATE_COUNT:
       return {
         type: 'Aggregate',
-        value: 'NUM_ROWS',
+        value: CriteriaTokenType.NUM_ROWS,
         decimal: false,
         lengthControl: lengthControlToDto(token.lengthControl),
       };
@@ -41,7 +42,7 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
     case DataTokenType.AGGREGATE_TOTAL:
       return {
         type: 'Aggregate',
-        value: 'TOTAL_AMOUNT',
+        value: CriteriaTokenType.TOTAL_AMOUNT,
         decimal: token.decimal,
         lengthControl: lengthControlToDto(token.lengthControl),
       };

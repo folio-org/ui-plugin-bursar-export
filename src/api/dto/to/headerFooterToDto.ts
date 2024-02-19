@@ -1,4 +1,5 @@
 import ConvenientConstants from '../../../types/ConvenientConstants';
+import { CriteriaTokenType } from '../../../types/CriteriaTypes';
 import { HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import { guardNumberPositive } from '../../../utils/guardNumber';
 import { BursarExportHeaderFooterTokenDTO } from '../types';
@@ -32,7 +33,7 @@ export function headerFooterTokenToDto(token: HeaderFooterToken): BursarExportHe
     case HeaderFooterTokenType.AGGREGATE_COUNT:
       return {
         type: 'Aggregate',
-        value: 'NUM_ROWS',
+        value: CriteriaTokenType.NUM_ROWS,
         decimal: false,
         lengthControl: lengthControlToDto(token.lengthControl),
       };
@@ -40,7 +41,7 @@ export function headerFooterTokenToDto(token: HeaderFooterToken): BursarExportHe
     case HeaderFooterTokenType.AGGREGATE_TOTAL:
       return {
         type: 'Aggregate',
-        value: 'TOTAL_AMOUNT',
+        value: CriteriaTokenType.TOTAL_AMOUNT,
         decimal: token.decimal,
         lengthControl: lengthControlToDto(token.lengthControl),
       };

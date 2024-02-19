@@ -1,4 +1,4 @@
-import { CriteriaAggregate, CriteriaAggregateType } from '../../../types/CriteriaTypes';
+import { CriteriaAggregate, CriteriaAggregateType, CriteriaTokenType } from '../../../types/CriteriaTypes';
 import guardNumber from '../../../utils/guardNumber';
 import { BursarExportFilterAggregate } from '../types';
 
@@ -9,7 +9,7 @@ export default function aggregateCriteriaToFilterDto(
     case CriteriaAggregateType.NUM_ROWS:
       return {
         type: 'Aggregate',
-        property: 'NUM_ROWS',
+        property: CriteriaTokenType.NUM_ROWS,
         condition: criteria.operator ?? 'GREATER_THAN_EQUAL',
         amount: guardNumber(criteria.amount, 0),
       };
@@ -17,7 +17,7 @@ export default function aggregateCriteriaToFilterDto(
     case CriteriaAggregateType.TOTAL_AMOUNT:
       return {
         type: 'Aggregate',
-        property: 'TOTAL_AMOUNT',
+        property: CriteriaTokenType.TOTAL_AMOUNT,
         condition: criteria.operator ?? 'GREATER_THAN_EQUAL',
         amount: guardNumber(criteria.amountCurrency, 0, (value) => value * 100),
       };

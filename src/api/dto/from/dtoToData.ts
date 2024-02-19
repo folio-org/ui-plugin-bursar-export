@@ -7,6 +7,7 @@ import { LocationDTO } from '../../queries/useLocations';
 import { BursarExportDataTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
 import dtoToCriteria from './dtoToCriteria';
 import dtoToLengthControl from './dtoToLengthControl';
+import { CriteriaTokenType } from '../../../types/CriteriaTypes';
 
 // inverse of ../to/dataToDto
 export default function dtoToData(
@@ -125,7 +126,7 @@ export function constantToToken(token: BursarExportTokenConstant): DataToken {
 }
 
 export function aggregateToToken(token: BursarExportTokenAggregate): DataToken {
-  if (token.value === 'NUM_ROWS') {
+  if (token.value === CriteriaTokenType.NUM_ROWS) {
     return {
       type: DataTokenType.AGGREGATE_COUNT,
       lengthControl: dtoToLengthControl(token.lengthControl),

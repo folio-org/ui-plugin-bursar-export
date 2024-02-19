@@ -1,4 +1,5 @@
 import ConvenientConstants from '../../../types/ConvenientConstants';
+import { CriteriaTokenType } from '../../../types/CriteriaTypes';
 import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import { BursarExportHeaderFooterTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
 import dtoToLengthControl from './dtoToLengthControl';
@@ -50,7 +51,7 @@ export function constantToToken(token: BursarExportTokenConstant): HeaderFooterT
 }
 
 export function aggregateToToken(token: BursarExportTokenAggregate): HeaderFooterToken {
-  if (token.value === 'NUM_ROWS') {
+  if (token.value === CriteriaTokenType.NUM_ROWS) {
     return {
       type: HeaderFooterTokenType.AGGREGATE_COUNT,
       lengthControl: dtoToLengthControl(token.lengthControl),

@@ -90,3 +90,8 @@ export enum CriteriaAggregateType {
   NUM_ROWS = 'NumRows',
   TOTAL_AMOUNT = 'TotalAmount',
 }
+
+export enum CriteriaTokenType {
+  NUM_ROWS = 'NUM_ROWS',
+  TOTAL_AMOUNT = 'TOTAL_AMOUNT',
+}
