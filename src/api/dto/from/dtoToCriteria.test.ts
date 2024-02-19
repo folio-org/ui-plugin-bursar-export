@@ -1,5 +1,5 @@
 import { IntlShape } from 'react-intl';
-import { StripesType, useStripes } from '@folio/stripes/core';
+import { StripesType } from '@folio/stripes/core';
 import {
   AndOrOperator,
   ComparisonOperator,

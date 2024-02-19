@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { IntlContext, IntlShape } from 'react-intl';
 import withIntlConfiguration from './withIntlConfiguration';
 
-export default function (locale = 'en-US', timeZone = 'UTC'): IntlShape {
+export default function getIntl(locale = 'en-US', timeZone = 'UTC'): IntlShape {
   const intlCapturer = jest.fn();
 
   const TestComponent: FunctionComponent<Record<string, never>> = () => (

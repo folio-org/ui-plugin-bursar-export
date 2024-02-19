@@ -19,12 +19,6 @@ jest.mock('@folio/stripes/core', () => ({
 }));
 
 describe('Automatic scheduling mutation', () => {
-  const original = console.error;
-
-  afterAll(() => {
-    console.error = original;
-  });
-
   beforeEach(() => {
     getMock.mockReset();
     postMock.mockReset();

@@ -1,7 +1,7 @@
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { Form } from 'react-final-form';
-import CriteriaCardSelect from './CriteriaCardSelect';
 import React from 'react';
+import CriteriaCardSelect from './CriteriaCardSelect';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 
 describe('Criteria card selection box', () => {

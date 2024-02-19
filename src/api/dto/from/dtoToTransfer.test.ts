@@ -1,5 +1,5 @@
 import { IntlShape } from 'react-intl';
-import { Stripes, StripesType, useStripes } from '@folio/stripes/core';
+import { StripesType } from '@folio/stripes/core';
 import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';

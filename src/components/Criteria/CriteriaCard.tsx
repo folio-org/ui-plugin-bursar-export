@@ -103,7 +103,7 @@ export default function CriteriaCard({
       default:
         return <Loading />;
     }
-  }, [type]);
+  }, [name, noneOfReturnType, type]);
 
   return (
     <Card

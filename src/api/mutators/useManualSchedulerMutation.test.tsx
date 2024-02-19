@@ -15,12 +15,6 @@ jest.mock('@folio/stripes/core', () => ({
 }));
 
 describe('Automatic scheduling mutation', () => {
-  const original = console.error;
-
-  afterAll(() => {
-    console.error = original;
-  });
-
   const contextMock = jest.fn();
   const wrapper = ({ children }: { children: ReactNode }) =>
     withIntlConfiguration(

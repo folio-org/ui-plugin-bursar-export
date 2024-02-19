@@ -1,4 +1,3 @@
-import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import { HeaderFooterToken, HeaderFooterTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { BursarExportHeaderFooterTokenDTO } from '../types';
 import dtoToHeaderFooter, { dtoToHeaderFooterToken } from './dtoToHeaderFooter';

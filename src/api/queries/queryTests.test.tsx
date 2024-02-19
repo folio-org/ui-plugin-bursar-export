@@ -1,4 +1,4 @@
-import { act, renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import React, { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import useLocations from './useLocations';
