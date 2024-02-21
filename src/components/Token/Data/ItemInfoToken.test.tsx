@@ -5,7 +5,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import { DataTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from './DataTokenCardBody';
-import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 
 describe('Item info type token', () => {
   it('displays appropriate form', async () => {

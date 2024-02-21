@@ -5,7 +5,7 @@ import FormValues from '../../../types/FormValues';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
 import { BursarExportTransferCriteria } from '../types';
 import dtoToTransfer from './dtoToTransfer';
-import getIntl from '../../../test/util/getIntl';
+import getIntl from '../../../../test/util/getIntl';
 
 // United States
 let intlEn: IntlShape;

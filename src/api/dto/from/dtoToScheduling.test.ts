@@ -1,4 +1,4 @@
-import * as Weekdays from '../../../test/data/Weekdays';
+import * as Weekdays from '../../../../test/data/Weekdays';
 import FormValues from '../../../types/FormValues';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
 import { SchedulingDTO } from '../types';

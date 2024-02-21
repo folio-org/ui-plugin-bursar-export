@@ -3,7 +3,7 @@ import { waitFor, act, renderHook } from '@folio/jest-config-stripes/testing-lib
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { CalloutContext } from '@folio/stripes/core';
 import useManualSchedulerMutation from './useManualSchedulerMutation';
-import withIntlConfiguration from '../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 
 const kyMock = jest.fn();
 

@@ -23,9 +23,9 @@ module.exports = {
 
   setupFiles: [
     ...config.setupFiles,
-    join(__dirname, './src/test/setupTests.ts')
+    join(__dirname, './test/setupTests.ts')
   ],
-  setupFilesAfterEnv: [join(__dirname, './src/test/jest.setup.ts')],
+  setupFilesAfterEnv: [join(__dirname, './test/jest.setup.ts')],
 
   preset: 'ts-jest',
   transform: {

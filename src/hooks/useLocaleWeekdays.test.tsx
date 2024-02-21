@@ -1,7 +1,7 @@
 import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 import { IntlShape } from 'react-intl';
-import * as Weekdays from '../test/data/Weekdays';
-import getIntl from '../test/util/getIntl';
+import * as Weekdays from '../../test/data/Weekdays';
+import getIntl from '../../test/util/getIntl';
 import useLocaleWeekdays from './useLocaleWeekdays';
 
 // United States

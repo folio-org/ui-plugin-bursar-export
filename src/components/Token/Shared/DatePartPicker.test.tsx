@@ -3,7 +3,7 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import DatePartPicker from './DatePartPicker';
-import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 
 describe('Date part picker', () => {
   it('displays appropriate form', async () => {

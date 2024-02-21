@@ -1,6 +1,6 @@
 import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
-import getIntl from '../../../test/util/getIntl';
+import getIntl from '../../../../test/util/getIntl';
 import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
 import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { BursarExportDataTokenDTO } from '../types';

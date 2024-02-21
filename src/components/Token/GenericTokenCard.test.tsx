@@ -2,7 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration from '../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 import GenericTokenCard from './GenericTokenCard';
 
 describe('Generic token card', () => {

@@ -5,7 +5,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import FormValues from '../../types/FormValues';
-import withIntlConfiguration from '../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 import CriteriaCard from './CriteriaCard';
 
 const getResponse = jest.fn((endpoint: string) => {

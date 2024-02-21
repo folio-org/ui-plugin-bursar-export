@@ -6,7 +6,7 @@ import SchedulingFrequency from '../../../types/SchedulingFrequency';
 import { DataTokenType } from '../../../types/TokenTypes';
 import { SavedJobConfiguration } from '../types';
 import dtoToFormValues from './dtoToFormValues';
-import getIntl from '../../../test/util/getIntl';
+import getIntl from '../../../../test/util/getIntl';
 
 // United States
 let intlEn: IntlShape;

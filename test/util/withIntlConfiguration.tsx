@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import { IntlProvider } from 'react-intl';
 // cannot make TS happy without the .json
 // eslint-disable-next-line import/extensions
-import localTranslations from '../../../translations/ui-plugin-bursar-export/en.json';
+import localTranslations from '../../translations/ui-plugin-bursar-export/en.json';
 
 export const translationSets = [
   {

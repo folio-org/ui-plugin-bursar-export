@@ -2,7 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import { Form } from 'react-final-form';
 import React from 'react';
 import CriteriaCardSelect from './CriteriaCardSelect';
-import withIntlConfiguration from '../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 
 describe('Criteria card selection box', () => {
   it('root has no criteria option', () => {

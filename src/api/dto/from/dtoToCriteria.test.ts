@@ -17,7 +17,7 @@ import {
   BursarExportFilterNegation,
 } from '../types';
 import dtoToCriteria from './dtoToCriteria';
-import getIntl from '../../../test/util/getIntl';
+import getIntl from '../../../../test/util/getIntl';
 
 // United States
 let intlEn: IntlShape;

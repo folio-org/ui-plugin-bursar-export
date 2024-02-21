@@ -2,7 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';

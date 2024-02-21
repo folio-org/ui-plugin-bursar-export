@@ -2,7 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration, { withIntlConfigurationAnyTimezone } from '../../../test/util/withIntlConfiguration';
+import withIntlConfiguration, { withIntlConfigurationAnyTimezone } from '../../../../test/util/withIntlConfiguration';
 import TimezonePicker from './TimezonePicker';
 
 describe('Timezone picker', () => {

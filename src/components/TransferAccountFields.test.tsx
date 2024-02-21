@@ -4,7 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import withIntlConfiguration from '../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../test/util/withIntlConfiguration';
 import TransferAccountFields from './TransferAccountFields';
 
 const getResponse = jest.fn((endpoint: string) => {

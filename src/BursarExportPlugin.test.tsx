@@ -5,7 +5,7 @@ import { useStripes } from '@folio/stripes/core';
 import arrayMutators from 'final-form-arrays';
 import { Form, FormProps } from 'react-final-form';
 import BursarExportPlugin from './index';
-import withIntlConfiguration from './test/util/withIntlConfiguration';
+import withIntlConfiguration from '../test/util/withIntlConfiguration';
 import useInitialValues from './hooks/useInitialValues';
 import { FORM_ID } from './constants';
 import formValuesToDto from './api/dto/to/formValuesToDto';
