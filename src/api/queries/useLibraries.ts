@@ -33,7 +33,6 @@ export default function useLibraries() {
 
   return useQuery<LibraryDTO[]>(
     ['ui-plugin-bursar-export', 'libraries'],
-    async () =>
-      (await ky.get(`location-units/libraries?cql.allRecords=1&limit=${MAX_LIMIT}`).json<LibrariesResponse>()).loclibs,
+    async () => (await ky.get(`location-units/libraries?cql.allRecords=1&limit=${MAX_LIMIT}`).json<LibrariesResponse>()).loclibs,
   );
 }

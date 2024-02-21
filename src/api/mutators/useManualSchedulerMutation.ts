@@ -10,28 +10,25 @@ export default function useManualSchedulerMutation() {
   const intl = useIntl();
 
   const mutation = useMutation(
-    async (parameters: BursarExportJobDTO) =>
-      ky.post('data-export-spring/jobs', {
-        json: {
-          type: 'BURSAR_FEES_FINES',
-          exportTypeSpecificParameters: { bursarFeeFines: parameters },
-        },
-      }),
+    async (parameters: BursarExportJobDTO) => ky.post('data-export-spring/jobs', {
+      json: {
+        type: 'BURSAR_FEES_FINES',
+        exportTypeSpecificParameters: { bursarFeeFines: parameters },
+      },
+    }),
     {
-      onError: () =>
-        context.sendCallout({
-          type: 'error',
-          message: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.error',
-          }),
+      onError: () => context.sendCallout({
+        type: 'error',
+        message: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.error',
         }),
-      onSuccess: () =>
-        context.sendCallout({
-          type: 'success',
-          message: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.success',
-          }),
+      }),
+      onSuccess: () => context.sendCallout({
+        type: 'success',
+        message: intl.formatMessage({
+          id: 'ui-plugin-bursar-export.bursarExports.scheduler.mutation.manual.success',
         }),
+      }),
     },
   );
 

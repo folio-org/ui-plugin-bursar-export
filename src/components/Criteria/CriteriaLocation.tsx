@@ -84,9 +84,7 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.inst" />}
-              dataOptions={[{ label: '', value: undefined }, ...institutionSelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined }, ...institutionSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>
@@ -100,9 +98,7 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.camp" />}
-              dataOptions={[{ label: '', value: undefined }, ...campusSelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined }, ...campusSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>
@@ -116,9 +112,7 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.lib" />}
-              dataOptions={[{ label: '', value: undefined }, ...librarySelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined }, ...librarySelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>
@@ -132,9 +126,7 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.loc" />}
-              dataOptions={[{ label: '', value: undefined }, ...locationSelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined }, ...locationSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>

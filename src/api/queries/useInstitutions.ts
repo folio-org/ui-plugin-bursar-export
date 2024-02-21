@@ -31,8 +31,7 @@ export default function useInstitutions() {
 
   return useQuery<InstitutionDTO[]>(
     ['ui-plugin-bursar-export', 'institutions'],
-    async () =>
-      (await ky.get(`location-units/institutions?cql.allRecords=1&limit=${MAX_LIMIT}`).json<InstitutionsResponse>())
-        .locinsts,
+    async () => (await ky.get(`location-units/institutions?cql.allRecords=1&limit=${MAX_LIMIT}`).json<InstitutionsResponse>())
+      .locinsts,
   );
 }

@@ -110,7 +110,7 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
 }
 
 export function userDataToDto(token: DataToken & { type: DataTokenType.USER_DATA }): BursarExportDataTokenDTO {
-  if (token.userAttribute == 'FOLIO_ID') {
+  if (token.userAttribute === 'FOLIO_ID') {
     return {
       type: 'UserData',
       value: token.userAttribute,

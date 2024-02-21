@@ -16,12 +16,11 @@ jest.mock('@folio/stripes/core', () => ({
 
 describe('Automatic scheduling mutation', () => {
   const contextMock = jest.fn();
-  const wrapper = ({ children }: { children: ReactNode }) =>
-    withIntlConfiguration(
-      <QueryClientProvider client={new QueryClient()}>
-        <CalloutContext.Provider value={{ sendCallout: contextMock }}>{children}</CalloutContext.Provider>
-      </QueryClientProvider>,
-    );
+  const wrapper = ({ children }: { children: ReactNode }) => withIntlConfiguration(
+    <QueryClientProvider client={new QueryClient()}>
+      <CalloutContext.Provider value={{ sendCallout: contextMock }}>{children}</CalloutContext.Provider>
+    </QueryClientProvider>,
+  );
 
   it('handles successful responses', async () => {
     const { result: mutator } = renderHook(() => useManualSchedulerMutation(), {
@@ -34,21 +33,17 @@ describe('Automatic scheduling mutation', () => {
       mutator.current('bursar data' as any);
     });
 
-    await waitFor(() =>
-      expect(kyMock).toHaveBeenLastCalledWith('data-export-spring/jobs', {
-        json: {
-          type: 'BURSAR_FEES_FINES',
-          exportTypeSpecificParameters: { bursarFeeFines: 'bursar data' },
-        },
-      }),
-    );
+    await waitFor(() => expect(kyMock).toHaveBeenLastCalledWith('data-export-spring/jobs', {
+      json: {
+        type: 'BURSAR_FEES_FINES',
+        exportTypeSpecificParameters: { bursarFeeFines: 'bursar data' },
+      },
+    }));
 
-    await waitFor(() =>
-      expect(contextMock).toHaveBeenLastCalledWith({
-        type: 'success',
-        message: 'Job has been scheduled',
-      }),
-    );
+    await waitFor(() => expect(contextMock).toHaveBeenLastCalledWith({
+      type: 'success',
+      message: 'Job has been scheduled',
+    }));
   });
 
   it('handles error responses', async () => {
@@ -62,22 +57,18 @@ describe('Automatic scheduling mutation', () => {
       mutator.current('bursar data that fails' as any);
     });
 
-    await waitFor(() =>
-      expect(kyMock).toHaveBeenLastCalledWith('data-export-spring/jobs', {
-        json: {
-          type: 'BURSAR_FEES_FINES',
-          exportTypeSpecificParameters: {
-            bursarFeeFines: 'bursar data that fails',
-          },
+    await waitFor(() => expect(kyMock).toHaveBeenLastCalledWith('data-export-spring/jobs', {
+      json: {
+        type: 'BURSAR_FEES_FINES',
+        exportTypeSpecificParameters: {
+          bursarFeeFines: 'bursar data that fails',
         },
-      }),
-    );
+      },
+    }));
 
-    await waitFor(() =>
-      expect(contextMock).toHaveBeenLastCalledWith({
-        type: 'error',
-        message: 'Failed to start job',
-      }),
-    );
+    await waitFor(() => expect(contextMock).toHaveBeenLastCalledWith({
+      type: 'error',
+      message: 'Failed to start job',
+    }));
   });
 });

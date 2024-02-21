@@ -61,23 +61,21 @@ describe('Form values conversion', () => {
     },
   };
 
-  it('converts non-aggregate values', () =>
-    expect(formValuesToDto({ ...TEST_VALUE, aggregate: false })).toEqual({
-      ...EXPECTED,
-      groupByPatron: false,
-      data: [{ type: 'Constant', value: 'non-aggregate data' }],
-    }));
+  it('converts non-aggregate values', () => expect(formValuesToDto({ ...TEST_VALUE, aggregate: false })).toEqual({
+    ...EXPECTED,
+    groupByPatron: false,
+    data: [{ type: 'Constant', value: 'non-aggregate data' }],
+  }));
 
-  it('converts aggregate values', () =>
-    expect(formValuesToDto({ ...TEST_VALUE, aggregate: true })).toEqual({
-      ...EXPECTED,
-      groupByPatron: true,
-      groupByPatronFilter: {
-        type: 'Aggregate',
-        amount: 0,
-        condition: 'GREATER_THAN_EQUAL',
-        property: 'NUM_ROWS',
-      },
-      data: [{ type: 'Constant', value: 'aggregate data' }],
-    }));
+  it('converts aggregate values', () => expect(formValuesToDto({ ...TEST_VALUE, aggregate: true })).toEqual({
+    ...EXPECTED,
+    groupByPatron: true,
+    groupByPatronFilter: {
+      type: 'Aggregate',
+      amount: 0,
+      condition: 'GREATER_THAN_EQUAL',
+      property: 'NUM_ROWS',
+    },
+    data: [{ type: 'Constant', value: 'aggregate data' }],
+  }));
 });

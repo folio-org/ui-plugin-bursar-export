@@ -13,9 +13,7 @@ test.each([
   ['REPLACE_ME REPLACE_ME', ['REPLACEMENT!', ' ', 'REPLACEMENT!']],
   ['abc REPLACE_ME def', ['abc ', 'REPLACEMENT!', ' def']],
   ['abc REPLACE_ME def REPLACE_ME', ['abc ', 'REPLACEMENT!', ' def ', 'REPLACEMENT!']],
-])('splitAndInsert(%s) = %s', (haystack, expected) =>
-  expect(splitAndInsert(haystack, TEST_SEARCH, TEST_REPLACEMENT)).toEqual(expected),
-);
+])('splitAndInsert(%s) = %s', (haystack, expected) => expect(splitAndInsert(haystack, TEST_SEARCH, TEST_REPLACEMENT)).toEqual(expected));
 
 test.each([
   ['abcdef', 'abcdef'],

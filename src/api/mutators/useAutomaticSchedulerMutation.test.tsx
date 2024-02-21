@@ -26,12 +26,11 @@ describe('Automatic scheduling mutation', () => {
   });
 
   const contextMock = jest.fn();
-  const wrapper = ({ children }: { children: ReactNode }) =>
-    withIntlConfiguration(
-      <QueryClientProvider client={new QueryClient()}>
-        <CalloutContext.Provider value={{ sendCallout: contextMock }}>{children}</CalloutContext.Provider>
-      </QueryClientProvider>,
-    );
+  const wrapper = ({ children }: { children: ReactNode }) => withIntlConfiguration(
+    <QueryClientProvider client={new QueryClient()}>
+      <CalloutContext.Provider value={{ sendCallout: contextMock }}>{children}</CalloutContext.Provider>
+    </QueryClientProvider>,
+  );
 
   it('handles successful responses', async () => {
     const { result: mutator } = renderHook(() => useAutomaticSchedulerMutation(), { wrapper });
@@ -45,22 +44,18 @@ describe('Automatic scheduling mutation', () => {
       } as any);
     });
 
-    await waitFor(() =>
-      expect(postMock).toHaveBeenLastCalledWith('data-export-spring/configs', {
-        json: {
-          type: 'BURSAR_FEES_FINES',
-          exportTypeSpecificParameters: { bursarFeeFines: 'bursar data' },
-          schedulingData: 'is here!',
-        },
-      }),
-    );
+    await waitFor(() => expect(postMock).toHaveBeenLastCalledWith('data-export-spring/configs', {
+      json: {
+        type: 'BURSAR_FEES_FINES',
+        exportTypeSpecificParameters: { bursarFeeFines: 'bursar data' },
+        schedulingData: 'is here!',
+      },
+    }));
 
-    await waitFor(() =>
-      expect(contextMock).toHaveBeenLastCalledWith({
-        type: 'success',
-        message: 'Configuration saved',
-      }),
-    );
+    await waitFor(() => expect(contextMock).toHaveBeenLastCalledWith({
+      type: 'success',
+      message: 'Configuration saved',
+    }));
   });
 
   it('handles error responses', async () => {
@@ -75,24 +70,20 @@ describe('Automatic scheduling mutation', () => {
       } as any);
     });
 
-    await waitFor(() =>
-      expect(postMock).toHaveBeenLastCalledWith('data-export-spring/configs', {
-        json: {
-          type: 'BURSAR_FEES_FINES',
-          exportTypeSpecificParameters: {
-            bursarFeeFines: 'bursar data that fails',
-          },
-          schedulingData: 'is here!',
+    await waitFor(() => expect(postMock).toHaveBeenLastCalledWith('data-export-spring/configs', {
+      json: {
+        type: 'BURSAR_FEES_FINES',
+        exportTypeSpecificParameters: {
+          bursarFeeFines: 'bursar data that fails',
         },
-      }),
-    );
+        schedulingData: 'is here!',
+      },
+    }));
 
-    await waitFor(() =>
-      expect(contextMock).toHaveBeenLastCalledWith({
-        type: 'error',
-        message: 'Failed to save job',
-      }),
-    );
+    await waitFor(() => expect(contextMock).toHaveBeenLastCalledWith({
+      type: 'error',
+      message: 'Failed to save job',
+    }));
   });
 
   it('calls post when no initial config is available', async () => {
@@ -144,15 +135,13 @@ describe('Automatic scheduling mutation', () => {
       } as any);
     });
 
-    waitFor(async () =>
-      expect(putMock).toHaveBeenCalledWith('data-export-spring/configs/foo', {
-        json: {
-          id: 'foo',
-          exportTypeSpecificParameters: { bursarFeeFines: 'bursar data' },
-          schedulingData: 'is here!',
-        },
-      }),
-    );
+    waitFor(async () => expect(putMock).toHaveBeenCalledWith('data-export-spring/configs/foo', {
+      json: {
+        id: 'foo',
+        exportTypeSpecificParameters: { bursarFeeFines: 'bursar data' },
+        schedulingData: 'is here!',
+      },
+    }));
     expect(postMock).not.toHaveBeenCalled();
 
     // check invalidation

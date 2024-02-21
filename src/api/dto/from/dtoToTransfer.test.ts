@@ -64,7 +64,7 @@ describe('dtoToTransfer', () => {
         },
       },
     ],
-  ])('Converts transfer DTO %s with known accounts %s to %s', (input, transferAccounts, expected) =>
-    expect(dtoToTransfer(input, [], [], transferAccounts, { currency: 'USD' } as StripesType, intlEn)).toEqual(expected),
-  );
+  ])('Converts transfer DTO %s with known accounts %s to %s', (input, transferAccounts, expected) => expect(dtoToTransfer(
+    input, [], [], transferAccounts, { currency: 'USD' } as StripesType, intlEn
+  )).toEqual(expected));
 });

@@ -165,9 +165,7 @@ describe('DTO to criteria conversion for initial values', () => {
         feeFineOwnerId: 'owner-id',
       },
     ],
-  ])('converts fee type %s with known types %s to %s', (input, feeFineTypes, expected) =>
-    expect(dtoToCriteria(input, feeFineTypes, [], { currency: 'USD' } as StripesType, intlEn)).toEqual(expected),
-  );
+  ])('converts fee type %s with known types %s to %s', (input, feeFineTypes, expected) => expect(dtoToCriteria(input, feeFineTypes, [], { currency: 'USD' } as StripesType, intlEn)).toEqual(expected));
 
   it.each<[BursarExportFilterLocation, LocationDTO[], CriteriaTerminal]>([
     [
@@ -204,9 +202,9 @@ describe('DTO to criteria conversion for initial values', () => {
         locationId: 'location-id',
       },
     ],
-  ])('converts location %s with known locations %s to %s', (input, locations, expected) =>
-    expect(dtoToCriteria(input, [], locations, { currency: 'USD' } as StripesType, intlEn)).toEqual(expected),
-  );
+  ])('converts location %s with known locations %s to %s', (input, locations, expected) => expect(
+    dtoToCriteria(input, [], locations, { currency: 'USD' } as StripesType, intlEn)
+  ).toEqual(expected));
 
   it('converts amount with EUR currency', () => {
     const input: BursarExportFilterDTO = { type: 'Amount', condition: 'LESS_THAN', amount: 124 };

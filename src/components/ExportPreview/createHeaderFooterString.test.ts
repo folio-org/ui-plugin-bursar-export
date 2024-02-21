@@ -24,20 +24,17 @@ describe('Preview data generation', () => {
     [{ type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: true }, '12.34'],
     [{ type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: false }, '1234'],
     [{ type: HeaderFooterTokenType.AGGREGATE_COUNT }, '5'],
-  ] as const)('tokenToString(%o)=%s', (token, expected) =>
-    expect(tokenToString(token as HeaderFooterToken, TEST_AMOUNT, TEST_COUNT)).toBe(expected),
-  );
+  ] as const)('tokenToString(%o)=%s', (token, expected) => expect(tokenToString(token as HeaderFooterToken, TEST_AMOUNT, TEST_COUNT)).toBe(expected));
 
-  test('createHeaderFooterString works as expected', () =>
-    expect(
-      createHeaderFooterString(
-        [
-          { type: HeaderFooterTokenType.AGGREGATE_COUNT },
-          { type: HeaderFooterTokenType.COMMA },
-          { type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: true },
-        ] as HeaderFooterToken[],
-        12.34,
-        5,
-      ),
-    ).toStrictEqual('5,12.34'));
+  test('createHeaderFooterString works as expected', () => expect(
+    createHeaderFooterString(
+      [
+        { type: HeaderFooterTokenType.AGGREGATE_COUNT },
+        { type: HeaderFooterTokenType.COMMA },
+        { type: HeaderFooterTokenType.AGGREGATE_TOTAL, decimal: true },
+      ] as HeaderFooterToken[],
+      12.34,
+      5,
+    ),
+  ).toStrictEqual('5,12.34'));
 });

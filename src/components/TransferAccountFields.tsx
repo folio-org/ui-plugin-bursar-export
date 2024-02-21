@@ -50,9 +50,7 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.owner" />}
-              dataOptions={[{ label: '', value: undefined, disabled: true }, ...ownersSelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined, disabled: true }, ...ownersSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>
@@ -66,9 +64,7 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.account" />}
-              dataOptions={[{ label: '', value: undefined }, ...accountSelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined }, ...accountSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>

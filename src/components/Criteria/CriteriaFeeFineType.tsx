@@ -82,9 +82,7 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.type" />}
-              dataOptions={[{ label: '', value: undefined }, ...typeSelectOptions].sort((a, b) =>
-                a.label.localeCompare(b.label),
-              )}
+              dataOptions={[{ label: '', value: undefined }, ...typeSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
             />
           )}
         </Field>

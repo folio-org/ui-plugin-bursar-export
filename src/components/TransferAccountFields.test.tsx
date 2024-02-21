@@ -77,8 +77,6 @@ describe('Transfer account selection', () => {
     await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine owner' }), owner);
 
     includedAccounts.forEach((account) => expect(screen.getByRole('option', { name: account })).toBeInTheDocument());
-    excludedAccounts.forEach((account) =>
-      expect(screen.queryByRole('option', { name: account })).not.toBeInTheDocument(),
-    );
+    excludedAccounts.forEach((account) => expect(screen.queryByRole('option', { name: account })).not.toBeInTheDocument());
   });
 });

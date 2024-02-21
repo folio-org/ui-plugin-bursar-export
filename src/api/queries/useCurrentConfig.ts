@@ -12,13 +12,12 @@ export default function useCurrentConfig() {
 
   return useQuery<SavedJobConfiguration | null>(
     ['ui-plugin-bursar-export', 'current-config'],
-    async () =>
-      (
-        await ky
-          .get('data-export-spring/configs', {
-            searchParams: { limit: 1, query: 'type==BURSAR_FEES_FINES' },
-          })
-          .json<CurrentConfigResponse>()
-      ).configs?.[0] ?? null,
+    async () => (
+      await ky
+        .get('data-export-spring/configs', {
+          searchParams: { limit: 1, query: 'type==BURSAR_FEES_FINES' },
+        })
+        .json<CurrentConfigResponse>()
+    ).configs?.[0] ?? null,
   );
 }

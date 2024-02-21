@@ -28,9 +28,7 @@ export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: stri
             marginBottom0
             required
             label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.servicePoint.value" />}
-            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) =>
-              a.label.localeCompare(b.label),
-            )}
+            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) => a.label.localeCompare(b.label))}
           />
         )}
       </Field>

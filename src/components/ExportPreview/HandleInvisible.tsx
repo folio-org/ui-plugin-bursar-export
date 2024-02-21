@@ -28,16 +28,14 @@ export default function HandleInvisible({ text, showInvisible }: Readonly<{ text
   if (showInvisible) {
     pieces = pieces
       .flatMap((piece) => splitAndInsert(piece, '\r', <Invisible>\r</Invisible>))
-      .flatMap((piece) =>
-        splitAndInsert(
-          piece,
-          '\n',
-          <>
-            <Invisible>\n</Invisible>
-            <br />
-          </>,
-        ),
-      )
+      .flatMap((piece) => splitAndInsert(
+        piece,
+        '\n',
+        <>
+          <Invisible>\n</Invisible>
+          <br />
+        </>,
+      ))
       .flatMap((piece) => splitAndInsert(piece, '\t', <Invisible>\t</Invisible>))
       .flatMap((piece) => splitAndInsert(piece, ' ', <Invisible>•</Invisible>));
   } else {

@@ -37,9 +37,7 @@ describe('Export preview utility functions', () => {
       [{ length: 8, character: '.' }, '0123456789'],
       [{ length: 8, character: '.', truncate: true }, '01234567'],
       [{ length: 8, character: '.', truncate: true, direction: 'FRONT' }, '23456789'],
-    ] as [LengthControl, string][])('length control %s gives %s', (lengthControl, expected) =>
-      expect(applyLengthControl(TEST_VALUE, lengthControl)).toBe(expected),
-    );
+    ] as [LengthControl, string][])('length control %s gives %s', (lengthControl, expected) => expect(applyLengthControl(TEST_VALUE, lengthControl)).toBe(expected));
   });
 
   describe('decimal format', () => {

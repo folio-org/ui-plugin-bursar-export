@@ -28,9 +28,7 @@ export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: strin
             marginBottom0
             required
             label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup" />}
-            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) =>
-              a.label.localeCompare(b.label),
-            )}
+            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) => a.label.localeCompare(b.label))}
           />
         )}
       </Field>
