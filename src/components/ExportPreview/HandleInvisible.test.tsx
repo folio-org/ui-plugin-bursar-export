@@ -6,7 +6,7 @@ const TEST_SEARCH = 'REPLACE_ME';
 const TEST_REPLACEMENT = 'REPLACEMENT!';
 
 test.each([
-  [<h1 />, [<h1 />]],
+  [<h1>Heading 1</h1>, [<h1>Heading 1</h1>]],
   [undefined, [undefined]],
   ['unrelated', ['unrelated']],
   ['REPLACE_ME', ['REPLACEMENT!']],

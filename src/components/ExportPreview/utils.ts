@@ -28,9 +28,8 @@ export function formatDate(format: DateFormatType, date: Date): number {
     case DateFormatType.QUARTER:
       return Math.floor(date.getMonth() / 3 + 1);
 
-    case DateFormatType.WEEK_OF_YEAR_ISO:
     // garbage in = garbage out, so we don't care what the output is in default
-
+    case DateFormatType.WEEK_OF_YEAR_ISO:
     default: {
       const janFirst = new Date(date.getFullYear(), 0, 1);
       const dayOfYear = (date.getTime() - janFirst.getTime()) / 86400000 + 1;

@@ -131,28 +131,27 @@ describe('DTO to data conversion for initial values', () => {
 
   it('converts undefined to empty array', () => expect(dtoToData(undefined, [], [], { currency: 'USD' } as StripesType, intlEn)).toEqual([]));
 
-  it('converts token array to data', () =>
-    expect(
-      dtoToData(
-        [
-          { type: 'Constant', value: '\n' },
-          { type: 'Constant', value: '\r\n' },
-          { type: 'Constant', value: ',' },
-          { type: 'Constant', value: '\t' },
-          { type: 'Constant', value: '   ' },
-          { type: 'Constant', value: 'foo' },
-        ],
-        [],
-        [],
-        { currency: 'USD' } as StripesType,
-        intlEn
-      ),
-    ).toEqual([
-      { type: DataTokenType.NEWLINE },
-      { type: DataTokenType.NEWLINE_MICROSOFT },
-      { type: DataTokenType.COMMA },
-      { type: DataTokenType.TAB },
-      { type: DataTokenType.SPACE, repeat: '3' },
-      { type: DataTokenType.ARBITRARY_TEXT, text: 'foo' },
-    ]));
+  it('converts token array to data', () => expect(
+    dtoToData(
+      [
+        { type: 'Constant', value: '\n' },
+        { type: 'Constant', value: '\r\n' },
+        { type: 'Constant', value: ',' },
+        { type: 'Constant', value: '\t' },
+        { type: 'Constant', value: '   ' },
+        { type: 'Constant', value: 'foo' },
+      ],
+      [],
+      [],
+      { currency: 'USD' } as StripesType,
+      intlEn
+    ),
+  ).toEqual([
+    { type: DataTokenType.NEWLINE },
+    { type: DataTokenType.NEWLINE_MICROSOFT },
+    { type: DataTokenType.COMMA },
+    { type: DataTokenType.TAB },
+    { type: DataTokenType.SPACE, repeat: '3' },
+    { type: DataTokenType.ARBITRARY_TEXT, text: 'foo' },
+  ]));
 });

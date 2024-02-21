@@ -61,7 +61,7 @@ describe('Automatic scheduling mutation', () => {
   it('handles error responses', async () => {
     const { result: mutator } = renderHook(() => useAutomaticSchedulerMutation(), { wrapper });
 
-    postMock.mockReturnValueOnce(Promise.reject({}));
+    postMock.mockReturnValueOnce(Promise.reject(new Error()));
 
     act(() => {
       mutator.current({

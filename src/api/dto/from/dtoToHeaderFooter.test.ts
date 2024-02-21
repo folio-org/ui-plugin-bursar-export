@@ -39,22 +39,21 @@ describe('DTO to header/footer conversion for initial values', () => {
 
   it('converts undefined to empty array', () => expect(dtoToHeaderFooter(undefined)).toEqual([]));
 
-  it('converts token array to form value array', () =>
-    expect(
-      dtoToHeaderFooter([
-        { type: 'Constant', value: '\n' },
-        { type: 'Constant', value: '\r\n' },
-        { type: 'Constant', value: ',' },
-        { type: 'Constant', value: '\t' },
-        { type: 'Constant', value: '   ' },
-        { type: 'Constant', value: 'foo' },
-      ]),
-    ).toEqual([
-      { type: HeaderFooterTokenType.NEWLINE },
-      { type: HeaderFooterTokenType.NEWLINE_MICROSOFT },
-      { type: HeaderFooterTokenType.COMMA },
-      { type: HeaderFooterTokenType.TAB },
-      { type: HeaderFooterTokenType.SPACE, repeat: '3' },
-      { type: HeaderFooterTokenType.ARBITRARY_TEXT, text: 'foo' },
-    ]));
+  it('converts token array to form value array', () => expect(
+    dtoToHeaderFooter([
+      { type: 'Constant', value: '\n' },
+      { type: 'Constant', value: '\r\n' },
+      { type: 'Constant', value: ',' },
+      { type: 'Constant', value: '\t' },
+      { type: 'Constant', value: '   ' },
+      { type: 'Constant', value: 'foo' },
+    ]),
+  ).toEqual([
+    { type: HeaderFooterTokenType.NEWLINE },
+    { type: HeaderFooterTokenType.NEWLINE_MICROSOFT },
+    { type: HeaderFooterTokenType.COMMA },
+    { type: HeaderFooterTokenType.TAB },
+    { type: HeaderFooterTokenType.SPACE, repeat: '3' },
+    { type: HeaderFooterTokenType.ARBITRARY_TEXT, text: 'foo' },
+  ]));
 });

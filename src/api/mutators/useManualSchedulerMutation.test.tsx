@@ -51,7 +51,7 @@ describe('Automatic scheduling mutation', () => {
       wrapper,
     });
 
-    kyMock.mockReturnValueOnce(Promise.reject({}));
+    kyMock.mockReturnValueOnce(Promise.reject(new Error()));
 
     act(() => {
       mutator.current('bursar data that fails' as any);
