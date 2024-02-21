@@ -2,7 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form, FormProps } from 'react-final-form';
-import withIntlConfiguration from '../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 import ConfigurationForm from './ConfigurationForm';
 
 jest.mock('@folio/stripes/final-form', () => ({
@@ -14,12 +14,12 @@ jest.mock('@folio/stripes/final-form', () => ({
   ),
 }));
 
-jest.mock('../api/queries/useFeeFineOwners', () => ({
+jest.mock('../../api/queries/useFeeFineOwners', () => ({
   __esModule: true,
   default: () => ({ data: [], isSuccess: true }),
 }));
 
-jest.mock('../api/queries/useTransferAccounts', () => ({
+jest.mock('../../api/queries/useTransferAccounts', () => ({
   __esModule: true,
   default: () => ({ data: [], isSuccess: true }),
 }));

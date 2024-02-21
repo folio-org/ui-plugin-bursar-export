@@ -2,8 +2,8 @@ import { Button } from '@folio/stripes/components';
 import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
-import { HeaderFooterTokenType } from '../../types/TokenTypes';
-import HeaderFooterCreator from '../../components/Token/HeaderFooter/HeaderFooterCreator';
+import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import HeaderFooterCreator from '../../Token/HeaderFooter/HeaderFooterCreator';
 
 export default function HeaderFooterSection({ name }: Readonly<{ name: string }>) {
   return (

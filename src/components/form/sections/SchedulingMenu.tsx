@@ -10,9 +10,9 @@ import {
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Weekday } from '../../utils/WeekdayUtils';
-import SchedulingFrequency from '../../types/SchedulingFrequency';
-import useLocaleWeekdays from '../../hooks/useLocaleWeekdays';
+import { Weekday } from '../../../utils/WeekdayUtils';
+import SchedulingFrequency from '../../../types/SchedulingFrequency';
+import useLocaleWeekdays from '../../../hooks/useLocaleWeekdays';
 
 export default function SchedulingMenu() {
   const frequencyValue = useField<SchedulingFrequency>('scheduling.frequency', {

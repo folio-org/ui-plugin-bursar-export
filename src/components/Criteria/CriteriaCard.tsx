@@ -33,21 +33,21 @@ export default function CriteriaCard({
     format: (value) => value ?? CriteriaTerminalType.PASS,
   }).input.value;
 
-  const noneOfReturnType = (
-    <FieldArray name={`${name}.criteria`}>
-      {({ fields }) => fields.map((innerName, index) => (
-        <CriteriaCard
-          key={innerName}
-          name={innerName}
-          alone={fields.length === 1}
-          onRemove={() => fields.remove(index)}
-        />
-      ))
-      }
-    </FieldArray>
-  );
-
   const cardInterior = useMemo(() => {
+    const noneOfReturnType = (
+      <FieldArray name={`${name}.criteria`}>
+        {({ fields }) => fields.map((innerName, index) => (
+          <CriteriaCard
+            key={innerName}
+            name={innerName}
+            alone={fields.length === 1}
+            onRemove={() => fields.remove(index)}
+          />
+        ))
+        }
+      </FieldArray>
+    );
+
     switch (type) {
       case CriteriaTerminalType.PASS:
         return <div />;
@@ -103,7 +103,7 @@ export default function CriteriaCard({
       default:
         return <Loading />;
     }
-  }, [name, noneOfReturnType, type]);
+  }, [name, type]);
 
   return (
     <Card

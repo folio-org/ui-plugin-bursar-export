@@ -3,10 +3,10 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import FormValues from '../../types/FormValues';
+import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
+import FormValues from '../../../types/FormValues';
 import DataTokenSection from './DataTokenSection';
-import { DataTokenType } from '../../types/TokenTypes';
+import { DataTokenType } from '../../../types/TokenTypes';
 
 test('Add button works as expected', async () => {
   const submitter = jest.fn();

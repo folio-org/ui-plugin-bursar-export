@@ -7,7 +7,7 @@ export default function AmountWithDecimalToken({ prefix }: Readonly<{ prefix: st
   const intl = useIntl();
   return (
     <Col xs={12}>
-      <Field name={`${prefix}decimal`} type="checkbox" defaultValue={true}>
+      <Field name={`${prefix}decimal`} type="checkbox" defaultValue>
         {(fieldProps) => (
           <Checkbox
             {...fieldProps}
