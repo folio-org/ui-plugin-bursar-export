@@ -15,41 +15,33 @@ import { FORM_ID } from './constants';
 export default function BursarExportPlugin() {
   const stripes = useStripes();
 
+  const initialValues = useInitialValues();
   const scheduleManually = useManualSchedulerMutation();
   const scheduleAutomatically = useAutomaticSchedulerMutation();
 
   const formApiRef = useRef<FormApi<FormValues>>(null);
 
   const submitCallback = useCallback((values: FormValues) => {
-    if (values.buttonClicked === 'manual') {
+    scheduleAutomatically({
+      bursar: formValuesToDto(values),
+      scheduling: schedulingToDto(values.scheduling),
+    });
+  }, [scheduleAutomatically]);
+
+  const runManuallyCallback = useCallback(() => {
+    const values = formApiRef.current?.getState().values;
+    if (values) {
       scheduleManually(formValuesToDto(values));
-    } else {
-      scheduleAutomatically({
-        bursar: formValuesToDto(values),
-        scheduling: schedulingToDto(values.scheduling),
-      });
     }
-  }, [scheduleAutomatically, scheduleManually]);
-
-  const initialValues = useInitialValues();
-
-  const handleRunManuallyClick = useCallback(() => {
-    formApiRef.current?.change('buttonClicked', 'manual');
-  }, []);
-
-  const handleSaveClick = useCallback(() => {
-    formApiRef.current?.change('buttonClicked', 'save');
-  }, []);
-
+  }, [formApiRef, scheduleManually]);
 
   const footer = (
     <PaneFooter
       renderStart={
         <Button
           disabled={initialValues == null || !stripes.hasPerm('data-export.job.item.post')}
-          type="submit"
           form={FORM_ID}
-          onClick={handleRunManuallyClick}
+          onClick={runManuallyCallback}
         >
           <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.runManually" />
         </Button>
@@ -60,7 +52,6 @@ export default function BursarExportPlugin() {
           buttonStyle="primary"
           type="submit"
           form={FORM_ID}
-          onClick={handleSaveClick}
         >
           <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.save" />
         </Button>
