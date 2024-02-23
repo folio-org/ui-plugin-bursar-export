@@ -2,7 +2,7 @@ import { Card, Loading, Row } from '@folio/stripes/components';
 import classNames from 'classnames';
 import React, { useMemo } from 'react';
 import { useField } from 'react-final-form';
-import { FieldArray } from 'react-final-form-arrays';
+import { FieldArray, FieldArrayRenderProps } from 'react-final-form-arrays';
 import { CriteriaGroupType, CriteriaTerminalType } from '../../types/CriteriaTypes';
 import CriteriaAge from './CriteriaAge';
 import CriteriaAmount from './CriteriaAmount';
@@ -14,6 +14,19 @@ import CriteriaLocation from './CriteriaLocation';
 import CriteriaPatronGroup from './CriteriaPatronGroup';
 import CriteriaServicePoint from './CriteriaServicePoint';
 import CriteriaFeeFineOwner from './CriteriaFeeFineOwner';
+
+function renderCriteriaNoneOf({ fields }: { fields: FieldArrayRenderProps<unknown, HTMLElement>['fields'] }) {
+  return (
+    fields.map((name, index) => (
+      <CriteriaCard
+        key={name}
+        name={name}
+        alone={fields.length === 1}
+        onRemove={() => fields.remove(index)}
+      />
+    ))
+  );
+}
 
 export default function CriteriaCard({
   name,
@@ -35,15 +48,7 @@ export default function CriteriaCard({
 
   const noneOfReturnType = useMemo(() => (
     <FieldArray name={`${name}.criteria`}>
-      {({ fields }) => fields.map((innerName, index) => (
-        <CriteriaCard
-          key={innerName}
-          name={innerName}
-          alone={fields.length === 1}
-          onRemove={() => fields.remove(index)}
-        />
-      ))
-      }
+      {({ fields }) => renderCriteriaNoneOf({ fields })}
     </FieldArray>
   ), [name]);
 
