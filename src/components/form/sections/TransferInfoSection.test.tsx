@@ -6,7 +6,7 @@ import { Form } from 'react-final-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import TransferInfoMenu from './TransferInfoMenu';
+import TransferInfoSection from './TransferInfoSection';
 
 const getResponse = jest.fn((endpoint: string) => {
   if (endpoint.startsWith('owners')) {
@@ -63,13 +63,13 @@ jest.mock('@folio/stripes/core', () => ({
   }),
 }));
 
-describe('Transfer criteria menu', () => {
+describe('Transfer criteria section', () => {
   it('Displays labels appropriately depending on number of conditions', async () => {
     render(
       withIntlConfiguration(
         <QueryClientProvider client={new QueryClient()}>
           <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
-            {() => <TransferInfoMenu />}
+            {() => <TransferInfoSection />}
           </Form>
         </QueryClientProvider>,
       ),
@@ -134,7 +134,7 @@ describe('Transfer criteria menu', () => {
             >
               {({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <TransferInfoMenu />
+                  <TransferInfoSection />
                   <button type="submit">Submit</button>
                 </form>
               )}

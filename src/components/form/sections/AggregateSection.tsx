@@ -4,7 +4,7 @@ import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import AggregateCriteriaCard from '../../AggregateCriteria/AggregateCriteriaCard';
 
-export default function AggregateMenu() {
+export default function AggregateSection() {
   const isAggregateEnabled = useField<boolean>('aggregate', {
     subscription: { value: true },
     format: (value) => value ?? false,

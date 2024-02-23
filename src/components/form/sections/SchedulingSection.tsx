@@ -14,7 +14,7 @@ import { Weekday } from '../../../utils/WeekdayUtils';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
 import useLocaleWeekdays from '../../../hooks/useLocaleWeekdays';
 
-export default function SchedulingMenu() {
+export default function SchedulingSection() {
   const frequencyValue = useField<SchedulingFrequency>('scheduling.frequency', {
     subscription: { value: true },
   }).input.value;

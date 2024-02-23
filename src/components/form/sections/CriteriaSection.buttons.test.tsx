@@ -6,7 +6,7 @@ import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { CriteriaGroupType } from '../../../types/CriteriaTypes';
 import FormValues from '../../../types/FormValues';
-import CriteriaMenu from './CriteriaMenu';
+import CriteriaSection from './CriteriaSection';
 
 describe('Buttons work as expected', () => {
   const submitter = jest.fn();
@@ -21,7 +21,7 @@ describe('Buttons work as expected', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <CriteriaMenu />
+              <CriteriaSection />
               <button type="submit">Submit</button>
             </form>
           )}

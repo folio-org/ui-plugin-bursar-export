@@ -6,7 +6,7 @@ import ConditionalCard from '../../ConditionalCard';
 import TransferAccountFields from '../../TransferAccountFields';
 import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
 
-export default function TransferInfoMenu() {
+export default function TransferInfoSection() {
   return (
     <FieldArray name="transferInfo.conditions">
       {({ fields }) => (

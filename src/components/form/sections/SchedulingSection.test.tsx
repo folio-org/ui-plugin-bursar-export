@@ -4,9 +4,9 @@ import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import FormValues from '../../../types/FormValues';
 import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import SchedulingMenu from './SchedulingMenu';
+import SchedulingSection from './SchedulingSection';
 
-describe('Scheduling menu', () => {
+describe('Scheduling section', () => {
   it('Manual (never) option does not show extra fields', () => {
     render(
       withIntlConfiguration(
@@ -16,7 +16,7 @@ describe('Scheduling menu', () => {
             scheduling: { frequency: SchedulingFrequency.Manual },
           }}
         >
-          {() => <SchedulingMenu />}
+          {() => <SchedulingSection />}
         </Form>,
       ),
     );
@@ -34,7 +34,7 @@ describe('Scheduling menu', () => {
             scheduling: { frequency: SchedulingFrequency.Hours },
           }}
         >
-          {() => <SchedulingMenu />}
+          {() => <SchedulingSection />}
         </Form>,
       ),
     );
@@ -52,7 +52,7 @@ describe('Scheduling menu', () => {
             scheduling: { frequency: SchedulingFrequency.Days },
           }}
         >
-          {() => <SchedulingMenu />}
+          {() => <SchedulingSection />}
         </Form>,
       ),
     );
@@ -75,7 +75,7 @@ describe('Scheduling menu', () => {
             scheduling: { frequency: SchedulingFrequency.Weeks },
           }}
         >
-          {() => <SchedulingMenu />}
+          {() => <SchedulingSection />}
         </Form>,
       ),
     );

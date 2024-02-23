@@ -5,13 +5,13 @@ import React, { FormEvent, MutableRefObject, useCallback } from 'react';
 import { FormRenderProps, useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import FormValues from '../../types/FormValues';
-import AggregateMenu from './sections/AggregateMenu';
-import CriteriaMenu from './sections/CriteriaMenu';
+import AggregateSection from './sections/AggregateSection';
+import CriteriaSection from './sections/CriteriaSection';
 import DataTokenSection from './sections/DataTokenSection';
 import ExportPreview from './sections/ExportPreview';
 import HeaderFooterSection from './sections/HeaderFooterSection';
-import SchedulingMenu from './sections/SchedulingMenu';
-import TransferInfoMenu from './sections/TransferInfoMenu';
+import SchedulingSection from './sections/SchedulingSection';
+import TransferInfoSection from './sections/TransferInfoSection';
 import { FORM_ID } from '../../constants';
 
 interface ConfigurationFormProps {
@@ -44,13 +44,13 @@ function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<F
           </Col>
         </Row>
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.accordion" />}>
-          <SchedulingMenu />
+          <SchedulingSection />
         </Accordion>
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.accordion" />}>
-          <CriteriaMenu />
+          <CriteriaSection />
         </Accordion>
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.accordion" />}>
-          <AggregateMenu />
+          <AggregateSection />
         </Accordion>
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.header.accordion" />}>
           <HeaderFooterSection name="header" />
@@ -75,7 +75,7 @@ function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<F
         </Accordion>
 
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.accordion" />}>
-          <TransferInfoMenu />
+          <TransferInfoSection />
         </Accordion>
       </AccordionSet>
     </form>

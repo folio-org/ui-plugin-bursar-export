@@ -4,10 +4,10 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import FormValues from '../../../types/FormValues';
-import AggregateMenu from './AggregateMenu';
+import AggregateSection from './AggregateSection';
 import { CriteriaAggregateType } from '../../../types/CriteriaTypes';
 
-test('Aggregate menu displays criteria on check', async () => {
+test('Aggregate section displays criteria on check', async () => {
   const submitter = jest.fn();
 
   render(
@@ -15,7 +15,7 @@ test('Aggregate menu displays criteria on check', async () => {
       <Form<FormValues> onSubmit={(v) => submitter(v)}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <AggregateMenu />
+            <AggregateSection />
             <button type="submit">Submit</button>
           </form>
         )}
