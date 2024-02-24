@@ -7,7 +7,7 @@ import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 import useAutomaticSchedulerMutation from './api/mutators/useAutomaticSchedulerMutation';
 import useManualSchedulerMutation from './api/mutators/useManualSchedulerMutation';
-import ConfigurationForm from './components/form/ConfigurationForm';
+import ConfigurationFormSection from './components/form/ConfigurationFormSection';
 import useInitialValues from './hooks/useInitialValues';
 import FormValues from './types/FormValues';
 import { FORM_ID } from './constants';
@@ -76,7 +76,7 @@ export default function BursarExportPlugin() {
       id="pane-batch-group-configuration"
       paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
     >
-      <ConfigurationForm initialValues={initialValues} onSubmit={submitCallback} formApiRef={formApiRef} />
+      <ConfigurationFormSection initialValues={initialValues} onSubmit={submitCallback} formApiRef={formApiRef} />
     </Pane>
   );
 }

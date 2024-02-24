@@ -8,17 +8,17 @@ import FormValues from '../../types/FormValues';
 import AggregateSection from './sections/AggregateSection';
 import CriteriaSection from './sections/CriteriaSection';
 import DataTokenSection from './sections/DataTokenSection';
-import ExportPreview from './sections/ExportPreview';
+import ExportPreviewSection from './sections/ExportPreviewSection';
 import HeaderFooterSection from './sections/HeaderFooterSection';
 import SchedulingSection from './sections/SchedulingSection';
 import TransferInfoSection from './sections/TransferInfoSection';
 import { FORM_ID } from '../../constants';
 
-interface ConfigurationFormProps {
+interface ConfigurationFormSectionProps {
   formApiRef: MutableRefObject<FormApi<FormValues> | null>;
 }
 
-function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<FormValues> & ConfigurationFormProps) {
+function ConfigurationFormSection({ handleSubmit, formApiRef, form }: FormRenderProps<FormValues> & ConfigurationFormSectionProps) {
   formApiRef.current = form;
 
   const submitter = useCallback(
@@ -71,7 +71,7 @@ function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<F
         </Accordion>
 
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.preview.accordion" />}>
-          <ExportPreview />
+          <ExportPreviewSection />
         </Accordion>
 
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.accordion" />}>
@@ -82,6 +82,6 @@ function ConfigurationForm({ handleSubmit, formApiRef, form }: FormRenderProps<F
   );
 }
 
-export default stripesFinalForm<ConfigurationFormProps, FormValues>({
+export default stripesFinalForm<ConfigurationFormSectionProps, FormValues>({
   validateOnBlur: false,
-})(ConfigurationForm);
+})(ConfigurationFormSection);

@@ -3,7 +3,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form, FormProps } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import ConfigurationForm from './ConfigurationForm';
+import ConfigurationFormSection from './ConfigurationFormSection';
 
 jest.mock('@folio/stripes/final-form', () => ({
   __esModule: true,
@@ -24,11 +24,11 @@ jest.mock('../../api/queries/useTransferAccounts', () => ({
   default: () => ({ data: [], isSuccess: true }),
 }));
 
-describe('Configuration form', () => {
+describe('Configuration form section', () => {
   it('renders the configuration form', () => {
     render(
       withIntlConfiguration(
-        <ConfigurationForm formApiRef={{ current: null }} initialValues={{ aggregate: false }} onSubmit={jest.fn()} />,
+        <ConfigurationFormSection formApiRef={{ current: null }} initialValues={{ aggregate: false }} onSubmit={jest.fn()} />,
       ),
     );
 
@@ -38,7 +38,7 @@ describe('Configuration form', () => {
   it('renders the configuration form with aggregate initial true', () => {
     render(
       withIntlConfiguration(
-        <ConfigurationForm formApiRef={{ current: null }} initialValues={{ aggregate: true }} onSubmit={jest.fn()} />,
+        <ConfigurationFormSection formApiRef={{ current: null }} initialValues={{ aggregate: true }} onSubmit={jest.fn()} />,
       ),
     );
 

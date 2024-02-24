@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import ExportPreviewData from '../../ExportPreview/ExportPreviewData';
-import css from './ExportPreview.module.css';
+import css from './ExportPreviewSection.module.css';
 
-export default function ExportPreview() {
+export default function ExportPreviewSection() {
   const wrap = useField<boolean>('preview.wrap', {
     subscription: { value: true },
     format: (value) => value ?? true,

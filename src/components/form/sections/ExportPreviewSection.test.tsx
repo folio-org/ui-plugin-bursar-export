@@ -3,7 +3,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
-import ExportPreview from './ExportPreview';
+import ExportPreviewSection from './ExportPreviewSection';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 
 jest.mock('@ngneat/falso', () => ({
@@ -16,7 +16,7 @@ describe('Export preview component', () => {
     const { container } = render(
       withIntlConfiguration(
         <Form mutators={{ ...arrayMutators }} onSubmit={jest.fn()}>
-          {() => <ExportPreview />}
+          {() => <ExportPreviewSection />}
         </Form>,
       ),
     );
