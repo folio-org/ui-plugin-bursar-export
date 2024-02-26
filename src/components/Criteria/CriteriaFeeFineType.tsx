@@ -17,15 +17,27 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
   }).input.value;
 
   const ownersSelectOptions = useMemo(() => {
+    const defaultOption = {
+      label: intl.formatMessage({
+        id: 'ui-plugin-bursar-export.bursarExports.criteria.type.automatic',
+      }),
+      value: 'automatic',
+    };
+
     if (!feeFineOwners.isSuccess) {
-      return [];
+      return [defaultOption];
     }
 
-    return feeFineOwners.data.map((owner) => ({
-      label: owner.owner,
-      value: owner.id,
-    }));
-  }, [feeFineOwners]);
+    return [
+      defaultOption,
+      ...feeFineOwners.data
+        .map((owner) => ({
+          label: owner.owner,
+          value: owner.id,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
+  }, [feeFineOwners, intl]);
 
   const typeSelectOptions = useMemo(() => {
     if (!feeFineTypes.isSuccess) {
@@ -48,6 +60,11 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
         value: type.id,
       }));
   }, [selectedOwner, feeFineTypes]);
+
+  const typeSelectOptionsForDisplay = useMemo(
+    () => [{ label: '', value: undefined }, ...typeSelectOptions].sort((a, b) => a.label.localeCompare(b.label)),
+    [typeSelectOptions],
+  );
 
   return (
     <>
@@ -82,7 +99,7 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.type" />}
-              dataOptions={[{ label: '', value: undefined }, ...typeSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
+              dataOptions={typeSelectOptionsForDisplay}
             />
           )}
         </Field>

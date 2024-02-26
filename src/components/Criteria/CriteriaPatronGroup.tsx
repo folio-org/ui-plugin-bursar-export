@@ -9,13 +9,18 @@ export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: strin
 
   const selectOptions = useMemo(() => {
     if (!patronGroups.isSuccess) {
-      return [];
+      return [{ label: '', value: undefined }];
     }
 
-    return patronGroups.data.map((sp) => ({
-      label: sp.group,
-      value: sp.id,
-    }));
+    return [
+      { label: '', value: undefined },
+      ...patronGroups.data
+        .map((sp) => ({
+          label: sp.group,
+          value: sp.id,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
   }, [patronGroups]);
 
   return (
@@ -28,7 +33,7 @@ export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: strin
             marginBottom0
             required
             label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup" />}
-            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) => a.label.localeCompare(b.label))}
+            dataOptions={selectOptions}
           />
         )}
       </Field>

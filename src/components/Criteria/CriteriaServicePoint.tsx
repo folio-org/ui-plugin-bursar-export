@@ -9,13 +9,18 @@ export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: stri
 
   const selectOptions = useMemo(() => {
     if (!servicePoints.isSuccess) {
-      return [];
+      return [{ label: '', value: undefined }];
     }
 
-    return servicePoints.data.map((sp) => ({
-      label: sp.name,
-      value: sp.id,
-    }));
+    return [
+      { label: '', value: undefined },
+      ...servicePoints.data
+        .map((sp) => ({
+          label: sp.name,
+          value: sp.id,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
   }, [servicePoints]);
 
   return (
@@ -28,7 +33,7 @@ export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: stri
             marginBottom0
             required
             label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.servicePoint.value" />}
-            dataOptions={[{ label: '', value: undefined }, ...selectOptions].sort((a, b) => a.label.localeCompare(b.label))}
+            dataOptions={selectOptions}
           />
         )}
       </Field>

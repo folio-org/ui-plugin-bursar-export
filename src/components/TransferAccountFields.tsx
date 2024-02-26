@@ -17,26 +17,35 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
 
   const ownersSelectOptions = useMemo(() => {
     if (!feeFineOwners.isSuccess) {
-      return [];
+      return [{ label: '', value: undefined, disabled: true }];
     }
 
-    return feeFineOwners.data.map((owner) => ({
-      label: owner.owner,
-      value: owner.id,
-    }));
+    return [
+      { label: '', value: undefined, disabled: true },
+      ...feeFineOwners.data
+        .map((owner) => ({
+          label: owner.owner,
+          value: owner.id,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
   }, [feeFineOwners]);
 
   const accountSelectOptions = useMemo(() => {
     if (!transferAccounts.isSuccess || !selectedOwner) {
-      return [];
+      return [{ label: '', value: undefined }];
     }
 
-    return transferAccounts.data
-      .filter((type) => type.ownerId === selectedOwner)
-      .map((type) => ({
-        label: type.accountName,
-        value: type.id,
-      }));
+    return [
+      { label: '', value: undefined },
+      ...transferAccounts.data
+        .filter((type) => type.ownerId === selectedOwner)
+        .map((type) => ({
+          label: type.accountName,
+          value: type.id,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
   }, [selectedOwner, transferAccounts]);
 
   return (
@@ -50,7 +59,7 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.owner" />}
-              dataOptions={[{ label: '', value: undefined, disabled: true }, ...ownersSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
+              dataOptions={ownersSelectOptions}
             />
           )}
         </Field>
@@ -64,7 +73,7 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.account" />}
-              dataOptions={[{ label: '', value: undefined }, ...accountSelectOptions].sort((a, b) => a.label.localeCompare(b.label))}
+              dataOptions={accountSelectOptions}
             />
           )}
         </Field>
