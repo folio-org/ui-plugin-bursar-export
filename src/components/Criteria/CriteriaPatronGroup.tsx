@@ -2,7 +2,7 @@ import { Col, Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import usePatronGroups from '../../api/queries/usePatronGroups';
+import { usePatronGroups } from '../../api/queries';
 
 export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: string }>) {
   const patronGroups = usePatronGroups();

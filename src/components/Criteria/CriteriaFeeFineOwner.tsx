@@ -2,7 +2,7 @@ import { Col, Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import useFeeFineOwners from '../../api/queries/useFeeFineOwners';
+import { useFeeFineOwners } from '../../api/queries';
 
 export default function CriteriaFeeFineOwner({ prefix }: Readonly<{ prefix: string }>) {
   const feeFineOwners = useFeeFineOwners();

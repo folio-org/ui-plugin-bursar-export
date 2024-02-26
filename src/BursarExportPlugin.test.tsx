@@ -1,18 +1,21 @@
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
-import React from 'react';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { useStripes } from '@folio/stripes/core';
 import arrayMutators from 'final-form-arrays';
+import React from 'react';
 import { Form, FormProps } from 'react-final-form';
-import BursarExportPlugin from './index';
 import withIntlConfiguration from '../test/util/withIntlConfiguration';
-import useInitialValues from './hooks/useInitialValues';
+import { formValuesToDto, schedulingToDto } from './api/dto/to';
 import { FORM_ID } from './constants';
-import formValuesToDto from './api/dto/to/formValuesToDto';
-import schedulingToDto from './api/dto/to/schedulingToDto';
+import useInitialValues from './hooks/useInitialValues';
+import BursarExportPlugin from './index';
 
-jest.mock('./api/mutators/useManualSchedulerMutation', () => () => jest.fn());
-jest.mock('./api/mutators/useAutomaticSchedulerMutation', () => () => jest.fn());
+jest.mock('./api/dto/to', () => ({ formValuesToDto: jest.fn(), schedulingToDto: jest.fn() }));
+
+jest.mock('./api/mutators', () => ({
+  useManualSchedulerMutation: () => jest.fn(),
+  useAutomaticSchedulerMutation: () => jest.fn(),
+}));
 jest.mock('./hooks/useInitialValues', () => jest.fn());
 jest.mock('@folio/stripes/final-form', () => ({
   __esModule: true,
@@ -34,17 +37,10 @@ const transferAccount = {
   desc: 'Test description',
 };
 
-jest.mock('./api/queries/useFeeFineOwners', () => ({
-  __esModule: true,
-  default: () => ({ data: [feeFineOwner], isSuccess: true }),
+jest.mock('./api/queries', () => ({
+  useFeeFineOwners: () => ({ data: [feeFineOwner], isSuccess: true }),
+  useTransferAccounts: () => ({ data: [transferAccount], isSuccess: true }),
 }));
-
-jest.mock('./api/queries/useTransferAccounts', () => ({
-  __esModule: true,
-  default: () => ({ data: [transferAccount], isSuccess: true }),
-}));
-jest.mock('./api/dto/to/formValuesToDto', () => jest.fn());
-jest.mock('./api/dto/to/schedulingToDto', () => jest.fn());
 
 describe('BursarExportPlugin', () => {
   it('renders the plugin with null initial values', () => {

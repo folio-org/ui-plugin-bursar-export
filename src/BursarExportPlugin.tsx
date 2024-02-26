@@ -3,14 +3,12 @@ import { useStripes } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import formValuesToDto from './api/dto/to/formValuesToDto';
-import schedulingToDto from './api/dto/to/schedulingToDto';
-import useAutomaticSchedulerMutation from './api/mutators/useAutomaticSchedulerMutation';
-import useManualSchedulerMutation from './api/mutators/useManualSchedulerMutation';
+import { formValuesToDto, schedulingToDto } from './api/dto/to';
+import { useAutomaticSchedulerMutation, useManualSchedulerMutation } from './api/mutators';
 import ConfigurationForm from './components/ConfigurationForm';
+import { FORM_ID } from './constants';
 import useInitialValues from './hooks/useInitialValues';
 import FormValues from './types/FormValues';
-import { FORM_ID } from './constants';
 
 export default function BursarExportPlugin() {
   const stripes = useStripes();

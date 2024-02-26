@@ -2,10 +2,7 @@ import { Col, Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import useCampuses from '../../api/queries/useCampuses';
-import useInstitutions from '../../api/queries/useInstitutions';
-import useLibraries from '../../api/queries/useLibraries';
-import useLocations from '../../api/queries/useLocations';
+import { useCampuses, useInstitutions, useLibraries, useLocations } from '../../api/queries';
 
 export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }>) {
   const institutions = useInstitutions();

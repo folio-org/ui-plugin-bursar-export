@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useStripes } from '@folio/stripes/core';
-import dtoToFormValues from '../api/dto/from/dtoToFormValues';
-import useCurrentConfig from '../api/queries/useCurrentConfig';
-import useFeeFineTypes from '../api/queries/useFeeFineTypes';
-import useLocations from '../api/queries/useLocations';
-import useTransferAccounts from '../api/queries/useTransferAccounts';
+import dtoToFormValues from '../api/dto/from';
+import { useCurrentConfig, useFeeFineTypes, useLocations, useTransferAccounts } from '../api/queries';
 import FormValues from '../types/FormValues';
 import useLocaleWeekdays from './useLocaleWeekdays';
 

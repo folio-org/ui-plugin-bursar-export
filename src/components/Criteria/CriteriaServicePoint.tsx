@@ -2,7 +2,7 @@ import { Col, Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import useServicePoints from '../../api/queries/useServicePoints';
+import { useServicePoints } from '../../api/queries';
 
 export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: string }>) {
   const servicePoints = useServicePoints();

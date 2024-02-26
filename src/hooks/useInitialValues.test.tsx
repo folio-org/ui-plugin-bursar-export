@@ -2,18 +2,11 @@ import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/
 import React from 'react';
 import useInitialValues from './useInitialValues';
 import withIntlConfiguration from '../../test/util/withIntlConfiguration';
-import useFeeFineTypes from '../api/queries/useFeeFineTypes';
-import useCurrentConfig from '../api/queries/useCurrentConfig';
-import useLocations from '../api/queries/useLocations';
-import useTransferAccounts from '../api/queries/useTransferAccounts';
+import { useFeeFineTypes, useCurrentConfig, useLocations, useTransferAccounts } from '../api/queries';
 
-jest.mock('../api/dto/from/dtoToFormValues', () => () => 'values');
+jest.mock('../api/dto/from', () => () => 'values');
 
-jest.mock('../api/queries/useCurrentConfig');
-jest.mock('../api/queries/useFeeFineTypes');
-jest.mock('../api/queries/useLocations');
-jest.mock('../api/queries/useTransferAccounts');
-
+jest.mock('../api/queries');
 (useCurrentConfig as any).mockReturnValue({ isSuccess: false });
 (useFeeFineTypes as any).mockReturnValue({ isSuccess: false });
 (useLocations as any).mockReturnValue({ isSuccess: false });

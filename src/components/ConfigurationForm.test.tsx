@@ -14,14 +14,9 @@ jest.mock('@folio/stripes/final-form', () => ({
   ),
 }));
 
-jest.mock('../../api/queries/useFeeFineOwners', () => ({
-  __esModule: true,
-  default: () => ({ data: [], isSuccess: true }),
-}));
-
-jest.mock('../../api/queries/useTransferAccounts', () => ({
-  __esModule: true,
-  default: () => ({ data: [], isSuccess: true }),
+jest.mock('../api/queries', () => ({
+  useFeeFineOwners: () => ({ data: [], isSuccess: true }),
+  useTransferAccounts: () => ({ data: [], isSuccess: true }),
 }));
 
 describe('Configuration form section', () => {
