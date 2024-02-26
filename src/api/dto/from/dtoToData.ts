@@ -1,27 +1,46 @@
 import { StripesType } from '@folio/stripes/core';
 import { IntlShape } from 'react-intl';
 import ConvenientConstants from '../../../types/ConvenientConstants';
+import { CriteriaTokenType } from '../../../types/CriteriaTypes';
 import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import { BursarExportDataTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
 import dtoToCriteria from './dtoToCriteria';
 import dtoToLengthControl from './dtoToLengthControl';
-import { CriteriaTokenType } from '../../../types/CriteriaTypes';
 
-// inverse of ../to/dataToDto
-export default function dtoToData(
-  tokens: BursarExportDataTokenDTO[] | undefined,
-  feeFineTypes: FeeFineTypeDTO[],
-  locations: LocationDTO[],
-  stripes: StripesType,
-  intl: IntlShape,
-): DataToken[] {
-  if (!tokens) {
-    return [];
+export function constantToToken(token: BursarExportTokenConstant): DataToken {
+  if (token.value === ConvenientConstants[DataTokenType.NEWLINE]) {
+    return { type: DataTokenType.NEWLINE };
+  } else if (token.value === ConvenientConstants[DataTokenType.NEWLINE_MICROSOFT]) {
+    return { type: DataTokenType.NEWLINE_MICROSOFT };
+  } else if (token.value === ConvenientConstants[DataTokenType.TAB]) {
+    return { type: DataTokenType.TAB };
+  } else if (token.value === ConvenientConstants[DataTokenType.COMMA]) {
+    return { type: DataTokenType.COMMA };
+  } else if (/^ +$/.test(token.value)) {
+    return {
+      type: DataTokenType.SPACE,
+      repeat: token.value.length.toString(),
+    };
+  } else {
+    return { type: DataTokenType.ARBITRARY_TEXT, text: token.value };
   }
+}
 
-  return tokens.map((token) => dtoToDataToken(token, feeFineTypes, locations, stripes, intl));
+export function aggregateToToken(token: BursarExportTokenAggregate): DataToken {
+  if (token.value === CriteriaTokenType.NUM_ROWS) {
+    return {
+      type: DataTokenType.AGGREGATE_COUNT,
+      lengthControl: dtoToLengthControl(token.lengthControl),
+    };
+  } else {
+    return {
+      type: DataTokenType.AGGREGATE_TOTAL,
+      decimal: token.decimal,
+      lengthControl: dtoToLengthControl(token.lengthControl),
+    };
+  }
 }
 
 export function dtoToDataToken(
@@ -106,36 +125,17 @@ export function dtoToDataToken(
   }
 }
 
-export function constantToToken(token: BursarExportTokenConstant): DataToken {
-  if (token.value === ConvenientConstants[DataTokenType.NEWLINE]) {
-    return { type: DataTokenType.NEWLINE };
-  } else if (token.value === ConvenientConstants[DataTokenType.NEWLINE_MICROSOFT]) {
-    return { type: DataTokenType.NEWLINE_MICROSOFT };
-  } else if (token.value === ConvenientConstants[DataTokenType.TAB]) {
-    return { type: DataTokenType.TAB };
-  } else if (token.value === ConvenientConstants[DataTokenType.COMMA]) {
-    return { type: DataTokenType.COMMA };
-  } else if (/^ +$/.test(token.value)) {
-    return {
-      type: DataTokenType.SPACE,
-      repeat: token.value.length.toString(),
-    };
-  } else {
-    return { type: DataTokenType.ARBITRARY_TEXT, text: token.value };
+// inverse of ../to/dataToDto
+export default function dtoToData(
+  tokens: BursarExportDataTokenDTO[] | undefined,
+  feeFineTypes: FeeFineTypeDTO[],
+  locations: LocationDTO[],
+  stripes: StripesType,
+  intl: IntlShape,
+): DataToken[] {
+  if (!tokens) {
+    return [];
   }
-}
 
-export function aggregateToToken(token: BursarExportTokenAggregate): DataToken {
-  if (token.value === CriteriaTokenType.NUM_ROWS) {
-    return {
-      type: DataTokenType.AGGREGATE_COUNT,
-      lengthControl: dtoToLengthControl(token.lengthControl),
-    };
-  } else {
-    return {
-      type: DataTokenType.AGGREGATE_TOTAL,
-      decimal: token.decimal,
-      lengthControl: dtoToLengthControl(token.lengthControl),
-    };
-  }
+  return tokens.map((token) => dtoToDataToken(token, feeFineTypes, locations, stripes, intl));
 }

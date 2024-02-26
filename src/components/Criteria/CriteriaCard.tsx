@@ -4,20 +4,21 @@ import React, { useMemo } from 'react';
 import { useField } from 'react-final-form';
 import { FieldArray, FieldArrayRenderProps } from 'react-final-form-arrays';
 import { CriteriaGroupType, CriteriaTerminalType } from '../../types/CriteriaTypes';
+import css from '../Card.module.css';
 import CriteriaAge from './CriteriaAge';
 import CriteriaAmount from './CriteriaAmount';
-import css from '../Card.module.css';
 import CriteriaCardSelect from './CriteriaCardSelect';
 import CriteriaCardToolbox from './CriteriaCardToolbox';
+import CriteriaFeeFineOwner from './CriteriaFeeFineOwner';
 import CriteriaFeeFineType from './CriteriaFeeFineType';
 import CriteriaLocation from './CriteriaLocation';
 import CriteriaPatronGroup from './CriteriaPatronGroup';
 import CriteriaServicePoint from './CriteriaServicePoint';
-import CriteriaFeeFineOwner from './CriteriaFeeFineOwner';
 
 function renderCriteriaNoneOf({ fields }: { fields: FieldArrayRenderProps<unknown, HTMLElement>['fields'] }) {
   return (
     fields.map((name, index) => (
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       <CriteriaCard
         key={name}
         name={name}

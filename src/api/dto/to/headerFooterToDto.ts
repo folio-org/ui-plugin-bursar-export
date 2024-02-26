@@ -5,14 +5,6 @@ import { guardNumberPositive } from '../../../utils/guardNumber';
 import { BursarExportHeaderFooterTokenDTO } from '../types';
 import lengthControlToDto from './lengthControlToDto';
 
-export default function headerFooterToDto(tokens: HeaderFooterToken[] | undefined): BursarExportHeaderFooterTokenDTO[] {
-  if (tokens === undefined) {
-    return [];
-  }
-
-  return tokens.map(headerFooterTokenToDto);
-}
-
 export function headerFooterTokenToDto(token: HeaderFooterToken): BursarExportHeaderFooterTokenDTO {
   switch (token.type) {
     case HeaderFooterTokenType.NEWLINE:
@@ -55,4 +47,12 @@ export function headerFooterTokenToDto(token: HeaderFooterToken): BursarExportHe
         lengthControl: lengthControlToDto(token.lengthControl),
       };
   }
+}
+
+export default function headerFooterToDto(tokens: HeaderFooterToken[] | undefined): BursarExportHeaderFooterTokenDTO[] {
+  if (tokens === undefined) {
+    return [];
+  }
+
+  return tokens.map(headerFooterTokenToDto);
 }

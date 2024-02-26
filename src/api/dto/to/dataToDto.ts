@@ -6,12 +6,23 @@ import { BursarExportDataTokenDTO } from '../types';
 import criteriaToFilterDto from './criteriaToFilterDto';
 import lengthControlToDto from './lengthControlToDto';
 
-export default function dataToDto(tokens: DataToken[] | undefined): BursarExportDataTokenDTO[] {
-  if (tokens === undefined) {
-    return [];
-  }
+export function userDataToDto(token: DataToken & { type: DataTokenType.USER_DATA }): BursarExportDataTokenDTO {
+  if (token.userAttribute === 'FOLIO_ID') {
+    return {
+      type: 'UserData',
+      value: token.userAttribute,
+      lengthControl: lengthControlToDto(token.lengthControl),
+    };
 
-  return tokens.map(dataTokenToDto);
+    // all others (barcode, username, human name) are optional
+  } else {
+    return {
+      type: 'UserDataOptional',
+      value: token.userAttribute,
+      placeholder: token.placeholder ?? '',
+      lengthControl: lengthControlToDto(token.lengthControl),
+    };
+  }
 }
 
 export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
@@ -109,21 +120,10 @@ export function dataTokenToDto(token: DataToken): BursarExportDataTokenDTO {
   }
 }
 
-export function userDataToDto(token: DataToken & { type: DataTokenType.USER_DATA }): BursarExportDataTokenDTO {
-  if (token.userAttribute === 'FOLIO_ID') {
-    return {
-      type: 'UserData',
-      value: token.userAttribute,
-      lengthControl: lengthControlToDto(token.lengthControl),
-    };
-
-    // all others (barcode, username, human name) are optional
-  } else {
-    return {
-      type: 'UserDataOptional',
-      value: token.userAttribute,
-      placeholder: token.placeholder ?? '',
-      lengthControl: lengthControlToDto(token.lengthControl),
-    };
+export default function dataToDto(tokens: DataToken[] | undefined): BursarExportDataTokenDTO[] {
+  if (tokens === undefined) {
+    return [];
   }
+
+  return tokens.map(dataTokenToDto);
 }

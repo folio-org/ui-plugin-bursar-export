@@ -57,6 +57,7 @@ export default function criteriaToFilterDto(criteria?: CriteriaGroup | CriteriaT
     case CriteriaGroupType.ALL_OF:
     case CriteriaGroupType.ANY_OF:
     case CriteriaGroupType.NONE_OF:
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       return groupToFilterDto(criteria);
 
     case CriteriaTerminalType.PASS:

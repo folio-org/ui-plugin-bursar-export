@@ -7,6 +7,10 @@ import { TransferAccountDTO } from '../../queries/useTransferAccounts';
 import { BursarExportTransferCriteria } from '../types';
 import dtoToCriteria from './dtoToCriteria';
 
+export function getOwnerForAccount(transferAccounts: TransferAccountDTO[], accountId: string) {
+  return transferAccounts.find((type) => type.id === accountId)?.ownerId;
+}
+
 // inverse of ../to/transferToDto
 export default function dtoToTransfer(
   tokens: BursarExportTransferCriteria,
@@ -27,8 +31,4 @@ export default function dtoToTransfer(
       account: tokens.else.account,
     },
   };
-}
-
-export function getOwnerForAccount(transferAccounts: TransferAccountDTO[], accountId: string) {
-  return transferAccounts.find((type) => type.id === accountId)?.ownerId;
 }

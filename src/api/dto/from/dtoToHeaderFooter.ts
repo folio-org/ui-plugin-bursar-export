@@ -4,33 +4,6 @@ import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../
 import { BursarExportHeaderFooterTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
 import dtoToLengthControl from './dtoToLengthControl';
 
-// inverse of ../to/headerFooterToDto
-export default function dtoToHeaderFooter(tokens: BursarExportHeaderFooterTokenDTO[] | undefined): HeaderFooterToken[] {
-  if (tokens === undefined) {
-    return [];
-  }
-  return tokens.map(dtoToHeaderFooterToken);
-}
-
-export function dtoToHeaderFooterToken(token: BursarExportHeaderFooterTokenDTO): HeaderFooterToken {
-  switch (token.type) {
-    case 'Constant':
-      return constantToToken(token);
-
-    case 'Aggregate':
-      return aggregateToToken(token);
-
-    case 'CurrentDate':
-    default:
-      return {
-        type: HeaderFooterTokenType.CURRENT_DATE,
-        format: token.value as DateFormatType,
-        timezone: token.timezone,
-        lengthControl: dtoToLengthControl(token.lengthControl),
-      };
-  }
-}
-
 export function constantToToken(token: BursarExportTokenConstant): HeaderFooterToken {
   if (token.value === ConvenientConstants[HeaderFooterTokenType.NEWLINE]) {
     return { type: HeaderFooterTokenType.NEWLINE };
@@ -63,4 +36,31 @@ export function aggregateToToken(token: BursarExportTokenAggregate): HeaderFoote
       lengthControl: dtoToLengthControl(token.lengthControl),
     };
   }
+}
+
+export function dtoToHeaderFooterToken(token: BursarExportHeaderFooterTokenDTO): HeaderFooterToken {
+  switch (token.type) {
+    case 'Constant':
+      return constantToToken(token);
+
+    case 'Aggregate':
+      return aggregateToToken(token);
+
+    case 'CurrentDate':
+    default:
+      return {
+        type: HeaderFooterTokenType.CURRENT_DATE,
+        format: token.value as DateFormatType,
+        timezone: token.timezone,
+        lengthControl: dtoToLengthControl(token.lengthControl),
+      };
+  }
+}
+
+// inverse of ../to/headerFooterToDto
+export default function dtoToHeaderFooter(tokens: BursarExportHeaderFooterTokenDTO[] | undefined): HeaderFooterToken[] {
+  if (tokens === undefined) {
+    return [];
+  }
+  return tokens.map(dtoToHeaderFooterToken);
 }
