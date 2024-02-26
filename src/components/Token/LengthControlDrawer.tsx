@@ -1,6 +1,7 @@
 import { Card, Checkbox, Col, Row, Select, TextField } from '@folio/stripes/components';
 import React from 'react';
 import { Field, useField } from 'react-final-form';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { DataTokenType, HeaderFooterTokenType } from '../../types/TokenTypes';
 
 export const TOKEN_TYPES_WITH_LENGTH_CONTROL = [
@@ -24,6 +25,8 @@ function FakeHeader() {
 }
 
 export default function LengthControlDrawer({ prefix }: Readonly<{ prefix: string }>) {
+  const intl = useIntl();
+
   const isTruncateEnabled = useField<boolean>(`${prefix}truncate`, {
     subscription: { value: true },
     format: (value) => value ?? false,
@@ -35,14 +38,27 @@ export default function LengthControlDrawer({ prefix }: Readonly<{ prefix: strin
         <Col xs={6} md={3}>
           <Field name={`${prefix}length`}>
             {(fieldProps) => (
-              <TextField<number> {...fieldProps} fullWidth marginBottom0 type="number" min={1} label="Desired length" />
+              <TextField<number>
+                {...fieldProps}
+                fullWidth
+                marginBottom0
+                type="number"
+                min={1}
+                label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.lengthControl.length" />}
+              />
             )}
           </Field>
         </Col>
         <Col xs={6} md={3}>
           <Field name={`${prefix}character`}>
             {(fieldProps) => (
-              <TextField<string> {...fieldProps} fullWidth marginBottom0 maxLength={1} label="Fill extra space with" />
+              <TextField<string>
+                {...fieldProps}
+                fullWidth
+                marginBottom0
+                maxLength={1}
+                label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.lengthControl.filler" />}
+              />
             )}
           </Field>
         </Col>
@@ -52,10 +68,14 @@ export default function LengthControlDrawer({ prefix }: Readonly<{ prefix: strin
               <Select<'FRONT' | 'BACK'>
                 {...fieldProps}
                 marginBottom0
-                label={isTruncateEnabled ? 'Add/remove characters to/from' : 'Add characters to'}
+                label={
+                  isTruncateEnabled
+                    ? <FormattedMessage id="ui-plugin-bursar-export.bursarExports.lengthControl.direction.addOrTruncate" />
+                    : <FormattedMessage id="ui-plugin-bursar-export.bursarExports.lengthControl.direction.addOnly" />
+                }
                 dataOptions={[
-                  { label: 'Start', value: 'FRONT' },
-                  { label: 'End', value: 'BACK' },
+                  { label: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.lengthControl.direction.front' }), value: 'FRONT' },
+                  { label: intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.lengthControl.direction.back' }), value: 'BACK' },
                 ]}
               />
             )}
@@ -63,9 +83,17 @@ export default function LengthControlDrawer({ prefix }: Readonly<{ prefix: strin
         </Col>
         <Col xs={6} md={3}>
           <Field name={`${prefix}truncate`} type="checkbox" defaultValue={false}>
-            {(fieldProps) => <Checkbox {...fieldProps} fullWidth label="Truncate if too long" />}
+            {(fieldProps) => (
+              <Checkbox
+                {...fieldProps}
+                fullWidth
+                label={
+                  <FormattedMessage id="ui-plugin-bursar-export.bursarExports.lengthControl.truncate" />
+                }
+              />
+            )}
           </Field>
-        </Col>{' '}
+        </Col>
       </Row>
     </Card>
   );

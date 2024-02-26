@@ -150,6 +150,14 @@
   "bursarExports.data.accordion.patron": "Patron data format",
   "bursarExports.data.accordion.account": "Account data format",
 
+  "bursarExports.lengthControl.length": "Desired length",
+  "bursarExports.lengthControl.filler": "Fill extra space with",
+  "bursarExports.lengthControl.direction.addOnly": "Add characters to",
+  "bursarExports.lengthControl.direction.addOrTruncate": "Add/remove characters to/from",
+  "bursarExports.lengthControl.direction.front": "Start",
+  "bursarExports.lengthControl.direction.back": "End",
+  "bursarExports.lengthControl.truncate": "Truncate if too long",
+
   "bursarExports.preview.accordion": "Preview",
   "bursarExports.preview.header": "Export preview",
   "bursarExports.preview.wrap": "Wrap long lines",
