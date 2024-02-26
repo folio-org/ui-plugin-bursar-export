@@ -4,7 +4,8 @@ import { FormApi } from 'final-form';
 import React, { FormEvent, MutableRefObject, useCallback } from 'react';
 import { FormRenderProps, useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import FormValues from '../../types/FormValues';
+import { FORM_ID } from '../constants';
+import FormValues from '../types/FormValues';
 import AggregateSection from './FormSection/AggregateSection';
 import CriteriaSection from './FormSection/CriteriaSection';
 import DataTokenSection from './FormSection/DataTokenSection';
@@ -12,7 +13,6 @@ import ExportPreviewSection from './FormSection/ExportPreviewSection';
 import HeaderFooterSection from './FormSection/HeaderFooterSection';
 import SchedulingSection from './FormSection/SchedulingSection';
 import TransferInfoSection from './FormSection/TransferInfoSection';
-import { FORM_ID } from '../../constants';
 
 interface ConfigurationFormSectionProps {
   formApiRef: MutableRefObject<FormApi<FormValues> | null>;
