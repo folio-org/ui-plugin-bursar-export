@@ -4,12 +4,12 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
-import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
+import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 
 describe('Arbitrary text token', () => {
   it.each([
-    [HeaderFooterTokenType.ARBITRARY_TEXT, HeaderFooterCreatorBody],
+    [HeaderFooterTokenType.ARBITRARY_TEXT, HeaderFooterCardBody],
     [DataTokenType.ARBITRARY_TEXT, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {
     const submitter = jest.fn();

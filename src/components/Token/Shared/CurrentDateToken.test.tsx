@@ -5,11 +5,11 @@ import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
-import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
+import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
 
 describe('Current date token', () => {
   it.each([
-    [HeaderFooterTokenType.CURRENT_DATE, HeaderFooterCreatorBody],
+    [HeaderFooterTokenType.CURRENT_DATE, HeaderFooterCardBody],
     [DataTokenType.CURRENT_DATE, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {
     const submitter = jest.fn();
@@ -32,7 +32,7 @@ describe('Current date token', () => {
     expect(screen.getByRole('combobox', { name: 'Format' })).toHaveDisplayValue('Year (4-digit)');
     expect(screen.getByRole('option', { name: 'Quarter' })).toBeInTheDocument();
 
-    expect(screen.getByRole('combobox', { name: 'Timezone' })).toHaveDisplayValue('America/Chicago');
+    expect(screen.getByRole('combobox', { name: 'Timezone' })).toHaveDisplayValue('America/Chicago',);
     expect(screen.getByRole('option', { name: 'Europe/Lisbon' })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'UTC' })).toBeInTheDocument();
 

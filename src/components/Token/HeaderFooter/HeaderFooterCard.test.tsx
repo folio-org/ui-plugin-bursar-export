@@ -3,7 +3,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import HeaderFooterCreator from './HeaderFooterCreator';
+import HeaderFooterCard from './HeaderFooterCard';
 import { HeaderFooterTokenType } from '../../../types/TokenTypes';
 
 describe('Header/footer card', () => {
@@ -13,7 +13,7 @@ describe('Header/footer card', () => {
         <Form mutators={{ ...arrayMutators }} onSubmit={() => ({})}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <HeaderFooterCreator fieldArrayName="test" name="test[0]" index={0} isLast />
+              <HeaderFooterCard fieldArrayName="test" name="test[0]" index={0} isLast />
             </form>
           )}
         </Form>,
@@ -33,7 +33,7 @@ describe('Header/footer card', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <HeaderFooterCreator fieldArrayName="test" name="test[0]" index={0} isLast />
+              <HeaderFooterCard fieldArrayName="test" name="test[0]" index={0} isLast />
             </form>
           )}
         </Form>,

@@ -19,7 +19,7 @@ export function isHeaderFooterBodyEmpty(type: HeaderFooterTokenType | undefined)
   return EMPTY_BODY_TYPES.includes(type ?? HeaderFooterTokenType.NEWLINE);
 }
 
-export default function HeaderFooterCreatorBody({ name }: Readonly<{ name: string }>) {
+export default function HeaderFooterCardBody({ name }: Readonly<{ name: string }>) {
   const type = useField<HeaderFooterTokenType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? HeaderFooterTokenType.NEWLINE,

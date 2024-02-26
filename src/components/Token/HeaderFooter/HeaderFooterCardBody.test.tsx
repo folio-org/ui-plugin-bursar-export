@@ -3,7 +3,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { HeaderFooterTokenType } from '../../../types/TokenTypes';
-import HeaderFooterCreatorBody, { isHeaderFooterBodyEmpty } from './HeaderFooterCreatorBody';
+import HeaderFooterCardBody, { isHeaderFooterBodyEmpty } from './HeaderFooterCardBody';
 
 test.each([
   [undefined, true],
@@ -18,7 +18,9 @@ test.each([
   [HeaderFooterTokenType.SPACE, false],
   [HeaderFooterTokenType.CURRENT_DATE, false],
   [HeaderFooterTokenType.AGGREGATE_TOTAL, false],
-])('Card bodies for type %s are empty = %s', (type, expected) => expect(isHeaderFooterBodyEmpty(type)).toBe(expected));
+])('Card bodies for type %s are empty = %s', (type, expected) =>
+  expect(isHeaderFooterBodyEmpty(type)).toBe(expected),
+);
 
 test.each([
   undefined,
@@ -33,7 +35,7 @@ test.each([
       <Form onSubmit={() => ({})} initialValues={{ test: { type } }}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <HeaderFooterCreatorBody name="test" />
+            <HeaderFooterCardBody name="test" />
           </form>
         )}
       </Form>,

@@ -6,11 +6,11 @@ import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
-import HeaderFooterCreatorBody from '../HeaderFooter/HeaderFooterCreatorBody';
+import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
 
 describe('Whitespace token', () => {
   it.each([
-    [HeaderFooterTokenType.SPACE, HeaderFooterCreatorBody],
+    [HeaderFooterTokenType.SPACE, HeaderFooterCardBody],
     [DataTokenType.SPACE, DataTokenCardBody],
   ])('displays appropriate form', async (type, Component) => {
     const submitter = jest.fn();

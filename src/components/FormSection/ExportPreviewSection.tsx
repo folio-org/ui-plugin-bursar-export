@@ -3,7 +3,7 @@ import { Card, Checkbox } from '@folio/stripes/components';
 import classNames from 'classnames';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import ExportPreviewData from '../ExportPreview/ExportPreviewData';
+import ExportPreview from '../ExportPreview';
 import css from './ExportPreviewSection.module.css';
 
 export default function ExportPreviewSection() {
@@ -20,7 +20,7 @@ export default function ExportPreviewSection() {
         headerStart={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.preview.header" />}
         bodyClass={classNames(css.preview, { [css.wrap]: wrap })}
       >
-        <ExportPreviewData />
+        <ExportPreview />
       </Card>
       <p>
         <i>

@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Field, useField } from 'react-final-form';
 import { CriteriaAggregateType } from '../../types/CriteriaTypes';
-import OperatorSelect from '../Criteria/OperatorSelect';
+import OperatorSelect from './OperatorSelect';
 import css from '../Card.module.css';
 
 export default function AggregateCriteriaCard() {

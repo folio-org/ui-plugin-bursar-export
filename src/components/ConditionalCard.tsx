@@ -2,7 +2,7 @@ import { Card, IconButton } from '@folio/stripes/components';
 import React, { ReactNode, useCallback } from 'react';
 import { useFieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
-import CriteriaCard from './Criteria/CriteriaCard';
+import { CriteriaCard } from './Criteria';
 
 export default function ConditionalCard({
   children,

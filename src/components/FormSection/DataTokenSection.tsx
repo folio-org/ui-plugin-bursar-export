@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 import { useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import DataTokenCard from '../Token/Data/DataTokenCard';
+import { DataTokenCard } from '../Token';
 import { DataTokenType } from '../../types/TokenTypes';
 
 export default function DataTokenSection() {
