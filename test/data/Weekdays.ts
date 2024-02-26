@@ -1,4 +1,4 @@
-import { WEEKDAY_INDEX } from '../../src/utils/WeekdayUtils';
+import { WEEKDAY_INDEX } from '../../src/utils/weekdayUtils';
 
 export const Sunday = WEEKDAY_INDEX[0];
 export const Monday = WEEKDAY_INDEX[1];

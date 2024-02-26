@@ -1,7 +1,7 @@
 import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
 import FormValues from '../../../types/FormValues';
-import { LocaleWeekdayInfo } from '../../../utils/WeekdayUtils';
+import { LocaleWeekdayInfo } from '../../../utils/weekdayUtils';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';

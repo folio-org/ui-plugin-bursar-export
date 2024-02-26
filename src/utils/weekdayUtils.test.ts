@@ -1,7 +1,7 @@
 import { IntlShape } from 'react-intl';
 import * as Weekdays from '../../test/data/Weekdays';
 import getIntl from '../../test/util/getIntl';
-import { getLocaleWeekdays, getFirstDayOfWeek, WEEKDAYS } from './WeekdayUtils';
+import { WEEKDAYS, getFirstDayOfWeek, getLocaleWeekdays } from './weekdayUtils';
 
 // United States
 let intlEn: IntlShape;

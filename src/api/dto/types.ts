@@ -1,5 +1,5 @@
 import SchedulingFrequency from '../../types/SchedulingFrequency';
-import { Weekday } from '../../utils/WeekdayUtils';
+import { Weekday } from '../../utils/weekdayUtils';
 
 /**
  * Bursar export job schema

@@ -1,6 +1,6 @@
 /* eslint-disable semi */
 import { SelectOptionType } from '@folio/stripes/components';
-import { Weekday } from '../utils/WeekdayUtils';
+import { Weekday } from '../utils/weekdayUtils';
 import { CriteriaAggregate, CriteriaGroup, CriteriaTerminal } from './CriteriaTypes';
 import SchedulingFrequency from './SchedulingFrequency';
 import { DataToken, HeaderFooterToken } from './TokenTypes';
