@@ -1,5 +1,9 @@
-import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
-import { BursarExportHeaderFooterTokenDTO } from '../types';
+import {
+  DateFormatType,
+  HeaderFooterToken,
+  HeaderFooterTokenType,
+} from '../../../types';
+import { BursarExportHeaderFooterTokenDTO } from '../dto-types';
 import headerFooterToDto, { headerFooterTokenToDto } from './headerFooterToDto';
 
 describe('Header/footer token conversion', () => {

@@ -5,7 +5,7 @@ import React, { FormEvent, MutableRefObject, useCallback } from 'react';
 import { FormRenderProps, useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import { FORM_ID } from '../constants';
-import FormValues from '../types/FormValues';
+import { FormValues } from '../types';
 import {
   AggregateSection,
   CriteriaSection,

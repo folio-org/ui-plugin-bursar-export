@@ -1,7 +1,6 @@
-import FormValues from '../../../types/FormValues';
-import SchedulingFrequency from '../../../types/SchedulingFrequency';
+import { FormValues, SchedulingFrequency } from '../../../types';
 import { LocaleWeekdayInfo } from '../../../utils/weekdayUtils';
-import { SchedulingDTO } from '../types';
+import { SchedulingDTO } from '../dto-types';
 
 export function frequencyToString(freq: number | undefined): string | undefined {
   return freq?.toString();

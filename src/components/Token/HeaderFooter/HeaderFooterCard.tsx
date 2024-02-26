@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useField } from 'react-final-form';
-import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { HeaderFooterTokenType } from '../../../types';
 import GenericTokenCard from '../GenericTokenCard';
 import HeaderFooterTypeSelect from './HeaderFooterTypeSelect';
 import { TOKEN_TYPES_WITH_LENGTH_CONTROL } from '../LengthControlDrawer';

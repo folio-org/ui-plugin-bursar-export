@@ -3,7 +3,7 @@ import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
-import { CriteriaGroupType, CriteriaTerminalType, CriteriaGroup, CriteriaTerminal } from '../../../types/CriteriaTypes';
+import { CriteriaGroupType, CriteriaTerminalType, CriteriaGroup, CriteriaTerminal } from '../../../types';
 import ConditionalCard from '../../ConditionalCard';
 
 export default function ConstantConditionalToken({ prefix }: Readonly<{ prefix: string }>) {

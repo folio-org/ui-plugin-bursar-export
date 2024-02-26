@@ -1,6 +1,5 @@
-import FormValues from '../../../types/FormValues';
-import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import { SchedulingDTO } from '../types';
+import { FormValues, SchedulingFrequency } from '../../../types';
+import { SchedulingDTO } from '../dto-types';
 import schedulingToDto from './schedulingToDto';
 
 describe('Scheduling conversion to DTO', () => {

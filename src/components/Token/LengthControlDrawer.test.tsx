@@ -4,7 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import FormValues from '../../types/FormValues';
+import { FormValues } from '../../types';
 import LengthControlDrawer from './LengthControlDrawer';
 
 describe('Length control drawer', () => {

@@ -11,7 +11,7 @@ import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Weekday } from '../../utils/weekdayUtils';
-import SchedulingFrequency from '../../types/SchedulingFrequency';
+import { SchedulingFrequency } from '../../types';
 import useLocaleWeekdays from '../../hooks/useLocaleWeekdays';
 
 export default function SchedulingSection() {

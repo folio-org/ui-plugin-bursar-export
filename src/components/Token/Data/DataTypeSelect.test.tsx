@@ -3,7 +3,7 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import { DataTokenType } from '../../../types/TokenTypes';
+import { DataTokenType } from '../../../types';
 import DataTypeSelect from './DataTypeSelect';
 
 describe('Data token type selection', () => {

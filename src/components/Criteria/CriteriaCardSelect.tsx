@@ -2,7 +2,7 @@ import { Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
 import { useIntl } from 'react-intl';
-import { CriteriaGroupType, CriteriaTerminalType } from '../../types/CriteriaTypes';
+import { CriteriaGroupType, CriteriaTerminalType } from '../../types';
 import useCriteriaCardOptions from './useCriteriaCardOptions';
 
 export default function CriteriaCardSelect({

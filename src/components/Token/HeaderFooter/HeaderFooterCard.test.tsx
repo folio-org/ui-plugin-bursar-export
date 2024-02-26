@@ -4,7 +4,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
 import HeaderFooterCard from './HeaderFooterCard';
-import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { HeaderFooterTokenType } from '../../../types';
 
 describe('Header/footer card', () => {
   test('has good default value', () => {

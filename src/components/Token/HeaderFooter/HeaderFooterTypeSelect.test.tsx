@@ -3,7 +3,7 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { HeaderFooterTokenType } from '../../../types';
 import HeaderFooterTypeSelect from './HeaderFooterTypeSelect';
 
 describe('Header/footer type selection', () => {

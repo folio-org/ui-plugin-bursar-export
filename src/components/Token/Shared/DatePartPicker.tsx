@@ -2,7 +2,7 @@ import { Select } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { DateFormatType } from '../../../types/TokenTypes';
+import { DateFormatType } from '../../../types';
 
 export default function DatePartPicker({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();

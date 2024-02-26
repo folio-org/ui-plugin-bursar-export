@@ -7,7 +7,7 @@ import {
   CriteriaGroupType,
   CriteriaTerminal,
   CriteriaTerminalType,
-} from '../../../types/CriteriaTypes';
+} from '../../../types';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import {
@@ -15,7 +15,7 @@ import {
   BursarExportFilterFeeType,
   BursarExportFilterLocation,
   BursarExportFilterNegation,
-} from '../types';
+} from '../dto-types';
 import dtoToCriteria from './dtoToCriteria';
 import getIntl from '../../../../test/util/getIntl';
 

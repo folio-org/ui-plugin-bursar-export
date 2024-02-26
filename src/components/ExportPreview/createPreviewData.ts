@@ -1,4 +1,4 @@
-import { DataToken, DataTokenType, ItemAttribute, UserAttribute } from '../../types/TokenTypes';
+import { DataToken, DataTokenType, ItemAttribute, UserAttribute } from '../../types';
 import { guardNumberPositive } from '../../utils/guardNumber';
 import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 

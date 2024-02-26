@@ -4,8 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import FormValues from '../../types/FormValues';
-import { HeaderFooterTokenType } from '../../types/TokenTypes';
+import { FormValues, HeaderFooterTokenType } from '../../types';
 import HeaderFooterSection from './HeaderFooterSection';
 
 test('Add button works as expected', async () => {

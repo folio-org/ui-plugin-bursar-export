@@ -1,9 +1,13 @@
-import { CriteriaAggregateType, CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import FormValues from '../../../types/FormValues';
-import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
+import {
+  CriteriaAggregateType,
+  CriteriaTerminalType,
+  FormValues,
+  SchedulingFrequency,
+  DataTokenType,
+  HeaderFooterTokenType,
+} from '../../../types';
 import formValuesToDto from './formValuesToDto';
-import { BursarExportJobDTO } from '../types';
+import { BursarExportJobDTO } from '../dto-types';
 
 describe('Form values conversion', () => {
   const TEST_VALUE: Omit<FormValues, 'aggregate'> = {

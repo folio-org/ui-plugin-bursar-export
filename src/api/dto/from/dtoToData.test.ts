@@ -1,9 +1,14 @@
-import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
+import { IntlShape } from 'react-intl';
 import getIntl from '../../../../test/util/getIntl';
-import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
-import { BursarExportDataTokenDTO } from '../types';
+import {
+  ComparisonOperator,
+  CriteriaTerminalType,
+  DataToken,
+  DataTokenType,
+  DateFormatType,
+} from '../../../types';
+import { BursarExportDataTokenDTO } from '../dto-types';
 import dtoToData, { dtoToDataToken } from './dtoToData';
 
 // United States

@@ -2,7 +2,7 @@ import { Col, Select, SelectOptionType, TextField } from '@folio/stripes/compone
 import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import { ItemAttribute, UserAttribute } from '../../../types/TokenTypes';
+import { ItemAttribute, UserAttribute } from '../../../types';
 
 export default function UserItemInfoToken<T extends ItemAttribute | UserAttribute>({
   defaultValue,

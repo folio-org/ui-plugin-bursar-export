@@ -4,8 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import { ComparisonOperator, CriteriaGroupType, CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import { DataTokenType } from '../../../types/TokenTypes';
+import { ComparisonOperator, CriteriaGroupType, CriteriaTerminalType, DataTokenType } from '../../../types';
 import DataTokenCardBody from './DataTokenCardBody';
 
 describe('Constant conditional token', () => {

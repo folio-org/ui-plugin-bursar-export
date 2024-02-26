@@ -1,6 +1,10 @@
-import { CriteriaAggregate, CriteriaAggregateType, CriteriaTokenType } from '../../../types/CriteriaTypes';
+import {
+  CriteriaAggregate,
+  CriteriaAggregateType,
+  CriteriaTokenType,
+} from '../../../types';
 import guardNumber from '../../../utils/guardNumber';
-import { BursarExportFilterAggregate } from '../types';
+import { BursarExportFilterAggregate } from '../dto-types';
 
 export default function aggregateCriteriaToFilterDto(
   criteria: CriteriaAggregate | undefined,

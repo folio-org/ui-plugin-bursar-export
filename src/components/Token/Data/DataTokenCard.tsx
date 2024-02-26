@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useField } from 'react-final-form';
-import { DataTokenType } from '../../../types/TokenTypes';
+import { DataTokenType } from '../../../types';
 import GenericTokenCard from '../GenericTokenCard';
 import { TOKEN_TYPES_WITH_LENGTH_CONTROL } from '../LengthControlDrawer';
 import DataTokenCardBody, { isDataBodyEmpty } from './DataTokenCardBody';

@@ -1,11 +1,19 @@
 import { StripesType } from '@folio/stripes/core';
 import { IntlShape } from 'react-intl';
-import ConvenientConstants from '../../../types/ConvenientConstants';
-import { CriteriaTokenType } from '../../../types/CriteriaTypes';
-import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
+import {
+  ConvenientConstants,
+  CriteriaTokenType,
+  DataToken,
+  DataTokenType,
+  DateFormatType,
+} from '../../../types';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
-import { BursarExportDataTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
+import {
+  BursarExportDataTokenDTO,
+  BursarExportTokenAggregate,
+  BursarExportTokenConstant,
+} from '../dto-types';
 import dtoToCriteria from './dtoToCriteria';
 import dtoToLengthControl from './dtoToLengthControl';
 

@@ -2,7 +2,7 @@ import { CalloutContext, useOkapiKy } from '@folio/stripes/core';
 import { useContext } from 'react';
 import { useMutation } from 'react-query';
 import { useIntl } from 'react-intl';
-import { BursarExportJobDTO } from '../dto/types';
+import { BursarExportJobDTO } from '../dto/dto-types';
 
 export default function useManualSchedulerMutation() {
   const ky = useOkapiKy();

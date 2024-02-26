@@ -1,7 +1,7 @@
 import { Row } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { useField } from 'react-final-form';
-import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { HeaderFooterTokenType } from '../../../types';
 import ArbitraryTextToken from '../Shared/ArbitraryTextToken';
 import CurrentDateToken from '../Shared/CurrentDateToken';
 import WhitespaceToken from '../Shared/WhitespaceToken';

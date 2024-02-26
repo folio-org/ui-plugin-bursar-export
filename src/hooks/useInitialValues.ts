@@ -1,9 +1,9 @@
+import { useStripes } from '@folio/stripes/core';
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useStripes } from '@folio/stripes/core';
 import dtoToFormValues from '../api/dto/from';
 import { useCurrentConfig, useFeeFineTypes, useLocations, useTransferAccounts } from '../api/queries';
-import FormValues from '../types/FormValues';
+import { FormValues } from '../types';
 import useLocaleWeekdays from './useLocaleWeekdays';
 
 export default function useInitialValues() {

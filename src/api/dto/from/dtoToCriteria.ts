@@ -7,10 +7,14 @@ import {
   CriteriaGroupType,
   CriteriaTerminal,
   CriteriaTerminalType,
-} from '../../../types/CriteriaTypes';
+} from '../../../types';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
-import { BursarExportFilterCondition, BursarExportFilterDTO, BursarExportFilterNegation } from '../types';
+import {
+  BursarExportFilterCondition,
+  BursarExportFilterDTO,
+  BursarExportFilterNegation,
+} from '../dto-types';
 
 export function dtoToConditionCriteria(
   filter: BursarExportFilterCondition,

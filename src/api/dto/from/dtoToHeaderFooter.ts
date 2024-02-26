@@ -1,7 +1,15 @@
-import ConvenientConstants from '../../../types/ConvenientConstants';
-import { CriteriaTokenType } from '../../../types/CriteriaTypes';
-import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
-import { BursarExportHeaderFooterTokenDTO, BursarExportTokenAggregate, BursarExportTokenConstant } from '../types';
+import {
+  ConvenientConstants,
+  CriteriaTokenType,
+  DateFormatType,
+  HeaderFooterToken,
+  HeaderFooterTokenType,
+} from '../../../types';
+import {
+  BursarExportHeaderFooterTokenDTO,
+  BursarExportTokenAggregate,
+  BursarExportTokenConstant,
+} from '../dto-types';
 import dtoToLengthControl from './dtoToLengthControl';
 
 export function constantToToken(token: BursarExportTokenConstant): HeaderFooterToken {

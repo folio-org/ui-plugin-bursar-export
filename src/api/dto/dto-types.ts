@@ -1,4 +1,4 @@
-import SchedulingFrequency from '../../types/SchedulingFrequency';
+import { SchedulingFrequency } from '../../types';
 import { Weekday } from '../../utils/weekdayUtils';
 
 /**

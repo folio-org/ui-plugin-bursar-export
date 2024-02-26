@@ -2,7 +2,7 @@ import { Select } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
 import { useIntl } from 'react-intl';
-import { DataTokenType } from '../../../types/TokenTypes';
+import { DataTokenType } from '../../../types';
 
 export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
   const isAggregate = useField<boolean>('aggregate', {

@@ -1,10 +1,10 @@
 import { Card, Col, Row, Select, TextField } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
 import { Field, useField } from 'react-final-form';
-import { CriteriaAggregateType } from '../../types/CriteriaTypes';
-import OperatorSelect from './OperatorSelect';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { CriteriaAggregateType } from '../../types';
 import css from '../Card.module.css';
+import OperatorSelect from './OperatorSelect';
 
 export default function AggregateCriteriaCard() {
   const selectedType = useField<CriteriaAggregateType>('aggregateFilter.type', {

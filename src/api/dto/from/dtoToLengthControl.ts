@@ -1,5 +1,5 @@
-import LengthControl from '../../../types/LengthControl';
-import { BursarExportTokenLengthControl } from '../types';
+import { LengthControl } from '../../../types';
+import { BursarExportTokenLengthControl } from '../dto-types';
 
 // inverse of ../to/lengthControlToDto
 export default function dtoToLengthControl(

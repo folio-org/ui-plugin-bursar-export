@@ -2,9 +2,9 @@ import { Button, Card } from '@folio/stripes/components';
 import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
+import { CriteriaTerminalType } from '../../types';
 import ConditionalCard from '../ConditionalCard';
 import TransferAccountFields from '../TransferAccountFields';
-import { CriteriaTerminalType } from '../../types/CriteriaTypes';
 
 export default function TransferInfoSection() {
   return (

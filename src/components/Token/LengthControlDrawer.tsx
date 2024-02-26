@@ -2,7 +2,7 @@ import { Card, Checkbox, Col, Row, Select, TextField } from '@folio/stripes/comp
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { DataTokenType, HeaderFooterTokenType } from '../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../types';
 
 export const TOKEN_TYPES_WITH_LENGTH_CONTROL = [
   HeaderFooterTokenType.CURRENT_DATE,

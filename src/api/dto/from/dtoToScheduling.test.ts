@@ -1,7 +1,6 @@
 import * as Weekdays from '../../../../test/data/Weekdays';
-import FormValues from '../../../types/FormValues';
-import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import { SchedulingDTO } from '../types';
+import { FormValues, SchedulingFrequency } from '../../../types';
+import { SchedulingDTO } from '../dto-types';
 import dtoToScheduling from './dtoToScheduling';
 
 const LOCALE_WEEKDAYS = [
@@ -81,4 +80,6 @@ test.each<[SchedulingDTO, FormValues['scheduling']]>([
       ],
     },
   ],
-])('Converts scheduling DTO %s to %s', (input, expected) => expect(dtoToScheduling(input, LOCALE_WEEKDAYS)).toEqual(expected));
+])('Converts scheduling DTO %s to %s', (input, expected) =>
+  expect(dtoToScheduling(input, LOCALE_WEEKDAYS)).toEqual(expected),
+);

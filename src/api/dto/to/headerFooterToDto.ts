@@ -1,8 +1,6 @@
-import ConvenientConstants from '../../../types/ConvenientConstants';
-import { CriteriaTokenType } from '../../../types/CriteriaTypes';
-import { HeaderFooterToken, HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { ConvenientConstants, CriteriaTokenType, HeaderFooterToken, HeaderFooterTokenType } from '../../../types';
 import { guardNumberPositive } from '../../../utils/guardNumber';
-import { BursarExportHeaderFooterTokenDTO } from '../types';
+import { BursarExportHeaderFooterTokenDTO } from '../dto-types';
 import lengthControlToDto from './lengthControlToDto';
 
 export function headerFooterTokenToDto(token: HeaderFooterToken): BursarExportHeaderFooterTokenDTO {

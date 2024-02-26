@@ -1,6 +1,5 @@
-import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import { DataToken, DataTokenType, DateFormatType } from '../../../types/TokenTypes';
-import { BursarExportDataTokenDTO } from '../types';
+import { CriteriaTerminalType, DataToken, DataTokenType, DateFormatType } from '../../../types';
+import { BursarExportDataTokenDTO } from '../dto-types';
 import dataToDto, { dataTokenToDto } from './dataToDto';
 
 describe('Data token conversion', () => {
@@ -22,7 +21,10 @@ describe('Data token conversion', () => {
       { type: 'Constant', value: 'foo' },
     ],
 
-    [{ type: DataTokenType.AGGREGATE_COUNT }, { type: 'Aggregate', value: 'NUM_ROWS', decimal: false }],
+    [
+      { type: DataTokenType.AGGREGATE_COUNT },
+      { type: 'Aggregate', value: 'NUM_ROWS', decimal: false },
+    ],
 
     [
       { type: DataTokenType.AGGREGATE_TOTAL, decimal: false },

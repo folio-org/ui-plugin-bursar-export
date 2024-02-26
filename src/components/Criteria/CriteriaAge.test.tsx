@@ -3,8 +3,8 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
-import FormValues from '../../types/FormValues';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import { FormValues } from '../../types';
 import CriteriaCard from './CriteriaCard';
 
 it('Age criteria displays appropriate form', async () => {

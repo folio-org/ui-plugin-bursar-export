@@ -4,7 +4,7 @@ import { FieldArray } from 'react-final-form-arrays';
 import { useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import { DataTokenCard } from '../Token';
-import { DataTokenType } from '../../types/TokenTypes';
+import { DataTokenType } from '../../types';
 
 export default function DataTokenSection() {
   const aggregate = useField<boolean>('aggregate', {

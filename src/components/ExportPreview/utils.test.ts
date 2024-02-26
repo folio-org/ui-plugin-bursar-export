@@ -1,5 +1,4 @@
-import LengthControl from '../../types/LengthControl';
-import { DateFormatType } from '../../types/TokenTypes';
+import { DateFormatType, LengthControl } from '../../types';
 import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 
 describe('Export preview utility functions', () => {

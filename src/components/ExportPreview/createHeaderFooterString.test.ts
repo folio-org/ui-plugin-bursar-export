@@ -1,4 +1,4 @@
-import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../types/TokenTypes';
+import { DateFormatType, HeaderFooterToken, HeaderFooterTokenType } from '../../types';
 import createHeaderFooterString, { tokenToString } from './createHeaderFooterString';
 
 describe('Preview data generation', () => {

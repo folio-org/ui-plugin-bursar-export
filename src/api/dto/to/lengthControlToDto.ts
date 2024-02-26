@@ -1,6 +1,6 @@
-import LengthControl from '../../../types/LengthControl';
+import { LengthControl } from '../../../types';
 import { guardNumberPositive } from '../../../utils/guardNumber';
-import { BursarExportTokenLengthControl } from '../types';
+import { BursarExportTokenLengthControl } from '../dto-types';
 
 export default function lengthControlToDto(
   lengthControl: LengthControl | undefined,

@@ -3,7 +3,7 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import { DataTokenType, HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../../types';
 import HeaderFooterCardBody from '../HeaderFooter/HeaderFooterCardBody';
 import DataTokenCardBody from '../Data/DataTokenCardBody';
 

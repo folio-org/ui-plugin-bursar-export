@@ -1,6 +1,5 @@
-import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import FormValues from '../../../types/FormValues';
-import { BursarExportTransferCriteria } from '../types';
+import { CriteriaTerminalType, FormValues } from '../../../types';
+import { BursarExportTransferCriteria } from '../dto-types';
 import transferToDto from './transferToDto';
 
 describe('Transfer info conversion', () => {

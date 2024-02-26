@@ -1,11 +1,10 @@
-import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
-import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
-import FormValues from '../../../types/FormValues';
-import { TransferAccountDTO } from '../../queries/useTransferAccounts';
-import { BursarExportTransferCriteria } from '../types';
-import dtoToTransfer from './dtoToTransfer';
+import { IntlShape } from 'react-intl';
 import getIntl from '../../../../test/util/getIntl';
+import { ComparisonOperator, CriteriaTerminalType, FormValues } from '../../../types';
+import { TransferAccountDTO } from '../../queries/useTransferAccounts';
+import { BursarExportTransferCriteria } from '../dto-types';
+import dtoToTransfer from './dtoToTransfer';
 
 // United States
 let intlEn: IntlShape;

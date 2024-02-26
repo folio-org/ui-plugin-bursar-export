@@ -1,4 +1,4 @@
-import { HeaderFooterToken, HeaderFooterTokenType } from '../../types/TokenTypes';
+import { HeaderFooterToken, HeaderFooterTokenType } from '../../types';
 import { guardNumberPositive } from '../../utils/guardNumber';
 import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 

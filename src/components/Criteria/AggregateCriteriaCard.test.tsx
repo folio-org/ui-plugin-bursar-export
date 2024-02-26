@@ -3,8 +3,8 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import { CriteriaAggregateType } from '../../types';
 import AggregateCriteriaCard from './AggregateCriteriaCard';
-import { CriteriaAggregateType } from '../../types/CriteriaTypes';
 
 describe('Aggregate criteria card', () => {
   const submitter = jest.fn();

@@ -2,7 +2,7 @@ import { Select } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { ComparisonOperator } from '../../types/CriteriaTypes';
+import { ComparisonOperator } from '../../types';
 
 export default function OperatorSelect({ name }: Readonly<{ name: string }>) {
   const intl = useIntl();

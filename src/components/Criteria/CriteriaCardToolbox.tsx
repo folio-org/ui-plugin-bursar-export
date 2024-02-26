@@ -2,7 +2,7 @@ import { IconButton } from '@folio/stripes/components';
 import React, { useCallback } from 'react';
 import { useField } from 'react-final-form';
 import { useFieldArray } from 'react-final-form-arrays';
-import { CriteriaGroupType, CriteriaTerminalType, CriteriaGroup, CriteriaTerminal } from '../../types/CriteriaTypes';
+import { CriteriaGroup, CriteriaGroupType, CriteriaTerminal, CriteriaTerminalType } from '../../types';
 
 export interface CriteriaCardToolboxProps {
   prefix: string;

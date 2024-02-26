@@ -3,7 +3,7 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import ExportPreviewData from './ExportPreviewData';
-import { DataTokenType, HeaderFooterTokenType } from '../../types/TokenTypes';
+import { DataTokenType, HeaderFooterTokenType } from '../../types';
 
 jest.mock('@ngneat/falso', () => ({
   randFloat: jest.fn(() => 12.34),

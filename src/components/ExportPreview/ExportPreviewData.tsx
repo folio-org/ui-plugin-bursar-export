@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useField } from 'react-final-form';
 import { useFieldArray } from 'react-final-form-arrays';
-import { DataToken, HeaderFooterToken } from '../../types/TokenTypes';
+import { DataToken, HeaderFooterToken } from '../../types';
 import createPreviewData from './createPreviewData';
 import createHeaderFooterString from './createHeaderFooterString';
 import HandleInvisible from './HandleInvisible';

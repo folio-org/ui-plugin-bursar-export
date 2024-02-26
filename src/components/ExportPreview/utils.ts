@@ -1,5 +1,4 @@
-import LengthControl from '../../types/LengthControl';
-import { DateFormatType } from '../../types/TokenTypes';
+import { DateFormatType, LengthControl } from '../../types';
 
 export function formatDate(format: DateFormatType, date: Date): number {
   switch (format) {

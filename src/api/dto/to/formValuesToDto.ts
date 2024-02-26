@@ -1,5 +1,5 @@
-import FormValues from '../../../types/FormValues';
-import { BursarExportJobDTO } from '../types';
+import { FormValues } from '../../../types';
+import { BursarExportJobDTO } from '../dto-types';
 import aggregateCriteriaToFilterDto from './aggregateCriteriaToFilterDto';
 import criteriaToFilterDto from './criteriaToFilterDto';
 import dataToDto from './dataToDto';

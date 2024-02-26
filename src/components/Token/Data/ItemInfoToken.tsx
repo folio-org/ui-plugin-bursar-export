@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useIntl } from 'react-intl';
-import { ItemAttribute } from '../../../types/TokenTypes';
+import { ItemAttribute } from '../../../types';
 import UserItemInfoToken from './UserItemInfoToken';
 
 export default function ItemInfoToken({ prefix }: Readonly<{ prefix: string }>) {

@@ -1,5 +1,4 @@
-import { CriteriaTerminalType } from '../../types/CriteriaTypes';
-import { DataToken, DataTokenType, DateFormatType } from '../../types/TokenTypes';
+import { CriteriaTerminalType, DataToken, DataTokenType, DateFormatType } from '../../types';
 import createPreviewData, {
   formatFeeFineToken,
   formatItemToken,

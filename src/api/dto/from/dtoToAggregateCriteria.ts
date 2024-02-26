@@ -1,7 +1,12 @@
 import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
-import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType, CriteriaTokenType } from '../../../types/CriteriaTypes';
-import { BursarExportFilterAggregate } from '../types';
+import {
+  ComparisonOperator,
+  CriteriaAggregate,
+  CriteriaAggregateType,
+  CriteriaTokenType,
+} from '../../../types';
+import { BursarExportFilterAggregate } from '../dto-types';
 
 // inverse of ../to/aggregateCriteriaToFilterDto
 export default function dtoToAggregateCriteria(

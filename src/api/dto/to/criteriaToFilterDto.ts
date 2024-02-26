@@ -4,9 +4,9 @@ import {
   CriteriaGroupType,
   CriteriaTerminal,
   CriteriaTerminalType,
-} from '../../../types/CriteriaTypes';
+} from '../../../types';
 import guardNumber from '../../../utils/guardNumber';
-import { BursarExportFilterDTO } from '../types';
+import { BursarExportFilterDTO } from '../dto-types';
 
 export default function criteriaToFilterDto(criteria?: CriteriaGroup | CriteriaTerminal): BursarExportFilterDTO {
   switch (criteria?.type) {

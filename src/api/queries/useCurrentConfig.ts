@@ -1,6 +1,6 @@
 import { useOkapiKy } from '@folio/stripes/core';
 import { useQuery } from 'react-query';
-import { SavedJobConfiguration } from '../dto/types';
+import { SavedJobConfiguration } from '../dto/dto-types';
 
 export interface CurrentConfigResponse {
   totalRecords: number;

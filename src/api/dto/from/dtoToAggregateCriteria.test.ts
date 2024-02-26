@@ -1,8 +1,8 @@
 import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
 import getIntl from '../../../../test/util/getIntl';
-import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType } from '../../../types/CriteriaTypes';
-import { BursarExportFilterAggregate } from '../types';
+import { ComparisonOperator, CriteriaAggregate, CriteriaAggregateType } from '../../../types';
+import { BursarExportFilterAggregate } from '../dto-types';
 import dtoToAggregateCriteria from './dtoToAggregateCriteria';
 
 // United States

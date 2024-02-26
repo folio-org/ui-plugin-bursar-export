@@ -2,7 +2,7 @@ import { CalloutContext, useOkapiKy } from '@folio/stripes/core';
 import { useContext } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { useIntl } from 'react-intl';
-import { BursarExportJobDTO, SchedulingDTO } from '../dto/types';
+import { BursarExportJobDTO, SchedulingDTO } from '../dto/dto-types';
 import useCurrentConfig from '../queries/useCurrentConfig';
 
 export default function useAutomaticSchedulerMutation() {
@@ -56,4 +56,3 @@ export default function useAutomaticSchedulerMutation() {
 
   return mutation.mutate;
 }
-

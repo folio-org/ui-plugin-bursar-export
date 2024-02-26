@@ -1,11 +1,11 @@
-import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
-import FormValues from '../../../types/FormValues';
+import { IntlShape } from 'react-intl';
+import { FormValues } from '../../../types';
 import { LocaleWeekdayInfo } from '../../../utils/weekdayUtils';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
-import { SavedJobConfiguration } from '../types';
+import { SavedJobConfiguration } from '../dto-types';
 import dtoToAggregateCriteria from './dtoToAggregateCriteria';
 import dtoToCriteria from './dtoToCriteria';
 import dtoToData from './dtoToData';

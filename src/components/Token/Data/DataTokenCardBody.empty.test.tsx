@@ -2,7 +2,7 @@ import { render } from '@folio/jest-config-stripes/testing-library/react';
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import { DataTokenType } from '../../../types/TokenTypes';
+import { DataTokenType } from '../../../types';
 import DataTokenCardBody, { isDataBodyEmpty } from './DataTokenCardBody';
 
 test.each([

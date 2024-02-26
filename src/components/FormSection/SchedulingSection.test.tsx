@@ -2,8 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import React from 'react';
 import { Form } from 'react-final-form';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import FormValues from '../../types/FormValues';
-import SchedulingFrequency from '../../types/SchedulingFrequency';
+import { FormValues, SchedulingFrequency } from '../../types';
 import SchedulingSection from './SchedulingSection';
 
 describe('Scheduling section', () => {

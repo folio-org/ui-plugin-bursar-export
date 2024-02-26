@@ -4,8 +4,8 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import FormValues from '../../types/FormValues';
 import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import { FormValues } from '../../types';
 import CriteriaCard from './CriteriaCard';
 
 const getResponse = jest.fn((endpoint: string) => {

@@ -1,10 +1,10 @@
 import { StripesType } from '@folio/stripes/core';
 import { IntlShape } from 'react-intl';
-import FormValues from '../../../types/FormValues';
+import { FormValues } from '../../../types';
 import { FeeFineTypeDTO } from '../../queries/useFeeFineTypes';
 import { LocationDTO } from '../../queries/useLocations';
 import { TransferAccountDTO } from '../../queries/useTransferAccounts';
-import { BursarExportTransferCriteria } from '../types';
+import { BursarExportTransferCriteria } from '../dto-types';
 import dtoToCriteria from './dtoToCriteria';
 
 export function getOwnerForAccount(transferAccounts: TransferAccountDTO[], accountId: string) {

@@ -8,7 +8,7 @@ import { useAutomaticSchedulerMutation, useManualSchedulerMutation } from './api
 import ConfigurationForm from './components/ConfigurationForm';
 import { FORM_ID } from './constants';
 import useInitialValues from './hooks/useInitialValues';
-import FormValues from './types/FormValues';
+import { FormValues } from './types';
 
 export default function BursarExportPlugin() {
   const stripes = useStripes();

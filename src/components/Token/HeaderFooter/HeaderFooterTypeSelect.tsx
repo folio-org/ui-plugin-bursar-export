@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Select } from '@folio/stripes/components';
 import { Field } from 'react-final-form';
 import { useIntl } from 'react-intl';
-import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import { HeaderFooterTokenType } from '../../../types';
 
 export default function HeaderFooterTypeSelect({ name }: Readonly<{ name: string }>) {
   const intl = useIntl();
