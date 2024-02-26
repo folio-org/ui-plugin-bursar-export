@@ -7,7 +7,7 @@ import formValuesToDto from './api/dto/to/formValuesToDto';
 import schedulingToDto from './api/dto/to/schedulingToDto';
 import useAutomaticSchedulerMutation from './api/mutators/useAutomaticSchedulerMutation';
 import useManualSchedulerMutation from './api/mutators/useManualSchedulerMutation';
-import ConfigurationFormSection from './components/form/ConfigurationFormSection';
+import ConfigurationForm from './components/ConfigurationForm';
 import useInitialValues from './hooks/useInitialValues';
 import FormValues from './types/FormValues';
 import { FORM_ID } from './constants';
@@ -21,12 +21,15 @@ export default function BursarExportPlugin() {
 
   const formApiRef = useRef<FormApi<FormValues>>(null);
 
-  const submitCallback = useCallback((values: FormValues) => {
-    scheduleAutomatically({
-      bursar: formValuesToDto(values),
-      scheduling: schedulingToDto(values.scheduling),
-    });
-  }, [scheduleAutomatically]);
+  const submitCallback = useCallback(
+    (values: FormValues) => {
+      scheduleAutomatically({
+        bursar: formValuesToDto(values),
+        scheduling: schedulingToDto(values.scheduling),
+      });
+    },
+    [scheduleAutomatically],
+  );
 
   const runManuallyCallback = useCallback(() => {
     const values = formApiRef.current?.getState().values;
@@ -76,7 +79,11 @@ export default function BursarExportPlugin() {
       id="pane-batch-group-configuration"
       paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
     >
-      <ConfigurationFormSection initialValues={initialValues} onSubmit={submitCallback} formApiRef={formApiRef} />
+      <ConfigurationForm
+        initialValues={initialValues}
+        onSubmit={submitCallback}
+        formApiRef={formApiRef}
+      />
     </Pane>
   );
 }

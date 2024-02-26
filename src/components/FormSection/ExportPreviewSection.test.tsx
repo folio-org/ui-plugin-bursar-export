@@ -4,7 +4,7 @@ import React from 'react';
 import { Form } from 'react-final-form';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import ExportPreviewSection from './ExportPreviewSection';
-import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
 
 jest.mock('@ngneat/falso', () => ({
   randFloat: jest.fn(() => 12.34),

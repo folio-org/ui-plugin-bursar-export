@@ -3,8 +3,8 @@ import React, { useMemo } from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 import { useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import DataTokenCard from '../../Token/Data/DataTokenCard';
-import { DataTokenType } from '../../../types/TokenTypes';
+import DataTokenCard from '../Token/Data/DataTokenCard';
+import { DataTokenType } from '../../types/TokenTypes';
 
 export default function DataTokenSection() {
   const aggregate = useField<boolean>('aggregate', {
@@ -25,7 +25,12 @@ export default function DataTokenSection() {
       {({ fields }) => (
         <>
           {fields.map((innerName, index) => (
-            <DataTokenCard key={innerName} name={innerName} index={index} isLast={index + 1 === fields.length} />
+            <DataTokenCard
+              key={innerName}
+              name={innerName}
+              index={index}
+              isLast={index + 1 === fields.length}
+            />
           ))}
           <Button onClick={() => fields.push({ type: DataTokenType.NEWLINE })}>
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.add" />

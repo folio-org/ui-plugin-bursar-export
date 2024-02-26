@@ -2,9 +2,9 @@ import { Button, Card } from '@folio/stripes/components';
 import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
-import ConditionalCard from '../../ConditionalCard';
-import TransferAccountFields from '../../TransferAccountFields';
-import { CriteriaTerminalType } from '../../../types/CriteriaTypes';
+import ConditionalCard from '../ConditionalCard';
+import TransferAccountFields from '../TransferAccountFields';
+import { CriteriaTerminalType } from '../../types/CriteriaTypes';
 
 export default function TransferInfoSection() {
   return (
@@ -35,9 +35,10 @@ export default function TransferInfoSection() {
           </Card>
 
           <Button
-            onClick={() => fields.push({
-              condition: { type: CriteriaTerminalType.PATRON_GROUP },
-            })
+            onClick={() =>
+              fields.push({
+                condition: { type: CriteriaTerminalType.PATRON_GROUP },
+              })
             }
           >
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.addCondition" />

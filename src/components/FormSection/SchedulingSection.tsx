@@ -10,9 +10,9 @@ import {
 import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Weekday } from '../../../utils/WeekdayUtils';
-import SchedulingFrequency from '../../../types/SchedulingFrequency';
-import useLocaleWeekdays from '../../../hooks/useLocaleWeekdays';
+import { Weekday } from '../../utils/WeekdayUtils';
+import SchedulingFrequency from '../../types/SchedulingFrequency';
+import useLocaleWeekdays from '../../hooks/useLocaleWeekdays';
 
 export default function SchedulingSection() {
   const frequencyValue = useField<SchedulingFrequency>('scheduling.frequency', {
@@ -118,8 +118,7 @@ export default function SchedulingSection() {
   return (
     <Row>
       {manualFrequencyComponent}
-      {[SchedulingFrequency.Hours, SchedulingFrequency.Days, SchedulingFrequency.Weeks].includes(frequencyValue) &&
-        hoursDaysWeeksFrequencyComponent}
+      {[SchedulingFrequency.Hours, SchedulingFrequency.Days, SchedulingFrequency.Weeks].includes(frequencyValue) && hoursDaysWeeksFrequencyComponent}
       {[SchedulingFrequency.Days, SchedulingFrequency.Weeks].includes(frequencyValue) && daysWeeksFrequencyComponent}
       {frequencyValue === SchedulingFrequency.Weeks && weeksFrequencyComponent}
     </Row>

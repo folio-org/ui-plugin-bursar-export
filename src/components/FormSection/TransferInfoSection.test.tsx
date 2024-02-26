@@ -4,8 +4,8 @@ import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import { ComparisonOperator, CriteriaTerminalType } from '../../../types/CriteriaTypes';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import { ComparisonOperator, CriteriaTerminalType } from '../../types/CriteriaTypes';
 import TransferInfoSection from './TransferInfoSection';
 
 const getResponse = jest.fn((endpoint: string) => {
@@ -146,8 +146,14 @@ describe('Transfer criteria section', () => {
 
     it('add works as expected', async () => {
       await userEvent.click(screen.getByRole('button', { name: 'Add condition' }));
-      await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Patron group' }), 'staff');
-      await userEvent.selectOptions(screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[2], 'Owner 2');
+      await userEvent.selectOptions(
+        screen.getByRole('combobox', { name: 'Patron group' }),
+        'staff',
+      );
+      await userEvent.selectOptions(
+        screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[2],
+        'Owner 2',
+      );
       await userEvent.selectOptions(
         screen.getAllByRole('combobox', { name: 'Transfer account' })[2],
         'Owner 2 account',

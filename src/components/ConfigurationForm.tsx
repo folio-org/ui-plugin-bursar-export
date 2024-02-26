@@ -5,13 +5,13 @@ import React, { FormEvent, MutableRefObject, useCallback } from 'react';
 import { FormRenderProps, useField } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import FormValues from '../../types/FormValues';
-import AggregateSection from './sections/AggregateSection';
-import CriteriaSection from './sections/CriteriaSection';
-import DataTokenSection from './sections/DataTokenSection';
-import ExportPreviewSection from './sections/ExportPreviewSection';
-import HeaderFooterSection from './sections/HeaderFooterSection';
-import SchedulingSection from './sections/SchedulingSection';
-import TransferInfoSection from './sections/TransferInfoSection';
+import AggregateSection from './FormSection/AggregateSection';
+import CriteriaSection from './FormSection/CriteriaSection';
+import DataTokenSection from './FormSection/DataTokenSection';
+import ExportPreviewSection from './FormSection/ExportPreviewSection';
+import HeaderFooterSection from './FormSection/HeaderFooterSection';
+import SchedulingSection from './FormSection/SchedulingSection';
+import TransferInfoSection from './FormSection/TransferInfoSection';
 import { FORM_ID } from '../../constants';
 
 interface ConfigurationFormSectionProps {

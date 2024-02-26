@@ -3,9 +3,9 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import FormValues from '../../../types/FormValues';
-import { HeaderFooterTokenType } from '../../../types/TokenTypes';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import FormValues from '../../types/FormValues';
+import { HeaderFooterTokenType } from '../../types/TokenTypes';
 import HeaderFooterSection from './HeaderFooterSection';
 
 test('Add button works as expected', async () => {

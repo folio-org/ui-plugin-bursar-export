@@ -2,10 +2,10 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import React from 'react';
 import { Form } from 'react-final-form';
-import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
-import FormValues from '../../../types/FormValues';
+import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
+import FormValues from '../../types/FormValues';
 import AggregateSection from './AggregateSection';
-import { CriteriaAggregateType } from '../../../types/CriteriaTypes';
+import { CriteriaAggregateType } from '../../types/CriteriaTypes';
 
 test('Aggregate section displays criteria on check', async () => {
   const submitter = jest.fn();

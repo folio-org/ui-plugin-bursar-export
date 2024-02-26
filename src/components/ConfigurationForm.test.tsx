@@ -2,8 +2,8 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
 import { Form, FormProps } from 'react-final-form';
-import withIntlConfiguration from '../../../test/util/withIntlConfiguration';
-import ConfigurationFormSection from './ConfigurationFormSection';
+import withIntlConfiguration from '../../test/util/withIntlConfiguration';
+import ConfigurationForm from './ConfigurationForm';
 
 jest.mock('@folio/stripes/final-form', () => ({
   __esModule: true,
@@ -28,7 +28,11 @@ describe('Configuration form section', () => {
   it('renders the configuration form', () => {
     render(
       withIntlConfiguration(
-        <ConfigurationFormSection formApiRef={{ current: null }} initialValues={{ aggregate: false }} onSubmit={jest.fn()} />,
+        <ConfigurationForm
+          formApiRef={{ current: null }}
+          initialValues={{ aggregate: false }}
+          onSubmit={jest.fn()}
+        />,
       ),
     );
 
@@ -38,7 +42,11 @@ describe('Configuration form section', () => {
   it('renders the configuration form with aggregate initial true', () => {
     render(
       withIntlConfiguration(
-        <ConfigurationFormSection formApiRef={{ current: null }} initialValues={{ aggregate: true }} onSubmit={jest.fn()} />,
+        <ConfigurationForm
+          formApiRef={{ current: null }}
+          initialValues={{ aggregate: true }}
+          onSubmit={jest.fn()}
+        />,
       ),
     );
 
