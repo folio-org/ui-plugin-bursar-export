@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+
 // for coverage
 export const TYPE_ONLY = true;
 
