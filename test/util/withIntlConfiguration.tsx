@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */ // needed for translations below
 import stripesComponentsTranslations from '@folio/stripes-components/translations/stripes-components/en';
 import stripesCoreTranslations from '@folio/stripes-core/translations/stripes-core/en';
 import React, { ReactNode } from 'react';
