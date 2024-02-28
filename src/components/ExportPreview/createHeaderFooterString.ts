@@ -1,6 +1,6 @@
 import { HeaderFooterToken, HeaderFooterTokenType } from '../../types';
+import { applyDecimalFormat, applyLengthControl, formatDate } from '../../utils/exportPreviewUtils';
 import { guardNumberPositive } from '../../utils/guardNumber';
-import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 
 export function tokenToString(token: HeaderFooterToken, amount: number, count: number): string {
   switch (token.type) {
@@ -18,7 +18,10 @@ export function tokenToString(token: HeaderFooterToken, amount: number, count: n
       return ' '.repeat(guardNumberPositive(token.repeat));
 
     case HeaderFooterTokenType.CURRENT_DATE:
-      return applyLengthControl(formatDate(token.format, new Date()).toString(), token.lengthControl);
+      return applyLengthControl(
+        formatDate(token.format, new Date()).toString(),
+        token.lengthControl,
+      );
 
     case HeaderFooterTokenType.AGGREGATE_TOTAL:
       return applyLengthControl(applyDecimalFormat(amount, token.decimal), token.lengthControl);

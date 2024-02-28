@@ -1,13 +1,15 @@
 import { DataToken, DataTokenType, ItemAttribute, UserAttribute } from '../../types';
+import { applyDecimalFormat, applyLengthControl, formatDate } from '../../utils/exportPreviewUtils';
 import { guardNumberPositive } from '../../utils/guardNumber';
-import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
 
 async function lazyLoadFaker() {
   const module = await import('@ngneat/falso');
   return module;
 }
 
-export async function formatFeeFineToken(attribute: 'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME'): Promise<string> {
+export async function formatFeeFineToken(
+  attribute: 'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME',
+): Promise<string> {
   const faker = await lazyLoadFaker();
   if (attribute === 'FEE_FINE_TYPE_ID') {
     return faker.randUuid();
@@ -49,7 +51,11 @@ export async function formatUserToken(attribute: UserAttribute) {
   }
 }
 
-export async function tokenToString(dataToken: DataToken, amount: number, count: number): Promise<string> {
+export async function tokenToString(
+  dataToken: DataToken,
+  amount: number,
+  count: number,
+): Promise<string> {
   const faker = await lazyLoadFaker();
   switch (dataToken.type) {
     case DataTokenType.ARBITRARY_TEXT:
@@ -66,26 +72,47 @@ export async function tokenToString(dataToken: DataToken, amount: number, count:
       return ' '.repeat(guardNumberPositive(dataToken.repeat));
 
     case DataTokenType.CURRENT_DATE:
-      return applyLengthControl(formatDate(dataToken.format, new Date()).toString(), dataToken.lengthControl);
+      return applyLengthControl(
+        formatDate(dataToken.format, new Date()).toString(),
+        dataToken.lengthControl,
+      );
 
     case DataTokenType.AGGREGATE_TOTAL:
     case DataTokenType.ACCOUNT_AMOUNT:
-      return applyLengthControl(applyDecimalFormat(amount, dataToken.decimal), dataToken.lengthControl);
+      return applyLengthControl(
+        applyDecimalFormat(amount, dataToken.decimal),
+        dataToken.lengthControl,
+      );
 
     case DataTokenType.ACCOUNT_DATE:
-      return applyLengthControl(formatDate(dataToken.format, faker.randPastDate()).toString(), dataToken.lengthControl);
+      return applyLengthControl(
+        formatDate(dataToken.format, faker.randPastDate()).toString(),
+        dataToken.lengthControl,
+      );
 
     case DataTokenType.FEE_FINE_TYPE:
-      return applyLengthControl(await formatFeeFineToken(dataToken.feeFineAttribute), dataToken.lengthControl);
+      return applyLengthControl(
+        await formatFeeFineToken(dataToken.feeFineAttribute),
+        dataToken.lengthControl,
+      );
 
     case DataTokenType.ITEM_INFO:
-      return applyLengthControl(await formatItemToken(dataToken.itemAttribute), dataToken.lengthControl);
+      return applyLengthControl(
+        await formatItemToken(dataToken.itemAttribute),
+        dataToken.lengthControl,
+      );
 
     case DataTokenType.USER_DATA:
-      return applyLengthControl(await formatUserToken(dataToken.userAttribute), dataToken.lengthControl);
+      return applyLengthControl(
+        await formatUserToken(dataToken.userAttribute),
+        dataToken.lengthControl,
+      );
 
     case DataTokenType.CONSTANT_CONDITIONAL:
-      return faker.rand([...(dataToken.conditions ?? []).map((cond) => cond.value).filter((v) => v), dataToken.else]);
+      return faker.rand([
+        ...(dataToken.conditions ?? []).map((cond) => cond.value).filter((v) => v),
+        dataToken.else,
+      ]);
 
     case DataTokenType.AGGREGATE_COUNT:
       return applyLengthControl(count.toString(), dataToken.lengthControl);

@@ -1,5 +1,5 @@
-import { DateFormatType, LengthControl } from '../../types';
-import { applyDecimalFormat, applyLengthControl, formatDate } from './utils';
+import { DateFormatType, LengthControl } from '../types';
+import { applyDecimalFormat, applyLengthControl, formatDate } from './exportPreviewUtils';
 
 describe('Export preview utility functions', () => {
   describe('date formatter', () => {
