@@ -1,7 +1,7 @@
 import { SelectOptionType } from '@folio/stripes/components';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
-import { CriteriaGroupType, CriteriaTerminalType } from '../../types';
+import { CriteriaGroupType, CriteriaTerminalType } from '../types';
 
 export default function useCriteriaCardOptions(root: boolean, patronOnly: boolean) {
   const intl = useIntl();

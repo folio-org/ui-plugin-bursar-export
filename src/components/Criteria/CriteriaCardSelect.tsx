@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { Field } from 'react-final-form';
 import { useIntl } from 'react-intl';
 import { CriteriaGroupType, CriteriaTerminalType } from '../../types';
-import useCriteriaCardOptions from './useCriteriaCardOptions';
+import useCriteriaCardOptions from '../../hooks/useCriteriaCardOptions';
 
 export default function CriteriaCardSelect({
   name,
