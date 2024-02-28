@@ -4,7 +4,7 @@ import { useFieldArray } from 'react-final-form-arrays';
 import { DataToken, HeaderFooterToken } from '../../types';
 import createPreviewData from './createPreviewData';
 import createHeaderFooterString from './createHeaderFooterString';
-import HandleInvisible from './HandleInvisible';
+import RenderInvisibles from './RenderInvisibles';
 
 export default function ExportPreviewData() {
   const isAggregate = useField<boolean>('aggregate', {
@@ -50,5 +50,5 @@ export default function ExportPreviewData() {
     fetchData();
   }, [header, data, dataAggregate, footer, isAggregate]);
 
-  return <HandleInvisible text={contents} showInvisible={showInvisible} />;
+  return <RenderInvisibles text={contents} showInvisible={showInvisible} />;
 }

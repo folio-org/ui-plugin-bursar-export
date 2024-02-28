@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@folio/jest-config-stripes/testing-library/react';
-import HandleInvisible, { splitAndInsert } from './HandleInvisible';
+import HandleInvisible, { splitAndInsert } from './RenderInvisibles';
 
 const TEST_SEARCH = 'REPLACE_ME';
 const TEST_REPLACEMENT = 'REPLACEMENT!';
