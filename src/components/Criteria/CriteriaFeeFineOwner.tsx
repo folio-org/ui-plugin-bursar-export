@@ -9,15 +9,18 @@ export default function CriteriaFeeFineOwner({ prefix }: Readonly<{ prefix: stri
 
   const ownersSelectOptions = useMemo(() => {
     if (!feeFineOwners.isSuccess) {
-      return [];
+      return [{ label: '', value: '', disabled: true }];
     }
 
-    return feeFineOwners.data
-      .map((owner) => ({
-        label: owner.owner,
-        value: owner.id,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label));
+    return [
+      { label: '', value: '', disabled: true },
+      ...feeFineOwners.data
+        .map((owner) => ({
+          label: owner.owner,
+          value: owner.id,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ];
   }, [feeFineOwners]);
 
   return (
@@ -30,7 +33,7 @@ export default function CriteriaFeeFineOwner({ prefix }: Readonly<{ prefix: stri
             marginBottom0
             required
             label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
-            dataOptions={[{ label: '', value: '', disabled: true }, ...ownersSelectOptions]}
+            dataOptions={ownersSelectOptions}
           />
         )}
       </Field>

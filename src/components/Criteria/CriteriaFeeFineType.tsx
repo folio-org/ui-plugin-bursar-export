@@ -76,15 +76,7 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
               marginBottom0
               required
               label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
-              dataOptions={[
-                {
-                  label: intl.formatMessage({
-                    id: 'ui-plugin-bursar-export.bursarExports.criteria.type.automatic',
-                  }),
-                  value: 'automatic',
-                },
-                ...ownersSelectOptions,
-              ].sort((a, b) => a.label.localeCompare(b.label))}
+              dataOptions={ownersSelectOptions}
             />
           )}
         </Field>
