@@ -2,6 +2,7 @@ import { Checkbox, Col } from '@folio/stripes/components';
 import React from 'react';
 import { Field } from 'react-final-form';
 import { useIntl } from 'react-intl';
+import css from '../TokenStyles.module.css';
 
 export default function AmountWithDecimalToken({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
@@ -18,7 +19,7 @@ export default function AmountWithDecimalToken({ prefix }: Readonly<{ prefix: st
           />
         )}
       </Field>
-      <p style={{ margin: 0 }}>
+      <p className={css.noMargin}>
         <i>
           {intl.formatMessage({
             id: 'ui-plugin-bursar-export.bursarExports.token.accountAmount.enableDecimal.description',

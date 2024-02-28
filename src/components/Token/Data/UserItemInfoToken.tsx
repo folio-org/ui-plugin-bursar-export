@@ -3,6 +3,7 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import { ItemAttribute, UserAttribute } from '../../../types';
+import css from '../TokenStyles.module.css';
 
 export default function UserItemInfoToken<T extends ItemAttribute | UserAttribute>({
   defaultValue,
@@ -41,7 +42,7 @@ export default function UserItemInfoToken<T extends ItemAttribute | UserAttribut
         </Field>
       </Col>
       <Col xs={12}>
-        <p style={{ margin: 0 }}>
+        <p className={css.noMargin}>
           <i>
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.fallback.description" />
           </i>

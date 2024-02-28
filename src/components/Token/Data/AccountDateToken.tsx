@@ -4,6 +4,7 @@ import { Field } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import DatePartPicker from '../Shared/DatePartPicker';
 import TimezonePicker from '../Shared/TimezonePicker';
+import css from '../TokenStyles.module.css';
 
 export default function AccountDateToken({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
@@ -64,7 +65,7 @@ export default function AccountDateToken({ prefix }: Readonly<{ prefix: string }
         <TimezonePicker prefix={prefix} />
       </Col>
       <Col xs={12}>
-        <p style={{ margin: 0 }}>
+        <p className={css.noMargin}>
           <i>
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.accountDate.fallback.description" />
           </i>

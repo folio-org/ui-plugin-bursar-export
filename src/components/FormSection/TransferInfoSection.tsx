@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { CriteriaTerminalType } from '../../types';
 import ConditionalCard from '../ConditionalCard';
 import TransferAccountFields from '../TransferAccountFields';
+import css from './TransferInfoSection.module.css';
 
 export default function TransferInfoSection() {
   return (
@@ -42,11 +43,13 @@ export default function TransferInfoSection() {
             <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.addCondition" />
           </Button>
 
-          <p style={{ margin: 0, display: fields.length ? 'block' : 'none' }}>
-            <i>
-              <FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.description" />
-            </i>
-          </p>
+          {!!fields.length && (
+            <p className={css.evaluationDescription}>
+              <i>
+                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.description" />
+              </i>
+            </p>
+          )}
         </>
       )}
     </FieldArray>

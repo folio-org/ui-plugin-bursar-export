@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import css from './RenderInvisibles.modules.css';
 
 export function splitAndInsert(haystack: string | ReactNode, needle: string, replacement: ReactNode): ReactNode[] {
   if (typeof haystack !== 'string') {
@@ -18,7 +19,7 @@ export function splitAndInsert(haystack: string | ReactNode, needle: string, rep
 }
 
 function Invisible({ children }: Readonly<{ children: ReactNode }>) {
-  return <span style={{ color: 'gray' }}>{children}</span>;
+  return <span className={css.invisible}>{children}</span>;
 }
 
 export default function HandleInvisible({ text, showInvisible }: Readonly<{ text: string; showInvisible: boolean }>) {

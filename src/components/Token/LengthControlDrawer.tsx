@@ -34,7 +34,7 @@ export default function LengthControlDrawer({ prefix }: Readonly<{ prefix: strin
 
   return (
     <Card headerComponent={FakeHeader} headerStart={<div />}>
-      <Row style={{}}>
+      <Row>
         <Col xs={6} md={3}>
           <Field name={`${prefix}length`}>
             {(fieldProps) => (

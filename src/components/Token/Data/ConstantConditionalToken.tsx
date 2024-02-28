@@ -5,6 +5,7 @@ import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
 import { CriteriaGroupType, CriteriaTerminalType, CriteriaGroup, CriteriaTerminal } from '../../../types';
 import ConditionalCard from '../../ConditionalCard';
+import css from '../TokenStyles.module.css';
 
 export default function ConstantConditionalToken({ prefix }: Readonly<{ prefix: string }>) {
   const aggregate = useField<boolean>('aggregate', {
@@ -61,7 +62,7 @@ export default function ConstantConditionalToken({ prefix }: Readonly<{ prefix: 
             <Button onClick={() => fields.push({ type: CriteriaGroupType.ALL_OF })}>
               <FormattedMessage id="ui-plugin-bursar-export.bursarExports.button.addCondition" />
             </Button>
-            <p style={{ margin: 0 }}>
+            <p className={css.noMargin}>
               <i>
                 <FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.constantConditional.description" />
               </i>
