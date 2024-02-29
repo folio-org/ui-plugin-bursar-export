@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import { act, render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import arrayMutators from 'final-form-arrays';
 import React from 'react';
@@ -77,20 +77,20 @@ describe('Transfer criteria section', () => {
 
     expect(screen.getByText('Transfer to:')).toBeVisible();
     expect(screen.queryByText('Otherwise:')).toBeNull();
-    expect(screen.getByText(/Conditions will be evaluated in order/)).not.toBeVisible();
+    expect(screen.queryByText('Conditions will be evaluated in order')).toBeNull();
 
-    await userEvent.click(screen.getByRole('button', { name: 'Add condition' }));
+    await act(() => userEvent.click(screen.getByRole('button', { name: 'Add condition' })));
     waitFor(() => {
       expect(screen.queryByText('Transfer to:')).toBeNull();
       expect(screen.getByText('Otherwise:')).toBeVisible();
-      expect(screen.getByText(/Conditions will be evaluated in order/)).toBeVisible();
+      expect(screen.getByText('Conditions will be evaluated in order')).toBeVisible();
     });
 
-    await userEvent.click(screen.getAllByRole('button', { name: 'trash' })[0]);
+    await act(() => userEvent.click(screen.getAllByRole('button', { name: 'trash' })[0]));
 
     expect(screen.getByText('Transfer to:')).toBeVisible();
     expect(screen.queryByText('Otherwise:')).toBeNull();
-    expect(screen.getByText(/Conditions will be evaluated in order/)).not.toBeVisible();
+    expect(screen.queryByText('Conditions will be evaluated in order')).toBeNull();
   });
 
   describe('buttons work as expected', () => {
@@ -145,21 +145,26 @@ describe('Transfer criteria section', () => {
     });
 
     it('add works as expected', async () => {
-      await userEvent.click(screen.getByRole('button', { name: 'Add condition' }));
-      await userEvent.selectOptions(
-        screen.getByRole('combobox', { name: 'Patron group' }),
-        'staff',
-      );
-      await userEvent.selectOptions(
-        screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[2],
-        'Owner 2',
-      );
-      await userEvent.selectOptions(
-        screen.getAllByRole('combobox', { name: 'Transfer account' })[2],
-        'Owner 2 account',
-      );
-
-      await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
+      await act(() => userEvent.click(screen.getByRole('button', { name: 'Add condition' })));
+      await act(async () => {
+        await userEvent.selectOptions(
+          screen.getAllByRole('combobox', { name: 'Criteria' })[2],
+          'Patron group',
+        );
+        await userEvent.selectOptions(
+          screen.getByRole('combobox', { name: 'Patron group' }),
+          'staff',
+        );
+        await userEvent.selectOptions(
+          screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[2],
+          'Owner 2',
+        );
+        await userEvent.selectOptions(
+          screen.getAllByRole('combobox', { name: 'Transfer account' })[2],
+          'Owner 2 account',
+        );
+      });
+      await act(() => userEvent.click(screen.getByRole('button', { name: 'Submit' })));
 
       expect(submitter).toHaveBeenLastCalledWith({
         transferInfo: {
