@@ -77,20 +77,21 @@ describe('Transfer criteria section', () => {
 
     expect(screen.getByText('Transfer to:')).toBeVisible();
     expect(screen.queryByText('Otherwise:')).toBeNull();
-    expect(screen.queryByText('Conditions will be evaluated in order')).toBeNull();
+    expect(screen.queryByText(/Conditions will be evaluated in order/)).toBeNull();
 
     await act(() => userEvent.click(screen.getByRole('button', { name: 'Add condition' })));
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.queryByText('Transfer to:')).toBeNull();
       expect(screen.getByText('Otherwise:')).toBeVisible();
-      expect(screen.getByText('Conditions will be evaluated in order')).toBeVisible();
+      screen.debug();
+      expect(screen.queryByText(/Conditions will be evaluated in order/)).toBeVisible();
     });
 
     await act(() => userEvent.click(screen.getAllByRole('button', { name: 'trash' })[0]));
 
     expect(screen.getByText('Transfer to:')).toBeVisible();
     expect(screen.queryByText('Otherwise:')).toBeNull();
-    expect(screen.queryByText('Conditions will be evaluated in order')).toBeNull();
+    expect(screen.queryByText(/Conditions will be evaluated in order/)).toBeNull();
   });
 
   describe('buttons work as expected', () => {
