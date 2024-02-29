@@ -80,6 +80,4 @@ test.each<[SchedulingDTO, FormValues['scheduling']]>([
       ],
     },
   ],
-])('Converts scheduling DTO %s to %s', (input, expected) =>
-  expect(dtoToScheduling(input, LOCALE_WEEKDAYS)).toEqual(expected),
-);
+])('Converts scheduling DTO %s to %s', (input, expected) => expect(dtoToScheduling(input, LOCALE_WEEKDAYS)).toEqual(expected));

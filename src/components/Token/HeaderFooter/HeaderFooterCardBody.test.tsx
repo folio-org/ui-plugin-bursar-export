@@ -18,9 +18,7 @@ test.each([
   [HeaderFooterTokenType.SPACE, false],
   [HeaderFooterTokenType.CURRENT_DATE, false],
   [HeaderFooterTokenType.AGGREGATE_TOTAL, false],
-])('Card bodies for type %s are empty = %s', (type, expected) =>
-  expect(isHeaderFooterBodyEmpty(type)).toBe(expected),
-);
+])('Card bodies for type %s are empty = %s', (type, expected) => expect(isHeaderFooterBodyEmpty(type)).toBe(expected));
 
 test.each([
   undefined,
