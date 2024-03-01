@@ -19,9 +19,9 @@ on:
 
 jobs:
   github-actions-ci:
-    if : ${{ startsWith(github.ref, 'refs/tags/v') }}
+    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     env:
-      YARN_TEST_OPTIONS: ''
+      YARN_TEST_OPTIONS: '--coverage'
       SQ_ROOT_DIR: './src'
       COMPILE_TRANSLATION_FILES: 'true'
       PUBLISH_MOD_DESCRIPTOR: 'true'
@@ -35,7 +35,7 @@ jobs:
       BIGTEST_COVERAGE_REPORT_DIR: 'artifacts/coverage/lcov-report/'
       OKAPI_PULL: '{ "urls" : [ "https://folio-registry.dev.folio.org" ] }'
       SQ_LCOV_REPORT: 'artifacts/coverage-jest/lcov.info'
-      SQ_EXCLUSIONS: '**/platform/alias-service.js,**/docs/**,**/node_modules/**,**/examples/**,**/artifacts/**,**/ci/**,Jenkinsfile,**/LICENSE,**/*.css,**/*.md,**/*.json,**/tests/**,**/stories/*.js,**/test/**,**/.stories.js,**/resources/bigtest/interactors/**,**/resources/bigtest/network/**,**/*-test.js,**/*.test.js,**/*-spec.js,**/karma.conf.js,**/jest.config.js'
+      SQ_EXCLUSIONS: '**/platform/alias-service.js,**/docs/**,**/node_modules/**,**/examples/**,**/artifacts/**,**/ci/**,Jenkinsfile,**/LICENSE,**/*.css,**/*.md,**/*.json,**/tests/**,**/stories/*.js,**/test/**,**/.stories.js,**/resources/bigtest/interactors/**,**/resources/bigtest/network/**,**/*-test.js,**/*.test.js,**/*.test.ts,**/*.test.tsx,**/*-spec.js,**/karma.conf.js,**/jest.config.js'
 
     runs-on: ubuntu-latest
     steps:
@@ -88,10 +88,10 @@ jobs:
         continue-on-error: true
 
       - name: Run yarn test
-        run: xvfb-run --server-args="-screen 0 1024x768x24" yarn test $YARN_TEST_OPTIONS
+        run: yarn node --expose-gc $(yarn bin jest) --runInBand --logHeapUsage $YARN_TEST_OPTIONS
 
       - name: Run yarn formatjs-compile
-        if : ${{ env.COMPILE_TRANSLATION_FILES == 'true' }}
+        if: ${{ env.COMPILE_TRANSLATION_FILES == 'true' }}
         run: yarn formatjs-compile
 
       - name: Generate FOLIO module descriptor
@@ -146,7 +146,7 @@ jobs:
         if: always()
         with:
           github_token: ${{ github.token }}
-          files: "${{ env.JEST_JUNIT_OUTPUT_DIR }}/*.xml"
+          files: '${{ env.JEST_JUNIT_OUTPUT_DIR }}/*.xml'
           check_name: Jest Unit Test Results
           comment_mode: update last
           comment_title: Jest Unit Test Statistics
@@ -164,7 +164,7 @@ jobs:
         if: always()
         with:
           github_token: ${{ github.token }}
-          files: "${{ env.BIGTEST_JUNIT_OUTPUT_DIR }}/*.xml"
+          files: '${{ env.BIGTEST_JUNIT_OUTPUT_DIR }}/*.xml'
           check_name: BigTest Unit Test Results
           comment_mode: update last
           comment_title: BigTest Unit Test Statistics
@@ -244,4 +244,3 @@ jobs:
           data: ${{ steps.moduleDescriptor.outputs.content }}
           username: ${{ secrets.FOLIO_REGISTRY_USERNAME }}
           password: ${{ secrets.FOLIO_REGISTRY_PASSWORD }}
-

@@ -38,3 +38,4 @@ stripes.config.js.local
 # tests
 /artifacts
 junit.xml
+

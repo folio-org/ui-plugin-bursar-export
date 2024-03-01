@@ -1,0 +1,44 @@
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
+import arrayMutators from 'final-form-arrays';
+import React from 'react';
+import { Form } from 'react-final-form';
+import { DataTokenType } from '../../../types';
+import DataTokenCardBody from './DataTokenCardBody';
+import withIntlConfiguration from '../../../../test/util/withIntlConfiguration';
+
+describe('Item info type token', () => {
+  it('displays appropriate form', async () => {
+    const submitter = jest.fn();
+
+    render(
+      withIntlConfiguration(
+        <Form
+          mutators={{ ...arrayMutators }}
+          onSubmit={(v) => submitter(v)}
+          initialValues={{ test: { type: DataTokenType.ITEM_INFO } }}
+        >
+          {({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <DataTokenCardBody name="test" />
+              <button type="submit">Submit</button>
+            </form>
+          )}
+        </Form>,
+      ),
+    );
+
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Value' }), 'Institution ID');
+    await userEvent.type(screen.getByRole('textbox', { name: 'Fallback value' }), 'foo bar fallback');
+
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
+
+    expect(submitter).toHaveBeenLastCalledWith({
+      test: {
+        type: DataTokenType.ITEM_INFO,
+        itemAttribute: 'INSTITUTION_ID',
+        placeholder: 'foo bar fallback',
+      },
+    });
+  });
+});

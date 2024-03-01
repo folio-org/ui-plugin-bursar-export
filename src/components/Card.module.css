@@ -1,0 +1,21 @@
+.cardClass:last-child,
+.cardWithLengthControl {
+  margin-bottom: 0;
+}
+
+.headerClass {
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.headerClass span {
+  flex: initial;
+}
+
+.emptyBody {
+  padding: 0;
+}
+
+.aggregateCardP {
+  margin-bottom: 0;
+}
