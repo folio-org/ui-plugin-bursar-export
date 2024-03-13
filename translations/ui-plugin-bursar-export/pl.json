@@ -78,7 +78,7 @@
     "bursarExports.token.itemInfo": "Item info",
     "bursarExports.token.fallback": "Fallback value",
     "bursarExports.token.fallback.description": "If the chosen value is not available/applicable, the fallback value will be used instead.",
-    "bursarExports.token.value": "Value",
+    "bursarExports.token.value": "Wartość",
     "bursarExports.token.headerFooter.typeSelect": "Header/footer type select",
     "bursarExports.token.dataType.typeSelect": "Data type select",
     "bursarExports.token.whitespace.numSpaces": "Number of spaces",
