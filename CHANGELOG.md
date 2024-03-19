@@ -1,6 +1,7 @@
 # Change history for ui-plugin-bursar-export
 
-## 4.0.0 (IN PROGRESS)
+## [4.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.0) (2024-03-19)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v3.0.0...v4.0.0)
 * Support the new bursar export configuration feature and revamped UI. Refs UXPROD-3603.
 * Also support `feesfines` interface version `19.0`. Refs UIPBEX-55.
 
