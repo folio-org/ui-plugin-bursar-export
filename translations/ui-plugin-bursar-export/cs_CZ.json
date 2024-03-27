@@ -141,7 +141,7 @@
     "bursarExports.preview.wrap": "Zalomit dlouhé řádky",
     "bursarExports.preview.description": "Tento náhled je pouze ukázkou a nepředstavuje skutečná data, ani nezohledňuje žádná zadaná kritéria.",
     "bursarExports.preview.enableInvisibleChar": "Display invisible characters (newlines, tabs, and spaces)",
-    "bursarExports.transfer.accordion": "Transfer accounts to",
+    "bursarExports.transfer.accordion": "Převést účty na",
     "bursarExports.transfer.description": "Conditions will be evaluated in order, with the first matched transfer account being used. If no conditions are matched, the account listed under “otherwise” will be used.",
     "bursarExports.transfer.owner": "Vlastník poplatku/pokuty",
     "bursarExports.transfer.account": "Převodní účet",
