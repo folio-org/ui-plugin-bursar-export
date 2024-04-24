@@ -10,7 +10,7 @@ import { BursarExportFilterAggregate } from '../dto-types';
 
 // inverse of ../to/aggregateCriteriaToFilterDto
 export default function dtoToAggregateCriteria(
-  filter: Partial<BursarExportFilterAggregate>,
+  filter: Partial<BursarExportFilterAggregate> | undefined,
   stripes: StripesType,
   intl: IntlShape,
 ): CriteriaAggregate | undefined {
