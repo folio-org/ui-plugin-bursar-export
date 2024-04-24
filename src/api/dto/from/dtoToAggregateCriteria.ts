@@ -10,10 +10,13 @@ import { BursarExportFilterAggregate } from '../dto-types';
 
 // inverse of ../to/aggregateCriteriaToFilterDto
 export default function dtoToAggregateCriteria(
-  filter: BursarExportFilterAggregate | undefined,
+  filter: Partial<BursarExportFilterAggregate>,
   stripes: StripesType,
   intl: IntlShape,
 ): CriteriaAggregate | undefined {
+  if (!filter || typeof filter.property !== 'string' || typeof filter.condition !== 'string' || typeof filter.amount !== 'number') {
+    return undefined;
+  }
   switch (filter?.property) {
     case CriteriaTokenType.NUM_ROWS:
       return {

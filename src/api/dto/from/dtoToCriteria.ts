@@ -17,7 +17,7 @@ import {
 } from '../dto-types';
 
 export function dtoToConditionCriteria(
-  filter: BursarExportFilterCondition,
+  filter: Partial<BursarExportFilterCondition>,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
   stripes: StripesType,
@@ -27,30 +27,30 @@ export function dtoToConditionCriteria(
     return {
       type: CriteriaGroupType.ALL_OF,
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)),
+      criteria: filter.criteria?.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)) ?? [],
     };
   } else {
     return {
       type: CriteriaGroupType.ANY_OF,
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      criteria: filter.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)),
+      criteria: filter.criteria?.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)) ?? [],
     };
   }
 }
 
 export function dtoToNegationCriteria(
-  filter: BursarExportFilterNegation,
+  filter: Partial<BursarExportFilterNegation>,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
   stripes: StripesType,
   intl: IntlShape,
 ): CriteriaGroup {
   // NOR gets displayed as "None of" in the UI, so we flatten the inner OR
-  if (filter.criteria.type === 'Condition' && filter.criteria.operation === AndOrOperator.OR) {
+  if (filter.criteria?.type === 'Condition' && filter.criteria?.operation === AndOrOperator.OR) {
     return {
       type: CriteriaGroupType.NONE_OF,
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      criteria: filter.criteria.criteria.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)),
+      criteria: filter.criteria.criteria?.map((criteria) => dtoToCriteria(criteria, feeFineTypes, locations, stripes, intl)) ?? [],
     };
   }
 
@@ -58,7 +58,7 @@ export function dtoToNegationCriteria(
   return {
     type: CriteriaGroupType.NONE_OF,
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    criteria: [dtoToCriteria(filter.criteria, feeFineTypes, locations, stripes, intl)],
+    criteria: filter.criteria ? [dtoToCriteria(filter.criteria, feeFineTypes, locations, stripes, intl)] : [],
   };
 }
 
@@ -91,7 +91,7 @@ export function getLocationProperties(
 
 // inverse of ../to/criteriaToFilterDto
 export default function dtoToCriteria(
-  filter: BursarExportFilterDTO,
+  filter: Partial<BursarExportFilterDTO>,
   feeFineTypes: FeeFineTypeDTO[],
   locations: LocationDTO[],
   stripes: StripesType,
@@ -102,13 +102,13 @@ export default function dtoToCriteria(
       return {
         type: CriteriaTerminalType.AGE,
         operator: filter.condition as ComparisonOperator,
-        numDays: filter.numDays.toString(),
+        numDays: filter.numDays?.toString() ?? '',
       };
     case CriteriaTerminalType.AMOUNT:
       return {
         type: CriteriaTerminalType.AMOUNT,
         operator: filter.condition as ComparisonOperator,
-        amountCurrency: intl.formatNumber(filter.amount / 100, { style: 'currency', currency: stripes.currency }),
+        amountCurrency: intl.formatNumber((filter.amount ?? 0) / 100, { style: 'currency', currency: stripes.currency }),
       };
     case CriteriaTerminalType.FEE_FINE_OWNER:
       return {
@@ -118,14 +118,14 @@ export default function dtoToCriteria(
     case CriteriaTerminalType.FEE_FINE_TYPE:
       return {
         type: CriteriaTerminalType.FEE_FINE_TYPE,
-        feeFineTypeId: filter.feeFineTypeId,
-        feeFineOwnerId: getFeeFineOwnerId(filter.feeFineTypeId, feeFineTypes),
+        feeFineTypeId: filter.feeFineTypeId ?? '',
+        feeFineOwnerId: getFeeFineOwnerId(filter.feeFineTypeId ?? '', feeFineTypes),
       };
     case CriteriaTerminalType.LOCATION:
       return {
         type: CriteriaTerminalType.LOCATION,
-        locationId: filter.locationId,
-        ...getLocationProperties(filter.locationId, locations),
+        locationId: filter.locationId ?? '',
+        ...getLocationProperties(filter.locationId ?? '', locations),
       };
     case CriteriaTerminalType.PATRON_GROUP:
       return {
