@@ -12,31 +12,50 @@ jest.mock('../api/queries');
 (useLocations as any).mockReturnValue({ isSuccess: false });
 (useTransferAccounts as any).mockReturnValue({ isSuccess: false });
 
-test('initial values hook', async () => {
-  const { result, rerender } = renderHook(() => useInitialValues(), {
-    wrapper: ({ children }: { children: React.ReactNode }) => withIntlConfiguration(<div>{children}</div>),
+describe('useInitialValues', () => {
+  test('initial values hook', async () => {
+    const { result, rerender } = renderHook(() => useInitialValues(), {
+      wrapper: ({ children }: { children: React.ReactNode }) => withIntlConfiguration(<div>{children}</div>),
+    });
+
+    await waitFor(() => expect(result.current).toBeNull());
+
+    (useCurrentConfig as any).mockReturnValue({ isSuccess: true });
+    rerender();
+    expect(result.current).toBeNull();
+
+    (useFeeFineTypes as any).mockReturnValue({ isSuccess: true });
+    rerender();
+    expect(result.current).toBeNull();
+
+    (useLocations as any).mockReturnValue({ isSuccess: true });
+    rerender();
+    expect(result.current).toBeNull();
+
+    (useTransferAccounts as any).mockReturnValue({ isSuccess: true });
+    rerender();
+    await waitFor(() => expect(result.current).toEqual('values'));
+
+    // should not change back
+    (useTransferAccounts as any).mockReturnValue({ isSuccess: false });
+    rerender();
+    await waitFor(() => expect(result.current).toEqual('values'));
   });
 
-  await waitFor(() => expect(result.current).toBeNull());
+  test('initial values hook with invalid data', async () => {
+    const { result, rerender } = renderHook(() => useInitialValues(), {
+      wrapper: ({ children }: { children: React.ReactNode }) => withIntlConfiguration(<div>{children}</div>),
+    });
 
-  (useCurrentConfig as any).mockReturnValue({ isSuccess: true });
-  rerender();
-  expect(result.current).toBeNull();
+    (useTransferAccounts as any).mockReturnValue({ isSuccess: false });
 
-  (useFeeFineTypes as any).mockReturnValue({ isSuccess: true });
-  rerender();
-  expect(result.current).toBeNull();
+    // should be null on fail
+    rerender();
+    await waitFor(() => expect(result.current).toBeNull());
 
-  (useLocations as any).mockReturnValue({ isSuccess: true });
-  rerender();
-  expect(result.current).toBeNull();
+    (useTransferAccounts as any).mockReturnValue({ isSuccess: true });
+    rerender();
 
-  (useTransferAccounts as any).mockReturnValue({ isSuccess: true });
-  rerender();
-  await waitFor(() => expect(result.current).toEqual('values'));
-
-  // should not change back
-  (useTransferAccounts as any).mockReturnValue({ isSuccess: false });
-  rerender();
-  await waitFor(() => expect(result.current).toEqual('values'));
+    await waitFor(() => expect(result.current).toEqual('values'));
+  });
 });

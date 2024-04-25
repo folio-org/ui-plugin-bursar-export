@@ -61,4 +61,16 @@ describe('dtoToAggregateCriteria', () => {
       },
     ],
   ])('with EUR dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input, { currency: 'EUR' } as StripesType, intlEu)).toEqual(expected));
+
+  test.each<[BursarExportFilterAggregate | undefined, CriteriaAggregate | undefined]>([
+    [
+      {
+        type: 'Aggregate',
+        property: 'TOTAL_AMOUNT',
+        condition: 'GREATER_THAN',
+        amount: ('' as unknown) as number,
+      },
+      undefined
+    ],
+  ])('with undefined amount dtoToAggregateCriteria(%s) === %s', (input, expected) => expect(dtoToAggregateCriteria(input, { currency: 'USD' } as StripesType, intlEu)).toEqual(expected));
 });

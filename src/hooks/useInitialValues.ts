@@ -29,10 +29,13 @@ export default function useInitialValues() {
     if (!currentConfig.isSuccess || !feeFineTypes.isSuccess || !locations.isSuccess || !transferAccounts.isSuccess) {
       return;
     }
-
-    setInitialValues(
-      dtoToFormValues(currentConfig.data, localeWeekdays, feeFineTypes.data, locations.data, transferAccounts.data, stripes, intl)
-    );
+    try {
+      setInitialValues(
+        dtoToFormValues(currentConfig.data, localeWeekdays, feeFineTypes.data, locations.data, transferAccounts.data, stripes, intl)
+      );
+    } catch (e) {
+      console.error('Unable to load initial values', e);
+    }
   }, [
     currentConfig.isSuccess,
     localeWeekdays,
