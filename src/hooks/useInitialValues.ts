@@ -34,7 +34,7 @@ export default function useInitialValues() {
         dtoToFormValues(currentConfig.data, localeWeekdays, feeFineTypes.data, locations.data, transferAccounts.data, stripes, intl)
       );
     } catch (e) {
-      setInitialValues(null);
+      console.error('Unable to load initial values', e);
     }
   }, [
     currentConfig.isSuccess,
