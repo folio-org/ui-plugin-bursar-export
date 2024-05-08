@@ -121,15 +121,18 @@ export function dtoToDataToken(
       };
 
     case 'Conditional':
-    default:
+    default: {
+      const curConditions = Array.isArray(token.conditions) ?
+        token.conditions.map(condition => ({
+          ...dtoToCriteria(condition.condition, feeFineTypes, locations, stripes, intl), value: condition.value.value
+        })) : [];
+
       return {
         type: DataTokenType.CONSTANT_CONDITIONAL,
-        conditions: token.conditions.map((condition) => ({
-          ...dtoToCriteria(condition.condition, feeFineTypes, locations, stripes, intl),
-          value: condition.value.value,
-        })),
+        conditions: curConditions,
         else: token.else.value,
       };
+    }
   }
 }
 
