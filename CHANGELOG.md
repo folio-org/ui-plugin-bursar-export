@@ -1,5 +1,9 @@
 # Change history for ui-plugin-bursar-export
 
+## [4.0.2](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.2) (2024-05-10)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.1...v4.0.2)
+* Check token.conditions is defined and is an array. Refs UIPBEX-58.
+
 ## [4.0.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.1) (2024-04-25)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.0...v4.0.1)
 * Fix issue with configuration validation. Refs UIPBEX-58.
