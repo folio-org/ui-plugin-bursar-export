@@ -1,8 +1,8 @@
 import { Button, LoadingPane, Pane, PaneFooter } from '@folio/stripes/components';
-import { useStripes } from '@folio/stripes/core';
+import { useStripes, TitleManager } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { formValuesToDto, schedulingToDto } from './api/dto/to';
 import { useAutomaticSchedulerMutation, useManualSchedulerMutation } from './api/mutators';
 import ConfigurationForm from './components/ConfigurationForm';
@@ -71,6 +71,8 @@ export default function BursarExportPlugin() {
   }
 
   return (
+    <>
+    <TitleManager page={useIntl().formatMessage({ id: "Users settings - Transfer criteria" })}></TitleManager>
     <Pane
       defaultWidth="fill"
       footer={footer}
@@ -83,5 +85,6 @@ export default function BursarExportPlugin() {
         formApiRef={formApiRef}
       />
     </Pane>
+    </>
   );
 }
