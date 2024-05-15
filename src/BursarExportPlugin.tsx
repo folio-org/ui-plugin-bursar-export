@@ -1,5 +1,5 @@
 import { Button, LoadingPane, Pane, PaneFooter } from '@folio/stripes/components';
-import { useStripes, TitleManager } from '@folio/stripes/core';
+import { useStripes } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -9,8 +9,10 @@ import ConfigurationForm from './components/ConfigurationForm';
 import { FORM_ID } from './constants';
 import useInitialValues from './hooks/useInitialValues';
 import { FormValues } from './types';
+import TitleManager from './components/TitleManager/TitleManager';
 
 export default function BursarExportPlugin() {
+  const intl = useIntl();
   const stripes = useStripes();
 
   const initialValues = useInitialValues();
@@ -71,20 +73,19 @@ export default function BursarExportPlugin() {
   }
 
   return (
-    <>
-    <TitleManager page={useIntl().formatMessage({ id: "Users settings - Transfer criteria" })}></TitleManager>
-    <Pane
-      defaultWidth="fill"
-      footer={footer}
-      id="pane-batch-group-configuration"
-      paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
-    >
-      <ConfigurationForm
-        initialValues={initialValues}
-        onSubmit={submitCallback}
-        formApiRef={formApiRef}
-      />
-    </Pane>
-    </>
+    <TitleManager page={intl.formatMessage({ id: 'ui-plugin-bursar-export.meta.settingsTitle' })}>
+      <Pane
+        defaultWidth="fill"
+        footer={footer}
+        id="pane-batch-group-configuration"
+        paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
+      >
+        <ConfigurationForm
+          initialValues={initialValues}
+          onSubmit={submitCallback}
+          formApiRef={formApiRef}
+        />
+      </Pane>
+    </TitleManager>
   );
 }
