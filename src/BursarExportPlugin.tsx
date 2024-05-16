@@ -1,5 +1,5 @@
 import { Button, LoadingPane, Pane, PaneFooter } from '@folio/stripes/components';
-import { useStripes } from '@folio/stripes/core';
+import { useStripes, TitleManager } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -9,7 +9,6 @@ import ConfigurationForm from './components/ConfigurationForm';
 import { FORM_ID } from './constants';
 import useInitialValues from './hooks/useInitialValues';
 import { FormValues } from './types';
-import TitleManager from './components/TitleManager/TitleManager';
 
 export default function BursarExportPlugin() {
   const intl = useIntl();
@@ -73,7 +72,7 @@ export default function BursarExportPlugin() {
   }
 
   return (
-    <TitleManager page={intl.formatMessage({ id: 'ui-plugin-bursar-export.meta.settingsTitle' })}>
+    <TitleManager page={intl.formatMessage({ id: 'ui-plugin-bursar-export.meta.settingsTitle' })} stripes={stripes}>
       <Pane
         defaultWidth="fill"
         footer={footer}
