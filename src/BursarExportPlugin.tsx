@@ -72,7 +72,7 @@ export default function BursarExportPlugin() {
   }
 
   return (
-    <TitleManager page={intl.formatMessage({ id: 'ui-plugin-bursar-export.meta.settingsTitle' })} stripes={stripes}>
+    <TitleManager page={intl.formatMessage({ id: 'ui-plugin-bursar-export.settings.title' })} stripes={stripes}>
       <Pane
         defaultWidth="fill"
         footer={footer}
