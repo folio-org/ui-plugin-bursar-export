@@ -1,8 +1,8 @@
 import { Button, LoadingPane, Pane, PaneFooter } from '@folio/stripes/components';
-import { useStripes } from '@folio/stripes/core';
+import { useStripes, TitleManager } from '@folio/stripes/core';
 import { FormApi } from 'final-form';
 import React, { useCallback, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { formValuesToDto, schedulingToDto } from './api/dto/to';
 import { useAutomaticSchedulerMutation, useManualSchedulerMutation } from './api/mutators';
 import ConfigurationForm from './components/ConfigurationForm';
@@ -11,6 +11,7 @@ import useInitialValues from './hooks/useInitialValues';
 import { FormValues } from './types';
 
 export default function BursarExportPlugin() {
+  const intl = useIntl();
   const stripes = useStripes();
 
   const initialValues = useInitialValues();
@@ -71,17 +72,19 @@ export default function BursarExportPlugin() {
   }
 
   return (
-    <Pane
-      defaultWidth="fill"
-      footer={footer}
-      id="pane-batch-group-configuration"
-      paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
-    >
-      <ConfigurationForm
-        initialValues={initialValues}
-        onSubmit={submitCallback}
-        formApiRef={formApiRef}
-      />
-    </Pane>
+    <TitleManager page={intl.formatMessage({ id: 'ui-plugin-bursar-export.settings.title' })} stripes={stripes}>
+      <Pane
+        defaultWidth="fill"
+        footer={footer}
+        id="pane-batch-group-configuration"
+        paneTitle={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.paneTitle" />}
+      >
+        <ConfigurationForm
+          initialValues={initialValues}
+          onSubmit={submitCallback}
+          formApiRef={formApiRef}
+        />
+      </Pane>
+    </TitleManager>
   );
 }
