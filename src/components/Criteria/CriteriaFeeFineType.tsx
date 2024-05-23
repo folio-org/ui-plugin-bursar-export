@@ -1,7 +1,7 @@
-import { Col, Select } from '@folio/stripes/components';
+import { Col, Select, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { useFeeFineOwners, useFeeFineTypes } from '../../api/queries';
 
 export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: string }>) {
@@ -13,6 +13,10 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
     subscription: { value: true },
     // provide default value for when the field is not yet initialized
     format: (value) => value ?? 'automatic',
+  }).input.value;
+
+  const selectedType = useField<string | undefined>(`${prefix}feeFineTypeId`, {
+    subscription: { value: true },
   }).input.value;
 
   const ownersSelectOptions = useMemo(() => {
@@ -65,31 +69,38 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
     [typeSelectOptions],
   );
 
+  const ownerName = ownersSelectOptions.find((owner) => owner.value === selectedOwner)?.label;
+  const typeName = typeSelectOptions.find((type) => type.value === selectedType)?.label;
+
   return (
     <>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.select.FeeFineOwner' })}
+        </Label>
         <Field name={`${prefix}feeFineOwnerId`} defaultValue="automatic">
           {(fieldProps) => (
             <Select<string | undefined>
               {...fieldProps}
               fullWidth
               marginBottom0
-              required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.owner" />}
+              aria-label={ownerName}
               dataOptions={ownersSelectOptions}
             />
           )}
         </Field>
       </Col>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.select.FeeType' })}
+        </Label>
         <Field name={`${prefix}feeFineTypeId`}>
           {(fieldProps) => (
             <Select<string | undefined>
               {...fieldProps}
               fullWidth
               marginBottom0
-              required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.type" />}
+              aria-label={typeName === undefined ? 'Fee/fine type' : typeName}
               dataOptions={typeSelectOptionsForDisplay}
             />
           )}

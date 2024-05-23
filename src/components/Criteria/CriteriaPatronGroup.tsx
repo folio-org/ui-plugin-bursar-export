@@ -1,11 +1,17 @@
-import { Col, Select } from '@folio/stripes/components';
+import { Col, Select, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
-import { Field } from 'react-final-form';
-import { FormattedMessage } from 'react-intl';
+import { Field, useField } from 'react-final-form';
+import { useIntl } from 'react-intl';
 import { usePatronGroups } from '../../api/queries';
 
 export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: string }>) {
   const patronGroups = usePatronGroups();
+
+  const intl = useIntl();
+
+  const selectedPatron = useField<string | undefined>(`${prefix}patronGroupId`, {
+    subscription: { value: true },
+  }).input.value;
 
   const selectOptions = useMemo(() => {
     if (!patronGroups.isSuccess) {
@@ -23,8 +29,13 @@ export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: strin
     ];
   }, [patronGroups]);
 
+  const patronName = selectOptions.find((patron) => patron.value === selectedPatron)?.label;
+
   return (
     <Col xs={12}>
+      <Label required>
+        {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.select.PatronGroup' })}
+      </Label>
       <Field name={`${prefix}patronGroupId`}>
         {(fieldProps) => (
           <Select<string | undefined>
@@ -32,7 +43,7 @@ export default function CriteriaPatronGroup({ prefix }: Readonly<{ prefix: strin
             fullWidth
             marginBottom0
             required
-            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup" />}
+            aria-label={patronName === undefined ? 'Patron group' : patronName}
             dataOptions={selectOptions}
           />
         )}

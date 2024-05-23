@@ -1,7 +1,7 @@
-import { Col, Select } from '@folio/stripes/components';
+import { Col, Select, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { useCampuses, useInstitutions, useLibraries, useLocations } from '../../api/queries';
 
 export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }>) {
@@ -9,6 +9,7 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
   const campuses = useCampuses();
   const libraries = useLibraries();
   const locations = useLocations();
+  const intl = useIntl();
 
   const selectedInstitution = useField<string | undefined>(`${prefix}institutionId`, {
     subscription: { value: true },
@@ -17,6 +18,9 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
     subscription: { value: true },
   }).input.value;
   const selectedLibrary = useField<string | undefined>(`${prefix}libraryId`, {
+    subscription: { value: true },
+  }).input.value;
+  const selectedLocation = useField<string | undefined>(`${prefix}locationId`, {
     subscription: { value: true },
   }).input.value;
 
@@ -87,9 +91,17 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
     ];
   }, [selectedLibrary, locations]);
 
+  const institutionName = institutionSelectOptions.find((inst) => inst.value === selectedInstitution)?.label;
+  const campusName = campusSelectOptions.find((camp) => camp.value === selectedCampus)?.label;
+  const libraryName = librarySelectOptions.find((lib) => lib.value === selectedLibrary)?.label;
+  const locationName = locationSelectOptions.find((loc) => loc.value === selectedLocation)?.label;
+
   return (
     <>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.location.inst' })}
+        </Label>
         <Field name={`${prefix}institutionId`}>
           {(fieldProps) => (
             <Select<string | undefined>
@@ -97,13 +109,16 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               fullWidth
               marginBottom0
               required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.inst" />}
+              aria-label={institutionName === undefined ? 'Institution' : institutionName}
               dataOptions={institutionSelectOptions}
             />
           )}
         </Field>
       </Col>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.location.camp' })}
+        </Label>
         <Field name={`${prefix}campusId`}>
           {(fieldProps) => (
             <Select<string | undefined>
@@ -111,13 +126,16 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               fullWidth
               marginBottom0
               required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.camp" />}
+              aria-label={campusName === undefined ? 'Campus' : campusName}
               dataOptions={campusSelectOptions}
             />
           )}
         </Field>
       </Col>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.location.lib' })}
+        </Label>
         <Field name={`${prefix}libraryId`}>
           {(fieldProps) => (
             <Select<string | undefined>
@@ -125,13 +143,16 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               fullWidth
               marginBottom0
               required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.lib" />}
+              aria-label={libraryName === undefined ? 'Library' : libraryName}
               dataOptions={librarySelectOptions}
             />
           )}
         </Field>
       </Col>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.location.loc' })}
+        </Label>
         <Field name={`${prefix}locationId`}>
           {(fieldProps) => (
             <Select<string | undefined>
@@ -139,7 +160,7 @@ export default function CriteriaLocation({ prefix }: Readonly<{ prefix: string }
               fullWidth
               marginBottom0
               required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.location.loc" />}
+              aria-label={locationName === undefined ? 'Location' : locationName}
               dataOptions={locationSelectOptions}
             />
           )}

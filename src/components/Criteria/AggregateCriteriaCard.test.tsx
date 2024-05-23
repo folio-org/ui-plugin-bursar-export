@@ -25,7 +25,7 @@ describe('Aggregate criteria card', () => {
   });
 
   it('Treats pass as default', async () => {
-    expect(screen.getByRole('combobox', { name: 'Filter type' })).toHaveValue(CriteriaAggregateType.PASS);
+    expect(screen.getByRole('combobox', { name: 'None (include all patrons)' })).toHaveValue(CriteriaAggregateType.PASS);
 
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
@@ -37,7 +37,7 @@ describe('Aggregate criteria card', () => {
   });
 
   it('Pass has no extra boxes/options', async () => {
-    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Filter type' }), CriteriaAggregateType.PASS);
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'None (include all patrons)' }), CriteriaAggregateType.PASS);
 
     expect(screen.queryByRole('combobox', { name: 'Comparison operator' })).toBeNull();
     expect(screen.queryByRole('spinbutton')).toBeNull();
@@ -46,7 +46,7 @@ describe('Aggregate criteria card', () => {
 
   it('Quantity has operator and dollar amount', async () => {
     await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Filter type' }),
+      screen.getByRole('combobox', { name: 'None (include all patrons)' }),
       CriteriaAggregateType.NUM_ROWS,
     );
 
@@ -73,7 +73,7 @@ describe('Aggregate criteria card', () => {
 
   it('Amount has operator and dollar amount', async () => {
     await userEvent.selectOptions(
-      screen.getByRole('combobox', { name: 'Filter type' }),
+      screen.getByRole('combobox', { name: 'None (include all patrons)' }),
       CriteriaAggregateType.TOTAL_AMOUNT,
     );
 

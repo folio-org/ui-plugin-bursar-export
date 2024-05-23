@@ -1,4 +1,4 @@
-import { Card, Col, Row, Select, TextField } from '@folio/stripes/components';
+import { Card, Col, Row, Select, TextField, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -18,20 +18,20 @@ export default function AggregateCriteriaCard() {
     () => [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.none',
+          id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.Pass',
         }),
         value: CriteriaAggregateType.PASS,
       },
       ...[
         {
           label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.numAccounts',
+            id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.NumRows',
           }),
           value: CriteriaAggregateType.NUM_ROWS,
         },
         {
           label: intl.formatMessage({
-            id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.totalAmount',
+            id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter.TotalAmount',
           }),
           value: CriteriaAggregateType.TOTAL_AMOUNT,
         },
@@ -41,77 +41,82 @@ export default function AggregateCriteriaCard() {
   );
 
   return (
-    <Card headerStart={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.header" />}>
-      <Row>
-        <Col xs={12} md={4}>
-          <Field name="aggregateFilter.type" defaultValue={CriteriaAggregateType.PASS}>
-            {(fieldProps) => (
-              <Select<CriteriaAggregateType>
-                {...fieldProps}
-                fullWidth
-                marginBottom0
-                required
-                label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter" />}
-                dataOptions={criteriaOptions}
-              />
-            )}
-          </Field>
-        </Col>
-
-        {selectedType !== CriteriaAggregateType.PASS && (
+    <>
+      <Card headerStart={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.header" />}>
+        <Row>
           <Col xs={12} md={4}>
-            <OperatorSelect name="aggregateFilter.operator" />
-          </Col>
-        )}
-
-        {selectedType === CriteriaAggregateType.NUM_ROWS && (
-          <Col xs={12} md={4}>
-            <Field name="aggregateFilter.amount">
+            <Label required>
+              {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.aggregate.filter' })}
+            </Label>
+            <Field name="aggregateFilter.type" defaultValue={CriteriaAggregateType.PASS}>
               {(fieldProps) => (
-                <TextField<number>
+                <Select<CriteriaAggregateType>
                   {...fieldProps}
                   fullWidth
                   marginBottom0
                   required
-                  type="number"
-                  label={
-                    <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.numAccounts.amount" />
-                  }
-                  min={1}
-                  step={1}
+                  aria-label={intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.aggregate.filter.${selectedType}` })}
+                  dataOptions={criteriaOptions}
                 />
               )}
             </Field>
           </Col>
-        )}
 
-        {selectedType === CriteriaAggregateType.TOTAL_AMOUNT && (
-          <Col xs={12} md={4}>
-            <Field name="aggregateFilter.amountCurrency">
-              {(fieldProps) => (
-                <TextField<number>
-                  {...fieldProps}
-                  fullWidth
-                  marginBottom0
-                  required
-                  type="number"
-                  label={
-                    <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.totalAmount.amount" />
-                  }
-                  min={0}
-                  step={0.01}
-                />
-              )}
-            </Field>
-          </Col>
-        )}
-      </Row>
+          {selectedType !== CriteriaAggregateType.PASS && (
+            <Col xs={12} md={4}>
+              <OperatorSelect name="aggregateFilter.operator" />
+            </Col>
+          )}
 
-      <p className={css.aggregateCardP}>
-        <i>
-          <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.description" />
-        </i>
-      </p>
-    </Card>
+          {selectedType === CriteriaAggregateType.NUM_ROWS && (
+            <Col xs={12} md={4}>
+              <Field name="aggregateFilter.amount">
+                {(fieldProps) => (
+                  <TextField<number>
+                    {...fieldProps}
+                    fullWidth
+                    marginBottom0
+                    required
+                    type="number"
+                    label={
+                      <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.numAccounts.amount" />
+                    }
+                    min={1}
+                    step={1}
+                  />
+                )}
+              </Field>
+            </Col>
+          )}
+
+          {selectedType === CriteriaAggregateType.TOTAL_AMOUNT && (
+            <Col xs={12} md={4}>
+              <Field name="aggregateFilter.amountCurrency">
+                {(fieldProps) => (
+                  <TextField<number>
+                    {...fieldProps}
+                    fullWidth
+                    marginBottom0
+                    required
+                    type="number"
+                    label={
+                      <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.totalAmount.amount" />
+                    }
+                    min={0}
+                    step={0.01}
+                  />
+                )}
+              </Field>
+            </Col>
+          )}
+        </Row>
+
+        <p className={css.aggregateCardP}>
+          <i>
+            <FormattedMessage id="ui-plugin-bursar-export.bursarExports.aggregate.filter.description" />
+          </i>
+        </p>
+      </Card>
+    </>
   );
 }

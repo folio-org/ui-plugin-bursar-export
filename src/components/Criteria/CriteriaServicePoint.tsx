@@ -1,11 +1,16 @@
-import { Col, Select } from '@folio/stripes/components';
+import { Col, Select, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
-import { Field } from 'react-final-form';
-import { FormattedMessage } from 'react-intl';
+import { Field, useField } from 'react-final-form';
+import { useIntl } from 'react-intl';
 import { useServicePoints } from '../../api/queries';
 
 export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: string }>) {
   const servicePoints = useServicePoints();
+  const intl = useIntl();
+
+  const selectedServicePoint = useField<string | undefined>(`${prefix}servicePointId`, {
+    subscription: { value: true },
+  }).input.value;
 
   const selectOptions = useMemo(() => {
     if (!servicePoints.isSuccess) {
@@ -23,16 +28,20 @@ export default function CriteriaServicePoint({ prefix }: Readonly<{ prefix: stri
     ];
   }, [servicePoints]);
 
+  const servicePointName = selectOptions.find((sp) => sp.value === selectedServicePoint)?.label;
+
   return (
     <Col xs={12}>
+      <Label required>
+        {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.servicePoint.value' })}
+      </Label>
       <Field name={`${prefix}servicePointId`}>
         {(fieldProps) => (
           <Select<string | undefined>
             {...fieldProps}
             fullWidth
             marginBottom0
-            required
-            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.criteria.servicePoint.value" />}
+            aria-label={servicePointName === undefined ? 'Service point' : servicePointName}
             dataOptions={selectOptions}
           />
         )}

@@ -149,11 +149,11 @@ describe('Transfer criteria section', () => {
       await act(() => userEvent.click(screen.getByRole('button', { name: 'Add condition' })));
       await act(async () => {
         await userEvent.selectOptions(
-          screen.getAllByRole('combobox', { name: 'Criteria' })[2],
+          screen.getAllByRole('combobox', { name: 'Patron group' })[0],
           'Patron group',
         );
         await userEvent.selectOptions(
-          screen.getByRole('combobox', { name: 'Patron group' }),
+          screen.getAllByRole('combobox', { name: 'Patron group' })[1],
           'staff',
         );
         await userEvent.selectOptions(
