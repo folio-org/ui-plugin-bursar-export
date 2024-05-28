@@ -1,12 +1,22 @@
-import { Col, Select } from '@folio/stripes/components';
+import { Col, Select, Label } from '@folio/stripes/components';
 import React from 'react';
-import { Field } from 'react-final-form';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { Field, useField } from 'react-final-form';
+import { useIntl } from 'react-intl';
 
 export default function FeeFineTypeToken({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
+
+  const selectedType = useField<'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME'>(`${prefix}feeFineAttribute`, {
+    subscription: { value: true }
+  }).input.value;
+
+  console.log(selectedType);
+
   return (
     <Col xs={12}>
+      <Label>
+        {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute'})}
+      </Label>
       <Field<'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME'>
         name={`${prefix}feeFineAttribute`}
         defaultValue="FEE_FINE_TYPE_NAME"
@@ -16,17 +26,19 @@ export default function FeeFineTypeToken({ prefix }: Readonly<{ prefix: string }
             {...fieldProps}
             required
             marginBottom0
-            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute" />}
+            aria-label={selectedType ? 
+              intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.token.feeFineType.${selectedType}` }) :
+              intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute' })}
             dataOptions={[
               {
                 label: intl.formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.name',
+                  id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.FEE_FINE_TYPE_NAME',
                 }),
                 value: 'FEE_FINE_TYPE_NAME',
               },
               {
                 label: intl.formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.id',
+                  id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.FEE_FINE_TYPE_ID',
                 }),
                 value: 'FEE_FINE_TYPE_ID',
               },

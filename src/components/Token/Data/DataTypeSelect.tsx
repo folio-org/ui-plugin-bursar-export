@@ -10,37 +10,41 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
     format: (value) => value ?? false,
   }).input.value;
 
+  const selectedDataType = useField<DataTokenType>(name, {
+    subscription: { value: true }
+  }).input.value;
+
   const intl = useIntl();
 
   const alwaysAvailableOptions = useMemo(() => {
     const topOptions = [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.newline',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Newline',
         }),
         value: DataTokenType.NEWLINE,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.newlineMicrosoft',
+          id: 'ui-plugin-bursar-export.bursarExports.token.NewlineMicrosoft',
         }),
         value: DataTokenType.NEWLINE_MICROSOFT,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.tab',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Tab',
         }),
         value: DataTokenType.TAB,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.comma',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Comma',
         }),
         value: DataTokenType.COMMA,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.whitespace',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Space',
         }),
         value: DataTokenType.SPACE,
       },
@@ -49,19 +53,19 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
     const bottomOptions = [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.arbitraryText',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Constant',
         }),
         value: DataTokenType.ARBITRARY_TEXT,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.currentDate',
+          id: 'ui-plugin-bursar-export.bursarExports.token.CurrentDate',
         }),
         value: DataTokenType.CURRENT_DATE,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.constantConditional',
+          id: 'ui-plugin-bursar-export.bursarExports.token.ConstantConditional',
         }),
         value: DataTokenType.CONSTANT_CONDITIONAL,
       },
@@ -87,31 +91,31 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
     () => [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.userData',
+          id: 'ui-plugin-bursar-export.bursarExports.token.UserData',
         }),
         value: DataTokenType.USER_DATA,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.accountAmount',
+          id: 'ui-plugin-bursar-export.bursarExports.token.AccountAmount',
         }),
         value: DataTokenType.ACCOUNT_AMOUNT,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.accountDate',
+          id: 'ui-plugin-bursar-export.bursarExports.token.AccountDate',
         }),
         value: DataTokenType.ACCOUNT_DATE,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType',
+          id: 'ui-plugin-bursar-export.bursarExports.token.FeeFineMetaData',
         }),
         value: DataTokenType.FEE_FINE_TYPE,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.itemInfo',
+          id: 'ui-plugin-bursar-export.bursarExports.token.ItemData',
         }),
         value: DataTokenType.ITEM_INFO,
       },
@@ -129,13 +133,13 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.totalAmount',
+          id: 'ui-plugin-bursar-export.bursarExports.token.AggregateTotal',
         }),
         value: DataTokenType.AGGREGATE_TOTAL,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.numAccounts',
+          id: 'ui-plugin-bursar-export.bursarExports.token.AggregateCount',
         }),
         value: DataTokenType.AGGREGATE_COUNT,
       },
@@ -148,7 +152,7 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
       name={name}
       defaultValue={DataTokenType.NEWLINE}
       aria-label={intl.formatMessage({
-        id: 'ui-plugin-bursar-export.bursarExports.token.dataType.typeSelect',
+        id: `ui-plugin-bursar-export.bursarExports.token.${selectedDataType}`,
       })}
     >
       {(fieldProps) => (

@@ -100,7 +100,7 @@ export default function CriteriaFeeFineType({ prefix }: Readonly<{ prefix: strin
               {...fieldProps}
               fullWidth
               marginBottom0
-              aria-label={typeName === undefined ? 'Fee/fine type' : typeName}
+              aria-label={typeName === undefined ? intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.criteria.select.FeeType' }) : typeName}
               dataOptions={typeSelectOptionsForDisplay}
             />
           )}

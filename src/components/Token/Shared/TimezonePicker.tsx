@@ -1,6 +1,6 @@
-import { Select, timezones } from '@folio/stripes/components';
+import { Select, timezones, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
-import { Field } from 'react-final-form';
+import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function TimezonePicker({ prefix }: Readonly<{ prefix: string }>) {
@@ -8,17 +8,27 @@ export default function TimezonePicker({ prefix }: Readonly<{ prefix: string }>)
 
   const timeZonesForSelect = useMemo(() => timezones.map(({ value }) => ({ value, label: value })), []);
 
+  const selectedTimezone = useField<string>(`${prefix}timezone`, {
+    subscription: { value: true },
+  }).input.value;
+  const timeZoneLabel = timeZonesForSelect.find((tz) => tz.value === selectedTimezone)?.label;
+
   return (
-    <Field name={`${prefix}timezone`} defaultValue={intl.timeZone ?? 'UTC'}>
-      {(fieldProps) => (
-        <Select<string>
-          {...fieldProps}
-          required
-          marginBottom0
-          label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.currentDate.timezone" />}
-          dataOptions={timeZonesForSelect}
-        />
-      )}
-    </Field>
+    <>
+      <Label required>
+        {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.currentDate.timezone' })}
+      </Label>
+      <Field name={`${prefix}timezone`} defaultValue={intl.timeZone ?? 'UTC'}>
+        {(fieldProps) => (
+          <Select<string>
+            {...fieldProps}
+            required
+            marginBottom0
+            aria-label={timeZoneLabel ? timeZoneLabel : intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.currentDate.timezone' })}
+            dataOptions={timeZonesForSelect}
+          />
+        )}
+      </Field>
+    </>
   );
 }

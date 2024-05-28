@@ -1,40 +1,45 @@
 import React, { useMemo } from 'react';
 import { Select } from '@folio/stripes/components';
-import { Field } from 'react-final-form';
+import { Field, useField } from 'react-final-form';
 import { useIntl } from 'react-intl';
 import { HeaderFooterTokenType } from '../../../types';
 
 export default function HeaderFooterTypeSelect({ name }: Readonly<{ name: string }>) {
   const intl = useIntl();
+
+  const selectedType = useField<HeaderFooterTokenType>(name, {
+    subscription: { value: true },
+  }).input.value;
+
   const options = useMemo(() => {
     const topSection = [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.newline',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Newline',
         }),
         value: HeaderFooterTokenType.NEWLINE,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.newlineMicrosoft',
+          id: 'ui-plugin-bursar-export.bursarExports.token.NewlineMicrosoft',
         }),
         value: HeaderFooterTokenType.NEWLINE_MICROSOFT,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.tab',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Tab',
         }),
         value: HeaderFooterTokenType.TAB,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.comma',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Comma',
         }),
         value: HeaderFooterTokenType.COMMA,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.whitespace',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Space',
         }),
         value: HeaderFooterTokenType.SPACE,
       },
@@ -43,25 +48,25 @@ export default function HeaderFooterTypeSelect({ name }: Readonly<{ name: string
     const bottomSection = [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.arbitraryText',
+          id: 'ui-plugin-bursar-export.bursarExports.token.Constant',
         }),
         value: HeaderFooterTokenType.ARBITRARY_TEXT,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.currentDate',
+          id: 'ui-plugin-bursar-export.bursarExports.token.CurrentDate',
         }),
         value: HeaderFooterTokenType.CURRENT_DATE,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.numAccounts',
+          id: 'ui-plugin-bursar-export.bursarExports.token.AggregateCount',
         }),
         value: HeaderFooterTokenType.AGGREGATE_COUNT,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.totalAmount',
+          id: 'ui-plugin-bursar-export.bursarExports.token.AggregateTotal',
         }),
         value: HeaderFooterTokenType.AGGREGATE_TOTAL,
       },
@@ -86,7 +91,7 @@ export default function HeaderFooterTypeSelect({ name }: Readonly<{ name: string
       name={name}
       defaultValue={HeaderFooterTokenType.NEWLINE}
       aria-label={intl.formatMessage({
-        id: 'ui-plugin-bursar-export.bursarExports.token.headerFooter.typeSelect',
+        id:  `ui-plugin-bursar-export.bursarExports.token.${selectedType}`,
       })}
     >
       {(fieldProps) => <Select<HeaderFooterTokenType> {...fieldProps} required marginBottom0 dataOptions={options} />}
