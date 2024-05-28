@@ -21,7 +21,7 @@ export default function DatePartPicker({ prefix }: Readonly<{ prefix: string }>)
           <Select<DateFormatType>
             {...fieldProps}
             required
-            aria-label={selectedFormat.length === 0 ? 
+            aria-label={selectedFormat.length === 0 ?
               intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.currentDate.format' }) :
               intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.token.currentDate.format.${selectedFormat}` })
             }

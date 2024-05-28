@@ -8,7 +8,7 @@ import OperatorSelect from './OperatorSelect';
 
 export default function AggregateCriteriaCard() {
   const intl = useIntl();
-  
+
   const selectedType = useField<CriteriaAggregateType>('aggregateFilter.type', {
     subscription: { value: true },
     format: (value) => value ?? CriteriaAggregateType.PASS,

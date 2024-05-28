@@ -1,7 +1,7 @@
 import { Select, timezones, Label } from '@folio/stripes/components';
 import React, { useMemo } from 'react';
 import { Field, useField } from 'react-final-form';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 export default function TimezonePicker({ prefix }: Readonly<{ prefix: string }>) {
   const intl = useIntl();
@@ -24,7 +24,9 @@ export default function TimezonePicker({ prefix }: Readonly<{ prefix: string }>)
             {...fieldProps}
             required
             marginBottom0
-            aria-label={timeZoneLabel ? timeZoneLabel : intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.currentDate.timezone' })}
+            aria-label={timeZoneLabel?.length === 0 ? timeZoneLabel :
+              intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.currentDate.timezone' })
+            }
             dataOptions={timeZonesForSelect}
           />
         )}

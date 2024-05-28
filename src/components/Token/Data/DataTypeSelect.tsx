@@ -97,7 +97,7 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.AccountAmount',
+          id: 'ui-plugin-bursar-export.bursarExports.token.FeeAmount',
         }),
         value: DataTokenType.ACCOUNT_AMOUNT,
       },
@@ -109,7 +109,7 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.FeeFineMetaData',
+          id: 'ui-plugin-bursar-export.bursarExports.token.FeeFineMetadata',
         }),
         value: DataTokenType.FEE_FINE_TYPE,
       },
@@ -127,7 +127,7 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
     () => [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.token.userData',
+          id: 'ui-plugin-bursar-export.bursarExports.token.UserData',
         }),
         value: DataTokenType.USER_DATA,
       },

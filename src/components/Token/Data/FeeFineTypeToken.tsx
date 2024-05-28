@@ -10,12 +10,10 @@ export default function FeeFineTypeToken({ prefix }: Readonly<{ prefix: string }
     subscription: { value: true }
   }).input.value;
 
-  console.log(selectedType);
-
   return (
     <Col xs={12}>
-      <Label>
-        {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute'})}
+      <Label required>
+        {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute' })}
       </Label>
       <Field<'FEE_FINE_TYPE_ID' | 'FEE_FINE_TYPE_NAME'>
         name={`${prefix}feeFineAttribute`}
@@ -26,7 +24,7 @@ export default function FeeFineTypeToken({ prefix }: Readonly<{ prefix: string }
             {...fieldProps}
             required
             marginBottom0
-            aria-label={selectedType ? 
+            aria-label={selectedType ?
               intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.token.feeFineType.${selectedType}` }) :
               intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.feeFineType.attribute' })}
             dataOptions={[

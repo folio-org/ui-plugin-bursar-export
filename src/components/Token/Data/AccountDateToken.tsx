@@ -16,7 +16,7 @@ export default function AccountDateToken({ prefix }: Readonly<{ prefix: string }
   return (
     <>
       <Col xs={12} md={6}>
-        <Label required >
+        <Label required>
           {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.accountDate.dateType' })}
         </Label>
         <Field<'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED'> name={`${prefix}dateProperty`} defaultValue="CREATED">
@@ -24,7 +24,7 @@ export default function AccountDateToken({ prefix }: Readonly<{ prefix: string }
             <Select<'CREATED' | 'UPDATED' | 'DUE' | 'RETURNED'>
               {...fieldProps}
               required
-              aria-label={selectedDateType ? 
+              aria-label={selectedDateType ?
                 intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.token.accountDate.dateType.${selectedDateType}` }) :
                 intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.accountDate.dateType' })}
               dataOptions={[

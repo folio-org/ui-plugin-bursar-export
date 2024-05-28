@@ -8,31 +8,31 @@ export default function ItemInfoToken({ prefix }: Readonly<{ prefix: string }>) 
   const options = useMemo(() => {
     const attributeOptions = [
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.name',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.NAME',
         value: 'NAME',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.barcode',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.BARCODE',
         value: 'BARCODE',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.material',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.MATERIAL_TYPE',
         value: 'MATERIAL_TYPE',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.instId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.INSTITUTION_ID',
         value: 'INSTITUTION_ID',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.campId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.CAMP_ID',
         value: 'CAMPUS_ID',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.libId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.LIBRARY_ID',
         value: 'LIBRARY_ID',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.locId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.itemInfo.LOCATION_ID',
         value: 'LOCATION_ID',
       },
     ];
