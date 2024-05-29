@@ -30,29 +30,31 @@ export default function SchedulingSection() {
             {...fieldProps}
             fullWidth
             required
-            label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduling.frequency" />}
+            aria-label={frequencyValue.length === 0 ?
+              intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency' }) :
+              intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.scheduling.frequency.${frequencyValue}` })}
             dataOptions={[
               {
                 label: intl.formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.manual',
+                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.NONE',
                 }),
                 value: SchedulingFrequency.Manual,
               },
               {
                 label: intl.formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.hours',
+                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.HOUR',
                 }),
                 value: SchedulingFrequency.Hours,
               },
               {
                 label: intl.formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.days',
+                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.DAY',
                 }),
                 value: SchedulingFrequency.Days,
               },
               {
                 label: intl.formatMessage({
-                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.weeks',
+                  id: 'ui-plugin-bursar-export.bursarExports.scheduling.frequency.WEEK',
                 }),
                 value: SchedulingFrequency.Weeks,
               },
