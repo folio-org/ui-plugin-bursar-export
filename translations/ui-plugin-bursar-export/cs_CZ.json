@@ -147,5 +147,6 @@
     "bursarExports.transfer.account": "Převodní účet",
     "bursarExports.transfer.transferTo": "Převod do:",
     "permission.bursar-exports.manual": "Exporty převodu: Spuštění ručních úloh",
-    "permission.bursar-exports.view": "Exporty převodu: Zobrazit konfigurace"
+    "permission.bursar-exports.view": "Exporty převodu: Zobrazit konfigurace",
+    "settings.title": "Nastavení uživatelů - Kritéria převodu"
 }

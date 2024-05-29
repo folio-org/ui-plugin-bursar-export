@@ -147,5 +147,6 @@
     "bursarExports.transfer.account": "Transferir conta",
     "bursarExports.transfer.transferTo": "Transferir para:",
     "permission.bursar-exports.manual": "Transferir exportações: Iniciar trabalhos manuais",
-    "permission.bursar-exports.view": "Transferir exportações: visualizar configuração"
+    "permission.bursar-exports.view": "Transferir exportações: visualizar configuração",
+    "settings.title": "Configurações de usuários – Critérios de transferência"
 }

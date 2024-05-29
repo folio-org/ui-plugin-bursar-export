@@ -147,5 +147,6 @@
     "bursarExports.transfer.account": "Transfer account",
     "bursarExports.transfer.transferTo": "Transfer to:",
     "permission.bursar-exports.manual": "Transfer exports: Start manual jobs",
-    "permission.bursar-exports.view": "Transfer exports: View configuration"
+    "permission.bursar-exports.view": "Transfer exports: View configuration",
+    "settings.title": "Users settings - Transfer criteria"
 }
