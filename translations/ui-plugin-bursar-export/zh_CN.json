@@ -148,5 +148,5 @@
     "bursarExports.transfer.transferTo": "转账到：",
     "permission.bursar-exports.manual": "转运导出：开始手工任务",
     "permission.bursar-exports.view": "转运导出：查看配置",
-    "settings.title": "Users settings - Transfer criteria"
+    "settings.title": "用户设置 - 转移条件"
 }
