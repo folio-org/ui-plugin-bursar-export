@@ -26,6 +26,7 @@
   "bursarExports.scheduler.mutation.automatic.error": "Failed to save job",
   "bursarExports.scheduler.mutation.manual.success": "Job has been scheduled",
   "bursarExports.scheduler.mutation.manual.error": "Failed to start job",
+  "bursarExports.scheduler.interval.error": "Value must be greater than 0",
 
   "bursarExports.criteria.accordion": "Criteria",
   "bursarExports.criteria.select.allOf": "All of:",

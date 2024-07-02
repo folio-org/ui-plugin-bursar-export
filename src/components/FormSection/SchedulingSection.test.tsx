@@ -79,13 +79,13 @@ describe('Scheduling section', () => {
       ),
     );
 
-    expect(screen.queryAllByRole('textbox')).toHaveLength(3);
+    expect(screen.queryAllByRole('textbox')).toHaveLength(2);
     expect(screen.getByRole('textbox', { name: 'Weeks between runs' })).toBeVisible();
     expect(
       screen.getByRole('textbox', {
         name: (name: string) => name.startsWith('Start time'),
       }),
     ).toBeVisible();
-    expect(screen.getByRole('textbox', { name: 'Run on weekdays' })).toBeVisible();
+    expect(screen.getByRole('combobox', { name: 'Run on weekdays' })).toBeVisible();
   });
 });

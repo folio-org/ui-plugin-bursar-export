@@ -7,7 +7,7 @@ import {
   TextField,
   Timepicker,
 } from '@folio/stripes/components';
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { Field, useField } from 'react-final-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Weekday } from '../../utils/weekdayUtils';
@@ -15,28 +15,9 @@ import { SchedulingFrequency } from '../../types';
 import useLocaleWeekdays from '../../hooks/useLocaleWeekdays';
 
 export default function SchedulingSection() {
-  const [error, setError] = useState(false);
-
   const frequencyValue = useField<SchedulingFrequency>('scheduling.frequency', {
     subscription: { value: true },
   }).input.value;
-
-  const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value == ''){
-      setError(true);
-      return
-    }
-    
-    const value = Number(event.target.value);
-    if (value <= 0){
-      setError(true)
-    }
-    else{
-      setError(false)
-    }
-    console.log(event.target.value);
-    console.log(Number(event.target.value));
-  }
 
   const intl = useIntl();
   const localeWeekdays = useLocaleWeekdays(intl);
@@ -84,18 +65,19 @@ export default function SchedulingSection() {
 
   const hoursDaysWeeksFrequencyComponent = (
     <Col xs={12} md={6}>
-      <Field name="scheduling.interval">
+      <Field
+        name="scheduling.interval"
+        validate={(value) => Number.isNaN(+value) || +value <= 0 ? <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduler.interval.error" /> : undefined}
+      >
         {(fieldProps) => (
           <TextField<number>
             {...fieldProps}
             fullWidth
             required
-            onChange={handleChange}
             label={
               <FormattedMessage id={`ui-plugin-bursar-export.bursarExports.scheduling.interval.${frequencyValue}`} />
             }
             min={1}
-            error={error ? 'Value must be greater than 0' : null}
           />
         )}
       </Field>
