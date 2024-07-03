@@ -65,7 +65,10 @@ export default function SchedulingSection() {
 
   const hoursDaysWeeksFrequencyComponent = (
     <Col xs={12} md={6}>
-      <Field name="scheduling.interval">
+      <Field
+        name="scheduling.interval"
+        validate={(value) => Number.isNaN(+value) || +value <= 0 ? <FormattedMessage id="ui-plugin-bursar-export.bursarExports.scheduler.interval.error" /> : undefined}
+      >
         {(fieldProps) => (
           <TextField<number>
             {...fieldProps}
