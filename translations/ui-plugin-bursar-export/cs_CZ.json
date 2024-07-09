@@ -148,5 +148,6 @@
     "bursarExports.transfer.transferTo": "Převod do:",
     "permission.bursar-exports.manual": "Exporty převodu: Spuštění ručních úloh",
     "permission.bursar-exports.view": "Exporty převodu: Zobrazit konfigurace",
-    "settings.title": "Nastavení uživatelů - Kritéria převodu"
+    "settings.title": "Nastavení uživatelů - Kritéria převodu",
+    "bursarExports.scheduler.interval.error": "Hodnota musí být větší než 0"
 }
