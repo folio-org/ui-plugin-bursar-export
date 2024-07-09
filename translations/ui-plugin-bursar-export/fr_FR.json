@@ -111,7 +111,7 @@
     "bursarExports.token.feeFineType.name": "Type name",
     "bursarExports.token.feeFineType.id": "Type ID",
     "bursarExports.token.itemInfo.name": "Name",
-    "bursarExports.token.itemInfo.barcode": "Barcode",
+    "bursarExports.token.itemInfo.barcode": "Code-barres",
     "bursarExports.token.itemInfo.material": "Material type",
     "bursarExports.token.itemInfo.instId": "Institution ID",
     "bursarExports.token.itemInfo.campId": "Campus ID",
@@ -120,7 +120,7 @@
     "bursarExports.token.userInfo.folioId": "Folio ID",
     "bursarExports.token.userInfo.extId": "External ID",
     "bursarExports.token.userInfo.groupId": "ID du groupe usagers",
-    "bursarExports.token.userInfo.barcode": "Barcode",
+    "bursarExports.token.userInfo.barcode": "Code-barres",
     "bursarExports.token.userInfo.username": "Username",
     "bursarExports.token.userInfo.firstname": "First name",
     "bursarExports.token.userInfo.middlename": "Middle name",
@@ -148,5 +148,6 @@
     "bursarExports.transfer.transferTo": "Transfer to:",
     "permission.bursar-exports.manual": "Transfer exports: Start manual jobs",
     "permission.bursar-exports.view": "Transfer exports: View configuration",
-    "settings.title": "Users settings - Transfer criteria"
+    "settings.title": "Paramètres utilisateurs - Critères de transfert",
+    "bursarExports.scheduler.interval.error": "Value must be greater than 0"
 }

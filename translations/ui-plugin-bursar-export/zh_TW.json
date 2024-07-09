@@ -148,5 +148,6 @@
     "bursarExports.transfer.transferTo": "轉帳至",
     "permission.bursar-exports.manual": "轉帳匯出：開始手動作業",
     "permission.bursar-exports.view": "轉帳匯出：查看設定",
-    "settings.title": "Users settings - Transfer criteria"
+    "settings.title": "Users settings - Transfer criteria",
+    "bursarExports.scheduler.interval.error": "Value must be greater than 0"
 }
