@@ -71,7 +71,7 @@ it('Patron group type criteria displays appropriate form', async () => {
   expect(screen.getByRole('option', { name: 'faculty' })).toBeVisible();
   expect(screen.getByRole('option', { name: 'undergrad' })).toBeVisible();
 
-  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Patron group' }), 'staff');
+  await userEvent.selectOptions(screen.getAllByRole('combobox', { name: 'Patron group' })[1], 'staff');
 
   await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
