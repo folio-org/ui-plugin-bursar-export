@@ -1,5 +1,5 @@
 {
-    "meta.title": "Exportations intendant",
+    "meta.title": "Configuration du transfert",
     "permission.bursar-exports.all": "Exportations intendant: administration",
     "bursarExports.paneTitle": "Transfer configuration",
     "bursarExports.button.addCondition": "Add condition",
