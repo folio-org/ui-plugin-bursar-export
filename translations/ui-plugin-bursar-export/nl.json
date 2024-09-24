@@ -149,5 +149,5 @@
     "permission.bursar-exports.manual": "Exports overzetten: Handmatige taken starten",
     "permission.bursar-exports.view": "Exports overzetten: Configuratie bekijken",
     "settings.title": "Gebruikersinstellingen - Criteria overzetting",
-    "bursarExports.scheduler.interval.error": "Value must be greater than 0"
+    "bursarExports.scheduler.interval.error": "Waarde moet groter zijn dan 0"
 }
