@@ -1,6 +1,6 @@
 {
-    "meta.title": "Transfer configuration",
-    "permission.bursar-exports.all": "Transfer exports: Modify configuration and start jobs",
+    "meta.title": "Criterios de transferencia",
+    "permission.bursar-exports.all": "Transferir exportaciones: Transferir administrador",
     "bursarExports.paneTitle": "Transfer configuration",
     "bursarExports.button.addCondition": "Add condition",
     "bursarExports.button.add": "Add",
