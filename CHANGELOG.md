@@ -1,8 +1,11 @@
 # Change history for ui-plugin-bursar-export
 
+## IN PROGRESS
+* Fix GitHub Actions workflow not running for tags. Refs FOLIO-4086.
+
 ## [4.0.2](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.2) (2024-05-08)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.1...v4.0.2)
-Check token.conditions is defined and is an array. Refs UIPBEX-58.
+* Check token.conditions is defined and is an array. Refs UIPBEX-58.
 
 ## [4.0.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.1) (2024-04-25)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.0...v4.0.1)
