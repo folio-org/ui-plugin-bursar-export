@@ -143,7 +143,7 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Campus' }), 'Matching campus 2');
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Matching campus 1' }), 'Matching campus 2');
 
   expectOptionNotInDocument('Matching library');
   expectOptionNotInDocument('Non-matching library');
@@ -151,7 +151,7 @@ it('Location criteria displays appropriate form', async () => {
   expectOptionNotInDocument('Matching location 2');
   expectOptionNotInDocument('Non-matching location');
 
-  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Campus' }), 'Matching campus 1');
+  await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Matching campus 2' }), 'Matching campus 1');
 
   expectOptionInDocument('Matching library');
   expectOptionNotInDocument('Non-matching library');
