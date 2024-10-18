@@ -110,7 +110,7 @@
     "bursarExports.token.feeFineType.attribute": "Attribute",
     "bursarExports.token.feeFineType.name": "Type name",
     "bursarExports.token.feeFineType.id": "Type ID",
-    "bursarExports.token.itemInfo.name": "Name",
+    "bursarExports.token.itemInfo.name": "Nazwa",
     "bursarExports.token.itemInfo.barcode": "Barcode",
     "bursarExports.token.itemInfo.material": "Rodzaj materiału",
     "bursarExports.token.itemInfo.instId": "Institution ID",
