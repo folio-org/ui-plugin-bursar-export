@@ -1,7 +1,8 @@
 # Change history for ui-plugin-bursar-export
 
-## IN PROGRESS
-* Fix GitHub Actions workflow not running for tags. Refs FOLIO-4086.
+## [4.0.3](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.3) (2024-11-02)
+* Fix GitHub Actions workflow not running for tags. Refs [FOLIO-4086](https://folio-org.atlassian.net/browse/FOLIO-4086).
+* Fix bug related to saving transfer configuration. Refs [UIPBEX-62](https://folio-org.atlassian.net/browse/UIPBEX-62).
 
 ## [4.0.2](https://github.com/folio-org/ui-plugin-bursar-export/tree/v4.0.2) (2024-05-08)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.1...v4.0.2)
