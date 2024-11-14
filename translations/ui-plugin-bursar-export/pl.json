@@ -121,7 +121,7 @@
     "bursarExports.token.userInfo.extId": "External ID",
     "bursarExports.token.userInfo.groupId": "ID grupy czytelnika",
     "bursarExports.token.userInfo.barcode": "Barcode",
-    "bursarExports.token.userInfo.username": "Username",
+    "bursarExports.token.userInfo.username": "Nazwa użytkownika",
     "bursarExports.token.userInfo.firstname": "First name",
     "bursarExports.token.userInfo.middlename": "Middle name",
     "bursarExports.token.userInfo.lastname": "Last name",
