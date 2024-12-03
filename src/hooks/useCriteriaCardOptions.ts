@@ -10,19 +10,19 @@ export default function useCriteriaCardOptions(root: boolean, patronOnly: boolea
     const options: SelectOptionType<CriteriaGroupType | CriteriaTerminalType>[] = [
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.allOf',
+          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Condition-AND',
         }),
         value: CriteriaGroupType.ALL_OF,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.anyOf',
+          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Condition-OR',
         }),
         value: CriteriaGroupType.ANY_OF,
       },
       {
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.noneOf',
+          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Condition-NOR',
         }),
         value: CriteriaGroupType.NONE_OF,
       },
@@ -37,50 +37,50 @@ export default function useCriteriaCardOptions(root: boolean, patronOnly: boolea
         ? [
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.PatronGroup',
             }),
             value: CriteriaTerminalType.PATRON_GROUP,
           },
         ] : [
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.age',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Age',
             }),
             value: CriteriaTerminalType.AGE,
           },
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.amount',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Amount',
             }),
             value: CriteriaTerminalType.AMOUNT,
           },
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.owner',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.FeeFineOwner',
             }),
             value: CriteriaTerminalType.FEE_FINE_OWNER,
           },
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.type',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.FeeType',
             }),
             value: CriteriaTerminalType.FEE_FINE_TYPE,
           },
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.location',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Location',
             }),
             value: CriteriaTerminalType.LOCATION,
           },
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.servicePoint',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.ServicePoint',
             }),
             value: CriteriaTerminalType.SERVICE_POINT,
           },
           {
             label: intl.formatMessage({
-              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.patronGroup',
+              id: 'ui-plugin-bursar-export.bursarExports.criteria.select.PatronGroup',
             }),
             value: CriteriaTerminalType.PATRON_GROUP,
           },
@@ -91,7 +91,7 @@ export default function useCriteriaCardOptions(root: boolean, patronOnly: boolea
     if (root) {
       options.unshift({
         label: intl.formatMessage({
-          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.none',
+          id: 'ui-plugin-bursar-export.bursarExports.criteria.select.Pass',
         }),
         value: CriteriaTerminalType.PASS,
       });
