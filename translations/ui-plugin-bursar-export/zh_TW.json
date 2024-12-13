@@ -116,7 +116,7 @@
     "bursarExports.token.itemInfo.instId": "機構ID",
     "bursarExports.token.itemInfo.campId": "校區ID",
     "bursarExports.token.itemInfo.libId": "圖書館ID",
-    "bursarExports.token.itemInfo.locId": "館藏地ID",
+    "bursarExports.token.itemInfo.locId": "館藏地 ID",
     "bursarExports.token.userInfo.folioId": "Folio ID",
     "bursarExports.token.userInfo.extId": "外部ID",
     "bursarExports.token.userInfo.groupId": "讀者群組ID",
