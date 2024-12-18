@@ -1,7 +1,7 @@
-import { Col, Select, SelectOptionType, TextField } from '@folio/stripes/components';
+import { Col, Select, SelectOptionType, TextField, Label } from '@folio/stripes/components';
 import React from 'react';
-import { Field } from 'react-final-form';
-import { FormattedMessage } from 'react-intl';
+import { Field, useField } from 'react-final-form';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { ItemAttribute, UserAttribute } from '../../../types';
 import css from '../TokenStyles.module.css';
 
@@ -16,15 +16,28 @@ export default function UserItemInfoToken<T extends ItemAttribute | UserAttribut
   attributeName: string;
   options: SelectOptionType<T>[];
 }>) {
+  const intl = useIntl();
+
+  const selectedValue = useField<T>(`${prefix}${attributeName}`, {
+    subscription: { value: true },
+  }).input.value;
+
+  const infoType = attributeName === 'userAttribute' ? 'userInfo' : 'itemInfo';
+
   return (
     <>
       <Col xs={12} md={6}>
+        <Label required>
+          {intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.value' })}
+        </Label>
         <Field<T> name={`${prefix}${attributeName}`} defaultValue={defaultValue}>
           {(fieldProps) => (
             <Select<T>
               {...fieldProps}
               required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.token.value" />}
+              aria-label={selectedValue ?
+                intl.formatMessage({ id: `ui-plugin-bursar-export.bursarExports.token.${infoType}.${selectedValue}` }) :
+                intl.formatMessage({ id: 'ui-plugin-bursar-export.bursarExports.token.value' })}
               dataOptions={options}
             />
           )}
