@@ -140,7 +140,7 @@
     "bursarExports.preview.header": "匯出預覽",
     "bursarExports.preview.wrap": "換行長線",
     "bursarExports.preview.description": "此預覽僅是一個範例，並不代表真實資料，也不考慮任何指定的條件。",
-    "bursarExports.preview.enableInvisibleChar": "顯示不可見字元（換行、tabs和空格）",
+    "bursarExports.preview.enableInvisibleChar": "顯示不可見字元 ( 換行、tab 和空格 )",
     "bursarExports.transfer.accordion": "將帳戶轉入",
     "bursarExports.transfer.description": "將按訂單評估條件，並使用第一個符合的轉帳帳戶。如果沒有符合條件，則將使用「否則」下列出的帳戶。",
     "bursarExports.transfer.owner": "費用 / 罰款 所有者",
