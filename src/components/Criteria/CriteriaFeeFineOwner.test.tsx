@@ -59,7 +59,7 @@ describe('Fee/fine owner criteria displays appropriate form', () => {
   });
 
   it('Selecting an owner works as expected', async () => {
-    await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Fee/fine owner' }), 'Owner 1');
+    await userEvent.selectOptions(screen.getAllByRole('combobox', { name: 'Fee/fine owner' })[1], 'Owner 1');
     await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(submitter).toHaveBeenLastCalledWith({

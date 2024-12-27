@@ -9,35 +9,35 @@ export default function UserInfoToken({ prefix }: Readonly<{ prefix: string }>) 
   const options = useMemo(() => {
     const attributeOptions = [
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.folioId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.FOLIO_ID',
         value: 'FOLIO_ID',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.extId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.EXTERNAL_SYSTEM_ID',
         value: 'EXTERNAL_SYSTEM_ID',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.groupId',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.PATRON_GROUP_ID',
         value: 'PATRON_GROUP_ID',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.barcode',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.BARCODE',
         value: 'BARCODE',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.username',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.USERNAME',
         value: 'USERNAME',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.firstname',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.FIRST_NAME',
         value: 'FIRST_NAME',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.middlename',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.MIDDLE_NAME',
         value: 'MIDDLE_NAME',
       },
       {
-        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.lastname',
+        labelId: 'ui-plugin-bursar-export.bursarExports.token.userInfo.LAST_NAME',
         value: 'LAST_NAME',
       },
     ];
