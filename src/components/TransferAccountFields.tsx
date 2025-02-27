@@ -14,13 +14,17 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
     format: (value) => value,
   }).input.value;
 
-  const ownersSelectOptions = useMemo(() => {
+  const ownersSelectOptions = useMemo((): {
+    label: string;
+    value: string;
+    disabled?: boolean;
+  }[] => {
     if (!feeFineOwners.isSuccess) {
-      return [{ label: '', value: undefined, disabled: true }];
+      return [{ label: '', value: '', disabled: true }];
     }
 
     return [
-      { label: '', value: undefined, disabled: true },
+      { label: '', value: '', disabled: true },
       ...feeFineOwners.data
         .map((owner) => ({
           label: owner.owner,
@@ -71,7 +75,9 @@ export default function TransferAccountFields({ prefix }: Readonly<{ prefix: str
               fullWidth
               marginBottom0
               required
-              label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.account" />}
+              label={
+                <FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.account" />
+              }
               dataOptions={accountSelectOptions}
             />
           )}
