@@ -8,6 +8,9 @@
     "module": "es2020",
     "moduleResolution": "node",
     "strict": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "react": [ "./node_modules/@types/react" ]
+    }
   }
 }
