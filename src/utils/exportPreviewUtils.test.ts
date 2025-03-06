@@ -17,9 +17,13 @@ describe('Export preview utility functions', () => {
       [DateFormatType.QUARTER, 1],
       [DateFormatType.WEEK_OF_YEAR_ISO, 1],
       [DateFormatType.WEEK_YEAR_ISO, 2021],
-
-      // garbage in = garbage out, so we don't care what the output is
-      ['' as DateFormatType, 1],
+      [DateFormatType.DAY_OF_YEAR, 2],
+      [DateFormatType.YYYYMMDD, '20210102'],
+      [DateFormatType.YYYY_MM_DD, '2021-01-02'],
+      [DateFormatType.MMDDYYYY, '01022021'],
+      [DateFormatType.DDMMYYYY, '02012021'],
+      // garbage in = garbage out
+      ['' as DateFormatType, '????'],
     ])('Format %s gives %s', (format, expected) => expect(formatDate(format, TEST_DATE)).toBe(expected));
   });
 
