@@ -2,6 +2,9 @@
 
 ## In progress
 
+## [5.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.0) (2025-03-20)
+[Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.3...v5.0.0)
+
 * *BREAKING* migrate stripes dependencies to their Sunflower versions. Refs UIPBEX-65.
 * *BREAKING* migrate react-intl to v7. Refs UIPBEX-66.
 
