@@ -2,6 +2,8 @@
 
 ## In progress
 
+* Select element should has an accessible name. Refs UIPBEX-50.
+
 ## [5.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.0) (2025-03-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.3...v5.0.0)
 

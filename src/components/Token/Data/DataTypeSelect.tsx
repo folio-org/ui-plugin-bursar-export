@@ -156,6 +156,9 @@ export default function DataTypeSelect({ name }: Readonly<{ name: string }>) {
           {...fieldProps}
           required
           marginBottom0
+          aria-label={intl.formatMessage({
+            id: 'ui-plugin-bursar-export.bursarExports.token.dataType.typeSelect',
+          })}
           dataOptions={[...alwaysAvailableOptions, ...(isAggregate ? aggregateOptions : noneAggregateOptions)]}
         />
       )}
