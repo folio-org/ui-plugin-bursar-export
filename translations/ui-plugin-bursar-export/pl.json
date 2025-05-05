@@ -32,7 +32,7 @@
     "bursarExports.criteria.select.type": "Rodzaj opłaty/kary",
     "bursarExports.criteria.select.location": "Lokalizacja egzemplarza",
     "bursarExports.criteria.select.servicePoint": "Item service point",
-    "bursarExports.criteria.select.patronGroup": "Grupa czytelnika",
+    "bursarExports.criteria.select.patronGroup": "Grupa czytelników",
     "bursarExports.criteria.select.none": "Brak kryteriów (zawsze uruchamiaj)",
     "bursarExports.criteria.select.label": "Kryteria",
     "bursarExports.criteria.age.value": "Number of days old",
