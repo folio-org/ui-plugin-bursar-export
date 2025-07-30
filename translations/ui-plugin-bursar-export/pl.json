@@ -148,6 +148,6 @@
     "bursarExports.transfer.transferTo": "Transfer do:",
     "permission.bursar-exports.manual": "Transfer eksportu: rozpocznij zadania ręczne",
     "permission.bursar-exports.view": "Transfer eksportu: wyświetlanie konfiguracji",
-    "settings.title": "Users settings - Transfer criteria",
+    "settings.title": "Ustawienia użytkownika – Kryteria transferu",
     "bursarExports.scheduler.interval.error": "Value must be greater than 0"
 }

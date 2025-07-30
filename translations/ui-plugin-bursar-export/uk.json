@@ -148,6 +148,6 @@
     "bursarExports.transfer.transferTo": "Переміщення на:",
     "permission.bursar-exports.manual": "Перенесення експорту: Запуск завдань вручну",
     "permission.bursar-exports.view": "Перенесення експорту: Перегляд конфігурації",
-    "settings.title": "Налаштування користувача – Критерії переміщення",
+    "settings.title": "Налаштування користувачів – Критерії переміщення",
     "bursarExports.scheduler.interval.error": "Значення має бути більшим за 0"
 }
