@@ -8,7 +8,7 @@
     "bursarExports.button.runManually": "Запустити вручну",
     "bursarExports.otherwise": "В іншому випадку:",
     "bursarExports.scheduling.accordion": "Планування",
-    "bursarExports.scheduling.frequency": "Частота",
+    "bursarExports.scheduling.frequency": "Періодичність",
     "bursarExports.scheduling.frequency.manual": "Ніколи (запускати вручну)",
     "bursarExports.scheduling.frequency.hours": "Години",
     "bursarExports.scheduling.frequency.days": "Дні",
