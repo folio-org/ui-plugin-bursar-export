@@ -63,7 +63,7 @@
     "bursarExports.footer.accordion": "Формат нижнього колонтитула",
     "bursarExports.token.newline": "Новий рядок (LF)",
     "bursarExports.token.newlineMicrosoft": "Новий рядок (Microsoft, CRLF)",
-    "bursarExports.token.tab": "Tab",
+    "bursarExports.token.tab": "Вкладка",
     "bursarExports.token.comma": "Кома",
     "bursarExports.token.whitespace": "Пробіл",
     "bursarExports.token.arbitraryText": "Текст",
