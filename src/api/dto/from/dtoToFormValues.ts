@@ -37,7 +37,7 @@ export default function dtoToFormValues(
 
       header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
       dataAggregate: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations, stripes, intl),
-      footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
+      footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.footer),
 
       transferInfo: dtoToTransfer(
         values.exportTypeSpecificParameters.bursarFeeFines.transferInfo,
