@@ -13,7 +13,7 @@ describe('Data token card', () => {
         <Form mutators={{ ...arrayMutators }} onSubmit={() => ({})}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <DataTokenCard name="test[0]" index={0} isLast />
+              <DataTokenCard fieldArrayName="data" name="test[0]" index={0} isLast />
             </form>
           )}
         </Form>,
@@ -33,7 +33,7 @@ describe('Data token card', () => {
         >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <DataTokenCard name="data[0]" index={0} isLast />
+              <DataTokenCard fieldArrayName="data" name="data[0]" index={0} isLast />
             </form>
           )}
         </Form>,

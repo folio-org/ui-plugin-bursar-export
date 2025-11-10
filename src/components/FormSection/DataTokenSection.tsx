@@ -26,6 +26,7 @@ export default function DataTokenSection() {
         <>
           {fields.map((innerName, index) => (
             <DataTokenCard
+              fieldArrayName={name}
               key={innerName}
               name={innerName}
               index={index}
