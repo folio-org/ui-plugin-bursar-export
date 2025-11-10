@@ -7,22 +7,31 @@ import DataTokenCardBody, { isDataBodyEmpty } from './DataTokenCardBody';
 import DataTypeSelect from './DataTypeSelect';
 
 export interface DataTokenCardProps {
+  fieldArrayName: string;
   name: string;
   index: number;
   isLast: boolean;
 }
 
-export default function DataTokenCard({ name, index, isLast }: Readonly<DataTokenCardProps>) {
+export default function DataTokenCard({
+  fieldArrayName,
+  name,
+  index,
+  isLast,
+}: Readonly<DataTokenCardProps>) {
   const type = useField<DataTokenType>(`${name}.type`, {
     subscription: { value: true },
     format: (value) => value ?? DataTokenType.NEWLINE,
   }).input.value;
 
-  const shouldHaveLengthControl = useCallback(() => TOKEN_TYPES_WITH_LENGTH_CONTROL.includes(type), [type]);
+  const shouldHaveLengthControl = useCallback(
+    () => TOKEN_TYPES_WITH_LENGTH_CONTROL.includes(type),
+    [type],
+  );
 
   return (
     <GenericTokenCard<DataTokenType>
-      fieldArrayName="data"
+      fieldArrayName={fieldArrayName}
       name={name}
       index={index}
       isLast={isLast}
