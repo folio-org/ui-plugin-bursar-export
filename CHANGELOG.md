@@ -1,8 +1,10 @@
 # Change history for ui-plugin-bursar-export
 
-## In progress
+## [5.0.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.1) (2025-11-13) Sunflower CSP #3
 
 * Select element should has an accessible name. Refs UIPBEX-50.
+* Fix inability to delete patron data fields when aggregating. Refs UIPBEX-68.
+* Fix improper loading of saved header/footer configuration. Refs UIPBEX-69.
 
 ## [5.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.0) (2025-03-20)
 [Full Changelog](https://github.com/folio-org/ui-plugin-bursar-export/compare/v4.0.3...v5.0.0)
