@@ -35,7 +35,7 @@
     "bursarExports.criteria.select.patronGroup": "Grupa czytelników",
     "bursarExports.criteria.select.none": "Brak kryteriów (zawsze uruchamiaj)",
     "bursarExports.criteria.select.label": "Kryteria",
-    "bursarExports.criteria.age.value": "Wiek w dniach",
+    "bursarExports.criteria.age.value": "Liczba dni od utworzenia",
     "bursarExports.criteria.type.automatic": "Automatyczny",
     "bursarExports.criteria.location.inst": "Instytucja",
     "bursarExports.criteria.location.camp": "Kampus",
