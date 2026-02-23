@@ -1,5 +1,9 @@
 # Change history for ui-plugin-bursar-export
 
+## NEXT RELEASE
+
+* Dependency correction: `react-intl` bumped to v7 in UIPBEX-66 but we missed the peer. Refs UIPBEX-72.
+
 ## [5.0.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.1) (2025-11-13) Sunflower CSP #3
 
 * Select element should has an accessible name. Refs UIPBEX-50.
