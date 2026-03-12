@@ -1,6 +1,12 @@
 import { IntlShape } from 'react-intl';
 import { StripesType } from '@folio/stripes/core';
-import { CriteriaTerminalType, DataTokenType, FormValues, SchedulingFrequency } from '../../../types';
+import {
+  CriteriaTerminalType,
+  DataTokenType,
+  HeaderFooterTokenType,
+  FormValues,
+  SchedulingFrequency,
+} from '../../../types';
 import { SavedJobConfiguration } from '../dto-types';
 import dtoToFormValues from './dtoToFormValues';
 import getIntl from '../../../../test/util/getIntl';
@@ -28,6 +34,7 @@ describe('dtoToFormValues', () => {
             data: [{ type: 'Constant', value: '\n' }],
             filter: { type: 'Pass' },
             transferInfo: { else: { account: 'account' } },
+            header: [{ type: 'Constant', value: '\n' }],
           },
         },
       },
@@ -35,7 +42,7 @@ describe('dtoToFormValues', () => {
         scheduling: { frequency: SchedulingFrequency.Manual },
         criteria: { type: CriteriaTerminalType.PASS },
         aggregate: false,
-        header: [],
+        header: [{ type: HeaderFooterTokenType.NEWLINE }],
         data: [{ type: DataTokenType.NEWLINE }],
         footer: [],
         transferInfo: {
