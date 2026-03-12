@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 * Dependency correction: `react-intl` bumped to v7 in UIPBEX-66 but we missed the peer. Refs UIPBEX-72.
+* Transfer criteria: footer format overridden by header format after save. Refs UIPBEX-73.
 
 ## [5.0.1](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.1) (2025-11-13) Sunflower CSP #3
 
