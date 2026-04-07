@@ -63,6 +63,7 @@ describe('Form values conversion', () => {
       ],
       else: { account: 'else-sp' },
     },
+    dryRun: false,
   };
 
   it('converts non-aggregate values', () => expect(formValuesToDto({ ...TEST_VALUE, aggregate: false })).toEqual({
