@@ -26,45 +26,61 @@ export default function dtoToFormValues(
     return {};
   }
 
+  const commonValues = {
+    scheduling: dtoToScheduling(values, localeWeekdays),
+
+    criteria: dtoToCriteria(
+      values.exportTypeSpecificParameters.bursarFeeFines.filter,
+      feeFineTypes,
+      locations,
+      stripes,
+      intl,
+    ),
+
+    header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
+    footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.footer),
+
+    transferInfo: dtoToTransfer(
+      values.exportTypeSpecificParameters.bursarFeeFines.transferInfo,
+      feeFineTypes,
+      locations,
+      transferAccounts,
+      stripes,
+      intl,
+    ),
+
+    dryRun: values.exportTypeSpecificParameters.bursarFeeFines.dryRun === true,
+  };
+
   if (values.exportTypeSpecificParameters.bursarFeeFines.groupByPatron) {
     return {
-      scheduling: dtoToScheduling(values, localeWeekdays),
-
-      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations, stripes, intl),
+      ...commonValues,
 
       aggregate: true,
-      aggregateFilter: dtoToAggregateCriteria(values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter, stripes, intl),
+      aggregateFilter: dtoToAggregateCriteria(
+        values.exportTypeSpecificParameters.bursarFeeFines.groupByPatronFilter,
+        stripes,
+        intl,
+      ),
 
-      header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
-      dataAggregate: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations, stripes, intl),
-      footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.footer),
-
-      transferInfo: dtoToTransfer(
-        values.exportTypeSpecificParameters.bursarFeeFines.transferInfo,
+      dataAggregate: dtoToData(
+        values.exportTypeSpecificParameters.bursarFeeFines.data,
         feeFineTypes,
         locations,
-        transferAccounts,
         stripes,
         intl,
       ),
     };
   } else {
     return {
-      scheduling: dtoToScheduling(values, localeWeekdays),
-
-      criteria: dtoToCriteria(values.exportTypeSpecificParameters.bursarFeeFines.filter, feeFineTypes, locations, stripes, intl),
+      ...commonValues,
 
       aggregate: false,
 
-      header: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.header),
-      data: dtoToData(values.exportTypeSpecificParameters.bursarFeeFines.data, feeFineTypes, locations, stripes, intl),
-      footer: dtoToHeaderFooter(values.exportTypeSpecificParameters.bursarFeeFines.footer),
-
-      transferInfo: dtoToTransfer(
-        values.exportTypeSpecificParameters.bursarFeeFines.transferInfo,
+      data: dtoToData(
+        values.exportTypeSpecificParameters.bursarFeeFines.data,
         feeFineTypes,
         locations,
-        transferAccounts,
         stripes,
         intl,
       ),

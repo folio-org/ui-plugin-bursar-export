@@ -38,5 +38,7 @@ export default interface FormValues {
     };
   };
 
+  dryRun?: boolean;
+
   buttonClicked?: 'save' | 'manual';
 }

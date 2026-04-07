@@ -49,6 +49,38 @@ describe('dtoToFormValues', () => {
           conditions: [],
           else: { account: 'account' },
         },
+        dryRun: false,
+      },
+    ],
+    [
+      {
+        id: 'id',
+        type: 'BURSAR_FEES_FINES',
+        tenant: 'diku',
+        schedulePeriod: SchedulingFrequency.Manual,
+        exportTypeSpecificParameters: {
+          bursarFeeFines: {
+            groupByPatron: false,
+            data: [{ type: 'Constant', value: '\n' }],
+            filter: { type: 'Pass' },
+            transferInfo: { else: { account: 'account' } },
+            header: [{ type: 'Constant', value: '\n' }],
+            dryRun: true,
+          },
+        },
+      },
+      {
+        scheduling: { frequency: SchedulingFrequency.Manual },
+        criteria: { type: CriteriaTerminalType.PASS },
+        aggregate: false,
+        header: [{ type: HeaderFooterTokenType.NEWLINE }],
+        data: [{ type: DataTokenType.NEWLINE }],
+        footer: [],
+        transferInfo: {
+          conditions: [],
+          else: { account: 'account' },
+        },
+        dryRun: true,
       },
     ],
     [
@@ -77,7 +109,12 @@ describe('dtoToFormValues', () => {
           conditions: [],
           else: { account: 'account' },
         },
+        dryRun: false,
       },
     ],
-  ])('Converts DTO %s to %s', (input, expected) => expect(dtoToFormValues(input, [], [], [], [], { currency: 'USD' } as StripesType, intlEn)).toEqual(expected));
+  ])('Converts DTO %s to %s', (input, expected) =>
+    expect(
+      dtoToFormValues(input, [], [], [], [], { currency: 'USD' } as StripesType, intlEn),
+    ).toEqual(expected),
+  );
 });

@@ -15,6 +15,7 @@ export interface BursarExportJobDTO {
   data?: BursarExportDataTokenDTO[];
   footer?: BursarExportHeaderFooterTokenDTO[];
   transferInfo: BursarExportTransferCriteria;
+  dryRun?: boolean;
 }
 
 export type BursarExportFilterDTO =

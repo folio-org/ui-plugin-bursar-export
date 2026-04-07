@@ -13,7 +13,7 @@ import {
   ExportPreviewSection,
   HeaderFooterSection,
   SchedulingSection,
-  TransferInfoSection
+  TransferSection
 } from './FormSection';
 
 interface ConfigurationFormSectionProps {
@@ -77,7 +77,7 @@ function ConfigurationFormSection({ handleSubmit, formApiRef, form }: FormRender
         </Accordion>
 
         <Accordion label={<FormattedMessage id="ui-plugin-bursar-export.bursarExports.transfer.accordion" />}>
-          <TransferInfoSection />
+          <TransferSection />
         </Accordion>
       </AccordionSet>
     </form>
