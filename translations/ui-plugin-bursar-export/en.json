@@ -167,6 +167,9 @@
   "bursarExports.preview.enableInvisibleChar": "Display invisible characters (newlines, tabs, and spaces)",
 
   "bursarExports.transfer.accordion": "Transfer accounts to",
+  "bursarExports.transfer.dryRunHeader": "Testing mode",
+  "bursarExports.transfer.dryRunCheckbox": "Enable testing mode",
+  "bursarExports.transfer.dryRunDescription": "When enabled, the export will be generated and processed as usual, however, accounts will not be transferred. This allows you to verify that your criteria are properly configured before performing actual transfers.",
   "bursarExports.transfer.description": "Conditions will be evaluated in order, with the first matched transfer account being used. If no conditions are matched, the account listed under \u201cotherwise\u201d will be used.",
   "bursarExports.transfer.owner": "Fee/fine owner",
   "bursarExports.transfer.account": "Transfer account",

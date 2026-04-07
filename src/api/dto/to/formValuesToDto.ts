@@ -7,26 +7,30 @@ import headerFooterToDto from './headerFooterToDto';
 import transferToDto from './transferToDto';
 
 export default function formValuesToDto(values: FormValues): BursarExportJobDTO {
+  const common = {
+    filter: criteriaToFilterDto(values.criteria),
+
+    header: headerFooterToDto(values.header),
+    footer: headerFooterToDto(values.footer),
+
+    dryRun: values.dryRun === true,
+    transferInfo: transferToDto(values.transferInfo),
+  };
   if (values.aggregate) {
     return {
-      filter: criteriaToFilterDto(values.criteria),
+      ...common,
       groupByPatron: true,
       groupByPatronFilter: aggregateCriteriaToFilterDto(values.aggregateFilter),
 
-      header: headerFooterToDto(values.header),
       data: dataToDto(values.dataAggregate),
-      footer: headerFooterToDto(values.footer),
-      transferInfo: transferToDto(values.transferInfo),
     };
   } else {
     return {
-      filter: criteriaToFilterDto(values.criteria),
+      ...common,
       groupByPatron: false,
 
       header: headerFooterToDto(values.header),
       data: dataToDto(values.data),
-      footer: headerFooterToDto(values.footer),
-      transferInfo: transferToDto(values.transferInfo),
     };
   }
 }

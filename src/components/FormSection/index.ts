@@ -5,3 +5,4 @@ export { default as ExportPreviewSection } from './ExportPreviewSection';
 export { default as HeaderFooterSection } from './HeaderFooterSection';
 export { default as SchedulingSection } from './SchedulingSection';
 export { default as TransferInfoSection } from './TransferInfoSection';
+export { default as TransferSection } from './TransferSection';

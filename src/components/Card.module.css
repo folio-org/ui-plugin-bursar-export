@@ -16,6 +16,6 @@
   padding: 0;
 }
 
-.aggregateCardP {
+.aggregateCardP, .dryRunCardP {
   margin-bottom: 0;
 }
