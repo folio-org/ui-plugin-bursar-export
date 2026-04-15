@@ -149,5 +149,8 @@
     "permission.bursar-exports.manual": "Exporty převodu: Spuštění ručních úloh",
     "permission.bursar-exports.view": "Exporty převodu: Zobrazit konfigurace",
     "settings.title": "Nastavení uživatelů - Kritéria převodu",
-    "bursarExports.scheduler.interval.error": "Hodnota musí být větší než 0"
+    "bursarExports.scheduler.interval.error": "Hodnota musí být větší než 0",
+    "bursarExports.transfer.dryRunHeader": "Testovací režim",
+    "bursarExports.transfer.dryRunCheckbox": "Povolit testovací režim",
+    "bursarExports.transfer.dryRunDescription": "Pokud je tato možnost povolena, export se vygeneruje a zpracuje jako obvykle, účty se však nepřenesou. To vám umožní před provedením skutečných převodů ověřit, zda jsou kritéria správně nakonfigurována."
 }

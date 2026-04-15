@@ -149,5 +149,8 @@
     "permission.bursar-exports.manual": "Transferir exportações: Iniciar trabalhos manuais",
     "permission.bursar-exports.view": "Transferir exportações: visualizar configuração",
     "settings.title": "Configurações de usuários – Critérios de transferência",
-    "bursarExports.scheduler.interval.error": "O valor deve ser maior que 0"
+    "bursarExports.scheduler.interval.error": "O valor deve ser maior que 0",
+    "bursarExports.transfer.dryRunHeader": "Modo de teste",
+    "bursarExports.transfer.dryRunCheckbox": "Ativar o modo de teste",
+    "bursarExports.transfer.dryRunDescription": "Quando ativada, a exportação será gerada e processada normalmente, porém, as contas não serão transferidas. Isso permite que você verifique se seus critérios estão configurados corretamente antes de realizar as transferências reais."
 }

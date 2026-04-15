@@ -149,5 +149,8 @@
     "permission.bursar-exports.manual": "Перенесення експорту: Запуск завдань вручну",
     "permission.bursar-exports.view": "Перенесення експорту: Перегляд конфігурації",
     "settings.title": "Налаштування користувачів – Критерії переміщення",
-    "bursarExports.scheduler.interval.error": "Значення має бути більшим за 0"
+    "bursarExports.scheduler.interval.error": "Значення має бути більшим за 0",
+    "bursarExports.transfer.dryRunHeader": "Testing mode",
+    "bursarExports.transfer.dryRunCheckbox": "Enable testing mode",
+    "bursarExports.transfer.dryRunDescription": "When enabled, the export will be generated and processed as usual, however, accounts will not be transferred. This allows you to verify that your criteria are properly configured before performing actual transfers."
 }
