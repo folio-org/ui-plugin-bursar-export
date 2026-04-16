@@ -1,6 +1,6 @@
 # Change history for ui-plugin-bursar-export
 
-## NEXT RELEASE
+## [6.0.0](https://github.com/folio-org/ui-plugin-bursar-export/tree/v6.0.0) (2026-04-16) Trillium
 
 * Dependency correction: `react-intl` bumped to v7 in UIPBEX-66 but we missed the peer. Refs UIPBEX-72.
 * Transfer criteria: footer format overridden by header format after save. Refs UIPBEX-73.
