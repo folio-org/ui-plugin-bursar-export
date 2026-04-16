@@ -149,5 +149,8 @@
     "permission.bursar-exports.manual": "转运导出 : 开始人工任务",
     "permission.bursar-exports.view": "转运导出 : 查看配置",
     "settings.title": "用户设置 - 转移条件",
-    "bursarExports.scheduler.interval.error": "值必须大于 0"
+    "bursarExports.scheduler.interval.error": "值必须大于 0",
+    "bursarExports.transfer.dryRunHeader": "Testing mode",
+    "bursarExports.transfer.dryRunCheckbox": "Enable testing mode",
+    "bursarExports.transfer.dryRunDescription": "When enabled, the export will be generated and processed as usual, however, accounts will not be transferred. This allows you to verify that your criteria are properly configured before performing actual transfers."
 }

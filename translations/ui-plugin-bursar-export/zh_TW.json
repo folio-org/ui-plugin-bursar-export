@@ -149,5 +149,8 @@
     "permission.bursar-exports.manual": "轉帳匯出 : 開始手動作業",
     "permission.bursar-exports.view": "轉帳匯出 : 查看設定",
     "settings.title": "Users settings - Transfer criteria",
-    "bursarExports.scheduler.interval.error": "Value must be greater than 0"
+    "bursarExports.scheduler.interval.error": "Value must be greater than 0",
+    "bursarExports.transfer.dryRunHeader": "Testing mode",
+    "bursarExports.transfer.dryRunCheckbox": "Enable testing mode",
+    "bursarExports.transfer.dryRunDescription": "When enabled, the export will be generated and processed as usual, however, accounts will not be transferred. This allows you to verify that your criteria are properly configured before performing actual transfers."
 }

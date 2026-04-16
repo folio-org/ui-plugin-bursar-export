@@ -149,5 +149,8 @@
     "permission.bursar-exports.manual": "İhracatları Transfer: Manuel işleri başlat",
     "permission.bursar-exports.view": "Dışa Transfer: Yapılandırmayı görüntüle",
     "settings.title": "Kullanıcılar Ayarları - Transfer kriterleri",
-    "bursarExports.scheduler.interval.error": "Değer 0'dan büyük olmalıdır"
+    "bursarExports.scheduler.interval.error": "Değer 0'dan büyük olmalıdır",
+    "bursarExports.transfer.dryRunHeader": "Testing mode",
+    "bursarExports.transfer.dryRunCheckbox": "Enable testing mode",
+    "bursarExports.transfer.dryRunDescription": "When enabled, the export will be generated and processed as usual, however, accounts will not be transferred. This allows you to verify that your criteria are properly configured before performing actual transfers."
 }
