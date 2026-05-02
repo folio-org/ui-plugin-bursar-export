@@ -150,7 +150,7 @@
     "permission.bursar-exports.view": "Exports overzetten: Configuratie bekijken",
     "settings.title": "Gebruikersinstellingen - Criteria overzetting",
     "bursarExports.scheduler.interval.error": "Waarde moet groter zijn dan 0",
-    "bursarExports.transfer.dryRunHeader": "Testing mode",
-    "bursarExports.transfer.dryRunCheckbox": "Enable testing mode",
-    "bursarExports.transfer.dryRunDescription": "When enabled, the export will be generated and processed as usual, however, accounts will not be transferred. This allows you to verify that your criteria are properly configured before performing actual transfers."
+    "bursarExports.transfer.dryRunHeader": "Testmodus",
+    "bursarExports.transfer.dryRunCheckbox": "Testmodus inschakelen",
+    "bursarExports.transfer.dryRunDescription": "Indien ingeschakeld, wordt de export zoals gewoonlijk gegenereerd en verwerkt, maar worden rekeningen niet overgedragen. Zo kunt u controleren of uw criteria goed geconfigureerd zijn voordat u daadwerkelijk overschrijvingen uitvoert."
 }
