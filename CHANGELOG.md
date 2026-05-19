@@ -6,7 +6,7 @@
 * Transfer criteria: footer format overridden by header format after save. Refs UIPBEX-73.
 * Support running exports as a dry run. Refs UIPBEX-70.
 
-## [5.0.2](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.2) (2026-05-19) Sunflower CSP #9
+## [5.0.2](https://github.com/folio-org/ui-plugin-bursar-export/tree/v5.0.2) (2026-05-19) Sunflower CSP #8
 
 * Transfer criteria: footer format overridden by header format after save. Refs UIPBEX-73. (Backported from 6.0.0)
 
